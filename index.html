@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Growth Day — Ready. Set. Grow.</title>
+<meta name="description" content="A one-day catalytic event for life, leadership, and purpose. Powered by FIRE Church and Denis Ekobena's EQUIP2LEAD." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --orange: #E8590C; --orange-deep: #C2410C; --orange-soft: #FFE8D6;
+  --cream: #FFF8F1; --paper: #FFFFFF;
+  --charcoal: #1A1410; --char-mid: #4A3F37; --char-soft: #8C7B70;
+  --line: #E8DDD0;
+  --radius-sm: 6px; --radius: 14px; --radius-lg: 24px;
+  --shadow-sm: 0 2px 8px rgba(26,20,16,0.06);
+  --shadow: 0 8px 32px rgba(26,20,16,0.08);
+  --shadow-lg: 0 24px 60px rgba(232,89,12,0.18);
+  --max: 1240px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 17px; line-height: 1.6;
+  color: var(--charcoal); background: var(--cream);
+  overflow-x: hidden; -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+.display { font-family: 'Fraunces', Georgia, serif; font-weight: 700; letter-spacing: -0.025em; line-height: 1.02; }
+.serif-em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; color: var(--orange); }
+.eyebrow {
+  display: inline-block; font-weight: 700; font-size: 0.78rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--orange);
+  padding: 6px 14px;
+  background: var(--orange-soft); border-radius: 100px;
+}
+.eyebrow.light { background: rgba(255,255,255,0.18); color: #fff; backdrop-filter: blur(8px); }
+
+/* ========== NAV ========== */
+nav.top {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s;
+  border-bottom: 1px solid transparent;
+}
+nav.top.scrolled {
+  background: rgba(255,248,241,0.94);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-bottom-color: rgba(232,221,208,0.6);
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto;
+  padding: 18px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 800; font-size: 1.4rem; letter-spacing: -0.02em;
+  color: #fff; transition: color 0.3s;
+}
+.scrolled .brand { color: var(--charcoal); }
+.brand-mark { width: 38px; height: 38px; flex-shrink: 0; }
+.nav-right { display: flex; align-items: center; gap: 24px; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a {
+  font-weight: 500; font-size: 0.95rem;
+  color: rgba(255,255,255,0.92); transition: color 0.2s;
+}
+.scrolled .nav-links a { color: var(--char-mid); }
+.nav-links a:hover { color: var(--orange); }
+.lang-toggle {
+  display: flex; align-items: center;
+  background: rgba(255,255,255,0.16); backdrop-filter: blur(8px);
+  border-radius: 100px; padding: 4px;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.scrolled .lang-toggle { background: rgba(26,20,16,0.05); border-color: var(--line); }
+.lang-toggle button {
+  background: transparent; border: none;
+  padding: 6px 14px; border-radius: 100px;
+  color: rgba(255,255,255,0.78);
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.05em;
+  cursor: pointer; transition: all 0.2s; font-family: inherit;
+}
+.scrolled .lang-toggle button { color: var(--char-mid); }
+.lang-toggle button.active { background: var(--orange); color: #fff; }
+.scrolled .lang-toggle button.active { color: #fff; }
+.btn-signin {
+  border: 1.5px solid rgba(255,255,255,0.5);
+  padding: 9px 22px; border-radius: 100px;
+  font-weight: 600; font-size: 0.9rem;
+  color: #fff; transition: all 0.25s;
+}
+.scrolled .btn-signin { border-color: var(--charcoal); color: var(--charcoal); }
+.btn-signin:hover { background: #fff; color: var(--charcoal); border-color: #fff; }
+.scrolled .btn-signin:hover { background: var(--charcoal); color: var(--cream); }
+@media (max-width: 900px) {
+  .nav-links a { display: none; }
+  .nav-inner { padding: 14px 20px; }
+}
+
+/* ========== HERO 1 ========== */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 120px 32px 80px;
+  overflow: hidden; color: #fff;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url('img/hero-worship.jpg');
+  background-size: cover; background-position: center;
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(26,20,16,0.35) 0%, rgba(26,20,16,0.62) 55%, rgba(26,20,16,0.92) 100%),
+    linear-gradient(110deg, rgba(232,89,12,0.42) 0%, transparent 55%);
+}
+.hero-inner { max-width: var(--max); margin: 0 auto; width: 100%; position: relative; z-index: 2; }
+.hero h1 {
+  font-size: clamp(2.6rem, 6.5vw, 5.6rem);
+  margin-top: 28px; margin-bottom: 28px;
+  max-width: 900px; text-shadow: 0 2px 24px rgba(0,0,0,0.25);
+}
+.hero h1 .accent { color: var(--orange); font-style: italic; font-weight: 600; }
+.hero p.lede {
+  font-size: clamp(1.05rem, 1.4vw, 1.22rem);
+  color: rgba(255,248,241,0.94);
+  max-width: 620px; margin-bottom: 36px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+}
+.hero-meta {
+  display: flex; gap: 32px; flex-wrap: wrap;
+  margin-bottom: 44px; font-size: 0.95rem;
+  color: rgba(255,248,241,0.85);
+}
+.hero-meta-item { display: flex; align-items: center; gap: 10px; }
+.hero-meta-item svg { color: var(--orange); flex-shrink: 0; }
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--orange); color: #fff;
+  padding: 18px 34px; border: none; border-radius: 100px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700; font-size: 1.02rem;
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: 12px;
+  box-shadow: var(--shadow-lg); transition: all 0.25s;
+}
+.btn-primary:hover { transform: translateY(-2px); background: var(--orange-deep); box-shadow: 0 28px 60px rgba(232,89,12,0.32); }
+.btn-secondary {
+  background: rgba(255,255,255,0.12); color: #fff;
+  padding: 18px 34px;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  border-radius: 100px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700; font-size: 1.02rem;
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: 12px;
+  transition: all 0.25s; backdrop-filter: blur(8px);
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.22); border-color: #fff; }
+.next-date-pill {
+  display: inline-flex; align-items: center; gap: 16px;
+  padding: 16px 28px;
+  background: rgba(232,89,12,0.18);
+  backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(255,255,255,0.35);
+  border-radius: 100px;
+  font-size: 1rem;
+  margin-bottom: 32px;
+  font-weight: 600;
+  box-shadow: 0 8px 32px rgba(232,89,12,0.3);
+}
+.next-date-pill .pulse {
+  width: 10px; height: 10px;
+  background: #FFD0A0; border-radius: 50%;
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+.next-date-pill .date-strong {
+  font-family: 'Fraunces', serif;
+  font-weight: 700; font-size: 1.18rem;
+  letter-spacing: 0.01em;
+}
+.next-date-pill .countdown {
+  background: var(--orange);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255,208,160,0.85); }
+  70% { box-shadow: 0 0 0 14px rgba(255,208,160,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,208,160,0); }
+}
+
+/* ========== FLOATING DATE BADGE ========== */
+.floating-date {
+  position: fixed;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%) rotate(8deg);
+  z-index: 90;
+  background: var(--orange);
+  color: #fff;
+  padding: 22px 18px;
+  border-radius: 18px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 18px 48px rgba(232,89,12,0.45), 0 0 0 4px rgba(255,255,255,0.18);
+  transition: all 0.3s cubic-bezier(0.2,0.8,0.2,1);
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.2);
+  animation: floatIn 0.8s 1.5s cubic-bezier(0.2,0.8,0.2,1) backwards;
+}
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(-50%) rotate(8deg) translateX(80px); }
+  to { opacity: 1; transform: translateY(-50%) rotate(8deg) translateX(0); }
+}
+.floating-date:hover {
+  transform: translateY(-50%) rotate(0deg) scale(1.06);
+  box-shadow: 0 24px 60px rgba(232,89,12,0.55), 0 0 0 4px rgba(255,255,255,0.25);
+}
+.floating-date .fd-label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.92;
+  margin-bottom: 4px;
+}
+.floating-date .fd-day {
+  font-family: 'Fraunces', serif;
+  font-weight: 800;
+  font-size: 2.6rem;
+  line-height: 1;
+  margin: 2px 0;
+}
+.floating-date .fd-month {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.floating-date .fd-cta {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.floating-date.hidden { opacity: 0; pointer-events: none; transform: translateY(-50%) rotate(8deg) translateX(120px); }
+@media (max-width: 700px) {
+  .floating-date { padding: 14px 12px; right: 12px; }
+  .floating-date .fd-day { font-size: 1.9rem; }
+  .floating-date .fd-month { font-size: 0.78rem; }
+  .floating-date .fd-cta { font-size: 0.6rem; }
+}
+
+/* ========== ABOUT SECTION (NEW, on the landing page) ========== */
+.about-mini {
+  background: var(--paper);
+  padding: 100px 32px;
+  border-bottom: 1px solid var(--line);
+}
+.about-mini-inner { max-width: var(--max); margin: 0 auto; }
+.about-mini-head { text-align: center; max-width: 720px; margin: 0 auto 60px; }
+.about-mini-head h2 {
+  color: var(--charcoal);
+  margin: 16px 0 18px;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+}
+.about-mini-head p { color: var(--char-mid); font-size: 1.1rem; }
+
+.convictions-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 56px;
+}
+.conviction {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px 30px;
+  transition: all 0.25s;
+}
+.conviction:hover { border-color: var(--orange); transform: translateY(-3px); }
+.conviction-num {
+  font-family: 'Fraunces', serif;
+  font-size: 0.9rem; font-weight: 700;
+  color: var(--orange); letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+.conviction h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem; font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--charcoal);
+  letter-spacing: -0.01em;
+}
+.conviction p {
+  color: var(--char-mid);
+  font-size: 0.96rem; line-height: 1.55;
+}
+
+.about-mini-cta {
+  text-align: center;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+.about-mini-cta blockquote {
+  font-family: 'Fraunces', serif;
+  font-style: italic; font-size: 1.5rem;
+  color: var(--char-mid);
+  max-width: 720px; margin: 0 auto 28px;
+  line-height: 1.4;
+}
+.about-mini-cta blockquote::before { content: '"'; color: var(--orange); margin-right: 4px; }
+.about-mini-cta blockquote::after { content: '"'; color: var(--orange); margin-left: 4px; }
+.btn-link-arrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--orange); font-weight: 700;
+  font-size: 1.05rem;
+  border-bottom: 2px solid var(--orange);
+  padding-bottom: 4px;
+  transition: gap 0.25s;
+}
+.btn-link-arrow:hover { gap: 14px; }
+
+@media (max-width: 800px) { .convictions-grid { grid-template-columns: 1fr; } }
+
+/* ========== BANNER ========== */
+.banner {
+  background: var(--orange); color: #fff;
+  padding: 32px 28px;
+  position: relative; overflow: hidden;
+}
+.banner::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 10% 30%, rgba(255,255,255,0.08) 0%, transparent 30%),
+    radial-gradient(circle at 90% 70%, rgba(255,255,255,0.08) 0%, transparent 30%);
+}
+.banner-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap; position: relative;
+}
+.banner h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.banner h2 .price {
+  display: inline-block;
+  background: #fff; color: var(--orange);
+  padding: 4px 18px; border-radius: 100px;
+  font-style: italic; margin: 0 4px;
+}
+.banner-cta {
+  background: var(--charcoal); color: #fff;
+  padding: 14px 28px; border-radius: 100px;
+  font-weight: 700; font-size: 0.98rem;
+  white-space: nowrap; transition: all 0.25s;
+  border: 2px solid var(--charcoal);
+}
+.banner-cta:hover { transform: scale(1.05); background: transparent; color: #fff; }
+
+/* ========== HERO 2 ========== */
+.hero2 {
+  padding: 100px 32px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+}
+.hero2-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: 80px; align-items: center;
+}
+.hero2-image {
+  position: relative; border-radius: var(--radius-lg);
+  overflow: hidden; aspect-ratio: 4/5;
+  box-shadow: var(--shadow);
+}
+.hero2-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+.hero2-image:hover img { transform: scale(1.04); }
+.hero2-image::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(26,20,16,0.4) 100%);
+  pointer-events: none;
+}
+.hero2-image .badge-overlay {
+  position: absolute; bottom: 28px; left: 28px; right: 28px; color: #fff;
+}
+.hero2-image .badge-overlay .num {
+  font-family: 'Fraunces', serif;
+  font-weight: 700; font-size: 4.2rem;
+  line-height: 1; margin-bottom: 8px;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.3);
+}
+.hero2-image .badge-overlay .label {
+  font-size: 0.95rem; letter-spacing: 0.06em;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+.hero2-text h2 {
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  color: var(--charcoal); margin: 18px 0 24px;
+}
+.hero2-text h2 .em { color: var(--orange); font-style: italic; font-weight: 600; }
+.hero2-text p { font-size: 1.08rem; color: var(--char-mid); margin-bottom: 16px; }
+.hero2-features { list-style: none; margin: 28px 0 36px; }
+.hero2-features li {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 12px 0; font-size: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+.hero2-features li:last-child { border-bottom: none; }
+.hero2-features li::before {
+  content: ''; flex-shrink: 0; margin-top: 8px;
+  width: 8px; height: 8px;
+  background: var(--orange); border-radius: 50%;
+}
+.btn-dark {
+  background: var(--charcoal); color: #fff;
+  padding: 16px 30px; border: none; border-radius: 100px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700; font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: 12px;
+  transition: all 0.25s;
+}
+.btn-dark:hover { background: var(--orange); transform: translateY(-2px); }
+@media (max-width: 900px) {
+  .hero2-inner { grid-template-columns: 1fr; gap: 48px; }
+  .hero2-image { aspect-ratio: 3/2; max-width: 600px; margin: 0 auto; }
+}
+
+/* ========== BASE ========== */
+section.s { padding: 110px 32px; position: relative; }
+.s-inner { max-width: var(--max); margin: 0 auto; }
+.s-head { text-align: center; margin-bottom: 64px; max-width: 760px; margin-left: auto; margin-right: auto; }
+.s-head h2 { color: var(--charcoal); margin: 16px 0 14px; }
+.s-head p { color: var(--char-mid); font-size: 1.08rem; }
+
+/* ========== ALTITUDES ========== */
+.altitudes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+.alt-card {
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); overflow: hidden;
+  transition: all 0.3s;
+}
+.alt-card:hover { transform: translateY(-6px); border-color: var(--orange); box-shadow: var(--shadow); }
+.alt-card-img { position: relative; aspect-ratio: 16/10; overflow: hidden; background: var(--orange-soft); }
+.alt-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.alt-card:hover .alt-card-img img { transform: scale(1.05); }
+.alt-card-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(26,20,16,0.35) 100%);
+}
+.alt-card-img .step {
+  position: absolute; top: 18px; left: 18px;
+  background: var(--orange); color: #fff;
+  padding: 6px 14px; border-radius: 100px;
+  font-size: 0.74rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.alt-body { padding: 28px 30px 32px; }
+.alt-body h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.55rem; font-weight: 700;
+  margin-bottom: 12px; color: var(--charcoal);
+  letter-spacing: -0.01em;
+}
+.alt-body p { color: var(--char-mid); font-size: 0.98rem; line-height: 1.55; }
+@media (max-width: 900px) { .altitudes-grid { grid-template-columns: 1fr; } }
+
+/* ========== AREAS ========== */
+.areas { background: var(--cream); }
+.areas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+.area-card {
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 26px;
+  transition: all 0.25s;
+}
+.area-card:hover { background: var(--orange); color: #fff; border-color: var(--orange); transform: translateY(-3px); }
+.area-card:hover h4, .area-card:hover .area-num, .area-card:hover p { color: #fff; }
+.area-num { font-family: 'Fraunces', serif; font-size: 0.85rem; font-weight: 700; color: var(--orange); margin-bottom: 8px; letter-spacing: 0.05em; }
+.area-card h4 { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 6px; color: var(--charcoal); }
+.area-card p { font-size: 0.9rem; color: var(--char-soft); line-height: 1.45; }
+@media (max-width: 800px) { .areas-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .areas-grid { grid-template-columns: 1fr; } }
+
+/* ========== SIGNUPS ========== */
+.signups { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.signups-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+.signup-card {
+  border-radius: var(--radius-lg);
+  padding: 44px 40px; position: relative; overflow: hidden;
+  border: 1px solid var(--line);
+}
+.signup-card.event { background: linear-gradient(135deg, var(--cream) 0%, var(--orange-soft) 100%); }
+.signup-card.cohort { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
+.signup-card .tag {
+  display: inline-block;
+  font-size: 0.74rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 100px;
+  margin-bottom: 22px;
+  background: var(--orange); color: #fff;
+}
+.signup-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.85rem; font-weight: 700;
+  margin-bottom: 12px; letter-spacing: -0.015em; line-height: 1.15;
+}
+.signup-card .sub { font-size: 1rem; margin-bottom: 28px; opacity: 0.85; }
+.signup-card.cohort .sub { color: rgba(255,248,241,0.8); }
+.event-details {
+  background: rgba(255,255,255,0.6);
+  border: 1px dashed var(--orange);
+  border-radius: var(--radius);
+  padding: 18px 22px; margin-bottom: 24px;
+  display: flex; gap: 18px; align-items: center;
+}
+.event-details .date-block {
+  font-family: 'Fraunces', serif; text-align: center;
+  border-right: 1px solid rgba(232,89,12,0.3);
+  padding-right: 18px;
+}
+.event-details .date-block .day { font-size: 2rem; font-weight: 700; color: var(--orange); line-height: 1; }
+.event-details .date-block .month { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--char-mid); margin-top: 4px; }
+.event-details .where strong { display: block; font-family: 'Fraunces', serif; font-size: 1.1rem; color: var(--charcoal); }
+.event-details .where { font-size: 0.92rem; color: var(--char-mid); }
+.cohort-price {
+  display: flex; align-items: baseline; gap: 8px;
+  margin-bottom: 28px; padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.cohort-price .big { font-family: 'Fraunces', serif; font-size: 3.4rem; font-weight: 700; color: var(--orange); line-height: 1; }
+.cohort-price .unit { font-size: 1rem; opacity: 0.75; }
+.cohort-price .total { margin-left: auto; font-family: 'Fraunces', serif; font-style: italic; font-size: 1rem; opacity: 0.8; }
+.includes-list { list-style: none; margin-bottom: 28px; }
+.includes-list li { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; font-size: 0.95rem; }
+.includes-list li::before {
+  content: '✓'; flex-shrink: 0; width: 22px; height: 22px;
+  background: var(--orange); color: #fff;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700; margin-top: 2px;
+}
+.fineprint { font-size: 0.82rem; opacity: 0.65; margin-top: 10px; text-align: center; }
+
+/* ========== FORM CTA BUTTONS (replace inline forms) ========== */
+.form-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 24px 28px;
+  background: var(--orange);
+  color: #fff;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1);
+  box-shadow: 0 12px 32px rgba(232,89,12,0.25);
+  margin-bottom: 18px;
+}
+.form-cta-btn:hover {
+  background: var(--orange-deep);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 44px rgba(232,89,12,0.4);
+}
+.form-cta-btn.dark {
+  background: var(--cream);
+  color: var(--charcoal);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+}
+.form-cta-btn.dark:hover {
+  background: #fff;
+  box-shadow: 0 18px 44px rgba(232,89,12,0.5);
+}
+.cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  text-align: left;
+}
+.cta-line-1 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 1.18rem;
+  letter-spacing: -0.005em;
+}
+.cta-line-2 {
+  font-size: 0.83rem;
+  font-weight: 500;
+  opacity: 0.88;
+}
+.cta-arrow {
+  font-size: 1.6rem;
+  font-weight: 300;
+  flex-shrink: 0;
+  transition: transform 0.25s;
+}
+.form-cta-btn:hover .cta-arrow { transform: translateX(4px); }
+
+.trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  justify-content: center;
+  font-size: 0.82rem;
+  color: var(--char-mid);
+}
+.trust-row.dark { color: rgba(255,248,241,0.72); }
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.trust-item svg {
+  color: var(--orange);
+  flex-shrink: 0;
+}
+
+@media (max-width: 500px) {
+  .form-cta-btn { padding: 18px 20px; }
+  .cta-line-1 { font-size: 1.05rem; }
+  .cta-line-2 { font-size: 0.78rem; }
+  .trust-row { gap: 8px 14px; font-size: 0.76rem; }
+}
+@media (max-width: 900px) {
+  .signups-grid { grid-template-columns: 1fr; }
+}
+
+/* ========== PROMISE ========== */
+.promise {
+  background: var(--charcoal); color: var(--cream);
+  padding: 110px 32px; position: relative; overflow: hidden;
+}
+.promise::before {
+  content: ''; position: absolute; top: -200px; right: -100px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(232,89,12,0.18) 0%, transparent 65%);
+}
+.promise-inner { max-width: 800px; margin: 0 auto; text-align: center; position: relative; }
+.promise h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  margin-bottom: 28px; line-height: 1.15; letter-spacing: -0.02em;
+}
+.promise h2 .accent { color: var(--orange); font-style: italic; font-weight: 600; }
+.promise blockquote {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem; font-style: italic;
+  line-height: 1.5; color: rgba(255,248,241,0.85);
+  border-left: 3px solid var(--orange);
+  padding-left: 24px; text-align: left;
+  margin: 36px auto 0; max-width: 600px;
+}
+
+/* ========== FAQ ========== */
+.faq { background: var(--paper); border-top: 1px solid var(--line); }
+.faq-list { max-width: 760px; margin: 32px auto 0; }
+.faq-item { border-bottom: 1px solid var(--line); padding: 24px 0; }
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer;
+  font-family: 'Fraunces', serif;
+  font-size: 1.18rem; font-weight: 600;
+  color: var(--charcoal); list-style: none;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after { content: '+'; font-size: 1.6rem; color: var(--orange); font-weight: 300; transition: transform 0.3s; }
+.faq-item[open] .faq-q::after { transform: rotate(45deg); }
+.faq-a { color: var(--char-mid); margin-top: 14px; font-size: 0.98rem; line-height: 1.65; }
+
+/* ========== FOOTER ========== */
+footer {
+  background: var(--charcoal);
+  color: rgba(255,248,241,0.7);
+  padding: 60px 32px 40px;
+  border-top: 4px solid var(--orange);
+}
+.foot-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px; margin-bottom: 40px;
+}
+footer .brand { color: var(--cream); margin-bottom: 12px; }
+footer p.tag { font-family: 'Fraunces', serif; font-style: italic; font-size: 1.1rem; color: var(--orange); margin-bottom: 24px; }
+footer h5 { font-family: 'Fraunces', serif; font-size: 0.9rem; font-weight: 700; color: var(--cream); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+footer ul { list-style: none; }
+footer ul li { padding: 6px 0; font-size: 0.94rem; }
+footer ul li a:hover { color: var(--orange); }
+.foot-bottom {
+  max-width: var(--max); margin: 0 auto;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,248,241,0.1);
+  display: flex; justify-content: space-between;
+  font-size: 0.86rem; color: rgba(255,248,241,0.5);
+  flex-wrap: wrap; gap: 12px;
+}
+@media (max-width: 800px) { .foot-inner { grid-template-columns: 1fr; gap: 36px; } }
+
+/* ========== ANIMATIONS ========== */
+.fade-up { opacity: 0; transform: translateY(24px); animation: fadeUp 0.9s cubic-bezier(0.2,0.8,0.2,1) forwards; }
+.fade-up.d1 { animation-delay: 0.1s; }
+.fade-up.d2 { animation-delay: 0.25s; }
+.fade-up.d3 { animation-delay: 0.4s; }
+.fade-up.d4 { animation-delay: 0.55s; }
+.fade-up.d5 { animation-delay: 0.7s; }
+@keyframes fadeUp { to { opacity: 1; transform: none; } }
+.reveal { opacity: 0; transform: translateY(24px); transition: all 0.8s cubic-bezier(0.2,0.8,0.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<nav class="top" id="topnav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 64 64" fill="none">
+        <!-- Logo C: The Growing Flame (3 rising strokes) — locked as final -->
+        <path d="M16 56 C 18 44, 22 36, 24 24 C 24 22, 26 22, 26 24 C 26 36, 22 46, 22 56 Z" fill="#E8590C"/>
+        <path d="M28 56 C 30 38, 36 30, 38 14 C 38 12, 40 12, 40 14 C 40 32, 36 46, 36 56 Z" fill="#E8590C"/>
+        <path d="M42 56 C 44 46, 48 38, 50 26 C 50 24, 52 24, 52 26 C 52 38, 48 48, 48 56 Z" fill="#E8590C"/>
+        <rect x="14" y="56" width="40" height="3" rx="1.5" fill="#E8590C"/>
+      </svg>
+      <span>Growth Day</span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="about.html" data-en="About" data-fr="À propos">About</a>
+        <a href="#program" data-en="Program" data-fr="Programme">Program</a>
+        <a href="#cohort" data-en="6-Week Cohort" data-fr="Programme 6 sem.">6-Week Cohort</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="lang-toggle">
+        <button data-lang="en" class="active" type="button">EN</button>
+        <button data-lang="fr" type="button">FR</button>
+      </div>
+      <a href="#" class="btn-signin" data-en="Sign In" data-fr="Connexion">Sign In</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============== FLOATING DATE BADGE ============== -->
+<a href="#event" class="floating-date" id="float-date" aria-label="Save the date">
+  <div class="fd-label" data-en="GROWTH DAY" data-fr="GROWTH DAY">GROWTH DAY</div>
+  <div class="fd-day">13</div>
+  <div class="fd-month" data-en="JUN 2026" data-fr="JUIN 2026">JUN 2026</div>
+  <div class="fd-cta" data-en="SAVE MY SEAT →" data-fr="RÉSERVER →">SAVE MY SEAT →</div>
+</a>
+
+<!-- ============== HERO 1 ============== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <span class="eyebrow light fade-up"
+      data-en="Powered by FIRE Church · EQUIP2LEAD"
+      data-fr="Propulsé par FIRE Church · EQUIP2LEAD">Powered by FIRE Church · EQUIP2LEAD</span>
+
+    <h1 class="display fade-up d1"
+      data-en='A one-day catalytic event<br>for life, leadership,<br>and <span class="accent">purpose.</span>'
+      data-fr='Un événement catalyseur d&#39;une journée<br>pour la vie, le leadership<br>et la <span class="accent">raison d&#39;être.</span>'>
+      A one-day catalytic event<br>for life, leadership,<br>and <span class="accent">purpose.</span>
+    </h1>
+
+    <p class="lede fade-up d2"
+      data-en="Most people don't fail for lack of talent. They fail for lack of intentionality, capacity, and consistency. Growth Day exists to break that pattern."
+      data-fr="La plupart des gens n&#39;échouent pas par manque de talent. Ils échouent par manque d&#39;intentionnalité, de capacité et de constance. Growth Day existe pour briser ce schéma.">
+      Most people don't fail for lack of talent. They fail for lack of intentionality, capacity, and consistency. Growth Day exists to break that pattern.
+    </p>
+
+    <div class="next-date-pill fade-up d3">
+      <span class="pulse"></span>
+      <span class="date-strong"
+            data-en="Next Growth Day · June 13, 2026"
+            data-fr="Prochain Growth Day · 13 juin 2026">
+        Next Growth Day · June 13, 2026
+      </span>
+      <span class="countdown" id="hero-countdown" data-en="Saving spots" data-fr="Inscriptions ouvertes">Saving spots</span>
+    </div>
+
+    <div class="hero-meta fade-up d4">
+      <div class="hero-meta-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <span data-en="One full day" data-fr="Une journée complète">One full day</span>
+      </div>
+      <div class="hero-meta-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10 L12 3 L21 10 M5 10v10h14V10"/></svg>
+        <span data-en="Five powerful sessions" data-fr="Cinq sessions puissantes">Five powerful sessions</span>
+      </div>
+      <div class="hero-meta-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5M14 19c0-3 3-5 5-5s2 2 2 5"/></svg>
+        <span data-en="Free + paid tickets" data-fr="Billets gratuits + payants">Free + paid tickets</span>
+      </div>
+    </div>
+
+    <div class="hero-ctas fade-up d5">
+      <a href="#event" class="btn-primary">
+        <span data-en="Save my seat" data-fr="Réserver ma place">Save my seat</span>
+        <span style="font-size:1.2rem">→</span>
+      </a>
+      <a href="about.html" class="btn-secondary"
+        data-en="Learn more" data-fr="En savoir plus">Learn more</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== ABOUT MINI SECTION ============== -->
+<section class="about-mini" id="about">
+  <div class="about-mini-inner">
+    <div class="about-mini-head reveal">
+      <span class="eyebrow"
+        data-en="What is Growth Day"
+        data-fr="Qu'est-ce que Growth Day">What is Growth Day</span>
+      <h2 class="display"
+        data-en='Built on a simple <span class="serif-em">conviction.</span>'
+        data-fr='Bâti sur une <span class="serif-em">conviction simple.</span>'>
+        Built on a simple <span class="serif-em">conviction.</span>
+      </h2>
+      <p data-en="Growth Day is a high-impact, full-day leadership experience powered by FIRE Church and Denis Ekobena's EQUIP2LEAD. A catalytic moment, and the doorway into a guided journey of intentional growth."
+         data-fr="Growth Day est une expérience de leadership d'une journée complète à fort impact, propulsée par FIRE Church et EQUIP2LEAD de Denis Ekobena. Un moment catalyseur, et la porte d'entrée vers un parcours guidé de croissance intentionnelle.">
+        Growth Day is a high-impact, full-day leadership experience powered by FIRE Church and Denis Ekobena's EQUIP2LEAD. A catalytic moment, and the doorway into a guided journey of intentional growth.
+      </p>
+    </div>
+
+    <div class="convictions-grid">
+      <div class="conviction reveal">
+        <div class="conviction-num">01</div>
+        <h4 data-en="Growth is intentional, never accidental."
+            data-fr="La croissance est intentionnelle, jamais accidentelle.">Growth is intentional, never accidental.</h4>
+        <p data-en="Calendars guarantee you will get older. Only growth guarantees you will get better."
+           data-fr="Les calendriers garantissent que vous vieillirez. Seule la croissance garantit que vous deviendrez meilleur.">
+          Calendars guarantee you will get older. Only growth guarantees you will get better.
+        </p>
+      </div>
+      <div class="conviction reveal">
+        <div class="conviction-num">02</div>
+        <h4 data-en="Capacity precedes blessing."
+            data-fr="La capacité précède la bénédiction.">Capacity precedes blessing.</h4>
+        <p data-en="What you can carry determines what you can be entrusted with."
+           data-fr="Ce que vous pouvez porter détermine ce qui peut vous être confié.">
+          What you can carry determines what you can be entrusted with.
+        </p>
+      </div>
+      <div class="conviction reveal">
+        <div class="conviction-num">03</div>
+        <h4 data-en="1% a day, every day."
+            data-fr="1 % par jour, chaque jour.">1% a day, every day.</h4>
+        <p data-en="Small, consistent steps compound into transformed lives."
+           data-fr="De petites étapes constantes se composent en vies transformées.">
+          Small, consistent steps compound into transformed lives.
+        </p>
+      </div>
+      <div class="conviction reveal">
+        <div class="conviction-num">04</div>
+        <h4 data-en="Growth multiplies in community."
+            data-fr="La croissance se multiplie en communauté.">Growth multiplies in community.</h4>
+        <p data-en="You cannot grow alone. You grow further, faster, and deeper with others."
+           data-fr="Vous ne pouvez pas grandir seul. Vous grandissez plus loin, plus vite, et plus profondément avec les autres.">
+          You cannot grow alone. You grow further, faster, and deeper with others.
+        </p>
+      </div>
+    </div>
+
+    <div class="about-mini-cta reveal">
+      <blockquote
+        data-en="Growth is not an event — it's a process. Growth is evidence of life."
+        data-fr="La croissance n'est pas un événement — c'est un processus. La croissance est la preuve de la vie.">
+        Growth is not an event — it's a process. Growth is evidence of life.
+      </blockquote>
+      <a href="about.html" class="btn-link-arrow"
+        data-en="Read our full vision, mission, and posture →"
+        data-fr="Lire notre vision, mission et posture complètes →">
+        Read our full vision, mission, and posture →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== BANNER ============== -->
+<section class="banner">
+  <div class="banner-inner">
+    <h2 data-en='6 weeks to grow. Just <span class="price">$2 / week</span> <span style="font-style: italic; font-weight: 500; opacity: 0.85; display: inline-block; margin-left: 6px;">— $12 total.</span>'
+        data-fr='6 semaines pour grandir. Seulement <span class="price">2 $ / semaine</span> <span style="font-style: italic; font-weight: 500; opacity: 0.85; display: inline-block; margin-left: 6px;">— 12 $ au total.</span>'>
+      6 weeks to grow. Just <span class="price">$2 / week</span>
+      <span style="font-style: italic; font-weight: 500; opacity: 0.85; display: inline-block; margin-left: 6px;">— $12 total.</span>
+    </h2>
+    <a href="#cohort" class="banner-cta"
+      data-en="Enroll in the cohort →"
+      data-fr="S'inscrire au programme →">Enroll in the cohort →</a>
+  </div>
+</section>
+
+<!-- ============== HERO 2 ============== -->
+<section class="hero2">
+  <div class="hero2-inner">
+    <div class="hero2-image reveal">
+      <img src="https://images.unsplash.com/photo-1573164574511-73c773193279?w=1200&q=80&auto=format" alt="Cohort discussion" />
+      <div class="badge-overlay">
+        <div class="num">42</div>
+        <div class="label" data-en="DAYS THAT WILL CHANGE YOU"
+                            data-fr="JOURS QUI VOUS CHANGERONT">DAYS THAT WILL CHANGE YOU</div>
+      </div>
+    </div>
+    <div class="hero2-text reveal">
+      <span class="eyebrow"
+        data-en="The next chapter"
+        data-fr="Le prochain chapitre">The next chapter</span>
+      <h2 class="display"
+        data-en='Continue the journey. <span class="em">For 6 weeks.</span>'
+        data-fr='Poursuivez le voyage. <span class="em">Pendant 6 semaines.</span>'>
+        Continue the journey. <span class="em">For 6 weeks.</span>
+      </h2>
+      <p data-en="Growth Day is the doorway. The transformation happens in the 6 weeks that follow. A guided cohort of 30 committed members, walking together with daily audio, weekly accountability, bi-weekly seminars, and a graduation that activates the next chapter of your life."
+         data-fr="Growth Day est la porte d&#39;entrée. La transformation se produit pendant les 6 semaines qui suivent. Une cohorte guidée de 30 membres engagés, qui avancent ensemble avec un audio quotidien, une responsabilité hebdomadaire, des séminaires bimensuels, et une remise des diplômes qui active le prochain chapitre de votre vie.">
+        Growth Day is the doorway. The transformation happens in the 6 weeks that follow. A guided cohort of 30 committed members, walking together with daily audio, weekly accountability, bi-weekly seminars, and a graduation that activates the next chapter of your life.
+      </p>
+      <ul class="hero2-features">
+        <li data-en="The Daily Growth — 5-min audio every morning"
+            data-fr="Le Daily Growth — audio de 5 min chaque matin">The Daily Growth — 5-min audio every morning</li>
+        <li data-en="The 1% Card — your daily growth tracker"
+            data-fr="La Carte 1 % — votre tracker de croissance quotidien">The 1% Card — your daily growth tracker</li>
+        <li data-en="3 bi-weekly live seminars with Denis Ekobena"
+            data-fr="3 séminaires en direct avec Denis Ekobena">3 bi-weekly live seminars with Denis Ekobena</li>
+        <li data-en="Accountability triad — 2 peers + a guide"
+            data-fr="Triade d&#39;accountability — 2 pairs + un guide">Accountability triad — 2 peers + a guide</li>
+        <li data-en="A graduation that sends you out"
+            data-fr="Une remise des diplômes qui vous lance">A graduation that sends you out</li>
+      </ul>
+      <a href="#cohort" class="btn-dark">
+        <span data-en="Reserve my spot" data-fr="Réserver ma place">Reserve my spot</span>
+        <span style="font-size:1.2rem">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== ALTITUDES ============== -->
+<section class="s" id="program">
+  <div class="s-inner">
+    <div class="s-head reveal">
+      <span class="eyebrow"
+        data-en="The Growth Day ecosystem"
+        data-fr="L'écosystème Growth Day">The Growth Day ecosystem</span>
+      <h2 class="display"
+        data-en='Three altitudes, <span class="serif-em">one journey.</span>'
+        data-fr='Trois altitudes, <span class="serif-em">un seul voyage.</span>'>
+        Three altitudes, <span class="serif-em">one journey.</span>
+      </h2>
+      <p data-en="Growth Day is not just one day. It's a structured ecosystem at three altitudes — Event, Journey, Daily Rhythm — so that growth becomes something you live, not just something you attend."
+         data-fr="Growth Day n'est pas qu'une seule journée. C'est un écosystème structuré à trois altitudes — Événement, Parcours, Rythme Quotidien — pour que la croissance devienne ce que vous vivez, pas seulement ce à quoi vous assistez.">
+        Growth Day is not just one day. It's a structured ecosystem at three altitudes — Event, Journey, Daily Rhythm — so that growth becomes something you live, not just something you attend.
+      </p>
+    </div>
+    <div class="altitudes-grid">
+      <article class="alt-card reveal">
+        <div class="alt-card-img">
+          <img src="img/altitude-event.jpg" alt="Growth Day team event"/>
+          <span class="step">Altitude 1</span>
+        </div>
+        <div class="alt-body">
+          <h3 data-en="The Event" data-fr="L'événement">The Event</h3>
+          <p data-en="One catalytic day. Three times a year. Powerful teaching, interactive activations, and a clear call into the cohort. The doorway."
+             data-fr="Une journée catalyseur. Trois fois par an. Enseignement puissant, activations interactives, et un appel clair vers le programme. La porte d'entrée.">
+            One catalytic day. Three times a year. Powerful teaching, interactive activations, and a clear call into the cohort. The doorway.
+          </p>
+        </div>
+      </article>
+      <article class="alt-card reveal">
+        <div class="alt-card-img">
+          <img src="img/altitude-cohort.jpg" alt="Cohort community"/>
+          <span class="step">Altitude 2</span>
+        </div>
+        <div class="alt-body">
+          <h3 data-en="The 6-Week Cohort" data-fr="Le programme 6 semaines">The 6-Week Cohort</h3>
+          <p data-en="30 committed members. Two chosen growth areas. Daily audio, the 1% Card, triads, and bi-weekly seminars. Where the transformation actually happens."
+             data-fr="30 membres engagés. Deux domaines de croissance choisis. Audio quotidien, la Carte 1 %, triades et séminaires bimensuels. Là où la transformation se produit vraiment.">
+            30 committed members. Two chosen growth areas. Daily audio, the 1% Card, triads, and bi-weekly seminars. Where the transformation actually happens.
+          </p>
+        </div>
+      </article>
+      <article class="alt-card reveal">
+        <div class="alt-card-img">
+          <img src="img/altitude-daily.jpg" alt="Daily teaching"/>
+          <span class="step">Altitude 3</span>
+        </div>
+        <div class="alt-body">
+          <h3 data-en="The Daily 1% Practice" data-fr="La pratique quotidienne du 1 %">The Daily 1% Practice</h3>
+          <p data-en="Lifelong rhythm. Daily Growth audio continues. Community continues. The growth lifestyle that doesn't end when the cohort does."
+             data-fr="Rythme à vie. L'audio Daily Growth continue. La communauté continue. Le style de vie de croissance qui ne s'arrête pas quand le programme se termine.">
+            Lifelong rhythm. Daily Growth audio continues. Community continues. The growth lifestyle that doesn't end when the cohort does.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== AREAS ============== -->
+<section class="s areas">
+  <div class="s-inner">
+    <div class="s-head reveal">
+      <span class="eyebrow"
+        data-en="The 9 growth areas"
+        data-fr="Les 9 domaines de croissance">The 9 growth areas</span>
+      <h2 class="display"
+        data-en='Pick two. <span class="serif-em">Own them for six weeks.</span>'
+        data-fr='Choisissez-en deux. <span class="serif-em">Maîtrisez-les en six semaines.</span>'>
+        Pick two. <span class="serif-em">Own them for six weeks.</span>
+      </h2>
+      <p data-en="You don't grow everywhere at once. You grow where you point. Choose one area you've been excited about, and one you've been quietly avoiding."
+         data-fr="On ne grandit pas partout en même temps. On grandit là où l'on se concentre. Choisissez un domaine qui vous enthousiasme, et un que vous évitez discrètement.">
+        You don't grow everywhere at once. You grow where you point. Choose one area you've been excited about, and one you've been quietly avoiding.
+      </p>
+    </div>
+    <div class="areas-grid">
+      <div class="area-card reveal"><div class="area-num">01</div>
+        <h4 data-en="Personal · Inner" data-fr="Personnel · Intérieur">Personal · Inner</h4>
+        <p data-en="Self-awareness, identity, healing, discipline." data-fr="Conscience de soi, identité, guérison, discipline.">Self-awareness, identity, healing, discipline.</p></div>
+      <div class="area-card reveal"><div class="area-num">02</div>
+        <h4 data-en="Spiritual" data-fr="Spirituel">Spiritual</h4>
+        <p data-en="Faith, prayer, character, surrender, calling." data-fr="Foi, prière, caractère, abandon, vocation.">Faith, prayer, character, surrender, calling.</p></div>
+      <div class="area-card reveal"><div class="area-num">03</div>
+        <h4 data-en="Relational" data-fr="Relationnel">Relational</h4>
+        <p data-en="Communication, conflict, marriage, family." data-fr="Communication, conflit, mariage, famille.">Communication, conflict, marriage, family.</p></div>
+      <div class="area-card reveal"><div class="area-num">04</div>
+        <h4 data-en="Mental · Intellectual" data-fr="Mental · Intellectuel">Mental · Intellectual</h4>
+        <p data-en="Critical thinking, reading, creativity, decisions." data-fr="Pensée critique, lecture, créativité, décisions.">Critical thinking, reading, creativity, decisions.</p></div>
+      <div class="area-card reveal"><div class="area-num">05</div>
+        <h4 data-en="Professional · Career" data-fr="Professionnel · Carrière">Professional · Career</h4>
+        <p data-en="Leadership, mastery, productivity, public speaking." data-fr="Leadership, maîtrise, productivité, prise de parole.">Leadership, mastery, productivity, public speaking.</p></div>
+      <div class="area-card reveal"><div class="area-num">06</div>
+        <h4 data-en="Financial" data-fr="Financier">Financial</h4>
+        <p data-en="Budgeting, saving, generosity, debt, wealth." data-fr="Budget, épargne, générosité, dettes, richesse.">Budgeting, saving, generosity, debt, wealth.</p></div>
+      <div class="area-card reveal"><div class="area-num">07</div>
+        <h4 data-en="Physical" data-fr="Physique">Physical</h4>
+        <p data-en="Health, fitness, nutrition, sleep, energy." data-fr="Santé, forme, nutrition, sommeil, énergie.">Health, fitness, nutrition, sleep, energy.</p></div>
+      <div class="area-card reveal"><div class="area-num">08</div>
+        <h4 data-en="Social · Community" data-fr="Social · Communauté">Social · Community</h4>
+        <p data-en="Service, civic engagement, influence." data-fr="Service, engagement civique, influence.">Service, civic engagement, influence.</p></div>
+      <div class="area-card reveal"><div class="area-num">09</div>
+        <h4 data-en="Vision · Goals" data-fr="Vision · Objectifs">Vision · Goals</h4>
+        <p data-en="Dreaming bigger, action, risk-taking." data-fr="Rêver plus grand, action, prise de risque.">Dreaming bigger, action, risk-taking.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SIGNUPS ============== -->
+<section class="s signups" id="event">
+  <div class="s-inner">
+    <div class="s-head reveal">
+      <span class="eyebrow"
+        data-en="Two ways to start"
+        data-fr="Deux façons de commencer">Two ways to start</span>
+      <h2 class="display"
+        data-en='Save your seat. <span class="serif-em">Or step into the journey.</span>'
+        data-fr='Réservez votre place. <span class="serif-em">Ou entrez dans le voyage.</span>'>
+        Save your seat. <span class="serif-em">Or step into the journey.</span>
+      </h2>
+      <p data-en="Whether you're coming for the day or committing to the 6 weeks — start here."
+         data-fr="Que vous veniez pour la journée ou vous engagiez pour les 6 semaines — commencez ici.">
+        Whether you're coming for the day or committing to the 6 weeks — start here.
+      </p>
+    </div>
+    <div class="signups-grid">
+
+      <!-- Card 1: Event -->
+      <div class="signup-card event reveal">
+        <span class="tag" data-en="Free + paid tickets" data-fr="Billets gratuits + payants">Free + paid tickets</span>
+        <h3 data-en="Save my seat for the next Growth Day"
+            data-fr="Réserver ma place au prochain Growth Day">Save my seat for the next Growth Day</h3>
+        <p class="sub"
+          data-en="A one-day catalytic event. Lock in your spot for our upcoming edition on June 13, 2026."
+          data-fr="Un événement catalyseur d'une journée. Verrouillez votre place pour notre prochaine édition le 13 juin 2026.">
+          A one-day catalytic event. Lock in your spot for our upcoming edition on June 13, 2026.
+        </p>
+
+        <div class="event-details">
+          <div class="date-block">
+            <div class="day">13</div>
+            <div class="month" data-en="JUN 2026" data-fr="JUIN 2026">JUN 2026</div>
+          </div>
+          <div class="where">
+            <strong data-en="Next Growth Day" data-fr="Prochain Growth Day">Next Growth Day</strong>
+            <span data-en="Saturday · Venue announced soon"
+                  data-fr="Samedi · Lieu annoncé bientôt">Saturday · Venue announced soon</span>
+          </div>
+        </div>
+
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfB6UVC-lzQ0JxpQTMJeSZnDfSMdCx0Rw2FfiTPJe9vTSslHA/viewform"
+           target="_blank" rel="noopener"
+           class="form-cta-btn"
+           id="event-cta"
+           data-form-en="https://docs.google.com/forms/d/e/1FAIpQLSfB6UVC-lzQ0JxpQTMJeSZnDfSMdCx0Rw2FfiTPJe9vTSslHA/viewform"
+           data-form-fr="https://docs.google.com/forms/d/e/1FAIpQLSesvD7u5pJAGF-XuLYhWUmAeFlfvqnUKsoeah-l8r0l8rBuxA/viewform">
+          <span class="cta-content">
+            <span class="cta-line-1" data-en="Save my seat" data-fr="Réserver ma place">Save my seat</span>
+            <span class="cta-line-2"
+              data-en="2-minute form · We'll email confirmation"
+              data-fr="Formulaire de 2 min · Confirmation par e-mail">2-minute form · We'll email confirmation</span>
+          </span>
+          <span class="cta-arrow">→</span>
+        </a>
+
+        <div class="trust-row">
+          <span class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            <span data-en="No payment yet" data-fr="Pas de paiement">No payment yet</span>
+          </span>
+          <span class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            <span data-en="Free + paid options" data-fr="Gratuit + payant">Free + paid options</span>
+          </span>
+          <span class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            <span data-en="Limited seats" data-fr="Places limitées">Limited seats</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Card 2: Cohort -->
+      <div class="signup-card cohort reveal" id="cohort">
+        <span class="tag" data-en="~30 seats per cohort" data-fr="~30 places par programme">~30 seats per cohort</span>
+        <h3 data-en="Enroll in the 6-Week Cohort"
+            data-fr="S'inscrire au programme 6 semaines">Enroll in the 6-Week Cohort</h3>
+        <p class="sub"
+          data-en="Six weeks of structured growth. Daily audio, weekly triad, bi-weekly seminars, and a graduation that changes you."
+          data-fr="Six semaines de croissance structurée. Audio quotidien, triade hebdomadaire, séminaires bimensuels, et une remise des diplômes qui vous change.">
+          Six weeks of structured growth. Daily audio, weekly triad, bi-weekly seminars, and a graduation that changes you.
+        </p>
+
+        <div class="cohort-price">
+          <div>
+            <span class="big">$2</span>
+            <span class="unit" data-en="/ week" data-fr="/ semaine">/ week</span>
+          </div>
+          <div class="total" data-en="$12 total · 6 weeks" data-fr="12 $ au total · 6 semaines">$12 total · 6 weeks</div>
+        </div>
+
+        <ul class="includes-list">
+          <li data-en="The Daily Growth audio (Mon–Sat)" data-fr="L'audio Daily Growth (Lun–Sam)">The Daily Growth audio (Mon–Sat)</li>
+          <li data-en="The 1% Card &amp; Growth Journal" data-fr="La Carte 1 % &amp; le Journal de Croissance">The 1% Card &amp; Growth Journal</li>
+          <li data-en="3 bi-weekly live seminars with Denis" data-fr="3 séminaires en direct avec Denis">3 bi-weekly live seminars with Denis</li>
+          <li data-en="Weekly triad accountability calls" data-fr="Appels de triade hebdomadaires">Weekly triad accountability calls</li>
+          <li data-en="Graduation moment + lifelong access" data-fr="Remise des diplômes + accès à vie">Graduation moment + lifelong access</li>
+        </ul>
+
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXyCOQM3dQpLJciKIKyT5va7yZihCtf4RV53IRWu3Lh1ojWQ/viewform"
+           target="_blank" rel="noopener"
+           class="form-cta-btn dark"
+           id="cohort-cta"
+           data-form-en="https://docs.google.com/forms/d/e/1FAIpQLSeXyCOQM3dQpLJciKIKyT5va7yZihCtf4RV53IRWu3Lh1ojWQ/viewform"
+           data-form-fr="https://docs.google.com/forms/d/e/1FAIpQLSeLBvP7Ibkk_Qr_c2FpDAisQyM8jwf9pHfq50tlg5ZON89pUw/viewform">
+          <span class="cta-content">
+            <span class="cta-line-1" data-en="Reserve my spot" data-fr="Réserver ma place">Reserve my spot</span>
+            <span class="cta-line-2"
+              data-en="Pick your 2 growth areas · Pay $12 after confirmation"
+              data-fr="Choisir vos 2 domaines · Payer 12 $ après confirmation">Pick your 2 growth areas · Pay $12 after confirmation</span>
+          </span>
+          <span class="cta-arrow">→</span>
+        </a>
+
+        <div class="trust-row dark">
+          <span class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            <span data-en="MTN / Orange Money" data-fr="MTN / Orange Money">MTN / Orange Money</span>
+          </span>
+          <span class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            <span data-en="~30 seats only" data-fr="~30 places seulement">~30 seats only</span>
+          </span>
+          <span class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+            <span data-en="Confirmed by email" data-fr="Confirmé par e-mail">Confirmed by email</span>
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== PROMISE ============== -->
+<section class="promise">
+  <div class="promise-inner reveal">
+    <h2 class="display"
+      data-en='In 42 days, <span class="accent">you will not be the same.</span>'
+      data-fr='En 42 jours, <span class="accent">vous ne serez plus le même.</span>'>
+      In 42 days, <span class="accent">you will not be the same.</span>
+    </h2>
+    <p style="font-size: 1.1rem; color: rgba(255,248,241,0.75); margin-bottom: 0;"
+      data-en="You will leave with a clear personal growth plan, a daily rhythm you can sustain for life, and a community that won't let you stay small."
+      data-fr="Vous partirez avec un plan de croissance personnel clair, un rythme quotidien que vous pouvez tenir à vie, et une communauté qui ne vous laissera pas rester petit.">
+      You will leave with a clear personal growth plan, a daily rhythm you can sustain for life, and a community that won't let you stay small.
+    </p>
+    <blockquote
+      data-en='&ldquo;I will not stay small inside. I am growing in wisdom, skill, and grace. I will rise and multiply.&rdquo;'
+      data-fr='&laquo;&nbsp;Je ne resterai pas petit à l&#39;intérieur. Je grandis en sagesse, en compétence et en grâce. Je m&#39;élèverai et je me multiplierai.&nbsp;&raquo;'>
+      &ldquo;I will not stay small inside. I am growing in wisdom, skill, and grace. I will rise and multiply.&rdquo;
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============== FAQ ============== -->
+<section class="s faq" id="faq">
+  <div class="s-inner">
+    <div class="s-head reveal">
+      <span class="eyebrow"
+        data-en="Questions, answered"
+        data-fr="Questions, réponses">Questions, answered</span>
+      <h2 class="display"
+        data-en='Your growth journey, <span class="serif-em">clarified.</span>'
+        data-fr='Votre voyage de croissance, <span class="serif-em">clarifié.</span>'>
+        Your growth journey, <span class="serif-em">clarified.</span>
+      </h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary class="faq-q" data-en="Who is Growth Day for?" data-fr="À qui s'adresse Growth Day ?">Who is Growth Day for?</summary>
+        <p class="faq-a"
+          data-en="Purpose-driven professionals, team leaders, entrepreneurs, nonprofit and church leaders, students, and anyone ready to grow. Whether you lead others or want to lead yourself better — you belong here."
+          data-fr="Professionnels guidés par un but, leaders d'équipes, entrepreneurs, leaders d'ONG et d'églises, étudiants, et toute personne prête à grandir. Que vous dirigiez d'autres ou que vous vouliez mieux vous diriger — votre place est ici.">
+          Purpose-driven professionals, team leaders, entrepreneurs, nonprofit and church leaders, students, and anyone ready to grow. Whether you lead others or want to lead yourself better — you belong here.
+        </p>
+      </details>
+      <details class="faq-item reveal">
+        <summary class="faq-q" data-en="Do I need to be in a leadership position?" data-fr="Dois-je être en position de leadership ?">Do I need to be in a leadership position?</summary>
+        <p class="faq-a"
+          data-en="No. If you influence anyone — at work, at home, in your community — you are a leader. Growth Day will help you lead with greater clarity, confidence, and purpose."
+          data-fr="Non. Si vous influencez quelqu'un — au travail, à la maison, dans votre communauté — vous êtes un leader. Growth Day vous aidera à diriger avec plus de clarté, de confiance et de raison d'être.">
+          No. If you influence anyone — at work, at home, in your community — you are a leader. Growth Day will help you lead with greater clarity, confidence, and purpose.
+        </p>
+      </details>
+      <details class="faq-item reveal">
+        <summary class="faq-q" data-en="Is this a faith-based event?" data-fr="Est-ce un événement basé sur la foi ?">Is this a faith-based event?</summary>
+        <p class="faq-a"
+          data-en="Growth Day is purpose-driven, faith-informed, and inclusive. Hosted by FIRE Church and led by faith-driven leaders, the teaching adds value to anyone — believer or not. For those who want to go deeper spiritually, a dedicated Spiritual Growth Track is available inside the cohort."
+          data-fr="Growth Day est guidé par un but, informé par la foi, et inclusif. Hébergé par FIRE Church et dirigé par des leaders de foi, l'enseignement apporte de la valeur à tous — croyants ou non. Pour ceux qui veulent aller plus loin spirituellement, un Parcours de Croissance Spirituelle dédié est disponible dans le programme.">
+          Growth Day is purpose-driven, faith-informed, and inclusive. Hosted by FIRE Church and led by faith-driven leaders, the teaching adds value to anyone — believer or not. For those who want to go deeper spiritually, a dedicated Spiritual Growth Track is available inside the cohort.
+        </p>
+      </details>
+      <details class="faq-item reveal">
+        <summary class="faq-q" data-en="Is Growth Day just a one-day event?" data-fr="Growth Day est-il juste un événement d'une journée ?">Is Growth Day just a one-day event?</summary>
+        <p class="faq-a"
+          data-en="The event is the doorway. The transformation happens in the 6-Week Cohort that follows, supported by daily audio, live seminars, and a community of growers. You can attend the day alone — but those who step into the journey are the ones who change."
+          data-fr="L'événement est la porte d'entrée. La transformation se produit dans le programme 6 semaines qui suit, soutenu par l'audio quotidien, les séminaires en direct, et une communauté de personnes qui grandissent. Vous pouvez assister à la journée seule — mais ceux qui entrent dans le voyage sont ceux qui changent.">
+          The event is the doorway. The transformation happens in the 6-Week Cohort that follows, supported by daily audio, live seminars, and a community of growers. You can attend the day alone — but those who step into the journey are the ones who change.
+        </p>
+      </details>
+      <details class="faq-item reveal">
+        <summary class="faq-q" data-en="What does the cohort cost?" data-fr="Combien coûte le programme ?">What does the cohort cost?</summary>
+        <p class="faq-a"
+          data-en="Just $2 per week — $12 total for the full 6 weeks. Group, partner, and scholarship options are available for those who need them."
+          data-fr="Juste 2 $ par semaine — 12 $ au total pour les 6 semaines complètes. Des options de groupe, partenaire et bourse sont disponibles pour ceux qui en ont besoin.">
+          Just $2 per week — $12 total for the full 6 weeks. Group, partner, and scholarship options are available for those who need them.
+        </p>
+      </details>
+      <details class="faq-item reveal">
+        <summary class="faq-q" data-en="What languages is it available in?" data-fr="En quelles langues est-il disponible ?">What languages is it available in?</summary>
+        <p class="faq-a"
+          data-en="English and French. All core programs (event, cohort, daily audio) are fully bilingual."
+          data-fr="Anglais et français. Tous les programmes principaux (événement, programme, audio quotidien) sont entièrement bilingues.">
+          English and French. All core programs (event, cohort, daily audio) are fully bilingual.
+        </p>
+      </details>
+      <details class="faq-item reveal">
+        <summary class="faq-q" data-en="How often does Growth Day happen?" data-fr="À quelle fréquence Growth Day a-t-il lieu ?">How often does Growth Day happen?</summary>
+        <p class="faq-a"
+          data-en="Three times a year. Each Growth Day launches a new 6-Week Cohort. The next one is June 13, 2026."
+          data-fr="Trois fois par an. Chaque Growth Day lance un nouveau programme de 6 semaines. Le prochain est le 13 juin 2026.">
+          Three times a year. Each Growth Day launches a new 6-Week Cohort. The next one is June 13, 2026.
+        </p>
+      </details>
+      <details class="faq-item reveal">
+        <summary class="faq-q" data-en="Are group or team tickets available?" data-fr="Les billets de groupe ou d'équipe sont-ils disponibles ?">Are group or team tickets available?</summary>
+        <p class="faq-a"
+          data-en="Yes. Teams attending together build culture, align vision, and grow collectively. Discounted group packages and partnership opportunities are available."
+          data-fr="Oui. Les équipes qui assistent ensemble construisent la culture, alignent la vision et grandissent collectivement. Des forfaits de groupe à prix réduit et des opportunités de partenariat sont disponibles.">
+          Yes. Teams attending together build culture, align vision, and grow collectively. Discounted group packages and partnership opportunities are available.
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="foot-inner">
+    <div>
+      <a href="index.html" class="brand">
+        <svg class="brand-mark" viewBox="0 0 64 64" fill="none">
+          <path d="M16 56 C 18 44, 22 36, 24 24 C 24 22, 26 22, 26 24 C 26 36, 22 46, 22 56 Z" fill="#E8590C"/>
+          <path d="M28 56 C 30 38, 36 30, 38 14 C 38 12, 40 12, 40 14 C 40 32, 36 46, 36 56 Z" fill="#E8590C"/>
+          <path d="M42 56 C 44 46, 48 38, 50 26 C 50 24, 52 24, 52 26 C 52 38, 48 48, 48 56 Z" fill="#E8590C"/>
+          <rect x="14" y="56" width="40" height="3" rx="1.5" fill="#E8590C"/>
+        </svg>
+        Growth Day
+      </a>
+      <p class="tag">Ready. Set. Grow.</p>
+      <p style="max-width: 360px; line-height: 1.6;"
+        data-en="A one-day catalytic event for life, leadership, and purpose. Powered by FIRE Church and Denis Ekobena's EQUIP2LEAD."
+        data-fr="Un événement catalyseur d'une journée pour la vie, le leadership et la raison d'être. Propulsé par FIRE Church et EQUIP2LEAD de Denis Ekobena.">
+        A one-day catalytic event for life, leadership, and purpose. Powered by FIRE Church and Denis Ekobena's EQUIP2LEAD.
+      </p>
+    </div>
+    <div>
+      <h5 data-en="Program" data-fr="Programme">Program</h5>
+      <ul>
+        <li><a href="about.html" data-en="About Growth Day" data-fr="À propos">About Growth Day</a></li>
+        <li><a href="#program" data-en="The 3 Altitudes" data-fr="Les 3 altitudes">The 3 Altitudes</a></li>
+        <li><a href="#cohort" data-en="6-Week Cohort" data-fr="Programme 6 semaines">6-Week Cohort</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 data-en="Connect" data-fr="Contact">Connect</h5>
+      <ul>
+        <li><a href="#" data-en="FIRE Church" data-fr="FIRE Church">FIRE Church</a></li>
+        <li><a href="#" data-en="Contact" data-fr="Nous contacter">Contact</a></li>
+        <li><a href="#" data-en="Partner with us" data-fr="Devenir partenaire">Partner with us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Growth Day · FIRE Church · EQUIP2LEAD</span>
+    <span data-en="Curated by Perspective Mentoring" data-fr="Conçu par Perspective Mentoring">Curated by Perspective Mentoring</span>
+  </div>
+</footer>
+
+<script>
+const langButtons = document.querySelectorAll('.lang-toggle button');
+function applyLang(lang) {
+  document.documentElement.lang = lang;
+  // persist for navigation across pages
+  try { localStorage.setItem('gd_lang', lang); } catch(e) {}
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const v = el.getAttribute('data-' + lang);
+    if (v !== null) el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+    const v = el.getAttribute('data-' + lang + '-placeholder');
+    if (v !== null) el.placeholder = v;
+  });
+  langButtons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  // Swap form CTA URLs to match language
+  document.querySelectorAll('.form-cta-btn').forEach(btn => {
+    const url = btn.getAttribute('data-form-' + lang);
+    if (url) btn.setAttribute('href', url);
+  });
+  // Re-render countdown text in current language
+  if (typeof updateCountdown === 'function') updateCountdown();
+}
+langButtons.forEach(btn => btn.addEventListener('click', () => applyLang(btn.dataset.lang)));
+// restore preferred lang on load
+try {
+  const saved = localStorage.getItem('gd_lang');
+  if (saved && saved !== 'en') applyLang(saved);
+} catch(e) {}
+
+function handleSubmit(e, formId) { /* legacy noop */ }
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+const nav = document.getElementById('topnav');
+const setNavState = () => {
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+};
+setNavState();
+window.addEventListener('scroll', setNavState, { passive: true });
+
+// Live countdown to June 13, 2026
+function updateCountdown() {
+  const target = new Date('2026-06-13T08:00:00').getTime();
+  const now = Date.now();
+  const diff = target - now;
+  const el = document.getElementById('hero-countdown');
+  if (!el) return;
+  if (diff <= 0) {
+    el.textContent = document.documentElement.lang === 'fr' ? "C'est aujourd'hui !" : "Today!";
+    return;
+  }
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const lang = document.documentElement.lang;
+  if (lang === 'fr') {
+    el.textContent = `J − ${days} jours`;
+  } else {
+    el.textContent = `${days} days to go`;
+  }
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
+// Floating date badge: hide once user scrolls past the event signup section
+const floatDate = document.getElementById('float-date');
+const eventSection = document.getElementById('event');
+if (floatDate && eventSection) {
+  const fdObserver = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        floatDate.classList.add('hidden');
+      } else if (en.boundingClientRect.top > 0) {
+        // Event section is below viewport — show badge
+        floatDate.classList.remove('hidden');
+      }
+    });
+  }, { threshold: 0.15 });
+  fdObserver.observe(eventSection);
+}
+</script>
+</body>
+</html>
