@@ -178,6 +178,89 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--ember)}
 .switch[aria-pressed="true"] span{left:25px}
 .preview{border-top:1px solid var(--line);padding-top:14px}
 pre.wa{white-space:pre-wrap;word-wrap:break-word;font:400 15px/1.45 var(--body);background:#DCF8C6;color:#111;border-radius:12px;padding:12px 14px;margin:0}
+
+/* ---------- signup ---------- */
+.is-auth{background:var(--bg)}
+.auth{max-width:520px;margin:0 auto;min-height:100svh;display:flex;flex-direction:column}
+.auth-top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--bg)}
+.auth-top .langs{margin-left:auto}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--text);font-size:20px;cursor:pointer;flex:none}
+.steps{display:flex;gap:6px;flex:1;max-width:180px}
+.steps i{flex:1;height:6px;border-radius:99px;background:var(--line)}
+.steps i.on{background:var(--ember)}
+.auth-body{padding:8px 20px 150px;flex:1}
+.auth-body h1{font-size:clamp(30px,8vw,40px);letter-spacing:-.02em;margin:6px 0 10px}
+.step-lbl{font-weight:600;color:var(--ember-text);font-size:15px}
+.auth-cta{position:fixed;left:0;right:0;bottom:0;z-index:6;padding:14px 20px calc(16px + env(safe-area-inset-bottom,0px));background:linear-gradient(180deg,transparent,var(--bg) 26%)}
+.auth-cta>*{max-width:480px;margin-left:auto;margin-right:auto}
+.auth-cta .err{min-height:0;margin-bottom:8px}
+.auth-cta .err:empty{display:none}
+.phone-row{display:grid;grid-template-columns:116px 1fr;gap:8px}
+.phone-row select{padding:12px 8px}
+.tiles9{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.atile{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;border:1.5px solid var(--line);background:var(--surface);color:var(--text);border-radius:16px;padding:14px 12px;cursor:pointer;font:400 13.5px/1.35 var(--body);position:relative}
+.atile b{font-family:var(--display);font-size:15px;font-weight:600;line-height:1.25}
+.atile span:last-child{color:var(--muted)}
+.atile .ai{font-size:26px;line-height:1}
+.atile[aria-pressed="true"]{border-color:var(--ember);box-shadow:inset 0 0 0 1.5px var(--ember);background:color-mix(in srgb,var(--ember) 8%,var(--surface))}
+.atile[aria-pressed="true"]::after{content:"✓";position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;background:var(--ember);color:#1C2340;font-weight:700;font-size:13px;display:grid;place-items:center}
+.atile:disabled{opacity:.45;cursor:default}
+.pin-wrap{display:flex;align-items:center;gap:14px;margin-top:22px}
+.pin{font-family:var(--display);font-size:34px;letter-spacing:.6em;text-align:center;padding:12px 0 12px .6em;max-width:220px}
+.summary{margin-top:28px;border:1px solid var(--line);border-radius:16px;padding:16px;background:var(--surface)}
+.mini-areas{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.mini-areas span{background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:5px 12px;font-size:14px;font-weight:600}
+.done .auth-body{padding-top:56px;text-align:left}
+.big-flame{width:96px;height:96px;margin-bottom:18px}
+.big-flame svg{width:100%;height:100%}
+.big-flame path{fill:var(--ember);stroke:var(--ember);transform-origin:50% 75%}
+@media (prefers-reduced-motion:no-preference){.big-flame path{animation:ignite .9s cubic-bezier(.2,.8,.2,1.3)}}
+.lead-s{font-size:18px;color:var(--muted)}
+.tip{margin-top:28px}
+.tip h3{margin-bottom:4px}
+
+/* ---------- dashboard ---------- */
+.app-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.hello{font-family:var(--display);font-size:26px;font-weight:700;line-height:1.1}
+.app-top-r{display:flex;align-items:center;gap:10px}
+.avatar{width:42px;height:42px;border-radius:50%;border:0;background:var(--ink);color:var(--glow);font:700 15px var(--display);cursor:pointer}
+@media (prefers-color-scheme: dark){.avatar{background:#2E3758}}
+.hero2{background:var(--ink);color:#fff;border-radius:24px;padding:22px;display:flex;align-items:center;gap:20px}
+.hero2-col{flex-direction:column;align-items:stretch}
+.hero2-row{display:flex;align-items:center;gap:20px}
+.hero2-t p{opacity:.8}
+.hero2-t h2{font-size:21px;margin-top:4px;line-height:1.25}
+.hero2-t .streak{margin-top:8px}
+.ring{position:relative;width:112px;height:112px;flex:none}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:9}
+.ring-bg{stroke:rgba(255,255,255,.14)}
+.ring-fg{stroke:var(--ember);stroke-linecap:round;transition:stroke-dashoffset 1s ease}
+.ring-t{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ring-t b{font-family:var(--display);font-size:32px;line-height:1}
+.ring-t span{font-size:12px;opacity:.75;max-width:70px;line-height:1.2;margin-top:2px}
+.wlbl{font-size:13px;font-weight:600;opacity:.6;margin-bottom:6px}
+.wstrip{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.wd{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;border-radius:12px}
+.wd.is-today{background:rgba(255,255,255,.08)}
+.wd .fl{width:30px;height:30px;cursor:default}
+.wd small{font-size:12px;opacity:.65}
+.hero2 .f-miss path,.hero2 .f-future path{stroke:rgba(255,255,255,.3)}
+.sec{font-size:20px}
+.mine{display:grid;gap:10px}
+.mine-a{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+.mine-a .ai,.ctile .ai{font-size:28px;line-height:1}
+.next{list-style:none;padding:0;margin:0;border-left:2px solid var(--line);margin-left:6px}
+.next li{position:relative;padding:0 0 16px 20px;display:flex;flex-direction:column}
+.next li::before{content:"";position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--ember)}
+.next li span{color:var(--muted)}
+.tiles2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ctile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-height:118px;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--text);border-radius:18px;padding:14px;cursor:pointer;font:600 15px/1.3 var(--display)}
+.ctile .tick{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;color:transparent;font-size:15px;transition:all .15s}
+.ctile[aria-pressed="true"]{border-color:var(--leaf);background:color-mix(in srgb,var(--leaf) 10%,var(--surface))}
+.ctile[aria-pressed="true"] .tick{background:var(--leaf);border-color:var(--leaf);color:#fff}
+.notes summary{cursor:pointer;color:var(--ember-text);font-weight:600;font-size:15px}
+
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -289,6 +372,22 @@ const AREAS = {
 
 const T = {
 en:{
+  stepOf:n=>`Step ${n} of 3`, next:"Continue", country:"Country",
+  s1Title:"Let's start with you", s1Sub:"Your Daily Fire comes to this WhatsApp number every morning at 6:00.",
+  s2Title:"Pick your two areas", s3Title:"Create your PIN",
+  s3Sub:"4 digits. With your WhatsApp number, it lets you sign in on any phone.", show:"Show", hide:"Hide",
+  joiningAs:"You're joining as",
+  doneTitle:n=>`You're in, ${n}!`, doneSub:d=>`Day 1 is ${d}. Your first Daily Fire arrives on WhatsApp at 6:00 that morning.`,
+  openDash:"Open my dashboard", invite:"Invite a friend on WhatsApp",
+  inviteMsg:"I just joined the Growth Day cohort: grow 1% a day for 42 days, with daily teaching on WhatsApp. Join me 👉 https://growthday.cc/cohort",
+  tipTitle:"Keep it one tap away", tip:"On iPhone, tap Share then \"Add to Home Screen\". On Android, tap ⋮ then \"Add to home screen\".",
+  greet:h=>h<12?"Good morning":h<18?"Good afternoon":"Good evening",
+  day1Is:d=>`Day 1 is ${d}`, daysUnit:n=>n===1?"day to go":"days to go",
+  nextTitle:"What happens next",
+  nextSteps:[["Monday · 6:00","Your first Daily Fire arrives on WhatsApp."],["Monday · evening","Fill your first 1% Card here. Two taps."],["Sunday","Rate your week in your two areas."],["Week 2","Meet your triad and start your weekly calls."]],
+  thisWeek:"This week", tapHint:"Tap each area where you applied today's principle.",
+  addNote:"Add a note (optional)", cardDone:"✓ Today's card is filled. You can still change it.",
+  keepGoing:"Keep the flame going tonight.",
   tagline:"Grow 1% a day, for 42 days.",
   intro:"Check in every night, track your two growth areas, and keep your streak alive with your cohort.",
   join:"Join the cohort", haveAcc:"I already joined", back:"Back",
@@ -321,6 +420,22 @@ en:{
   err:{phone_exists:"This number is already registered. Sign in instead.",not_found:"No account uses this number. Check it, or join the cohort.",wrong_pin:"Wrong PIN. Try again.",locked:"Too many tries. Wait 15 minutes, then try again.",pin_invalid:"Your PIN must be exactly 4 digits.",pin_mismatch:"The two PINs don't match.",name_required:"Enter your full name.",phone_invalid:"Enter a valid WhatsApp number.",areas_needed:"Choose exactly 2 areas.",session_expired:"Please sign in again.",day_closed:"This card is closed. You can fill today's and yesterday's cards only.",week_closed:"This week isn't open yet.",areas_locked:"Your areas are locked after week 1.",network:"No connection. Check your internet and try again."}
 },
 fr:{
+  stepOf:n=>`Étape ${n} sur 3`, next:"Continuer", country:"Pays",
+  s1Title:"Commençons par vous", s1Sub:"Votre Daily Fire arrive sur ce numéro WhatsApp chaque matin à 6h00.",
+  s2Title:"Choisissez vos deux domaines", s3Title:"Créez votre code PIN",
+  s3Sub:"4 chiffres. Avec votre numéro WhatsApp, il vous permet de vous connecter sur n'importe quel téléphone.", show:"Afficher", hide:"Masquer",
+  joiningAs:"Vous vous inscrivez en tant que",
+  doneTitle:n=>`Vous êtes inscrit, ${n} !`, doneSub:d=>`Le jour 1 est le ${d}. Votre premier Daily Fire arrive sur WhatsApp à 6h00 ce matin-là.`,
+  openDash:"Ouvrir mon tableau de bord", invite:"Inviter un ami sur WhatsApp",
+  inviteMsg:"Je viens de rejoindre la cohorte Growth Day : grandir de 1 % par jour pendant 42 jours, avec un enseignement quotidien sur WhatsApp. Rejoins-moi 👉 https://growthday.cc/cohort",
+  tipTitle:"Gardez-la à portée de main", tip:"Sur iPhone, touchez Partager puis « Sur l'écran d'accueil ». Sur Android, touchez ⋮ puis « Ajouter à l'écran d'accueil ».",
+  greet:h=>h<18?"Bonjour":"Bonsoir",
+  day1Is:d=>`Le jour 1 est le ${d}`, daysUnit:n=>n===1?"jour restant":"jours restants",
+  nextTitle:"La suite",
+  nextSteps:[["Lundi · 6h00","Votre premier Daily Fire arrive sur WhatsApp."],["Lundi · soir","Remplissez votre première carte 1 % ici. Deux touches."],["Dimanche","Notez votre semaine dans vos deux domaines."],["Semaine 2","Rencontrez votre triade et commencez vos appels."]],
+  thisWeek:"Cette semaine", tapHint:"Touchez chaque domaine où vous avez appliqué le principe du jour.",
+  addNote:"Ajouter une note (facultatif)", cardDone:"✓ La carte du jour est remplie. Vous pouvez encore la modifier.",
+  keepGoing:"Gardez la flamme allumée ce soir.",
   tagline:"Grandir de 1 % par jour, pendant 42 jours.",
   intro:"Faites le point chaque soir, suivez vos deux domaines de croissance et gardez votre série avec votre cohorte.",
   join:"Rejoindre la cohorte", haveAcc:"Je suis déjà inscrit", back:"Retour",
@@ -530,7 +645,7 @@ function welcome(){
     welcome(); window.scrollTo(0, y);
     const el = document.querySelector(`[data-lp="${n}"]`); if(el) el.focus({preventScroll:true});
   });
-  $("#lGo").onclick = () => { draft.areas = [...lPick]; toJoin(); };
+  $("#lGo").onclick = () => { draft.areas = [...lPick]; draft.step = 1; toJoin(); };
   const dlg = $("#recap"), rv = $("#recapV");
   $("#watch").onclick = () => { if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); rv.play().catch(()=>{}); };
   const closeRecap = () => { rv.pause(); dlg.close ? dlg.close() : dlg.removeAttribute("open"); };
@@ -556,76 +671,117 @@ function welcome(){
   }).catch(()=>{});
 }
 
-let draft = {name:"", phone:"", areas:[], lang:null};
-function joinForm(errText){
-  document.body.classList.remove("is-land");
-  const A = AREAS[lang];
-  const picked = draft.areas;
-  root.innerHTML = `<div class="wrap stack-lg">${header()}
-    <h1>${t().join}</h1>
-    <div class="stack">
-      <div><label for="name">${t().name}</label><input id="name" autocomplete="name" value="${esc(draft.name)}"></div>
-      <div><label for="phone">${t().phone}</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" value="${esc(draft.phone)}"><p class="hint">${t().phoneHint}</p></div>
-    </div>
-    <div class="stack">
-      <div><h2>${t().areasQ}</h2><p class="muted small" style="margin-top:6px">${t().areasTip}</p></div>
-      <p class="small" aria-live="polite"><b>${t().chosen(picked.length)}</b></p>
-      <div class="chips">${A.map((a,i)=>`<button type="button" class="chip" data-area="${i+1}" aria-pressed="${picked.includes(i+1)}" ${picked.length>=2 && !picked.includes(i+1)?"disabled":""}><b>${esc(a[0])}</b>${esc(a[1])}</button>`).join("")}</div>
-    </div>
-    <div class="stack">
-      <div><label for="pin">${t().pin}</label><input id="pin" type="password" inputmode="numeric" maxlength="4" autocomplete="new-password"><p class="hint">${t().pinHint}</p></div>
-      <div><label for="pin2">${t().pin2}</label><input id="pin2" type="password" inputmode="numeric" maxlength="4" autocomplete="new-password"></div>
-    </div>
-    <p class="err" id="err" role="alert">${errText?esc(errText):""}</p>
-    <div class="stack"><button class="btn btn-primary" id="submit">${t().join}</button>
-    <button class="link" id="back">${t().back}</button></div>${credit()}</div>`;
-  const keep = () => { draft.name = $("#name").value; draft.phone = $("#phone").value; };
+const AREA_ICON = ["🌱","🙏","❤️","🧠","💼","💰","💪","🤝","🎯"];
+const CODES = [["237","🇨🇲"],["1","🇺🇸"],["33","🇫🇷"],["234","🇳🇬"],["241","🇬🇦"],["242","🇨🇬"],["243","🇨🇩"],["236","🇨🇫"],["235","🇹🇩"],["240","🇬🇶"],["225","🇨🇮"],["221","🇸🇳"],["32","🇧🇪"],["41","🇨🇭"],["44","🇬🇧"],["49","🇩🇪"]];
+let draft = {name:"", phone:"", code:"237", areas:[], step:1, pin:""};
+const fullPhone = (code, raw) => { const v = String(raw||"").trim(); let d = v.replace(/\D/g,"");
+  if(v.startsWith("+")) return d; if(d.startsWith("00")) return d.slice(2);
+  return code + d.replace(/^0+/,""); };
+const firstName = n => String(n||"").trim().split(/\s+/)[0] || "";
+function phoneField(code, val){
+  return `<div><label for="phone">${t().phone}</label><div class="phone-row">
+    <select id="code" aria-label="${t().country}">${CODES.map(([c,f])=>`<option value="${c}" ${c===code?"selected":""}>${f} +${c}</option>`).join("")}</select>
+    <input id="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="6 XX XX XX XX" value="${esc(val)}"></div></div>`;
+}
+function authShell(inner, step, cta){
+  return `<div class="auth">
+    <div class="auth-top"><button class="icon-btn" id="aBack" aria-label="${t().back}">←</button>
+      ${step ? `<div class="steps" role="progressbar" aria-label="${t().stepOf(step)}" aria-valuemin="1" aria-valuemax="3" aria-valuenow="${step}">${[1,2,3].map(i=>`<i class="${i<=step?"on":""}"></i>`).join("")}</div>` : `<div class="brand"><img src="${LOGO}" alt="">Growth Day</div>`}
+      ${langToggle()}</div>
+    <div class="auth-body">${inner}</div>
+    <div class="auth-cta"><p class="err" id="err" role="alert"></p>${cta}</div>
+  </div>`;
+}
+function joinForm(){
+  document.body.classList.remove("is-land"); document.body.classList.add("is-auth");
+  const T_ = t(), st = draft.step, picked = draft.areas;
+  let inner = "", cta = "";
+  if(st === 1){
+    inner = `<p class="step-lbl">${T_.stepOf(1)}</p><h1>${T_.s1Title}</h1><p class="muted">${T_.s1Sub}</p>
+      <div class="stack" style="margin-top:22px"><div><label for="name">${T_.name}</label><input id="name" autocomplete="name" value="${esc(draft.name)}"></div>
+      ${phoneField(draft.code, draft.phone)}</div>`;
+    cta = `<button class="btn btn-primary" id="next">${T_.next}</button>`;
+  } else if(st === 2){
+    inner = `<p class="step-lbl">${T_.stepOf(2)}</p><h1>${T_.s2Title}</h1><p class="muted">${T_.areasTip}</p>
+      <div class="tiles9">${AREAS[lang].map((a,i)=>{const on = picked.includes(i+1);
+        return `<button class="atile" data-area="${i+1}" aria-pressed="${on}" ${picked.length>=2&&!on?"disabled":""}><span class="ai">${AREA_ICON[i]}</span><b>${esc(a[0])}</b><span>${esc(a[1])}</span></button>`}).join("")}</div>`;
+    cta = `<button class="btn btn-primary" id="next" ${picked.length<2?"disabled":""}>${picked.length<2?T_.chosen(picked.length):T_.next}</button>`;
+  } else {
+    inner = `<p class="step-lbl">${T_.stepOf(3)}</p><h1>${T_.s3Title}</h1><p class="muted">${T_.s3Sub}</p>
+      <div class="pin-wrap"><input id="pin" class="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="new-password" aria-label="${T_.pin}" value="${esc(draft.pin)}">
+      <button class="link" id="showPin" type="button">${T_.show}</button></div>
+      <div class="summary"><p class="muted small">${T_.joiningAs}</p><p><b>${esc(draft.name)}</b> · +${esc(fullPhone(draft.code, draft.phone))}</p>
+        <div class="mini-areas">${picked.map(a=>`<span>${AREA_ICON[a-1]} ${esc(AREAS[lang][a-1][0])}</span>`).join("")}</div></div>`;
+    cta = `<button class="btn btn-primary" id="next">${T_.join}</button>`;
+  }
+  root.innerHTML = authShell(inner, st, cta);
+  const keep = () => { const n=$("#name"), p=$("#phone"), c=$("#code"), pn=$("#pin");
+    if(n) draft.name=n.value; if(p) draft.phone=p.value; if(c) draft.code=c.value; if(pn) draft.pin=pn.value; };
+  const err = m => { $("#err").textContent = m; };
   bindLang(() => { keep(); joinForm(); });
+  $("#aBack").onclick = () => { keep(); if(draft.step > 1){ draft.step--; joinForm(); } else { draft.step = 1; welcome(); } window.scrollTo(0,0); };
   document.querySelectorAll("[data-area]").forEach(b => b.onclick = () => {
-    keep(); const n = +b.dataset.area;
+    const n = +b.dataset.area, y = window.scrollY;
     draft.areas = picked.includes(n) ? picked.filter(x=>x!==n) : [...picked, n].slice(0,2);
-    joinForm();
-    const el = document.querySelector(`[data-area="${n}"]`); if(el) el.focus();
+    joinForm(); window.scrollTo(0,y); const el = document.querySelector(`[data-area="${n}"]`); if(el) el.focus({preventScroll:true});
   });
-  $("#back").onclick = () => { keep(); welcome(); };
-  $("#submit").onclick = async () => {
+  const sp = $("#showPin"); if(sp) sp.onclick = () => { const i=$("#pin"); const h = i.type==="password"; i.type = h?"text":"password"; sp.textContent = h?T_.hide:T_.show; i.focus(); };
+  const pinEl = $("#pin"); if(pinEl){ pinEl.oninput = () => { pinEl.value = pinEl.value.replace(/\D/g,"").slice(0,4); }; pinEl.onkeydown = e => { if(e.key==="Enter") $("#next").click(); }; }
+  $("#next").onclick = async () => {
     keep();
-    const pin = $("#pin").value.trim(), pin2 = $("#pin2").value.trim();
-    const show = m => { $("#err").textContent = m; };
-    if(draft.name.trim().length < 2) return show(t().err.name_required);
-    if(draft.areas.length !== 2) return show(t().err.areas_needed);
-    if(!/^\d{4}$/.test(pin)) return show(t().err.pin_invalid);
-    if(pin !== pin2) return show(t().err.pin_mismatch);
-    const btn = $("#submit"); btn.disabled = true;
+    if(st === 1){
+      if(draft.name.trim().length < 2) return err(T_.err.name_required);
+      if(fullPhone(draft.code, draft.phone).length < 8) return err(T_.err.phone_invalid);
+      draft.step = 2; joinForm(); window.scrollTo(0,0); return;
+    }
+    if(st === 2){ if(picked.length !== 2) return err(T_.err.areas_needed); draft.step = 3; joinForm(); window.scrollTo(0,0); const p=$("#pin"); if(p) p.focus(); return; }
+    if(!/^\d{4}$/.test(draft.pin)) return err(T_.err.pin_invalid);
+    const btn = $("#next"); btn.disabled = true;
     try{
-      const tok = await rpc("gd_register", {p_name:draft.name, p_phone:draft.phone, p_lang:lang, p_area1:draft.areas[0], p_area2:draft.areas[1], p_pin:pin});
-      store.set("gd_token", tok); draft = {name:"",phone:"",areas:[]}; boot();
-    }catch(e){ btn.disabled = false; show(errMsg(e)); }
+      const tok = await rpc("gd_register", {p_name:draft.name, p_phone:fullPhone(draft.code, draft.phone), p_lang:lang, p_area1:picked[0], p_area2:picked[1], p_pin:draft.pin});
+      store.set("gd_token", tok); const nm = firstName(draft.name);
+      draft = {name:"", phone:"", code:"237", areas:[], step:1, pin:""}; doneScreen(nm);
+    }catch(e){ btn.disabled = false;
+      if(e.message === "phone_exists" || e.message === "phone_invalid"){ draft.step = 1; joinForm(); }
+      err(errMsg(e)); }
   };
 }
-
+async function doneScreen(name){
+  document.body.classList.add("is-auth");
+  let start = (pubStats && pubStats.start_date) || "2026-10-19";
+  const T_ = t();
+  root.innerHTML = `<div class="auth done">
+    <div class="auth-body">
+      <div class="big-flame">${FLAME}</div>
+      <h1>${T_.doneTitle(esc(name))}</h1>
+      <p class="lead-s">${T_.doneSub(fmtDate(start))}</p>
+      <div class="stack" style="margin-top:28px">
+        <button class="btn btn-primary" id="openDash">${T_.openDash}</button>
+        <a class="btn btn-ghost" href="https://wa.me/?text=${encodeURIComponent(T_.inviteMsg)}" target="_blank" rel="noopener">${T_.invite}</a>
+      </div>
+      <div class="panel tip"><h3>${T_.tipTitle}</h3><p class="muted small">${T_.tip}</p></div>
+    </div></div>`;
+  $("#openDash").onclick = () => { document.body.classList.remove("is-auth"); boot(); };
+}
 function loginForm(){
-  document.body.classList.remove("is-land");
-  root.innerHTML = `<div class="wrap stack-lg">${header()}
-    <h1>${t().signInTitle}</h1>
-    <div class="stack">
-      <div><label for="phone">${t().phone}</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel"></div>
-      <div><label for="pin">${t().yourPin}</label><input id="pin" type="password" inputmode="numeric" maxlength="4" autocomplete="current-password"></div>
-      <p class="err" id="err" role="alert"></p>
-      <button class="btn btn-primary" id="submit">${t().signIn}</button>
-      <p class="muted small">${t().forgot}</p>
-      <button class="link" id="back">${t().back}</button>
-    </div>${credit()}</div>`;
+  document.body.classList.remove("is-land"); document.body.classList.add("is-auth");
+  const T_ = t();
+  const inner = `<h1>${T_.signInTitle}</h1>
+    <div class="stack" style="margin-top:22px">${phoneField(draft.code, "")}
+      <div><label for="pin">${T_.yourPin}</label><div class="pin-wrap"><input id="pin" class="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="current-password"><button class="link" id="showPin" type="button">${T_.show}</button></div></div>
+      <p class="muted small">${T_.forgot}</p></div>`;
+  root.innerHTML = authShell(inner, 0, `<button class="btn btn-primary" id="next">${T_.signIn}</button>`);
   bindLang(loginForm);
-  $("#back").onclick = welcome;
+  $("#aBack").onclick = () => welcome();
+  const sp = $("#showPin"); sp.onclick = () => { const i=$("#pin"); const h = i.type==="password"; i.type = h?"text":"password"; sp.textContent = h?T_.hide:T_.show; };
   const go = async () => {
-    const btn = $("#submit"); btn.disabled = true;
+    const btn = $("#next"); btn.disabled = true;
     try{
-      const tok = await rpc("gd_login", {p_phone:$("#phone").value, p_pin:$("#pin").value.trim()});
-      store.set("gd_token", tok); boot();
+      const tok = await rpc("gd_login", {p_phone:fullPhone($("#code").value, $("#phone").value), p_pin:$("#pin").value.trim()});
+      store.set("gd_token", tok); document.body.classList.remove("is-auth"); boot();
     }catch(e){ btn.disabled = false; $("#err").textContent = errMsg(e); }
   };
-  $("#submit").onclick = go;
+  $("#next").onclick = go;
   $("#pin").onkeydown = e => { if(e.key==="Enter") go(); };
 }
 
@@ -633,7 +789,7 @@ function loginForm(){
 let me = null, tab = "today", cardDay = null, lastSaved = null;
 
 async function boot(){
-  document.body.classList.remove("is-land");
+  document.body.classList.remove("is-land","is-auth");
   const tok = store.get("gd_token");
   if(!tok) return welcome();
   root.innerHTML = `<div class="wrap"><p class="muted">${t().loading}</p></div>`;
@@ -685,22 +841,42 @@ function renderApp(){
     journey:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>',
     me:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>'
   };
-  root.innerHTML = `<div class="wrap stack-lg">${header()}${body}${credit()}</div>
+  root.innerHTML = `<div class="wrap stack-lg">${appHeader()}${body}${credit()}</div>
     <nav class="tabs" aria-label="Main"><div>${["today","journey","me"].map(k=>`<button data-tab="${k}" ${tab===k?'aria-current="page"':""}>${icon[k]}${t()[k]}</button>`).join("")}</div></nav>`;
   bindLang(renderApp);
   document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; cardDay = null; renderApp(); window.scrollTo(0,0); });
   bindView();
+  const tm = $("#toMe"); if(tm) tm.onclick = () => { tab = "me"; renderApp(); window.scrollTo(0,0); };
   lastSaved = null;
 }
 
+function ring(pct, big, small){
+  const r = 44, c = 2*Math.PI*r, off = c*(1-Math.max(0,Math.min(1,pct)));
+  return `<div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="${r}" class="ring-bg"/><circle cx="50" cy="50" r="${r}" class="ring-fg" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"/></svg>
+    <div class="ring-t"><b>${big}</b><span>${small}</span></div></div>`;
+}
+function weekStrip(){
+  const cur = me.day, w = Math.ceil(cur/7);
+  return `<div class="wstrip">${t().days.map((x,i)=>{ const d=(w-1)*7+i+1;
+    let cls = d > cur ? "future" : state(d); if(d===cur && cls==="miss") cls="open";
+    return `<div class="wd ${d===cur?"is-today":""}"><span class="fl f-${cls} ${lastSaved===d?"lit-now":""}">${FLAME}</span><small>${x}</small></div>`; }).join("")}</div>`;
+}
+function appHeader(){
+  const h = new Date().getHours(), ini = String(me.name||"?").trim().split(/\s+/).map(x=>x[0]).slice(0,2).join("").toUpperCase();
+  return `<div class="app-top"><div><p class="muted small">${t().greet(h)},</p><p class="hello">${esc(firstName(me.name))}</p></div>
+    <div class="app-top-r">${langToggle()}<button class="avatar" id="toMe" aria-label="${t().me}">${esc(ini)}</button></div></div>`;
+}
 function viewBefore(){
-  const left = 1 - me.day;
-  return `<section class="hero stack"><p>${t().startsTitle}</p>
-      <p class="big">${left} <span>${t().daysLeft(left).replace(/^\D*\d+\s*/,"")}</span></p>
-      <p>${t().starts(fmtDate(me.start_date))}</p></section>
-    <section class="stack"><h2>${t().myAreas}</h2>
-      ${[me.area1, me.area2].map(a=>`<div class="panel"><h3>${esc(areaName(a))}</h3><p class="muted small">${esc(AREAS[lang][a-1][1])}</p></div>`).join("")}
-      <p class="muted">${t().beforeStart}</p></section>`;
+  const left = 1 - me.day, T_ = t();
+  return `<section class="hero2">
+      ${ring(0, left, T_.daysUnit(left))}
+      <div class="hero2-t"><p>${T_.startsTitle}</p><h2>${T_.day1Is(fmtDate(me.start_date))}</h2></div>
+    </section>
+    <section class="stack"><h2 class="sec">${T_.myAreas}</h2>
+      <div class="mine">${[me.area1, me.area2].map(a=>`<div class="mine-a"><span class="ai">${AREA_ICON[a-1]}</span><div><b>${esc(areaName(a))}</b><p class="muted small">${esc(AREAS[lang][a-1][1])}</p></div></div>`).join("")}</div></section>
+    <section class="stack"><h2 class="sec">${T_.nextTitle}</h2>
+      <ol class="next">${T_.nextSteps.map(n=>`<li><b>${n[0]}</b><span>${n[1]}</span></li>`).join("")}</ol></section>
+    <div class="panel tip"><h3>${T_.tipTitle}</h3><p class="muted small">${T_.tip}</p></div>`;
 }
 function viewFinished(){
   return `<section class="hero stack"><h1>${t().finishedTitle}</h1><p>${t().finished}</p>${flameGrid(true)}</section>`;
@@ -722,20 +898,15 @@ function lessonBlock(l){
 }
 
 function cardBlock(d){
-  const c = ck(d) || {};
-  const areas = [[1, me.area1],[2, me.area2]];
+  const c = ck(d) || {}, T_ = t();
   return `<section class="panel stack" id="card" data-d="${d}">
-    <div><h2>${t().card}</h2><p class="muted small">${t().cardFor(d)} · ${t().cardQ}</p></div>
-    ${areas.map(([k,a])=>`<div class="area-check">
-      <h3>${esc(areaName(a))}</h3>
-      <div class="toggle" role="group" aria-label="${esc(areaName(a))}">
-        <button class="yes" data-k="${k}" data-v="1" aria-pressed="${!!c["done"+k]}">✓ ${t().yes}</button>
-        <button class="no" data-k="${k}" data-v="0" aria-pressed="${c["done"+k]===false}">${t().no}</button>
-      </div>
-      <input id="note${k}" placeholder="${esc(t().notePh)}" value="${esc(c["note"+k]||"")}" maxlength="500" aria-label="${esc(t().notePh)}">
-    </div>`).join("")}
+    <div><h2>${T_.card}</h2><p class="muted small">${T_.cardFor(d)} · ${ck(d)?T_.cardDone:T_.tapHint}</p></div>
+    <div class="tiles2">${[[1,me.area1],[2,me.area2]].map(([k,a])=>`<button class="ctile" data-tile="${k}" aria-pressed="${!!c["done"+k]}">
+      <span class="ai">${AREA_ICON[a-1]}</span><b>${esc(areaName(a))}</b><span class="tick" aria-hidden="true">✓</span></button>`).join("")}</div>
+    <details class="notes" ${c.note1||c.note2?"open":""}><summary>${T_.addNote}</summary>
+      <div class="stack" style="margin-top:10px">${[[1,me.area1],[2,me.area2]].map(([k,a])=>`<div><label for="note${k}" class="small">${AREA_ICON[a-1]} ${esc(areaName(a))}</label><input id="note${k}" placeholder="${esc(T_.notePh)}" value="${esc(c["note"+k]||"")}" maxlength="500"></div>`).join("")}</div></details>
     <p id="cardMsg" role="status"></p>
-    <button class="btn btn-primary" id="saveCard">${t().save}</button>
+    <button class="btn btn-primary" id="saveCard">${T_.save}</button>
   </section>`;
 }
 
@@ -751,17 +922,18 @@ function scoreBlock(week){
 }
 
 function viewToday(){
-  const cur = me.day, week = Math.ceil(cur/7);
+  const cur = me.day, week = Math.ceil(cur/7), T_ = t();
   const d = cardDay || cur;
   const lesson = me.lessons.find(l=>l.day===cur);
   const st = streak();
   const missedYesterday = cur > 1 && !ck(cur-1) && !cardDay;
-  return `<section class="hero stack">
-      <div class="row"><p class="big">${cur} <span>${t().of42}</span></p>${st?`<span class="streak">${t().streak(st)}</span>`:""}</div>
-      <p>${t().week(week)} · ${esc(L(lesson,"theme"))}</p>
+  return `<section class="hero2 hero2-col">
+      <div class="hero2-row">${ring(cur/42, cur, T_.of42)}
+        <div class="hero2-t"><p>${T_.week(week)} · ${esc(L(lesson,"theme"))}</p>${st?`<span class="streak">${T_.streak(st)}</span>`:`<p class="small">${T_.keepGoing}</p>`}</div></div>
+      <div><p class="wlbl">${T_.thisWeek}</p>${weekStrip()}</div>
     </section>
-    ${cardDay ? `<button class="link" id="toToday">${t().backToday}</button>` : lessonBlock(lesson)}
-    ${missedYesterday ? `<div class="panel stack"><p>${t().catchUp}</p><button class="btn btn-ghost" id="catch">${t().catchBtn}</button></div>` : ""}
+    ${cardDay ? `<button class="link" id="toToday">${T_.backToday}</button>` : lessonBlock(lesson)}
+    ${missedYesterday ? `<div class="panel stack"><p>${T_.catchUp}</p><button class="btn btn-ghost" id="catch">${T_.catchBtn}</button></div>` : ""}
     ${cardBlock(d)}
     ${(cur % 7 === 0 && !cardDay) ? scoreBlock(week) : ""}`;
 }
@@ -814,9 +986,8 @@ function bindView(){
   if(card){
     const d = +card.dataset.d; const c = ck(d) || {};
     const val = {1: c.done1 ?? null, 2: c.done2 ?? null};
-    card.querySelectorAll(".toggle button").forEach(b => b.onclick = () => {
-      const k = b.dataset.k; val[k] = b.dataset.v === "1";
-      b.parentElement.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    card.querySelectorAll("[data-tile]").forEach(b => b.onclick = () => {
+      const k = b.dataset.tile; val[k] = !val[k]; b.setAttribute("aria-pressed", !!val[k]);
     });
     $("#saveCard").onclick = async () => {
       const btn = $("#saveCard"); btn.disabled = true;
