@@ -364,6 +364,75 @@ code.sel{user-select:all;word-break:break-all;font-size:12.5px;background:var(--
 .sem-date{flex:none;width:60px;border-radius:14px;background:var(--ink);color:#fff;text-align:center;padding:8px 0}
 .sem-date b{display:block;font-family:var(--display);font-size:24px;line-height:1.1}
 .sem-date span{font-size:12px;text-transform:uppercase;opacity:.8}
+.grp-h{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.tg{flex:none;width:44px;height:44px;border-radius:50%;background:#229ED9;color:#fff;display:grid;place-items:center}
+.btn-tg{background:#229ED9;color:#fff}
+.sc-card{gap:18px}
+.sc-head h2{margin-top:6px}
+.sc-wk{display:inline-block;font:600 12.5px var(--display);color:#1C2340;background:var(--glow);border-radius:99px;padding:3px 10px}
+.sc-area{background:var(--bg);border-radius:16px;padding:14px}
+.sc-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.sc-name{font:600 16px var(--display)}
+.sc-val{font:700 30px var(--display);line-height:1}
+.sc-val small{font-size:14px;color:var(--muted);font-weight:600}
+.sc-seg{display:grid;grid-template-columns:repeat(10,1fr);gap:4px}
+.sc-seg button{height:40px;border:0;border-radius:8px;background:var(--line);color:var(--muted);font:600 13px var(--body);cursor:pointer;transition:background .15s,transform .1s}
+.sc-seg button.on{background:hsl(var(--h) 75% 38%);color:#fff}
+.sc-seg button[aria-checked="true"]{transform:scale(1.08);box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--ink)}
+@media (prefers-color-scheme: dark){.sc-seg button[aria-checked="true"]{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--glow)}}
+.sc-scale{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:6px}
+.sc-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip-r,.chip-d{font-size:12.5px;font-weight:600;border-radius:99px;padding:3px 10px;background:var(--surface);border:1px solid var(--line)}
+.chip-d.up{background:color-mix(in srgb,var(--leaf) 15%,var(--surface));color:var(--leaf);border-color:transparent}
+.chip-d.down{background:color-mix(in srgb,var(--danger) 12%,var(--surface));color:var(--danger);border-color:transparent}
+.sc-prompts{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.rep-top{display:flex;align-items:center;gap:18px}
+.rep-top .rep-stats{flex:1;grid-template-columns:1fr}
+.rep-a{flex-direction:column;align-items:stretch}
+.rep-l{display:flex;align-items:center;gap:10px}
+.rep-l b{flex:1}
+.rep-d{font:700 14px var(--display);color:var(--glow);background:rgba(255,201,77,.15);border-radius:99px;padding:2px 10px}
+.rep-bars{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.rb{display:grid;grid-template-columns:44px 1fr 24px;align-items:center;gap:8px;font-size:12px}
+.rb span{opacity:.7}
+.rb i{display:block;height:8px;border-radius:99px;background:rgba(255,255,255,.35)}
+.rb.now i{background:var(--ember)}
+.rb b{font-family:var(--display);text-align:right}
+.pr-row{display:flex;align-items:center;gap:12px;justify-content:space-between;border-top:1px solid var(--line);padding-top:12px}
+.pr-row .btn{flex:none}
+#printHost{display:none}
+@media print{
+  @page{size:A4;margin:14mm 13mm}
+  body.printing{background:#fff !important}
+  body.printing > *:not(#printHost){display:none !important}
+  body.printing #printHost{display:block;color:#1C2340;font:11pt/1.45 var(--body)}
+  #printHost *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .j-head{display:flex;gap:14px;align-items:center;border-bottom:3px solid #E8890C;padding-bottom:10px;margin-bottom:14px}
+  .j-head img{width:46px;height:46px;object-fit:contain}
+  .j-head h1{font:700 22pt var(--display);margin:2px 0}
+  .j-k{font:600 9.5pt var(--display);color:#A35F00;margin:0}
+  .j-m{color:#5B6480;font-size:10pt;margin:0}
+  #printHost h2{font:700 13pt var(--display);margin:16px 0 6px;color:#1C2340}
+  #printHost h3{font:600 11.5pt var(--display);margin:0 0 4px}
+  .j-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .j-area p{margin:0 0 5px;font-size:10pt}
+  .j-area p span{display:block;font-size:8.5pt;color:#5B6480;font-weight:600}
+  .j-t{width:100%;border-collapse:collapse;font-size:9.5pt}
+  .j-t th{background:#1C2340;color:#fff;text-align:left;padding:5px 6px;font-weight:600}
+  .j-t td{border-bottom:1px solid #D6DDEA;padding:4px 6px;vertical-align:top}
+  .j-t tr{break-inside:avoid}
+  .j-t .c{text-align:center;width:34px}
+  .j-wk td{background:#FFF3E0;font:600 9.5pt var(--display);color:#A35F00}
+  .j-blank td{height:19px}
+  .j-blank .j-date{width:92px;color:#5B6480;font-size:8.5pt}
+  .j-blank .j-line{border-bottom:1px solid #9AA3B8}
+  .j-sc{font-size:8.5pt;color:#5B6480}
+  .j-how{font-size:10pt;margin:0 0 8px}
+  .j-daily{border:1px solid #D6DDEA;border-radius:8px;padding:8px 10px;margin-bottom:10px}
+  .j-daily p{margin:2px 0;font-size:10pt}
+  #printHost blockquote{margin:0;padding:8px 12px;border-left:4px solid #E8890C;background:#FFF8EE;font-size:10.5pt}
+  .j-foot{margin-top:18px;border-top:1px solid #D6DDEA;padding-top:6px;font-size:8.5pt;color:#5B6480}
+}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -508,6 +577,16 @@ en:{
 
   semTitle:n=>n===3?"Live seminar 3 & graduation":`Live seminar ${n}`, semToday:"Today", semWith:"On Zoom with Dr. Denis Ekobena",
   semJoin:"Join on Zoom", semLinkSoon:"The Zoom link will be sent to you on WhatsApp.", semAdd:"Put it in your calendar now. It's 90 minutes that will move your 6 weeks forward.",
+  grpTitle:"The cohort group", grpSub:"Share your wins, ask questions and encourage each other between the Daily Fires.", grpBtn:"Join on Telegram",
+  scStart:"Start", scLast:"Last week", scSince:d=>d>0?`▲ +${d} since you started`:d<0?`▼ ${d} since you started`:"Same as when you started",
+  scPrompts:["This week I learned…","I struggled with…","Next week I will…"], scDone:"Score saved. See your curve in Journey.", scSeeCurve:"See my growth curve",
+  scLow:"Not yet", scHigh:"Thriving", repDays:"of 42 days", repGrowth:"growth",
+  prTitle:"Print or save as PDF", prJournal:"My growth journal", prJournalSub:"Your plan, daily answers, scores, books and story, ready to print or save as PDF.",
+  prBlank:"Blank 1% tracker", prBlankSub:"A paper version of the 42 days, to fill by hand.", prBtn:"Print / PDF",
+  jTitle:"My Growth Journal", jCohort:"Growth Day Cohort · 6 weeks", jPlan:"My growth plan", jScores:"Weekly Growth Scores", jLog:"Daily 1% log",
+  jDay:"Day", jLesson:"Teaching", jWeek:"Week", jLearned:"What I learned", jLib:"Books", jCrs:"Courses & activities", jStory:"My story",
+  jPrinted:"Printed on", jBlankTitle:"My 1% Tracker", jBlankHow:"Each evening, tick each area where you took your 1% and write one line. Every Sunday, give yourself a score from 1 to 10.",
+  jDaily:"My daily 1%", jNotes:"Notes", jScore:"Score /10",
   psAreas:"My areas", psLib:"Library", psCourses:"Courses",
   ovPlan:"plan filled", ovBooks:"books", ovFinished:"finished", ovCourses:"courses & activities",
   libTitle:"My growth library", libSub:"The books feeding your growth right now. Update your progress as you read.",
@@ -594,6 +673,16 @@ fr:{
 
   semTitle:n=>n===3?"Séminaire 3 et remise de diplômes":`Séminaire en direct n°${n}`, semToday:"Aujourd'hui", semWith:"Sur Zoom avec le Dr Denis Ekobena",
   semJoin:"Rejoindre sur Zoom", semLinkSoon:"Le lien Zoom vous sera envoyé sur WhatsApp.", semAdd:"Notez-le dès maintenant dans votre agenda. Ce sont 90 minutes qui feront avancer vos 6 semaines.",
+  grpTitle:"Le groupe de la cohorte", grpSub:"Partagez vos victoires, posez vos questions et encouragez-vous entre deux Daily Fire.", grpBtn:"Rejoindre sur Telegram",
+  scStart:"Départ", scLast:"Semaine dernière", scSince:d=>d>0?`▲ +${d} depuis le départ`:d<0?`▼ ${d} depuis le départ`:"Comme au départ",
+  scPrompts:["Cette semaine j'ai appris…","J'ai eu du mal avec…","La semaine prochaine je vais…"], scDone:"Bilan enregistré. Voyez votre courbe dans Parcours.", scSeeCurve:"Voir ma courbe de croissance",
+  scLow:"Pas encore", scHigh:"Épanoui", repDays:"jours sur 42", repGrowth:"de croissance",
+  prTitle:"Imprimer ou enregistrer en PDF", prJournal:"Mon journal de croissance", prJournalSub:"Votre plan, vos réponses du jour, vos bilans, vos livres et votre histoire, prêts à imprimer ou à enregistrer en PDF.",
+  prBlank:"Suivi 1 % vierge", prBlankSub:"Une version papier des 42 jours, à remplir à la main.", prBtn:"Imprimer / PDF",
+  jTitle:"Mon journal de croissance", jCohort:"Cohorte Growth Day · 6 semaines", jPlan:"Mon plan de croissance", jScores:"Bilans de la semaine", jLog:"Journal du 1 % quotidien",
+  jDay:"Jour", jLesson:"Enseignement", jWeek:"Semaine", jLearned:"Ce que j'ai appris", jLib:"Livres", jCrs:"Formations & activités", jStory:"Mon histoire",
+  jPrinted:"Imprimé le", jBlankTitle:"Mon suivi 1 %", jBlankHow:"Chaque soir, cochez chaque domaine où vous avez fait votre 1 % et écrivez une ligne. Chaque dimanche, donnez-vous une note de 1 à 10.",
+  jDaily:"Mon 1 % quotidien", jNotes:"Notes", jScore:"Note /10",
   psAreas:"Mes domaines", psLib:"Bibliothèque", psCourses:"Formations",
   ovPlan:"plan rempli", ovBooks:"livres", ovFinished:"terminés", ovCourses:"formations & activités",
   libTitle:"Ma bibliothèque de croissance", libSub:"Les livres qui nourrissent votre croissance en ce moment. Mettez à jour votre progression au fil de la lecture.",
@@ -979,6 +1068,7 @@ async function doneScreen(name){
       <p class="lead-s">${T_.doneSub(fmtDate(start))}</p>
       <div class="stack" style="margin-top:28px">
         <button class="btn btn-primary" id="openDash">${T_.openDash}</button>
+        ${me && me.community_link ? `<a class="btn btn-tg" href="${esc(me.community_link)}" target="_blank" rel="noopener">${TG_ICON} ${T_.grpBtn}</a>` : ""}
         <a class="btn btn-ghost" href="https://wa.me/?text=${encodeURIComponent(T_.inviteMsg)}" target="_blank" rel="noopener">${T_.invite}</a>
       </div>
       <div class="panel tip"><h3>${T_.tipTitle}</h3><p class="muted small">${T_.tip}</p></div>
@@ -1155,6 +1245,8 @@ function renderApp(){
     try{ await rpc("gd_save_testimony", {p_token:store.get("gd_token"), p_text:$("#testi").value, p_public:$("#testiPub").checked});
       me.testimony = $("#testi").value; me.testimony_public = $("#testiPub").checked; m.className="ok"; m.textContent = t().testiSaved; }
     catch(e){ m.className="err"; m.textContent = errMsg(e); } ts.disabled = false; };
+  document.querySelectorAll("[data-goj]").forEach(b => b.onclick = () => { tab = "journey"; renderApp(); window.scrollTo(0,0); });
+  document.querySelectorAll("[data-print]").forEach(b => b.onclick = () => doPrint(b.dataset.print));
   const tm = $("#toMe"); if(tm) tm.onclick = () => { tab = "me"; renderApp(); window.scrollTo(0,0); };
   document.querySelectorAll("[data-goplan]").forEach(b => b.onclick = () => { tab = "plan"; renderApp(); window.scrollTo(0,0); });
   document.querySelectorAll('.plan-card input[type=range]').forEach(r => r.oninput = () => { r.dataset.touched = '1'; r.nextElementSibling.textContent = r.value; });
@@ -1211,6 +1303,7 @@ function viewBefore(){
     </section>
     <section class="stack"><h2 class="sec">${T_.myAreas}</h2>
       <div class="mine">${[me.area1, me.area2].map(a=>`<div class="mine-a"><span class="ai">${AREA_ICON[a-1]}</span><div><b>${esc(areaName(a))}</b><p class="muted small">${esc(AREAS[lang][a-1][1])}</p></div></div>`).join("")}</div></section>
+    ${groupCard()}
     ${planStrip()}
     <section class="stack"><h2 class="sec">${T_.nextTitle}</h2>
       <ol class="next">${T_.nextSteps.map(n=>`<li><b>${n[0]}</b><span>${n[1]}</span></li>`).join("")}</ol></section>
@@ -1304,7 +1397,8 @@ function viewPlan(){
       <div class="ov"><div><b>${planCount()}/12</b><span>${T_.ovPlan}</span></div><div><b>${bk.length}</b><span>${T_.ovBooks}${fin?` · ${fin} ${T_.ovFinished}`:""}</span></div><div><b>${cr.length}</b><span>${T_.ovCourses}</span></div></div>
       <div class="seg sub" role="tablist">${tabs.map(([k,n])=>`<button data-psub="${k}" aria-pressed="${planSub===k}">${n}</button>`).join("")}</div>
       ${planNote?`<p class="ok small" role="status">${esc(planNote)}</p>`:""}</section>
-    ${body}`;
+    ${body}
+    ${printCard()}`;
 }
 async function savePlanAll(){
   await rpc("gd_save_plan", {p_token:store.get("gd_token"), p_plan:me.plan});
@@ -1344,15 +1438,25 @@ function cardBlock(d){
 function scoreBlock(week){
   const T_ = t(), prev = (me.scores||[]).filter(x=>x.week<week).slice(-1)[0] || {};
   const start = k => (me.plan && me.plan[k] && me.plan[k].score) || null;
-  const s = me.scores.find(x=>x.week===week) || {score1: prev.score1 || start("1") || 5, score2: prev.score2 || start("2") || 5, reflection:""};
-  return `<section class="panel stack" id="score" data-w="${week}">
-    <div><h2>${T_.scoreTitle}</h2><p class="muted small">${T_.week(week)} · ${T_.scoreQ}</p></div>
-    ${[[1,me.area1],[2,me.area2]].map(([k,a])=>`<div><label for="s${k}">${AREA_ICON[a-1]} ${esc(areaName(a))}</label>
-      ${start(String(k)) ? `<p class="hint" style="margin:0 0 4px">${T_.scoreRef(start(String(k)), prev["score"+k])}</p>` : ""}
-      <div class="range-row"><input type="range" id="s${k}" min="1" max="10" value="${s["score"+k]}"><output id="o${k}">${s["score"+k]}</output></div></div>`).join("")}
-    <div><label for="refl">${T_.reflection}</label><textarea id="refl" maxlength="1000">${esc(s.reflection||"")}</textarea></div>
-    <p id="scoreMsg" role="status"></p>
-    <button class="btn btn-dark" id="saveScore">${T_.saveScore}</button></section>`;
+  const saved = me.scores.find(x=>x.week===week);
+  const s = saved || {score1: prev.score1 || start("1") || 5, score2: prev.score2 || start("2") || 5, reflection:""};
+  const area = (k,a) => { const v = s["score"+k], st = start(String(k)), last = prev["score"+k];
+    return `<div class="sc-area" data-k="${k}">
+      <div class="sc-top"><span class="sc-name">${AREA_ICON[a-1]} ${esc(areaName(a))}</span><b class="sc-val" id="o${k}">${v}<small>/10</small></b></div>
+      <input type="hidden" id="s${k}" value="${v}">
+      <div class="sc-seg" role="radiogroup" aria-label="${esc(areaName(a))}">${Array.from({length:10},(_,i)=>i+1).map(n=>`<button type="button" role="radio" aria-checked="${n===v}" data-sc="${k}:${n}" class="${n<=v?"on":""}" style="--h:${Math.round(22+(n-1)*13)}">${n}</button>`).join("")}</div>
+      <div class="sc-scale"><span>${T_.scLow}</span><span>${T_.scHigh}</span></div>
+      <div class="sc-meta">${st?`<span class="chip-r">${T_.scStart} ${st}</span>`:""}${last?`<span class="chip-r">${T_.scLast} ${last}</span>`:""}${st?`<span class="chip-d ${v-st>0?"up":v-st<0?"down":""}" id="d${k}" data-start="${st}">${T_.scSince(v-st)}</span>`:""}</div>
+    </div>`; };
+  return `<section class="panel stack sc-card" id="score" data-w="${week}">
+    <div class="sc-head"><span class="sc-wk">${T_.week(week)}</span><h2>${T_.scoreTitle}</h2><p class="muted small">${T_.scoreQ}</p></div>
+    ${area(1,me.area1)}${area(2,me.area2)}
+    <div><label for="refl">${T_.reflection}</label>
+      <div class="sc-prompts">${T_.scPrompts.map(p=>`<button type="button" class="sugb" data-prompt="${esc(p)}">${esc(p)}</button>`).join("")}</div>
+      <textarea id="refl" rows="3" maxlength="1000">${esc(s.reflection||"")}</textarea></div>
+    <p id="scoreMsg" role="status" class="${saved?"ok":""}">${saved?T_.scDone:""}</p>
+    <button class="btn btn-dark" id="saveScore">${T_.saveScore}</button>
+    ${saved?`<button class="link small" data-goj>${T_.scSeeCurve} →</button>`:""}</section>`;
 }
 
 
@@ -1371,6 +1475,15 @@ function seminarCard(){
   </section>`;
 }
 
+
+const TG_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.3 13 1.5 11.5c-1-.3-1-1 .2-1.5L20.6 2.8c.9-.3 1.6.2 1.3 1.5Z"/></svg>';
+function groupCard(){
+  if(!me.community_link) return "";
+  const T_ = t();
+  return `<section class="panel grp"><div class="grp-h"><span class="tg">${TG_ICON}</span><div><h3>${T_.grpTitle}</h3><p class="muted small">${T_.grpSub}</p></div></div>
+    <a class="btn btn-tg" href="${esc(me.community_link)}" target="_blank" rel="noopener">${TG_ICON} ${T_.grpBtn}</a></section>`;
+}
+
 function viewToday(){
   const cur = me.day, week = Math.ceil(cur/7), T_ = t();
   const d = cardDay || cur;
@@ -1384,6 +1497,7 @@ function viewToday(){
     </section>
     ${cardDay ? "" : seminarCard()}
     ${cardDay ? "" : planStrip()}
+    ${cardDay || me.day > 3 ? "" : groupCard()}
     ${cardDay ? `<button class="link" id="toToday">${T_.backToday}</button>` : lessonBlock(lesson)}
     ${missedYesterday ? `<div class="panel stack"><p>${T_.catchUp}</p><button class="btn btn-ghost" id="catch">${T_.catchBtn}</button></div>` : ""}
     ${cardBlock(d)}
@@ -1402,7 +1516,8 @@ function viewJourney(){
         <span class="f-miss">${FLAME}${t().legMiss}</span></div></div>
     <div id="detail"></div></section>
     <section class="stack"><h2>${t().curveTitle}</h2>${curveBlock()}</section>
-    <section class="stack"><h2>${t().scores}</h2>${scores}</section>`;
+    <section class="stack"><h2>${t().scores}</h2>${scores}</section>
+    ${printCard()}`;
 }
 
 
@@ -1423,9 +1538,14 @@ function curveBlock(){
 function bestStreak(){ let b=0,c=0; for(let d=1; d<=Math.min(42,me.day); d++){ if(state(d)!=="miss"){ c++; b=Math.max(b,c);} else c=0; } return b; }
 function reportBlock(){
   const T_ = t(), done = me.checkins.filter(c=>c.done1||c.done2).length, last = (me.scores||[]).slice(-1)[0] || {};
-  const row = (k,a) => { const s0 = planOf(String(k)).score, s1 = last["score"+k]; return `<div class="rep-a"><span class="ai">${AREA_ICON[a-1]}</span><b>${esc(areaName(a))}</b><span class="rep-s">${s0||"–"} → ${s1||"–"}</span></div>`; };
+  const pct = Math.round(done/42*100);
+  const row = (k,a) => { const s0 = planOf(String(k)).score, s1 = last["score"+k], d = (s0&&s1) ? s1-s0 : null;
+    return `<div class="rep-a"><div class="rep-l"><span class="ai">${AREA_ICON[a-1]}</span><b>${esc(areaName(a))}</b>${d!==null?`<span class="rep-d ${d>0?"up":""}">${d>0?"+":""}${d}</span>`:""}</div>
+      <div class="rep-bars"><div class="rb"><span>${T_.scStart}</span><i style="width:${(s0||0)*10}%"></i><b>${s0||"–"}</b></div>
+        <div class="rb now"><span>${lang==="fr"?"Fin":"Now"}</span><i style="width:${(s1||0)*10}%"></i><b>${s1||"–"}</b></div></div></div>`; };
   return `<section class="hero2 hero2-col report"><div><p>${T_.reportSub}</p><h2>${T_.reportTitle}</h2></div>
-      <div class="rep-stats"><div><b>${done}</b><span>${T_.daysDone}</span></div><div><b>${bestStreak()}</b><span>${T_.bestStreak}</span></div></div>
+      <div class="rep-top">${ring(done/42, done, T_.repDays)}
+        <div class="rep-stats"><div><b>${pct}%</b><span>${T_.daysDone}</span></div><div><b>${bestStreak()}</b><span>${T_.bestStreak}</span></div></div></div>
       ${row(1,me.area1)}${row(2,me.area2)}
       <button class="btn btn-primary" id="cert">${T_.certBtn}</button></section>
     <section class="panel stack"><h2>${T_.testiTitle}</h2><p class="muted small">${T_.testiSub}</p>
@@ -1455,6 +1575,64 @@ async function makeCertificate(){
   return new Promise(r => c.toBlob(r, "image/png"));
 }
 
+
+/* ---------- printable journal (A4, via the browser's Print / Save as PDF) ---------- */
+function printCard(){
+  const T_ = t();
+  return `<section class="panel stack"><h2>${T_.prTitle}</h2>
+    <div class="pr-row"><div><b>📘 ${T_.prJournal}</b><p class="muted small">${T_.prJournalSub}</p></div><button class="btn btn-dark sm" data-print="journal">${T_.prBtn}</button></div>
+    <div class="pr-row"><div><b>🗒️ ${T_.prBlank}</b><p class="muted small">${T_.prBlankSub}</p></div><button class="btn btn-ghost sm" data-print="blank">${T_.prBtn}</button></div></section>`;
+}
+function journalHTML(kind){
+  const T_ = t(), L2 = lang==="fr"?"fr-FR":"en-GB";
+  const d1 = dayDate(me.start_date, 1), d42 = dayDate(me.start_date, 42);
+  const fmt = d => d.toLocaleDateString(L2, {day:"numeric", month:"long", year:"numeric"});
+  const a1 = `${AREA_ICON[me.area1-1]} ${esc(areaName(me.area1))}`, a2 = `${AREA_ICON[me.area2-1]} ${esc(areaName(me.area2))}`;
+  const head = `<header class="j-head"><img src="${LOGO}" alt=""><div><p class="j-k">${T_.jCohort}</p><h1>${kind==="blank"?T_.jBlankTitle:T_.jTitle}</h1>
+      <p><b>${esc(me.name)}</b> · ${a1} · ${a2}</p><p class="j-m">${fmt(d1)} – ${fmt(d42)}</p></div></header>`;
+  if(kind === "blank"){
+    const p1 = planOf("1").daily, p2 = planOf("2").daily;
+    let rows = "";
+    for(let w=1; w<=6; w++){
+      rows += `<tr class="j-wk"><td colspan="5">${T_.jWeek} ${w}</td></tr>`;
+      for(let i=1;i<=7;i++){ const d=(w-1)*7+i, sun = i===7;
+        rows += `<tr><td class="c">${d}</td><td class="j-date">${dayDate(me.start_date,d).toLocaleDateString(L2,{weekday:"short",day:"numeric",month:"short"})}</td>
+          <td class="c">${sun?`<span class="j-sc">__/10</span>`:"☐"}</td><td class="c">${sun?`<span class="j-sc">__/10</span>`:"☐"}</td><td class="j-line"></td></tr>`; }
+    }
+    return head + `<p class="j-how">${T_.jBlankHow}</p>
+      <div class="j-daily"><p><b>${T_.jDaily}</b></p><p>${a1}: ${p1?esc(p1):"________________________________"}</p><p>${a2}: ${p2?esc(p2):"________________________________"}</p></div>
+      <table class="j-t j-blank"><thead><tr><th>${T_.jDay}</th><th></th><th>${AREA_ICON[me.area1-1]}</th><th>${AREA_ICON[me.area2-1]}</th><th>${T_.jNotes}</th></tr></thead><tbody>${rows}</tbody></table>`;
+  }
+  const planRows = [[1,me.area1],[2,me.area2]].map(([k,a])=>{ const p = planOf(String(k));
+    return `<div class="j-area"><h3>${AREA_ICON[a-1]} ${esc(areaName(a))}</h3>${PLAN_F.map(f=>`<p><span>${T_.pf[f][0]}</span>${p[f]!==undefined && String(p[f]).trim()!=="" ? esc(p[f]) : "—"}</p>`).join("")}</div>`; }).join("");
+  const sc = me.scores || [];
+  const scoreT = sc.length ? `<table class="j-t"><thead><tr><th>${T_.jWeek}</th><th>${a1}</th><th>${a2}</th><th>${T_.jLearned}</th></tr></thead><tbody>
+      <tr><td>${T_.startLbl}</td><td class="c">${planOf("1").score||"—"}</td><td class="c">${planOf("2").score||"—"}</td><td></td></tr>
+      ${sc.map(x=>`<tr><td>${x.week}</td><td class="c">${x.score1}</td><td class="c">${x.score2}</td><td>${esc(x.reflection||"")}</td></tr>`).join("")}</tbody></table>` : `<p class="j-m">—</p>`;
+  const upTo = Math.min(42, Math.max(0, me.day));
+  let log = "";
+  for(let d=1; d<=upTo; d++){ const c = ck(d), l = me.lessons.find(x=>x.day===d);
+    log += `<tr><td class="c">${d}</td><td>${esc(L(l,"title"))}</td><td>${c?(c.done1?"✓ ":"")+esc(c.note1||""):""}</td><td>${c?(c.done2?"✓ ":"")+esc(c.note2||""):""}</td></tr>`; }
+  const bk = books(), cr = courses();
+  return head + `<h2>${T_.jPlan}</h2><div class="j-grid">${planRows}</div>
+    <h2>${T_.jScores}</h2>${scoreT}
+    <h2>${T_.jLog}</h2>${log ? `<table class="j-t"><thead><tr><th>${T_.jDay}</th><th>${T_.jLesson}</th><th>${a1}</th><th>${a2}</th></tr></thead><tbody>${log}</tbody></table>` : `<p class="j-m">—</p>`}
+    ${bk.length||cr.length ? `<div class="j-grid"><div><h2>${T_.jLib}</h2>${bk.map(b=>`<p>📖 <b>${esc(b.title)}</b>${b.author?` · ${esc(b.author)}`:""} — ${b.progress>=100?T_.finished2:b.progress+"%"}</p>`).join("")||"<p>—</p>"}</div>
+      <div><h2>${T_.jCrs}</h2>${cr.map(c=>`<p>${KIND_ICON[c.kind]||"✨"} <b>${esc(c.title)}</b>${c.provider?` · ${esc(c.provider)}`:""} — ${c.progress>=100?T_.finished2:c.progress+"%"}</p>`).join("")||"<p>—</p>"}</div></div>` : ""}
+    ${me.testimony ? `<h2>${T_.jStory}</h2><blockquote>${esc(me.testimony)}</blockquote>` : ""}
+    <footer class="j-foot">Growth Day · Equip2Lead · Dr. Denis Ekobena · ${T_.jPrinted} ${new Date().toLocaleDateString(L2)}</footer>`;
+}
+function doPrint(kind){
+  let host = document.getElementById("printHost");
+  if(!host){ host = document.createElement("div"); host.id = "printHost"; document.body.appendChild(host); }
+  host.innerHTML = journalHTML(kind);
+  document.body.classList.add("printing");
+  const done = () => { document.body.classList.remove("printing"); window.removeEventListener("afterprint", done); };
+  window.addEventListener("afterprint", done);
+  const imgs = [...host.querySelectorAll("img")];
+  Promise.all(imgs.map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; }))).then(() => setTimeout(() => window.print(), 50));
+}
+
 function viewMe(){
   const open = me.day <= 7;
   const picked = viewMe.picked || [me.area1, me.area2];
@@ -1471,6 +1649,7 @@ function viewMe(){
           <div><b>${esc(m.name)}</b><p class="muted small">${m.isGuide ? t().guideLbl : `${AREA_ICON[m.area1-1]} ${AREA_ICON[m.area2-1]}`}</p></div>
           <a class="btn btn-ghost sm" href="https://wa.me/${esc(m.phone)}" target="_blank" rel="noopener">${t().chat}</a></div>`).join("") || `<p class="muted">${t().noTriad}</p>`}</div>`
       : `<div class="panel"><p class="muted">${t().noTriad}</p></div>`}</section>
+    ${groupCard()}
     <button class="btn btn-ghost" id="signOut">${t().signOut}</button>`;
 }
 
@@ -1513,14 +1692,18 @@ function bindView(){
   // score
   const sc = $("#score");
   if(sc){
-    [1,2].forEach(k => { const r = $("#s"+k); r.oninput = () => { $("#o"+k).textContent = r.value; }; });
+    sc.querySelectorAll("[data-sc]").forEach(b => b.onclick = () => { const [k,n] = b.dataset.sc.split(":").map(Number);
+      $("#s"+k).value = n; $("#o"+k).innerHTML = `${n}<small>/10</small>`;
+      b.parentElement.querySelectorAll("button").forEach(x => { const v = +x.textContent; x.classList.toggle("on", v<=n); x.setAttribute("aria-checked", v===n); });
+      const d = $("#d"+k); if(d){ const st = +d.dataset.start; d.textContent = t().scSince(n-st); d.className = "chip-d " + (n-st>0?"up":n-st<0?"down":""); } });
+    sc.querySelectorAll("[data-prompt]").forEach(b => b.onclick = () => { const ta = $("#refl"); ta.value = (ta.value ? ta.value.trim() + "\n" : "") + b.dataset.prompt + " "; ta.focus(); });
     $("#saveScore").onclick = async () => {
       const w = +sc.dataset.w; const btn = $("#saveScore"); btn.disabled = true;
       try{
         const a = {p_token:tok, p_week:w, p_s1:+$("#s1").value, p_s2:+$("#s2").value, p_reflection:$("#refl").value};
         await rpc("gd_score", a);
         me.scores = me.scores.filter(x=>x.week!==w).concat({week:w, score1:a.p_s1, score2:a.p_s2, reflection:a.p_reflection}).sort((x,y)=>x.week-y.week);
-        btn.disabled = false; const m=$("#scoreMsg"); m.className="ok"; m.textContent = t().scoreSaved;
+        renderApp(); const sc2 = $("#score"); if(sc2) sc2.scrollIntoView({block:"center"});
       }catch(e){ btn.disabled = false; const m=$("#scoreMsg"); m.className="err"; m.textContent = errMsg(e); }
     };
   }
@@ -1643,11 +1826,12 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
 
   const WH = "https://vjnzvrhbzaqmzneirmjq.supabase.co/functions/v1/gd-app?webhook=fapshi";
   const semDates = SEM_DAYS.map(([d,n])=>`<p class="small"><b>Seminar ${n}${n===3?" + graduation":""}:</b> ${dayDate(adm.start_date,d).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"})} (day ${d})</p>`).join("");
-  const settingsView = `<div class="panel stack" style="margin-bottom:20px"><h3>Live seminars (every two weeks)</h3>
+  const settingsView = `<div class="panel stack" style="margin-bottom:20px"><h3>Live seminars and cohort group</h3>
       <p class="muted small">They're set automatically on the Saturdays of weeks 2, 4 and 6. Participants see a reminder card in the app from the Sunday before, and the 6:00 Daily Fire on Friday and Saturday announces it. If you add the Zoom link here, it appears in both. If not, they're told you'll send it on WhatsApp.</p>
       ${semDates}
       <div class="grid2"><div><label for="semTime">Time (Yaoundé)</label><input id="semTime" type="time" value="${esc((admSem&&admSem.time)||"10:00")}"></div>
         <div><label for="semLink">Zoom link (optional, update before each seminar)</label><input id="semLink" placeholder="https://zoom.us/j/…" value="${esc((admSem&&admSem.link)||"")}"></div></div>
+      <div><label for="grpLink">Cohort group link (Telegram) · shown only to members who have paid</label><input id="grpLink" placeholder="https://t.me/+…" value="${esc((admSem&&admSem.community)||"")}"></div>
       <p id="semMsg" role="status"></p>
       <div class="seg"><button id="semSave">Save</button><button id="semMsgBtn">Write the link message on WhatsApp</button></div></div>
   <div class="grid2 settings-grid">
@@ -1742,7 +1926,9 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
   };
   const ss2 = $("#semSave");
   if(ss2) ss2.onclick = async () => { const m = $("#semMsg");
-    try{ await rpc("gd_admin_set_seminar",{p_pin:admPin, p_time:$("#semTime").value, p_link:$("#semLink").value}); admSem = {time:$("#semTime").value, link:$("#semLink").value.trim()};
+    try{ await rpc("gd_admin_set_seminar",{p_pin:admPin, p_time:$("#semTime").value, p_link:$("#semLink").value});
+      await rpc("gd_admin_set_community",{p_pin:admPin, p_link:$("#grpLink").value});
+      admSem = {time:$("#semTime").value, link:$("#semLink").value.trim(), community:$("#grpLink").value.trim()};
       m.className="ok"; m.textContent="✓ Seminar settings saved."; }catch(e){ m.className="err"; m.textContent = e.message==="time_invalid"?"Enter a time like 10:00.":"Could not save: "+e.message; } };
   const smb = $("#semMsgBtn");
   if(smb) smb.onclick = () => { const link = $("#semLink").value.trim() || "[Zoom link]", tm = $("#semTime").value || "10:00";
