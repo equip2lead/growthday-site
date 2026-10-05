@@ -359,6 +359,11 @@ code.sel{user-select:all;word-break:break-all;font-size:12.5px;background:var(--
 .sugb{border:1.5px solid var(--line);background:var(--bg);color:var(--text);border-radius:999px;padding:7px 12px;font:600 13.5px var(--body);cursor:pointer}
 .crs-h{display:flex;gap:12px;align-items:flex-start}
 .kic{font-size:26px;width:44px;height:44px;border-radius:12px;background:var(--bg);display:grid;place-items:center;flex:none}
+.sem-card{border-color:var(--ember)}
+.sem-h{display:flex;gap:14px;align-items:flex-start}
+.sem-date{flex:none;width:60px;border-radius:14px;background:var(--ink);color:#fff;text-align:center;padding:8px 0}
+.sem-date b{display:block;font-family:var(--display);font-size:24px;line-height:1.1}
+.sem-date span{font-size:12px;text-transform:uppercase;opacity:.8}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -501,6 +506,8 @@ en:{
   storiesTitle:"Stories from past growers",
   registered:"You're registered.", perWeek:w=>`That's just ${w} FCFA a week for 6 weeks`,
 
+  semTitle:n=>n===3?"Live seminar 3 & graduation":`Live seminar ${n}`, semToday:"Today", semWith:"On Zoom with Dr. Denis Ekobena",
+  semJoin:"Join on Zoom", semLinkSoon:"The Zoom link will be sent to you on WhatsApp.", semAdd:"Put it in your calendar now. It's 90 minutes that will move your 6 weeks forward.",
   psAreas:"My areas", psLib:"Library", psCourses:"Courses",
   ovPlan:"plan filled", ovBooks:"books", ovFinished:"finished", ovCourses:"courses & activities",
   libTitle:"My growth library", libSub:"The books feeding your growth right now. Update your progress as you read.",
@@ -585,6 +592,8 @@ fr:{
   storiesTitle:"Témoignages d'anciens participants",
   registered:"Vous êtes inscrit.", perWeek:w=>`Soit seulement ${w} FCFA par semaine pendant 6 semaines`,
 
+  semTitle:n=>n===3?"Séminaire 3 et remise de diplômes":`Séminaire en direct n°${n}`, semToday:"Aujourd'hui", semWith:"Sur Zoom avec le Dr Denis Ekobena",
+  semJoin:"Rejoindre sur Zoom", semLinkSoon:"Le lien Zoom vous sera envoyé sur WhatsApp.", semAdd:"Notez-le dès maintenant dans votre agenda. Ce sont 90 minutes qui feront avancer vos 6 semaines.",
   psAreas:"Mes domaines", psLib:"Bibliothèque", psCourses:"Formations",
   ovPlan:"plan rempli", ovBooks:"livres", ovFinished:"terminés", ovCourses:"formations & activités",
   libTitle:"Ma bibliothèque de croissance", libSub:"Les livres qui nourrissent votre croissance en ce moment. Mettez à jour votre progression au fil de la lecture.",
@@ -1346,6 +1355,22 @@ function scoreBlock(week){
     <button class="btn btn-dark" id="saveScore">${T_.saveScore}</button></section>`;
 }
 
+
+const SEM_DAYS = [[13,1],[27,2],[41,3]];
+const dayDate = (start, d) => { const x = new Date(start + "T12:00:00"); x.setDate(x.getDate() + d - 1); return x; };
+function seminarCard(){
+  const T_ = t(), cur = me.day, next = SEM_DAYS.find(([d]) => d >= cur && d - cur <= 6);
+  if(!next || cur < 1) return "";
+  const [d, n] = next, isToday = d === cur, time = me.seminar_time || "10:00";
+  const date = dayDate(me.start_date, d).toLocaleDateString(lang==="fr"?"fr-FR":"en-GB", {weekday:"long", day:"numeric", month:"long"});
+  return `<section class="panel stack sem-card">
+    <div class="sem-h"><div class="sem-date"><b>${dayDate(me.start_date, d).getDate()}</b><span>${dayDate(me.start_date, d).toLocaleDateString(lang==="fr"?"fr-FR":"en-GB",{month:"short"})}</span></div>
+      <div><p class="hw-l">📅 ${isToday ? T_.semToday : esc(date)} · ${esc(lang==="fr"?time.replace(":","h"):time)}</p><h2>${T_.semTitle(n)}</h2><p class="muted small">${T_.semWith}</p></div></div>
+    ${me.seminar_link ? `<a class="btn btn-primary" href="${esc(me.seminar_link)}" target="_blank" rel="noopener">${T_.semJoin}</a>` : `<p class="small">${T_.semLinkSoon}</p>`}
+    ${isToday ? "" : `<p class="muted small">${T_.semAdd}</p>`}
+  </section>`;
+}
+
 function viewToday(){
   const cur = me.day, week = Math.ceil(cur/7), T_ = t();
   const d = cardDay || cur;
@@ -1357,6 +1382,7 @@ function viewToday(){
         <div class="hero2-t"><p>${T_.week(week)} · ${esc(L(lesson,"theme"))}</p>${st?`<span class="streak">${T_.streak(st)}</span>`:`<p class="small">${T_.keepGoing}</p>`}</div></div>
       <div><p class="wlbl">${T_.thisWeek}</p>${weekStrip()}</div>
     </section>
+    ${cardDay ? "" : seminarCard()}
     ${cardDay ? "" : planStrip()}
     ${cardDay ? `<button class="link" id="toToday">${T_.backToday}</button>` : lessonBlock(lesson)}
     ${missedYesterday ? `<div class="panel stack"><p>${T_.catchUp}</p><button class="btn btn-ghost" id="catch">${T_.catchBtn}</button></div>` : ""}
@@ -1517,7 +1543,7 @@ function bindView(){
 }
 
 /* ---------- admin ---------- */
-let admOpen = null;
+let admOpen = null, admSem = null;
 let adm = null, admPin = null, admTab = "people", admFilter = "all", admDay = 1;
 const AREA_SHORT = ["Personal","Spiritual","Relational","Mental","Career","Financial","Physical","Social","Vision"];
 
@@ -1530,7 +1556,7 @@ function adminLogin(msg){
   $("#ago").onclick = go; $("#apin").onkeydown = e => { if(e.key==="Enter") go(); };
 }
 async function adminLoad(){
-  try{ adm = await rpc("gd_admin_dashboard", {p_pin: admPin}); adminRender(); }
+  try{ adm = await rpc("gd_admin_dashboard", {p_pin: admPin}); try{ admSem = await rpc("gd_admin_seminar", {p_pin: admPin}); }catch(e){} adminRender(); }
   catch(e){ adminLogin(e.message==="wrong_pin" ? "Wrong PIN." : e.message==="locked" ? "Locked for 15 minutes after too many tries." : "Could not load: " + e.message); }
 }
 function pStats(p){
@@ -1616,7 +1642,15 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
     </div>`;
 
   const WH = "https://vjnzvrhbzaqmzneirmjq.supabase.co/functions/v1/gd-app?webhook=fapshi";
-  const settingsView = `<div class="grid2 settings-grid">
+  const semDates = SEM_DAYS.map(([d,n])=>`<p class="small"><b>Seminar ${n}${n===3?" + graduation":""}:</b> ${dayDate(adm.start_date,d).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"})} (day ${d})</p>`).join("");
+  const settingsView = `<div class="panel stack" style="margin-bottom:20px"><h3>Live seminars (every two weeks)</h3>
+      <p class="muted small">They're set automatically on the Saturdays of weeks 2, 4 and 6. Participants see a reminder card in the app from the Sunday before, and the 6:00 Daily Fire on Friday and Saturday announces it. If you add the Zoom link here, it appears in both. If not, they're told you'll send it on WhatsApp.</p>
+      ${semDates}
+      <div class="grid2"><div><label for="semTime">Time (Yaoundé)</label><input id="semTime" type="time" value="${esc((admSem&&admSem.time)||"10:00")}"></div>
+        <div><label for="semLink">Zoom link (optional, update before each seminar)</label><input id="semLink" placeholder="https://zoom.us/j/…" value="${esc((admSem&&admSem.link)||"")}"></div></div>
+      <p id="semMsg" role="status"></p>
+      <div class="seg"><button id="semSave">Save</button><button id="semMsgBtn">Write the link message on WhatsApp</button></div></div>
+  <div class="grid2 settings-grid">
     <div class="panel stack"><h3>Payments (Fapshi)</h3>
       <p class="muted small">Set a price above 0 to turn payments on. People then pay with MTN MoMo or Orange Money after signing up, and only paid members get the daily messages. Set it to 0 to keep the cohort free.</p>
       <div class="grid2"><div><label for="ppr">Price (FCFA)</label><input id="ppr" type="number" min="0" step="500" value="${adm.pay.price}"></div>
@@ -1706,6 +1740,17 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
       const m=$("#lmsg"); m.className="ok"; m.textContent=`Day ${admDay} saved.`;
     }catch(e){ ls.disabled=false; const m=$("#lmsg"); m.className="err"; m.textContent="Could not save: "+e.message; }
   };
+  const ss2 = $("#semSave");
+  if(ss2) ss2.onclick = async () => { const m = $("#semMsg");
+    try{ await rpc("gd_admin_set_seminar",{p_pin:admPin, p_time:$("#semTime").value, p_link:$("#semLink").value}); admSem = {time:$("#semTime").value, link:$("#semLink").value.trim()};
+      m.className="ok"; m.textContent="✓ Seminar settings saved."; }catch(e){ m.className="err"; m.textContent = e.message==="time_invalid"?"Enter a time like 10:00.":"Could not save: "+e.message; } };
+  const smb = $("#semMsgBtn");
+  if(smb) smb.onclick = () => { const link = $("#semLink").value.trim() || "[Zoom link]", tm = $("#semTime").value || "10:00";
+    const next = SEM_DAYS.find(([d]) => d >= adm.day) || SEM_DAYS[0], n = next[1];
+    comp.aud = "all"; comp.val = "";
+    comp.en = `📅 *Live seminar ${n}${n===3?" & graduation":""}* · Saturday at ${tm}\n\nHi {name}! Here is the Zoom link for Saturday's seminar with Dr. Denis Ekobena:\n\n🔗 ${link}\n\nCome with one win and one question from your 1% in {area1} and {area2}. See you there! 🔥`;
+    comp.fr = `📅 *${n===3?"Séminaire 3 et remise de diplômes":"Séminaire en direct n°"+n}* · samedi à ${tm.replace(":","h")}\n\nBonjour {name} ! Voici le lien Zoom du séminaire de samedi avec le Dr Denis Ekobena :\n\n🔗 ${link}\n\nVenez avec une victoire et une question de votre 1 % dans {area1} et {area2}. À samedi ! 🔥`;
+    admTab = "messages"; adminRender(); loadMessages(); window.scrollTo(0,0); };
   const ps2 = $("#paysave");
   if(ps2) ps2.onclick = async () => { const m = $("#paymsg");
     try{ await rpc("gd_admin_payment_settings",{p_pin:admPin, p_price:+$("#ppr").value||0, p_seats:+$("#pst").value||30, p_env:$("#penv").value, p_user:$("#puser").value, p_key:$("#pkey").value});
