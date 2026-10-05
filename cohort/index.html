@@ -68,6 +68,9 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--ember)}
 .chip[aria-pressed="true"] b::after{content:" ✓";color:var(--ember-text)}
 .chip:disabled{opacity:.45}
 
+.credit{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);text-align:center}
+.credit b{font-weight:600;color:var(--text)}
+
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -207,7 +210,7 @@ en:{
   dayDetail:d=>`Day ${d}`, close:"Close", notFilled:"No card for this day.",
   myAreas:"My growth areas", areasLocked:"Your areas are locked after week 1.", areasOpen:"You can change your areas until the end of week 1.",
   saveChanges:"Save changes", changesSaved:"Changes saved.", triad:"My triad", noTriad:"Your triad will be shared with you in week 2.",
-  signOut:"Sign out", whatsapp:"WhatsApp", loading:"Loading…",
+  signOut:"Sign out", whatsapp:"WhatsApp", loading:"Loading…", credit:"An <b>Equip2Lead</b> program · Led by <b>Dr. Denis Ekobena</b>",
   err:{phone_exists:"This number is already registered. Sign in instead.",not_found:"No account uses this number. Check it, or join the cohort.",wrong_pin:"Wrong PIN. Try again.",locked:"Too many tries. Wait 15 minutes, then try again.",pin_invalid:"Your PIN must be exactly 4 digits.",pin_mismatch:"The two PINs don't match.",name_required:"Enter your full name.",phone_invalid:"Enter a valid WhatsApp number.",areas_needed:"Choose exactly 2 areas.",session_expired:"Please sign in again.",day_closed:"This card is closed. You can fill today's and yesterday's cards only.",week_closed:"This week isn't open yet.",areas_locked:"Your areas are locked after week 1.",network:"No connection. Check your internet and try again."}
 },
 fr:{
@@ -239,7 +242,7 @@ fr:{
   dayDetail:d=>`Jour ${d}`, close:"Fermer", notFilled:"Pas de carte pour ce jour.",
   myAreas:"Mes domaines de croissance", areasLocked:"Vos domaines sont fixés après la semaine 1.", areasOpen:"Vous pouvez changer vos domaines jusqu'à la fin de la semaine 1.",
   saveChanges:"Enregistrer", changesSaved:"Modifications enregistrées.", triad:"Ma triade", noTriad:"Votre triade vous sera communiquée en semaine 2.",
-  signOut:"Se déconnecter", whatsapp:"WhatsApp", loading:"Chargement…",
+  signOut:"Se déconnecter", whatsapp:"WhatsApp", loading:"Chargement…", credit:"Un programme <b>Equip2Lead</b> · Dirigé par le <b>Dr Denis Ekobena</b>",
   err:{phone_exists:"Ce numéro est déjà inscrit. Connectez-vous plutôt.",not_found:"Aucun compte avec ce numéro. Vérifiez-le ou rejoignez la cohorte.",wrong_pin:"Code PIN incorrect. Réessayez.",locked:"Trop d'essais. Attendez 15 minutes puis réessayez.",pin_invalid:"Le code PIN doit contenir exactement 4 chiffres.",pin_mismatch:"Les deux codes PIN sont différents.",name_required:"Entrez votre nom complet.",phone_invalid:"Entrez un numéro WhatsApp valide.",areas_needed:"Choisissez exactement 2 domaines.",session_expired:"Veuillez vous reconnecter.",day_closed:"Cette carte est fermée. Vous pouvez remplir seulement celle d'aujourd'hui et d'hier.",week_closed:"Cette semaine n'est pas encore ouverte.",areas_locked:"Vos domaines sont fixés après la semaine 1.",network:"Pas de connexion. Vérifiez internet et réessayez."}
 }};
 
@@ -283,6 +286,7 @@ function bindLang(rerender){
     lang = b.dataset.lang; store.set("gd_lang", lang); document.documentElement.lang = lang; rerender();
   });
 }
+const credit = () => `<footer class="credit">Growth Day · ${t().credit}</footer>`;
 function header(rerender){ return `<div class="top"><div class="brand"><img src="${LOGO}" alt="">Growth Day</div>${langToggle()}</div>`; }
 
 /* ---------- participant: auth screens ---------- */
@@ -290,7 +294,7 @@ function welcome(){
   root.innerHTML = `<div class="wrap stack-lg">${header()}
     <div class="stack"><h1>${t().tagline}</h1><p class="muted">${t().intro}</p></div>
     <div class="stack"><button class="btn btn-primary" id="goJoin">${t().join}</button>
-    <button class="btn btn-ghost" id="goLogin">${t().haveAcc}</button></div></div>`;
+    <button class="btn btn-ghost" id="goLogin">${t().haveAcc}</button></div>${credit()}</div>`;
   bindLang(welcome);
   $("#goJoin").onclick = () => joinForm();
   $("#goLogin").onclick = () => loginForm();
@@ -317,7 +321,7 @@ function joinForm(errText){
     </div>
     <p class="err" id="err" role="alert">${errText?esc(errText):""}</p>
     <div class="stack"><button class="btn btn-primary" id="submit">${t().join}</button>
-    <button class="link" id="back">${t().back}</button></div></div>`;
+    <button class="link" id="back">${t().back}</button></div>${credit()}</div>`;
   const keep = () => { draft.name = $("#name").value; draft.phone = $("#phone").value; };
   bindLang(() => { keep(); joinForm(); });
   document.querySelectorAll("[data-area]").forEach(b => b.onclick = () => {
@@ -353,7 +357,7 @@ function loginForm(){
       <button class="btn btn-primary" id="submit">${t().signIn}</button>
       <p class="muted small">${t().forgot}</p>
       <button class="link" id="back">${t().back}</button>
-    </div></div>`;
+    </div>${credit()}</div>`;
   bindLang(loginForm);
   $("#back").onclick = welcome;
   const go = async () => {
@@ -422,7 +426,7 @@ function renderApp(){
     journey:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>',
     me:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>'
   };
-  root.innerHTML = `<div class="wrap stack-lg">${header()}${body}</div>
+  root.innerHTML = `<div class="wrap stack-lg">${header()}${body}${credit()}</div>
     <nav class="tabs" aria-label="Main"><div>${["today","journey","me"].map(k=>`<button data-tab="${k}" ${tab===k?'aria-current="page"':""}>${icon[k]}${t()[k]}</button>`).join("")}</div></nav>`;
   bindLang(renderApp);
   document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; cardDay = null; renderApp(); window.scrollTo(0,0); });
@@ -687,12 +691,13 @@ function adminRender(){
       <div class="stat"><b>${cur>=1&&cur<=42?today:"—"}</b><span class="muted small">Cards filled today</span></div>
       <div class="stat"><b>${slip}</b><span class="muted small">Slipping</span></div>
     </div>
-    <div class="seg" role="tablist">${[["people","People"],["lessons","Daily lessons"],["settings","Settings"]].map(([k,n])=>`<button data-at="${k}" aria-pressed="${admTab===k}">${n}</button>`).join("")}</div>
-    ${admTab==="people"?peopleView:admTab==="lessons"?lessonsView:settingsView}
+    <div class="seg" role="tablist">${[["people","People"],["messages","WhatsApp"],["lessons","Daily lessons"],["settings","Settings"]].map(([k,n])=>`<button data-at="${k}" aria-pressed="${admTab===k}">${n}</button>`).join("")}</div>
+    ${admTab==="people"?peopleView:admTab==="messages"?messagesView():admTab==="lessons"?lessonsView:settingsView}
   </div>`;
 
   $("#refresh").onclick = adminLoad;
-  document.querySelectorAll("[data-at]").forEach(b=>b.onclick=()=>{admTab=b.dataset.at; adminRender();});
+  document.querySelectorAll("[data-at]").forEach(b=>b.onclick=()=>{admTab=b.dataset.at; adminRender(); if(admTab==="messages") loadMessages();});
+  if(admTab==="messages") bindMessages();
   document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{admFilter=b.dataset.f; adminRender();});
   document.querySelectorAll("[data-triad]").forEach(inp => inp.onchange = async () => {
     try{ await rpc("gd_admin_set_triad",{p_pin:admPin, p_id:inp.dataset.triad, p_triad:inp.value});
@@ -730,6 +735,134 @@ function adminRender(){
   if(ps) ps.onclick = async () => { const m=$("#smsg"); const np=$("#npin").value.trim();
     try{ await rpc("gd_admin_change_pin",{p_pin:admPin, p_new:np}); admPin = np; m.className="ok"; m.textContent="Admin PIN changed."; }
     catch(e){ m.className="err"; m.textContent = e.message==="pin_invalid"?"Use at least 6 digits.":"Could not change: "+e.message; } };
+}
+
+
+/* ---------- admin: WhatsApp messages ---------- */
+const FN = "https://vjnzvrhbzaqmzneirmjq.supabase.co/functions/v1/gd-send";
+let admMsg = null, showWaSetup = false, msgTimer = null;
+const comp = {aud:"all", val:"", testNum:"", testLang:"en", en:"", fr:"", media:null, busy:false, note:""};
+
+async function loadMessages(){
+  try{ admMsg = await rpc("gd_admin_messages", {p_pin: admPin}); }
+  catch(e){ admMsg = {configured:false, messages:[], err:e.message}; }
+  if(admTab === "messages") adminRender();
+  clearTimeout(msgTimer);
+  if(admMsg.messages && admMsg.messages.some(m => m.status === "sending")) msgTimer = setTimeout(loadMessages, 5000);
+}
+async function callFn(body, isForm){
+  const res = await fetch(FN, {method:"POST", headers: isForm ? {apikey:KEY} : {"Content-Type":"application/json", apikey:KEY}, body: isForm ? body : JSON.stringify(body)});
+  const d = await res.json().catch(() => ({}));
+  if(!res.ok || d.error) throw new Error(d.error || "network");
+  return d;
+}
+function audienceCount(){
+  const P = adm.participants;
+  if(comp.aud === "all") return P.length;
+  if(comp.aud === "slipping") return P.filter(p=>pStats(p).slipping).length;
+  if(comp.aud === "lang") return P.filter(p=>p.lang===comp.val).length;
+  if(comp.aud === "triad") return P.filter(p=>p.triad===comp.val).length;
+  if(comp.aud === "test") return 1;
+  return 0;
+}
+const ERR_WA = {whatsapp_not_configured:"Connect WhatsApp first (instance ID and token).", no_recipients:"No one matches this audience.", empty_message:"Write a message or attach a file.", phone_invalid:"Enter a valid test number.", wrong_pin:"Admin PIN rejected. Reload and sign in again.", locked:"Admin is locked for 15 minutes."};
+
+function messagesView(){
+  if(!admMsg) return `<p class="muted">Loading…</p>`;
+  const P = adm.participants;
+  const triads = [...new Set(P.map(p=>p.triad).filter(Boolean))].sort();
+  const setup = `<div class="panel stack" style="max-width:620px">
+      <h3>Connect your Wamatas WhatsApp</h3>
+      <p class="muted small">Find these in your Wamatas dashboard on the Growth Day instance. They are stored on the server and never shown again.</p>
+      <div><label for="waInst">Instance ID</label><input id="waInst" autocomplete="off"></div>
+      <div><label for="waTok">Access token</label><input id="waTok" type="password" autocomplete="off"></div>
+      <button class="btn btn-dark" id="waSave" style="max-width:240px">Save connection</button></div>`;
+  const opt = (v, label, n) => `<option value="${esc(v)}" ${comp.aud+":"+comp.val===v||(comp.aud===v&&!comp.val)?"selected":""}>${esc(label)}${n!=null?` (${n})`:""}</option>`;
+  const media = comp.media ? (() => { const u = esc(comp.media.url), n = comp.media.name;
+      const prev = /\.(png|jpe?g|gif|webp)$/i.test(n) ? `<img src="${u}" alt="" style="max-width:220px;border-radius:10px">`
+        : /\.(mp3|m4a|ogg|opus|wav|aac)$/i.test(n) ? `<audio controls src="${u}"></audio>`
+        : /\.(mp4|mov|webm)$/i.test(n) ? `<video controls src="${u}" style="max-width:220px;border-radius:10px"></video>` : "";
+      return `<div class="stack"><p class="ok">✓ Attached: ${esc(n)}</p>${prev}<button class="link" id="mRemove">Remove file</button></div>`; })()
+    : `<div><label for="mFile">Attach an image, audio, video or PDF (optional, max 50 MB)</label><input type="file" id="mFile" accept="image/*,audio/*,video/*,application/pdf"></div>`;
+  const hist = admMsg.messages.length ? `<div class="tablewrap"><table><thead><tr><th>When</th><th>To</th><th>Message</th><th>Sent</th><th>Status</th></tr></thead><tbody>
+      ${admMsg.messages.map(m=>`<tr><td class="small">${new Date(m.created_at).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}</td>
+        <td class="small">${esc(m.audience)}</td>
+        <td class="small">${esc((m.text_en||m.text_fr||"").slice(0,80))}${m.media_name?`<br>📎 ${esc(m.media_name)}`:""}</td>
+        <td>${m.sent}/${m.total}${m.failed?` <span class="err">· ${m.failed} failed</span>`:""}</td>
+        <td>${m.status==="sending"?"Sending…":"Done"}${m.failed?`<br><button class="link small" data-errs="${m.id}">See errors</button>`:""}</td></tr>`).join("")}
+    </tbody></table></div>` : `<p class="muted">No messages sent yet.</p>`;
+  return `<div class="stack-lg" style="max-width:780px">
+    ${!admMsg.configured || showWaSetup ? setup : `<p class="ok">✓ WhatsApp connected (instance ${esc(admMsg.instance_hint)}) <button class="link" id="waChange">Change</button></p>`}
+    ${admMsg.configured ? `<div class="panel stack">
+      <h3>New message</h3>
+      <div><label for="mAud">Send to</label><select id="mAud">
+        ${opt("all","Everyone",P.length)}
+        ${opt("slipping","People slipping (no card yesterday or today)",P.filter(p=>pStats(p).slipping).length)}
+        ${opt("lang:en","English speakers",P.filter(p=>p.lang==="en").length)}
+        ${opt("lang:fr","French speakers",P.filter(p=>p.lang==="fr").length)}
+        ${triads.map(x=>opt("triad:"+x,"Triad: "+x,P.filter(p=>p.triad===x).length)).join("")}
+        ${opt("test","Test: send only to one number",null)}
+      </select></div>
+      ${comp.aud==="test"?`<div class="grid2"><div><label for="mTest">Test number</label><input id="mTest" type="tel" value="${esc(comp.testNum)}" placeholder="+237 6…"></div>
+        <div><label for="mTestLang">Language to test</label><select id="mTestLang"><option value="en" ${comp.testLang==="en"?"selected":""}>English</option><option value="fr" ${comp.testLang==="fr"?"selected":""}>Français</option></select></div></div>`:""}
+      <div class="grid2">
+        <div><label for="mEn">Message in English</label><textarea id="mEn" rows="7">${esc(comp.en)}</textarea></div>
+        <div><label for="mFr">Message en français</label><textarea id="mFr" rows="7">${esc(comp.fr)}</textarea></div>
+      </div>
+      <p class="muted small">Each person gets their own language. If one box is empty, everyone gets the other. Personalise with <b>{name}</b>, <b>{area1}</b> and <b>{area2}</b>. WhatsApp formatting works: *bold*, _italic_.</p>
+      ${media}
+      <p id="mMsg" role="status" class="${comp.note.startsWith("✓")?"ok":"err"}">${esc(comp.note)}</p>
+      <button class="btn btn-primary" id="mSend" style="max-width:320px" ${comp.busy?"disabled":""}>Send to ${audienceCount()} ${audienceCount()===1?"person":"people"}</button>
+      <p class="muted small">Messages go out one by one, a few seconds apart, so your number isn't flagged as spam. 30 people take about 3 minutes. You can close this page while it sends.</p>
+    </div>` : ""}
+    <div class="stack"><div class="top" style="margin:0"><h3>Sent messages</h3><button class="link" id="mRefresh">Refresh</button></div>${hist}</div>
+  </div>`;
+}
+
+function bindMessages(){
+  const keep = () => { const e=$("#mEn"), f=$("#mFr"), t=$("#mTest"), tl=$("#mTestLang"); if(e) comp.en=e.value; if(f) comp.fr=f.value; if(t) comp.testNum=t.value; if(tl) comp.testLang=tl.value; };
+  const r = $("#mRefresh"); if(r) r.onclick = loadMessages;
+  const wc = $("#waChange"); if(wc) wc.onclick = () => { showWaSetup = true; adminRender(); };
+  const ws = $("#waSave");
+  if(ws) ws.onclick = async () => {
+    const i = $("#waInst").value.trim(), tk = $("#waTok").value.trim();
+    if(!i || !tk){ alert("Enter both the instance ID and the access token."); return; }
+    try{ await rpc("gd_admin_set_whatsapp", {p_pin:admPin, p_instance:i, p_token:tk}); showWaSetup = false; await loadMessages(); }
+    catch(e){ alert("Could not save: " + e.message); }
+  };
+  const a = $("#mAud");
+  if(a) a.onchange = () => { keep(); const [t, ...v] = a.value.split(":"); comp.aud = t; comp.val = v.join(":"); adminRender(); };
+  const tl = $("#mTestLang"); if(tl) tl.onchange = keep;
+  const f = $("#mFile");
+  if(f) f.onchange = async () => {
+    keep(); const file = f.files[0]; if(!file) return;
+    if(file.size > 50*1024*1024){ comp.note = "File is over 50 MB. Compress it first."; adminRender(); return; }
+    comp.note = "Uploading " + file.name + "…"; comp.busy = true; adminRender();
+    try{ const fd = new FormData(); fd.append("pin", admPin); fd.append("file", file);
+      comp.media = await callFn(fd, true); comp.note = "";
+    }catch(e){ comp.note = "Upload failed: " + (ERR_WA[e.message] || e.message); }
+    comp.busy = false; adminRender();
+  };
+  const rm = $("#mRemove"); if(rm) rm.onclick = () => { keep(); comp.media = null; adminRender(); };
+  document.querySelectorAll("[data-errs]").forEach(b => b.onclick = () => {
+    const m = admMsg.messages.find(x => String(x.id) === b.dataset.errs);
+    alert((m.errors||[]).map(x => `${x.name} (+${x.phone}): ${x.detail}`).join("\n\n") || "No details.");
+  });
+  const s = $("#mSend");
+  if(s) s.onclick = async () => {
+    keep();
+    const n = audienceCount();
+    if(!comp.en.trim() && !comp.fr.trim() && !comp.media){ comp.note = ERR_WA.empty_message; adminRender(); return; }
+    if(comp.aud !== "test" && !confirm(`Send this WhatsApp message to ${n} ${n===1?"person":"people"}?`)) return;
+    comp.busy = true; comp.note = ""; adminRender();
+    try{
+      const audience = comp.aud === "test" ? {type:"test", value:comp.testNum, lang:comp.testLang} : {type:comp.aud, value:comp.val || null};
+      const d = await callFn({pin:admPin, audience, text_en:comp.en, text_fr:comp.fr, media_url:comp.media?.url, media_name:comp.media?.name});
+      comp.note = `✓ Sending to ${d.total} ${d.total===1?"person":"people"}. Progress shows below.`;
+      if(comp.aud !== "test"){ comp.en = ""; comp.fr = ""; comp.media = null; }
+    }catch(e){ comp.note = ERR_WA[e.message] || ("Could not send: " + e.message); }
+    comp.busy = false; await loadMessages(); adminRender();
+  };
 }
 
 /* ---------- start ---------- */
