@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Growth Day Cohort</title>
 <meta name="theme-color" content="#1C2340">
+<meta name="description" content="Grow 1% a day for 42 days. The 6-week Growth Day cohort, led by Dr. Denis Ekobena (Equip2Lead). In English and French.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growthday.cc/cohort/">
+<meta property="og:title" content="Grow 1% a day for 42 days · Growth Day Cohort">
+<meta property="og:description" content="A 6-week cohort: the Daily Fire at 6:00, your 1% Card each night, a triad that keeps you going. English & français.">
+<meta property="og:image" content="https://growthday.cc/cohort/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://growthday.cc/cohort/og-image.jpg">
+
 <link rel="icon" href="https://growthday.cc/growing-flame.png">
 <link rel="apple-touch-icon" href="https://growthday.cc/growing-flame.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,6 +82,95 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--ember)}
 .credit{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);text-align:center}
 .credit b{font-weight:600;color:var(--text)}
 
+
+/* ---------- landing ---------- */
+.land{--max:1120px}
+.lh{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.lh-in{position:relative;min-height:100svh;display:flex;flex-direction:column;max-width:var(--max);margin:0 auto}
+.lh-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--ink)}
+.lh-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,35,64,.85) 0%,rgba(28,35,64,.15) 22%,rgba(28,35,64,.82) 58%,#1C2340 100%)}
+.lnav{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:18px 20px}
+.lnav .brand{color:#fff}
+.lnav-r{display:flex;gap:16px;align-items:center}
+.lt{color:#fff}
+.lh .langs{border-color:rgba(255,255,255,.35)}
+.lh .langs button{color:rgba(255,255,255,.85)}
+.lh .langs button[aria-pressed="true"]{background:#fff;color:#1C2340}
+.lh-copy{position:relative;z-index:2;margin-top:auto;padding:0 20px 36px;max-width:640px}
+.pill{display:inline-block;background:var(--ember);color:#1C2340;font-weight:600;border-radius:999px;padding:6px 14px;font-size:15px}
+.lh-title{font-size:clamp(46px,11.5vw,88px);line-height:.98;letter-spacing:-.03em;margin:18px 0 16px;font-weight:700}
+.lh-sub{font-size:18px;opacity:.9;max-width:32em}
+.lh-cta{display:flex;flex-direction:column;gap:10px;margin-top:26px}
+.btn-glass{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.lh-proof{margin-top:16px;font-size:15px;opacity:.78}
+@media (min-width:900px){
+  .lh{background:radial-gradient(760px 520px at 78% 45%,rgba(232,137,12,.25),transparent 62%),var(--ink)}
+  .lh-in{display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:auto 1fr;min-height:auto;padding-bottom:72px;column-gap:56px}
+  .lnav{grid-column:1/-1;grid-row:1}
+  .lh-copy{grid-column:1;grid-row:2;align-self:center;margin:0;padding:24px 20px}
+  .lh-video{position:relative;inset:auto;grid-column:2;grid-row:2;height:min(76vh,700px);width:auto;aspect-ratio:9/16;justify-self:center;border-radius:36px;border:8px solid #0E1328;box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08)}
+  .lh-shade{display:none}
+  .lh-cta{flex-direction:row}
+  .lh-cta .btn{width:auto}
+}
+.ls{padding:76px 20px}
+.lin{max-width:var(--max);margin:0 auto}
+.lin.two{display:grid;gap:40px}
+@media (min-width:900px){.lin.two{grid-template-columns:1fr 1fr;align-items:center;gap:72px}}
+.ls h2{font-size:clamp(32px,5.4vw,50px);letter-spacing:-.025em;font-weight:700;margin-bottom:14px}
+.lead{font-size:19px;color:var(--muted);max-width:32em}
+.ls-alt{background:var(--surface)}
+.ls-dark{background:var(--ink);color:#fff}
+.ls-dark .lead{color:rgba(255,255,255,.78)}
+.cnum{font-family:var(--display);font-size:clamp(84px,16vw,140px);font-weight:700;line-height:1;color:var(--ember-text);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.bar{display:grid;grid-template-columns:1fr auto;align-items:center;gap:6px 14px;margin-top:22px}
+.bar-l{grid-column:1/-1;font-weight:600;font-size:15px}
+.track{height:14px;background:var(--line);border-radius:99px;overflow:hidden}
+.fill{display:block;height:100%;width:0;border-radius:99px;transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.on .fill{width:var(--w)}
+.fill.up{background:var(--ember)}
+.fill.down{background:var(--muted)}
+.bar b{font-family:var(--display);font-size:18px}
+.rhythm{list-style:none;padding:0;margin:26px 0 0}
+.rhythm li{display:grid;grid-template-columns:88px 1fr;gap:2px 16px;padding:16px 0;border-top:1px solid var(--line)}
+.rhythm time{font-family:var(--display);font-weight:700;color:var(--ember-text);grid-row:span 2}
+.rhythm h3{font-size:18px}
+.rhythm p{color:var(--muted)}
+.more{margin-top:18px;color:var(--muted)}
+.demo{background:var(--ink);border-radius:26px;padding:24px;color:#fff;max-width:440px;width:100%;justify-self:center}
+.demo .flames .h,.demo .flames .w{color:rgba(255,255,255,.55)}
+.demo .f-miss path,.demo .f-future path{stroke:rgba(255,255,255,.3)}
+.demo .fl{cursor:default}
+.demo-cap{margin-top:16px;opacity:.82;font-size:15px}
+.arc{list-style:none;padding:0;margin:30px 0 0;display:grid;gap:12px}
+@media (min-width:700px){.arc{grid-template-columns:repeat(3,1fr)}}
+.arc li{border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:20px}
+.arc .wk{font-size:14px;opacity:.6;font-weight:600}
+.arc h3{font-size:24px;margin:4px 0 6px;color:var(--glow)}
+.arc p{opacity:.84}
+.lchips{display:grid;grid-template-columns:1fr;gap:10px;margin:26px 0 20px}
+@media (min-width:700px){.lchips{grid-template-columns:repeat(3,1fr)}}
+.lgo{max-width:340px}
+.leader{display:grid;gap:30px;align-items:center}
+@media (min-width:800px){.leader{grid-template-columns:300px 1fr;gap:56px}}
+.portrait{aspect-ratio:4/5;border-radius:26px;background:var(--ink);display:grid;place-items:center;overflow:hidden;color:var(--glow);font-family:var(--display);font-size:76px;font-weight:700;max-width:300px;width:100%}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.faq{margin-top:20px}
+.faq details{border-top:1px solid var(--line);padding:18px 0}
+.faq summary{font-family:var(--display);font-weight:600;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--ember-text);font-size:24px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin-top:8px;color:var(--muted);max-width:40em}
+.final .btn{margin-top:26px;max-width:340px}
+.land .credit{margin:0;padding:28px 20px 44px;background:var(--ink);color:rgba(255,255,255,.62);border-top:1px solid rgba(255,255,255,.1)}
+.land .credit b{color:#fff}
+
+.watch{display:inline-block;margin-top:14px;font-size:16px}
+.recap{border:0;padding:0;background:transparent;max-width:min(92vw,420px);width:100%}
+.recap::backdrop{background:rgba(10,14,30,.88)}
+.recap video{width:100%;max-height:86vh;border-radius:20px;display:block;background:#000}
+.recap-x{position:absolute;top:8px;right:8px;z-index:2;width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:24px;cursor:pointer}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -290,18 +390,168 @@ const credit = () => `<footer class="credit">Growth Day · ${t().credit}</footer
 function header(rerender){ return `<div class="top"><div class="brand"><img src="${LOGO}" alt="">Growth Day</div>${langToggle()}</div>`; }
 
 /* ---------- participant: auth screens ---------- */
+const LT = {
+en:{
+  signin:"Sign in", watch:"Watch the Growth Day recap", close:"Close", date:d=>`Starts ${d}`,
+  h1:"Grow 1% a day. For 42 days.",
+  sub:"A 6-week cohort for people who are done waiting to change. One teaching each morning, one small step each day, and a community that keeps you going.",
+  join:"Join the cohort", have:"I already joined",
+  joined:n=>`${n} people have already joined`, seats:"About 30 seats per cohort",
+  c_title:"Small steps don't stay small.",
+  c_body:"Get 1% better every day for 42 days and you finish 52% ahead of where you started. Slip 1% a day and you lose a third of what you had.",
+  c_up:"1% better every day", c_down:"1% worse every day",
+  how_title:"Your day in the cohort",
+  how:[["6:00","The Daily Fire","A 5-minute audio on WhatsApp: one Word, one principle, one small action."],["All day","Your 1%","Apply today's principle to your two growth areas. Small is enough."],["Tonight","Your 1% Card","Two taps in the app. Your flame lights up and your streak grows."],["Sunday","Growth Score","Rate your week in each area and watch the line climb."]],
+  how_more:"Plus a weekly call with your triad, three live seminars with Dr. Denis Ekobena, and a graduation where you tell your story.",
+  demo_cap:"42 flames. Light one every night.",
+  arc_title:"Six weeks, one direction", week:"Week",
+  arc:[["See","Get honest about where you are. Choose your two areas."],["Plan","Build your growth plan and say it out loud."],["Practice","Keep the daily rhythm when motivation fades."],["Stretch","Do the one thing outside your comfort zone."],["Deepen","Grow the person, not just the habit."],["Multiply","Tell your story. Help someone else grow."]],
+  areas_title:"Choose your two growth areas",
+  areas_sub:"One you're excited about. One you've been avoiding. Tap two to start.",
+  areas_go:"Join with these two", areas_pick:n=>`Choose ${2-n} more`,
+  lead_title:"Led by Dr. Denis Ekobena",
+  lead_body:"Founder of Equip2Lead, Senior Leader of FIRE Church in Yaoundé, and a certified John Maxwell trainer for Africa. The cohort is built on the growth principles he teaches leaders across the continent.",
+  faq_title:"Questions",
+  faq:[["How much time does it take?","About 15 minutes a day: 5 to listen, a few minutes to act, 3 to fill your card. Plus one 30-minute triad call each week."],["Which language?","Everything comes in English and in French. You choose when you join."],["Do I need to install an app?","No. It opens in your browser from the link. You can add it to your home screen."],["What if I miss a day?","Fill yesterday's card the next day and keep going. The streak is a guide, not a judge."]],
+  final_title:"The next 42 days will pass anyway.", final_sub:"Decide who you'll be at the end of them."
+},
+fr:{
+  signin:"Connexion", watch:"Revoir la Journée de croissance", close:"Fermer", date:d=>`Début le ${d}`,
+  h1:"Grandir de 1 % par jour. Pendant 42 jours.",
+  sub:"Une cohorte de 6 semaines pour ceux qui ne veulent plus attendre pour changer. Un enseignement chaque matin, un petit pas chaque jour, et une communauté qui vous fait avancer.",
+  join:"Rejoindre la cohorte", have:"Je suis déjà inscrit",
+  joined:n=>`${n} personnes ont déjà rejoint`, seats:"Environ 30 places par cohorte",
+  c_title:"Les petits pas ne restent pas petits.",
+  c_body:"Progressez de 1 % chaque jour pendant 42 jours et vous terminez 52 % plus loin qu'au départ. Reculez de 1 % par jour et vous perdez un tiers de ce que vous aviez.",
+  c_up:"1 % de mieux chaque jour", c_down:"1 % de moins chaque jour",
+  how_title:"Votre journée dans la cohorte",
+  how:[["6h00","Le Daily Fire","Un audio de 5 minutes sur WhatsApp : une Parole, un principe, une petite action."],["La journée","Votre 1 %","Appliquez le principe du jour à vos deux domaines. Petit, c'est suffisant."],["Le soir","Votre carte 1 %","Deux touches dans l'application. Votre flamme s'allume et votre série grandit."],["Dimanche","Bilan de croissance","Notez votre semaine dans chaque domaine et regardez la courbe monter."]],
+  how_more:"Avec un appel hebdomadaire en triade, trois séminaires en direct avec le Dr Denis Ekobena, et une remise de diplômes où vous racontez votre histoire.",
+  demo_cap:"42 flammes. Allumez-en une chaque soir.",
+  arc_title:"Six semaines, une direction", week:"Semaine",
+  arc:[["Voir","Regardez honnêtement où vous en êtes. Choisissez vos deux domaines."],["Planifier","Construisez votre plan de croissance et dites-le à voix haute."],["Pratiquer","Gardez le rythme quand la motivation baisse."],["Se dépasser","Faites la chose qui vous sort de votre zone de confort."],["Approfondir","Faites grandir la personne, pas seulement l'habitude."],["Multiplier","Racontez votre histoire. Aidez quelqu'un d'autre à grandir."]],
+  areas_title:"Choisissez vos deux domaines de croissance",
+  areas_sub:"Un qui vous enthousiasme. Un que vous évitez. Touchez-en deux pour commencer.",
+  areas_go:"Rejoindre avec ces deux domaines", areas_pick:n=>`Encore ${2-n} à choisir`,
+  lead_title:"Dirigé par le Dr Denis Ekobena",
+  lead_body:"Fondateur d'Equip2Lead, Senior Leader de FIRE Church à Yaoundé et formateur certifié John Maxwell pour l'Afrique. La cohorte repose sur les principes de croissance qu'il enseigne aux leaders du continent.",
+  faq_title:"Questions",
+  faq:[["Combien de temps cela prend-il ?","Environ 15 minutes par jour : 5 pour écouter, quelques minutes pour agir, 3 pour remplir votre carte. Plus un appel de triade de 30 minutes par semaine."],["Dans quelle langue ?","Tout est en anglais et en français. Vous choisissez à l'inscription."],["Faut-il installer une application ?","Non. Elle s'ouvre dans votre navigateur depuis le lien. Vous pouvez l'ajouter à votre écran d'accueil."],["Et si je rate un jour ?","Remplissez la carte d'hier le lendemain et continuez. La série est un repère, pas un juge."]],
+  final_title:"Les 42 prochains jours passeront de toute façon.", final_sub:"Décidez qui vous serez à la fin."
+}};
+
+let pubStats = null, lPick = [];
+function demoFlames(){
+  const st = d => d>13 ? "future" : d===13 ? "open" : [4,9].includes(d) ? "one" : d===7 ? "miss" : "both";
+  let h = `<div class="flames"><span></span>${t().days.map(x=>`<span class="h">${x}</span>`).join("")}`;
+  for(let w=1; w<=6; w++){
+    h += `<span class="w">${lang==="fr"?"S":"W"}${w}</span>`;
+    for(let i=1;i<=7;i++){ const d=(w-1)*7+i; h += `<span class="fl f-${st(d)} ${d===13?"today":""}">${FLAME}</span>`; }
+  }
+  return h + `</div>`;
+}
 function welcome(){
-  root.innerHTML = `<div class="wrap stack-lg">${header()}
-    <div class="stack"><h1>${t().tagline}</h1><p class="muted">${t().intro}</p></div>
-    <div class="stack"><button class="btn btn-primary" id="goJoin">${t().join}</button>
-    <button class="btn btn-ghost" id="goLogin">${t().haveAcc}</button></div>${credit()}</div>`;
+  document.body.classList.add("is-land");
+  const X = LT[lang], start = (pubStats && pubStats.start_date) || "2026-10-19";
+  const proof = `${pubStats && pubStats.joined >= 5 ? X.joined(pubStats.joined) + " · " : ""}${X.seats}`;
+  root.innerHTML = `<div class="land">
+  <header class="lh"><div class="lh-in">
+    <video class="lh-video" src="growth-day-hero.mp4" poster="growth-day-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+    <div class="lh-shade"></div>
+    <nav class="lnav"><div class="brand"><img src="${LOGO}" alt="">Growth Day</div><div class="lnav-r">${langToggle()}<button class="link lt" id="goLogin2">${X.signin}</button></div></nav>
+    <div class="lh-copy">
+      <p class="pill">${X.date(fmtDate(start))}</p>
+      <h1 class="lh-title">${X.h1}</h1>
+      <p class="lh-sub">${X.sub}</p>
+      <div class="lh-cta"><button class="btn btn-primary" id="goJoin">${X.join}</button><button class="btn btn-glass" id="goLogin">${X.have}</button></div>
+      <p class="lh-proof" id="proof">${proof}</p>
+      <button class="link lt watch" id="watch">▶ ${X.watch}</button>
+    </div>
+  </div></header>
+
+  <section class="ls"><div class="lin two">
+    <div><h2>${X.c_title}</h2><p class="lead">${X.c_body}</p></div>
+    <div id="compound"><p class="cnum">×<span id="cnum">1.00</span></p>
+      <div class="bar"><span class="bar-l">${X.c_up}</span><div class="track"><i class="fill up" style="--w:100%"></i></div><b>1.52</b></div>
+      <div class="bar"><span class="bar-l">${X.c_down}</span><div class="track"><i class="fill down" style="--w:43%"></i></div><b>0.66</b></div>
+    </div></div></section>
+
+  <section class="ls ls-alt"><div class="lin two">
+    <div><h2>${X.how_title}</h2>
+      <ul class="rhythm">${X.how.map(r=>`<li><time>${r[0]}</time><h3>${r[1]}</h3><p>${r[2]}</p></li>`).join("")}</ul>
+      <p class="more">${X.how_more}</p></div>
+    <div class="demo">${demoFlames()}<p class="demo-cap">${X.demo_cap}</p></div>
+  </div></section>
+
+  <section class="ls ls-dark"><div class="lin">
+    <h2>${X.arc_title}</h2>
+    <ol class="arc">${X.arc.map((a,i)=>`<li><span class="wk">${X.week} ${i+1}</span><h3>${a[0]}</h3><p>${a[1]}</p></li>`).join("")}</ol>
+  </div></section>
+
+  <section class="ls"><div class="lin">
+    <h2>${X.areas_title}</h2><p class="lead">${X.areas_sub}</p>
+    <div class="lchips">${AREAS[lang].map((a,i)=>`<button class="chip" data-lp="${i+1}" aria-pressed="${lPick.includes(i+1)}" ${lPick.length>=2&&!lPick.includes(i+1)?"disabled":""}><b>${esc(a[0])}</b>${esc(a[1])}</button>`).join("")}</div>
+    <button class="btn btn-primary lgo" id="lGo" ${lPick.length<2?"disabled":""}>${lPick.length<2?X.areas_pick(lPick.length):X.areas_go}</button>
+  </div></section>
+
+  <section class="ls ls-alt"><div class="lin leader">
+    <div class="portrait"><img src="denis.jpg" alt="Dr. Denis Ekobena" onerror="this.remove()">DE</div>
+    <div><h2>${X.lead_title}</h2><p class="lead">${X.lead_body}</p></div>
+  </div></section>
+
+  <section class="ls"><div class="lin" style="max-width:780px">
+    <h2>${X.faq_title}</h2>
+    <div class="faq">${X.faq.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("")}</div>
+  </div></section>
+
+  <section class="ls ls-dark final"><div class="lin">
+    <h2>${X.final_title}</h2><p class="lead">${X.final_sub}</p>
+    <button class="btn btn-primary" id="goJoin3">${X.join}</button>
+  </div></section>
+  ${credit()}
+  <dialog class="recap" id="recap"><button class="recap-x" id="recapX" aria-label="${X.close}">×</button><video id="recapV" src="growth-day-recap.mp4" poster="growth-day-poster.jpg" controls playsinline preload="none"></video></dialog>
+  </div>`;
+
   bindLang(welcome);
-  $("#goJoin").onclick = () => joinForm();
-  $("#goLogin").onclick = () => loginForm();
+  const toJoin = () => { document.body.classList.remove("is-land"); window.scrollTo(0,0); joinForm(); };
+  const toLogin = () => { document.body.classList.remove("is-land"); window.scrollTo(0,0); loginForm(); };
+  $("#goJoin").onclick = toJoin; $("#goJoin3").onclick = toJoin;
+  $("#goLogin").onclick = toLogin; $("#goLogin2").onclick = toLogin;
+  document.querySelectorAll("[data-lp]").forEach(b => b.onclick = () => {
+    const n = +b.dataset.lp, y = window.scrollY;
+    lPick = lPick.includes(n) ? lPick.filter(x=>x!==n) : [...lPick, n].slice(0,2);
+    welcome(); window.scrollTo(0, y);
+    const el = document.querySelector(`[data-lp="${n}"]`); if(el) el.focus({preventScroll:true});
+  });
+  $("#lGo").onclick = () => { draft.areas = [...lPick]; toJoin(); };
+  const dlg = $("#recap"), rv = $("#recapV");
+  $("#watch").onclick = () => { if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); rv.play().catch(()=>{}); };
+  const closeRecap = () => { rv.pause(); dlg.close ? dlg.close() : dlg.removeAttribute("open"); };
+  $("#recapX").onclick = closeRecap;
+  dlg.addEventListener("click", e => { if(e.target === dlg) closeRecap(); });
+  dlg.addEventListener("close", () => rv.pause());
+
+  // the one orchestrated motion: compounding count-up
+  const box = $("#compound"), num = $("#cnum");
+  const finish = () => { box.classList.add("on"); num.textContent = "1.52"; };
+  if(lPick.length || matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) finish();
+  else {
+    const io = new IntersectionObserver(es => { if(!es[0].isIntersecting) return; io.disconnect();
+      box.classList.add("on"); const t0 = performance.now();
+      const step = now => { const p = Math.min(1, (now - t0) / 1400), e = 1 - Math.pow(1 - p, 3);
+        num.textContent = Math.pow(1.01, 42 * e).toFixed(2); if(p < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step); }, {threshold:.5});
+    io.observe(box);
+  }
+  if(!pubStats) rpc("gd_public_stats", {}).then(st => { pubStats = st;
+    const p = $("#proof"); if(p) p.textContent = `${st.joined >= 5 ? X.joined(st.joined) + " · " : ""}${X.seats}`;
+    const pill = document.querySelector(".lh .pill"); if(pill) pill.textContent = X.date(fmtDate(st.start_date));
+  }).catch(()=>{});
 }
 
 let draft = {name:"", phone:"", areas:[], lang:null};
 function joinForm(errText){
+  document.body.classList.remove("is-land");
   const A = AREAS[lang];
   const picked = draft.areas;
   root.innerHTML = `<div class="wrap stack-lg">${header()}
@@ -348,6 +598,7 @@ function joinForm(errText){
 }
 
 function loginForm(){
+  document.body.classList.remove("is-land");
   root.innerHTML = `<div class="wrap stack-lg">${header()}
     <h1>${t().signInTitle}</h1>
     <div class="stack">
@@ -375,6 +626,7 @@ function loginForm(){
 let me = null, tab = "today", cardDay = null, lastSaved = null;
 
 async function boot(){
+  document.body.classList.remove("is-land");
   const tok = store.get("gd_token");
   if(!tok) return welcome();
   root.innerHTML = `<div class="wrap"><p class="muted">${t().loading}</p></div>`;
