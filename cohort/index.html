@@ -171,6 +171,13 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--ember)}
 .recap::backdrop{background:rgba(10,14,30,.88)}
 .recap video{width:100%;max-height:86vh;border-radius:20px;display:block;background:#000}
 .recap-x{position:absolute;top:8px;right:8px;z-index:2;width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:24px;cursor:pointer}
+.auto-row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-top:1px solid var(--line);padding-top:14px}
+.switch{flex:none;width:52px;height:30px;border-radius:99px;border:0;background:var(--line);position:relative;cursor:pointer}
+.switch span{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .2s}
+.switch[aria-pressed="true"]{background:var(--leaf)}
+.switch[aria-pressed="true"] span{left:25px}
+.preview{border-top:1px solid var(--line);padding-top:14px}
+pre.wa{white-space:pre-wrap;word-wrap:break-word;font:400 15px/1.45 var(--body);background:#DCF8C6;color:#111;border-radius:12px;padding:12px 14px;margin:0}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -922,7 +929,9 @@ function adminRender(){
         <div class="stack"><h3>English</h3>${f("title_en","Title")}${f("word_en","Word (scripture reference)")}${f("principle_en","Principle",1)}${f("action_en","1% micro-action",1)}</div>
         <div class="stack"><h3>Français</h3>${f("title_fr","Titre")}${f("word_fr","Parole (référence)")}${f("principle_fr","Principe",1)}${f("action_fr","Micro-action 1 %",1)}</div>
       </div>
-      ${f("audio_url","Audio link (optional: Google Drive, SoundCloud, or a direct .mp3 link)")}
+      ${f("audio_url","Audio for this day (upload below, or paste a link)")}
+      <div><label for="laFile">Upload the Daily Fire audio for day ${admDay}</label><input type="file" id="laFile" accept="audio/*">
+      <p class="hint">Record on your phone (a WhatsApp voice note or any recording works), upload here, then save the day. It is sent after the 6:00 message and plays inside the app.</p></div>
       <p id="lmsg" role="status"></p>
       <button class="btn btn-primary" id="lsave" style="max-width:260px">Save day ${admDay}</button>
       <p class="muted small">Participants only see a day's lesson once that day arrives. If a day has no principle, the app tells them to listen to the Daily Fire on WhatsApp.</p>
@@ -969,6 +978,16 @@ function adminRender(){
     const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "growth-day-cohort.csv"; a.click();
   };
   const ld = $("#lday"); if(ld) ld.onchange = () => { admDay = +ld.value; adminRender(); };
+  const la = $("#laFile");
+  if(la) la.onchange = async () => {
+    const file = la.files[0]; if(!file) return; const m = $("#lmsg");
+    if(file.size > 50*1024*1024){ m.className="err"; m.textContent="File is over 50 MB."; return; }
+    m.className=""; m.textContent = "Uploading " + file.name + "…";
+    try{ const fd = new FormData(); fd.append("pin", admPin); fd.append("file", file);
+      const d = await callFn(fd, true); $("#audio_url").value = d.url;
+      m.className="ok"; m.textContent = `✓ Uploaded. Now click "Save day ${admDay}".`;
+    }catch(e){ m.className="err"; m.textContent = "Upload failed: " + e.message; }
+  };
   const ls = $("#lsave");
   if(ls) ls.onclick = async () => {
     const keys = ["title_en","title_fr","word_en","word_fr","principle_en","principle_fr","action_en","action_fr","audio_url"];
@@ -1019,6 +1038,34 @@ function audienceCount(){
 }
 const ERR_WA = {whatsapp_not_configured:"Connect WhatsApp first (instance ID and token).", no_recipients:"No one matches this audience.", empty_message:"Write a message or attach a file.", phone_invalid:"Enter a valid test number.", wrong_pin:"Admin PIN rejected. Reload and sign in again.", locked:"Admin is locked for 15 minutes."};
 
+
+function autoPanel(){
+  const a = admMsg, pv = autoPrev;
+  const row = (k, title, desc) => `<div class="auto-row">
+      <div><h3>${title}</h3><p class="muted small">${desc}</p></div>
+      <button class="switch" data-auto="${k}" aria-pressed="${!!a["auto_"+k]}" aria-label="${title}"><span></span></button>
+    </div>
+    <div class="seg"><button data-prev="${k}">Preview</button><button data-now="${k}">Send now</button></div>`;
+  const log = (a.auto_log||[]).length ? `<p class="muted small">Last automatic sends: ${a.auto_log.slice(0,4).map(x=>`${x.kind==="morning"?"🔥":"🌙"} day ${x.day}`).join(" · ")}</p>` : "";
+  return `<div class="panel stack">
+    <h3>Automatic messages</h3>
+    <p class="muted small">They go out by themselves on each day of the cohort (days 1 to 42), personalised with each person's name and growth areas. Switch them on when you're ready.</p>
+    ${row("morning","🔥 Daily Fire at 6:00","Today's lesson to everyone: title, Word, principle and 1% action, followed by the day's audio if you uploaded one. On Sundays it becomes the weekly Growth Score reminder.")}
+    ${row("evening","🌙 Reminder at 20:00","Only to people who haven't filled today's 1% Card yet, with the link to the app.")}
+    ${log}
+    ${pv ? `<div class="preview stack">
+      <div class="top" style="margin:0"><h3>${pv.kind==="morning"?"Daily Fire":"Evening reminder"} preview · day
+        <select id="pvDay" style="width:auto;display:inline-block;padding:4px 8px">${Array.from({length:42},(_,i)=>`<option ${pv.day===i+1?"selected":""}>${i+1}</option>`).join("")}</select></h3>
+        <button class="link" id="pvClose">Close</button></div>
+      ${pv.skipped ? `<p class="muted">Nothing to preview for this day.</p>` : `
+      <p class="muted small">Example for "Grace" (finances + spiritual growth). Would go to ${pv.recipients} ${pv.recipients===1?"person":"people"} right now${pv.media_url?", followed by the day's audio":""}.</p>
+      <div class="grid2"><pre class="wa">${esc(pv.text_en)}</pre><pre class="wa">${esc(pv.text_fr)}</pre></div>`}
+    </div>` : ""}
+    <p id="autoMsg" role="status" class="${autoNote.startsWith("✓")?"ok":"err"}">${esc(autoNote)}</p>
+  </div>`;
+}
+let autoPrev = null, autoNote = "";
+
 function messagesView(){
   if(!admMsg) return `<p class="muted">Loading…</p>`;
   const P = adm.participants;
@@ -1045,6 +1092,7 @@ function messagesView(){
     </tbody></table></div>` : `<p class="muted">No messages sent yet.</p>`;
   return `<div class="stack-lg" style="max-width:780px">
     ${!admMsg.configured || showWaSetup ? setup : `<p class="ok">✓ WhatsApp connected (instance ${esc(admMsg.instance_hint)}) <button class="link" id="waChange">Change</button></p>`}
+    ${admMsg.configured ? autoPanel() : ""}
     ${admMsg.configured ? `<div class="panel stack">
       <h3>New message</h3>
       <div><label for="mAud">Send to</label><select id="mAud">
@@ -1074,6 +1122,32 @@ function messagesView(){
 function bindMessages(){
   const keep = () => { const e=$("#mEn"), f=$("#mFr"), t=$("#mTest"), tl=$("#mTestLang"); if(e) comp.en=e.value; if(f) comp.fr=f.value; if(t) comp.testNum=t.value; if(tl) comp.testLang=tl.value; };
   const r = $("#mRefresh"); if(r) r.onclick = loadMessages;
+  document.querySelectorAll("[data-auto]").forEach(b => b.onclick = async () => {
+    keep(); const k = b.dataset.auto, on = !admMsg["auto_"+k];
+    if(on && !confirm(k==="morning" ? "Turn on the automatic 6:00 Daily Fire for everyone?" : "Turn on the automatic 20:00 reminder?")) return;
+    try{ await rpc("gd_admin_set_auto", {p_pin:admPin, p_kind:k, p_on:on}); admMsg["auto_"+k] = on;
+      autoNote = on ? `✓ ${k==="morning"?"Daily Fire":"Evening reminder"} is on.` : `✓ ${k==="morning"?"Daily Fire":"Evening reminder"} is off.`; adminRender(); }
+    catch(e){ autoNote = "Could not change: " + e.message; adminRender(); }
+  });
+  const showPrev = async (k, day) => {
+    keep();
+    try{ const d = await callFn({pin:admPin, action:"preview", kind:k, day}); autoPrev = {...d, kind:k, day:d.day || day}; autoNote = ""; }
+    catch(e){ autoNote = "Preview failed: " + (ERR_WA[e.message] || e.message); }
+    adminRender();
+  };
+  document.querySelectorAll("[data-prev]").forEach(b => b.onclick = () => showPrev(b.dataset.prev, Math.min(42, Math.max(1, adm.day))));
+  const pd = $("#pvDay"); if(pd) pd.onchange = () => showPrev(autoPrev.kind, +pd.value);
+  const pc = $("#pvClose"); if(pc) pc.onclick = () => { autoPrev = null; adminRender(); };
+  document.querySelectorAll("[data-now]").forEach(b => b.onclick = async () => {
+    keep(); const k = b.dataset.now;
+    if(adm.day < 1 || adm.day > 42){ autoNote = "The cohort isn't running today, so there is no Daily Fire to send. Use Preview to check any day."; adminRender(); return; }
+    if(!confirm(k==="morning" ? `Send today's Daily Fire (day ${adm.day}) to everyone now?` : "Send the evening reminder now to everyone who hasn't filled today's card?")) return;
+    try{ const d = await callFn({pin:admPin, action:"auto", kind:k});
+      autoNote = d.skipped ? `Nothing sent (${d.skipped.replace(/_/g," ")}).` : `✓ Sending to ${d.total} ${d.total===1?"person":"people"}.`;
+      await loadMessages(); }
+    catch(e){ autoNote = ERR_WA[e.message] || ("Could not send: " + e.message); adminRender(); }
+  });
+
   const wc = $("#waChange"); if(wc) wc.onclick = () => { showWaSetup = true; adminRender(); };
   const ws = $("#waSave");
   if(ws) ws.onclick = async () => {
