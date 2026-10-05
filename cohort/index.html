@@ -333,6 +333,32 @@ td select{padding:4px 6px;font-size:13px;margin-top:6px;width:auto}
 code.sel{user-select:all;word-break:break-all;font-size:12.5px;background:var(--surface);padding:2px 4px;border-radius:4px}
 .settings-grid{align-items:start}
 .slip-card{box-shadow:inset 4px 0 0 var(--danger)}
+.ov{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ov div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 10px}
+.ov b{display:block;font-family:var(--display);font-size:22px}
+.ov span{font-size:12.5px;color:var(--muted);line-height:1.25;display:block}
+.seg.sub{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px;gap:4px;flex-wrap:nowrap}
+.seg.sub button{flex:1;border:0;padding:9px 6px;font-size:14px;white-space:nowrap}
+.seg.sub button[aria-pressed="true"]{background:var(--ink);color:#fff}
+@media (prefers-color-scheme: dark){.seg.sub button[aria-pressed="true"]{background:var(--ember);color:#1C2340}}
+.shelf{display:flex;flex-direction:column;gap:12px}
+.book{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px}
+.cover{flex:none;width:64px;height:92px;border-radius:4px 8px 8px 4px;color:#fff;font:600 10.5px/1.2 var(--display);padding:8px 6px;display:flex;align-items:flex-end;box-shadow:inset 5px 0 0 rgba(0,0,0,.18),0 2px 6px rgba(0,0,0,.15);overflow:hidden}
+.book-b{flex:1;min-width:0}
+.book-b h3{font-size:16px;line-height:1.25}
+.book.is-done .cover{filter:saturate(.6)}
+.pbar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:10px}
+.pbar i{display:block;height:100%;background:var(--ember);border-radius:99px;transition:width .3s}
+.is-done .pbar i,.crs .pbar i[style*="100%"]{background:var(--leaf)}
+.prow{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.pedit{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+.pedit-b{display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:10px}
+.danger{color:var(--danger)}
+.empty{border:1.5px dashed var(--line);border-radius:16px;padding:22px;text-align:center;color:var(--muted)}
+.sug{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.sugb{border:1.5px solid var(--line);background:var(--bg);color:var(--text);border-radius:999px;padding:7px 12px;font:600 13.5px var(--body);cursor:pointer}
+.crs-h{display:flex;gap:12px;align-items:flex-start}
+.kic{font-size:26px;width:44px;height:44px;border-radius:12px;background:var(--bg);display:grid;place-items:center;flex:none}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -448,7 +474,7 @@ en:{
   s1Title:"Let's start with you", s1Sub:"Your Daily Fire comes to this WhatsApp number every morning at 6:00.",
   s2Title:"Pick your two areas", s3Title:"Create your PIN",
   s3Sub:"4 digits. With your WhatsApp number, it lets you sign in on any phone.", show:"Show", hide:"Hide",
-  joiningAs:"You're joining as",
+  joiningAs:"You're joining as", consent:"By joining, you agree to receive the cohort messages on WhatsApp, and to share your name and WhatsApp number with your triad and Growth Guide.",
   doneTitle:n=>`You're in, ${n}!`, doneSub:d=>`Day 1 is ${d}. Your first Daily Fire arrives on WhatsApp at 6:00 that morning.`,
   openDash:"Open my dashboard", invite:"Invite a friend on WhatsApp",
   inviteMsg:"I just joined the Growth Day cohort: grow 1% a day for 42 days, with daily teaching on WhatsApp. Join me 👉 https://growthday.cc/cohort",
@@ -474,6 +500,18 @@ en:{
   testiSave:"Save my story", testiSaved:"✓ Thank you. Your story is saved.",
   storiesTitle:"Stories from past growers",
   registered:"You're registered.", perWeek:w=>`That's just ${w} FCFA a week for 6 weeks`,
+
+  psAreas:"My areas", psLib:"Library", psCourses:"Courses",
+  ovPlan:"plan filled", ovBooks:"books", ovFinished:"finished", ovCourses:"courses & activities",
+  libTitle:"My growth library", libSub:"The books feeding your growth right now. Update your progress as you read.",
+  libEmpty:"No books yet. What are you reading these days?", addBook:"Add a book", bookTitle:"Title", bookAuthor:"Author",
+  forArea:"For", bothAreas:"Both areas", generalArea:"General", reading:"Reading", inProgress:"In progress", finished2:"Finished", markDone:"Mark as finished",
+  update:"Update", remove:"Remove", saved2:"✓ Saved", suggest:"Books by Dr. Denis Ekobena",
+  crsTitle:"Courses & activities", crsSub:"Other ways you're growing: a course, a mentor, a training, a place where you serve.",
+  crsEmpty:"Nothing here yet. Are you taking a course, being mentored or serving somewhere?", addCrs:"Add an activity",
+  crsName:"Name", crsProvider:"Where or with whom", crsKind:"Type",
+  kinds:{course:"Course",mentoring:"Mentoring",training:"Training or workshop",service:"Serving",other:"Other"},
+  nowReading:"Reading",
   plan:"My plan",
   planTitle:"My growth plan", planIntro:"The Daily Fire teaches everyone the same principle. Your plan turns it into your own steps, in your own two areas. Build it during week 1, one piece per day.",
   pf:{honest:["Where I really am","Day 1"],score:["My starting score (1 to 10)","Day 2"],target:["Six weeks from now, better looks like…","Day 3"],daily:["My daily 1%","Day 4"],excuse:["My usual excuse","Day 5"],answer:["My answer to it","Day 5"]},
@@ -520,7 +558,7 @@ fr:{
   s1Title:"Commençons par vous", s1Sub:"Votre Daily Fire arrive sur ce numéro WhatsApp chaque matin à 6h00.",
   s2Title:"Choisissez vos deux domaines", s3Title:"Créez votre code PIN",
   s3Sub:"4 chiffres. Avec votre numéro WhatsApp, il vous permet de vous connecter sur n'importe quel téléphone.", show:"Afficher", hide:"Masquer",
-  joiningAs:"Vous vous inscrivez en tant que",
+  joiningAs:"Vous vous inscrivez en tant que", consent:"En vous inscrivant, vous acceptez de recevoir les messages de la cohorte sur WhatsApp, et de partager votre nom et votre numéro WhatsApp avec votre triade et votre Growth Guide.",
   doneTitle:n=>`Vous êtes inscrit, ${n} !`, doneSub:d=>`Le jour 1 est le ${d}. Votre premier Daily Fire arrive sur WhatsApp à 6h00 ce matin-là.`,
   openDash:"Ouvrir mon tableau de bord", invite:"Inviter un ami sur WhatsApp",
   inviteMsg:"Je viens de rejoindre la cohorte Growth Day : grandir de 1 % par jour pendant 42 jours, avec un enseignement quotidien sur WhatsApp. Rejoins-moi 👉 https://growthday.cc/cohort",
@@ -546,6 +584,18 @@ fr:{
   testiSave:"Enregistrer mon témoignage", testiSaved:"✓ Merci. Votre témoignage est enregistré.",
   storiesTitle:"Témoignages d'anciens participants",
   registered:"Vous êtes inscrit.", perWeek:w=>`Soit seulement ${w} FCFA par semaine pendant 6 semaines`,
+
+  psAreas:"Mes domaines", psLib:"Bibliothèque", psCourses:"Formations",
+  ovPlan:"plan rempli", ovBooks:"livres", ovFinished:"terminés", ovCourses:"formations & activités",
+  libTitle:"Ma bibliothèque de croissance", libSub:"Les livres qui nourrissent votre croissance en ce moment. Mettez à jour votre progression au fil de la lecture.",
+  libEmpty:"Aucun livre pour l'instant. Que lisez-vous ces temps-ci ?", addBook:"Ajouter un livre", bookTitle:"Titre", bookAuthor:"Auteur",
+  forArea:"Pour", bothAreas:"Les deux domaines", generalArea:"Général", reading:"En cours", inProgress:"En cours", finished2:"Terminé", markDone:"Marquer comme terminé",
+  update:"Mettre à jour", remove:"Retirer", saved2:"✓ Enregistré", suggest:"Livres du Dr Denis Ekobena",
+  crsTitle:"Formations & activités", crsSub:"Vos autres façons de grandir : une formation, un mentor, un atelier, un lieu où vous servez.",
+  crsEmpty:"Rien pour l'instant. Suivez-vous une formation, un mentorat, ou servez-vous quelque part ?", addCrs:"Ajouter une activité",
+  crsName:"Nom", crsProvider:"Où ou avec qui", crsKind:"Type",
+  kinds:{course:"Formation",mentoring:"Mentorat",training:"Atelier ou séminaire",service:"Service",other:"Autre"},
+  nowReading:"Lecture",
   plan:"Mon plan",
   planTitle:"Mon plan de croissance", planIntro:"Le Daily Fire enseigne le même principe à tout le monde. Votre plan le transforme en vos propres pas, dans vos deux domaines. Construisez-le pendant la semaine 1, un élément par jour.",
   pf:{honest:["Où j'en suis vraiment","Jour 1"],score:["Ma note de départ (1 à 10)","Jour 2"],target:["Dans six semaines, mieux, c'est…","Jour 3"],daily:["Mon 1 % quotidien","Jour 4"],excuse:["Mon excuse habituelle","Jour 5"],answer:["Ma réponse à cette excuse","Jour 5"]},
@@ -871,7 +921,8 @@ function joinForm(){
       <div class="pin-wrap"><input id="pin" class="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="new-password" aria-label="${T_.pin}" value="${esc(draft.pin)}">
       <button class="link" id="showPin" type="button">${T_.show}</button></div>
       <div class="summary"><p class="muted small">${T_.joiningAs}</p><p><b>${esc(draft.name)}</b> · +${esc(fullPhone(draft.code, draft.phone))}</p>
-        <div class="mini-areas">${picked.map(a=>`<span>${AREA_ICON[a-1]} ${esc(AREAS[lang][a-1][0])}</span>`).join("")}</div></div>`;
+        <div class="mini-areas">${picked.map(a=>`<span>${AREA_ICON[a-1]} ${esc(AREAS[lang][a-1][0])}</span>`).join("")}</div></div>
+      <p class="muted small" style="margin-top:16px">${T_.consent}</p>`;
     cta = `<button class="btn btn-primary" id="next">${T_.join}</button>`;
   }
   root.innerHTML = authShell(inner, st, cta);
@@ -1098,12 +1149,27 @@ function renderApp(){
   const tm = $("#toMe"); if(tm) tm.onclick = () => { tab = "me"; renderApp(); window.scrollTo(0,0); };
   document.querySelectorAll("[data-goplan]").forEach(b => b.onclick = () => { tab = "plan"; renderApp(); window.scrollTo(0,0); });
   document.querySelectorAll('.plan-card input[type=range]').forEach(r => r.oninput = () => { r.dataset.touched = '1'; r.nextElementSibling.textContent = r.value; });
+  document.querySelectorAll("[data-psub]").forEach(b => b.onclick = () => { planSub = b.dataset.psub; libEdit = crsEdit = null; renderApp(); });
+  const findIt = key => { const [k,id] = key.split(":"); const list = k==="b" ? me.plan.books : me.plan.courses; return {k, id, list}; };
+  document.querySelectorAll("[data-edit]").forEach(b => b.onclick = () => { const [k,id] = b.dataset.edit.split(":");
+    if(k==="b") libEdit = libEdit===id?null:id; else crsEdit = crsEdit===id?null:id; renderApp(); });
+  document.querySelectorAll("[data-prog]").forEach(r => { r.oninput = () => { r.nextElementSibling.textContent = r.value + "%"; };
+    r.onchange = () => mutatePlan(p => { const {k,id} = findIt(r.dataset.prog); const list = k==="b"?p.books:p.courses; const it = list.find(x=>x.id===id); if(it) it.progress = +r.value; }); });
+  document.querySelectorAll("[data-done]").forEach(b => b.onclick = () => mutatePlan(p => { const {k,id} = findIt(b.dataset.done); const list = k==="b"?p.books:p.courses; const it = list.find(x=>x.id===id); if(it) it.progress = 100; libEdit = crsEdit = null; }));
+  document.querySelectorAll("[data-del]").forEach(b => b.onclick = () => { if(!confirm(t().remove + " ?")) return;
+    mutatePlan(p => { const {k,id} = findIt(b.dataset.del); if(k==="b") p.books = p.books.filter(x=>x.id!==id); else p.courses = p.courses.filter(x=>x.id!==id); }); });
+  const ab = $("#addBook"); if(ab) ab.onclick = () => { const ti = $("#nbT").value.trim(); if(!ti){ $("#nbT").focus(); return; }
+    mutatePlan(p => { p.books.unshift({id:uid(), title:ti, author:$("#nbA").value.trim(), area:$("#nbArea").value, progress:0}); }); };
+  document.querySelectorAll("[data-sug]").forEach(b => b.onclick = () => mutatePlan(p => { p.books.unshift({id:uid(), title:b.dataset.sug, author:"Denis Ekobena", area:"0", progress:0}); }));
+  const ac = $("#addCrs"); if(ac) ac.onclick = () => { const ti = $("#ncT").value.trim(); if(!ti){ $("#ncT").focus(); return; }
+    mutatePlan(p => { p.courses.unshift({id:uid(), title:ti, kind:$("#ncK").value, provider:$("#ncP").value.trim(), area:$("#ncArea").value, progress:0}); }); };
   const sp = $("#savePlan");
   if(sp) sp.onclick = async () => {
     const plan = {};
     document.querySelectorAll(".plan-card").forEach(c => { const k = c.dataset.slot, o = {};
       c.querySelectorAll("[data-pf]").forEach(el => { if(el.type === "range" && el.dataset.touched !== "1" && !planOf(k).score) return; o[el.dataset.pf] = el.value; }); plan[k] = o; });
     sp.disabled = true; const m = $("#planMsg");
+    plan.books = books(); plan.courses = courses();
     try{ await rpc("gd_save_plan", {p_token:store.get("gd_token"), p_plan:plan});
       me.plan = plan; [1,2].forEach(k=>{ if(me.plan[k].score) me.plan[k].score = +me.plan[k].score; });
       sp.disabled = false; m.className = "ok"; m.textContent = t().planSaved;
@@ -1164,27 +1230,87 @@ function lessonBlock(l){
 
 const planOf = k => (me.plan && me.plan[k]) || {};
 const planCount = () => [1,2].reduce((n,k)=>n+PLAN_F.filter(f=>{const v=planOf(String(k))[f]; return v!==undefined && String(v).trim()!==""}).length,0);
+let planSub = "areas", libEdit = null, crsEdit = null, planNote = "";
+const KIND_ICON = {course:"🎓", mentoring:"🤝", training:"🛠️", service:"🙌", other:"✨"};
+const DE_BOOKS = [["Who Am I?","Qui suis-je ?"],["Equip 2 Lead","Equip 2 Lead"],["Leadership from the Inside Out","Leadership from the Inside Out"],["Le Pouvoir de la Vision","Le Pouvoir de la Vision"],["Leadership Starts Here","Leadership Starts Here"],["What Kind of Leader Are You?","What Kind of Leader Are You?"]];
+const books = () => (me.plan && me.plan.books) || [];
+const courses = () => (me.plan && me.plan.courses) || [];
+const uid = () => Math.random().toString(36).slice(2,12);
+const spine = str => { let h=0; for(const c of String(str)) h=(h*31+c.charCodeAt(0))%360; return `hsl(${h} 55% 42%)`; };
+function areaTag(k){ const T_=t(); if(k==="1") return `${AREA_ICON[me.area1-1]} ${esc(areaName(me.area1))}`; if(k==="2") return `${AREA_ICON[me.area2-1]} ${esc(areaName(me.area2))}`; return T_.generalArea; }
+function areaSelect(id, val){ const T_=t(); return `<select id="${id}"><option value="1" ${val==="1"?"selected":""}>${AREA_ICON[me.area1-1]} ${esc(areaName(me.area1))}</option><option value="2" ${val==="2"?"selected":""}>${AREA_ICON[me.area2-1]} ${esc(areaName(me.area2))}</option><option value="0" ${val==="0"?"selected":""}>${T_.bothAreas}</option></select>`; }
+function progressRow(item, kind){
+  const T_ = t(), open = (kind==="b" ? libEdit : crsEdit) === item.id, done = item.progress >= 100;
+  return `<div class="pbar"><i style="width:${item.progress}%"></i></div>
+    <div class="prow"><span class="small ${done?"ok":"muted"}">${done ? "✓ "+T_.finished2 : `${kind==="b"?T_.reading:T_.inProgress} · ${item.progress}%`}</span>
+      <span class="pact"><button class="link small" data-edit="${kind}:${item.id}">${open?"✕":T_.update}</button></span></div>
+    ${open ? `<div class="pedit"><div class="range-row"><input type="range" min="0" max="100" step="5" value="${item.progress}" data-prog="${kind}:${item.id}"><output>${item.progress}%</output></div>
+      <div class="pedit-b">${done?"":`<button class="btn btn-ghost sm" data-done="${kind}:${item.id}">${T_.markDone}</button>`}<button class="link small danger" data-del="${kind}:${item.id}">${T_.remove}</button></div></div>` : ""}`;
+}
 function viewPlan(){
-  const T_ = t(), dayNow = Math.max(1, me.day);
-  return `<section class="stack"><h1>${T_.planTitle}</h1><p class="muted">${T_.planIntro}</p>
-      <div class="meter"><i style="width:${Math.round(planCount()/12*100)}%"></i></div><p class="small muted">${T_.filled(planCount(),12)}</p></section>
-    ${[[1,me.area1],[2,me.area2]].map(([k,a])=>{ const p = planOf(String(k));
+  const T_ = t(), bk = books(), cr = courses();
+  const fin = bk.filter(b=>b.progress>=100).length;
+  const tabs = [["areas",T_.psAreas],["lib",T_.psLib+(bk.length?` · ${bk.length}`:"")],["courses",T_.psCourses+(cr.length?` · ${cr.length}`:"")]];
+  let body = "";
+  if(planSub === "areas"){
+    const dayNow = Math.max(1, me.day);
+    body = `${[[1,me.area1],[2,me.area2]].map(([k,a])=>{ const p = planOf(String(k));
       return `<section class="panel stack plan-card" data-slot="${k}">
         <div class="plan-h"><span class="ai">${AREA_ICON[a-1]}</span><h2>${esc(areaName(a))}</h2></div>
         <div class="deeper"><p class="hw-l">${T_.goDeeper} · ${T_.week(Math.min(6,Math.ceil(dayNow/7)))}</p><p>${esc(areaQ(a, me.day))}</p></div>
-        ${PLAN_F.map(f=>{ const [lbl, d] = T_.pf[f], today = me.day>=1 && me.day<=6 && d.endsWith(" "+Math.min(5,me.day)) ;
+        ${PLAN_F.map(f=>{ const [lbl, d] = T_.pf[f], today = me.day>=1 && me.day<=6 && d.endsWith(" "+Math.min(5,me.day));
           if(f==="score") return `<div class="${today?"pf-today":""}"><label for="p${k}-score">${lbl} <span class="dtag">${d}</span></label>
             <div class="range-row"><input type="range" id="p${k}-score" min="1" max="10" value="${p.score||5}" data-pf="score"><output>${p.score||"–"}</output></div></div>`;
           return `<div class="${today?"pf-today":""}"><label for="p${k}-${f}">${lbl} <span class="dtag">${d}</span></label>
             <textarea id="p${k}-${f}" rows="2" maxlength="400" data-pf="${f}" placeholder="${esc(T_.planPh[f])}">${esc(p[f]||"")}</textarea></div>`; }).join("")}
       </section>`; }).join("")}
-    <p id="planMsg" role="status"></p>
-    <button class="btn btn-primary" id="savePlan">${T_.savePlan}</button>`;
+      <p id="planMsg" role="status"></p><button class="btn btn-primary" id="savePlan">${T_.savePlan}</button>`;
+  } else if(planSub === "lib"){
+    const have = new Set(bk.map(b=>b.title.toLowerCase()));
+    const sug = DE_BOOKS.map(x=>x[lang==="fr"?1:0]).filter(x=>!have.has(x.toLowerCase()));
+    body = `<section class="stack"><div><h2>${T_.libTitle}</h2><p class="muted small">${T_.libSub}</p></div>
+      ${bk.length ? `<div class="shelf">${bk.map(b=>`<article class="book ${b.progress>=100?"is-done":""}">
+          <div class="cover" style="background:${spine(b.title)}"><span>${esc(b.title.slice(0,40))}</span></div>
+          <div class="book-b"><h3>${esc(b.title)}</h3><p class="muted small">${b.author?esc(b.author)+" · ":""}${areaTag(b.area)}</p>${progressRow(b,"b")}</div></article>`).join("")}</div>`
+        : `<div class="empty">📚 ${T_.libEmpty}</div>`}
+      <div class="panel stack"><h3>${T_.addBook}</h3>
+        <div class="grid2"><div><label for="nbT">${T_.bookTitle}</label><input id="nbT" maxlength="120"></div><div><label for="nbA">${T_.bookAuthor}</label><input id="nbA" maxlength="80"></div></div>
+        <div><label for="nbArea">${T_.forArea}</label>${areaSelect("nbArea","0")}</div>
+        <button class="btn btn-dark" id="addBook">${T_.addBook}</button>
+        ${sug.length ? `<div><p class="hw-l" style="margin-top:6px">${T_.suggest}</p><div class="sug">${sug.map(x=>`<button class="sugb" data-sug="${esc(x)}">+ ${esc(x)}</button>`).join("")}</div></div>` : ""}
+      </div></section>`;
+  } else {
+    body = `<section class="stack"><div><h2>${T_.crsTitle}</h2><p class="muted small">${T_.crsSub}</p></div>
+      ${cr.length ? cr.map(c=>`<article class="panel crs"><div class="crs-h"><span class="kic">${KIND_ICON[c.kind]||"✨"}</span>
+          <div><h3>${esc(c.title)}</h3><p class="muted small">${T_.kinds[c.kind]||""}${c.provider?" · "+esc(c.provider):""} · ${areaTag(c.area)}</p></div></div>${progressRow(c,"c")}</article>`).join("")
+        : `<div class="empty">🎓 ${T_.crsEmpty}</div>`}
+      <div class="panel stack"><h3>${T_.addCrs}</h3>
+        <div><label for="ncT">${T_.crsName}</label><input id="ncT" maxlength="120"></div>
+        <div class="grid2"><div><label for="ncK">${T_.crsKind}</label><select id="ncK">${Object.entries(T_.kinds).map(([k,v])=>`<option value="${k}">${KIND_ICON[k]} ${v}</option>`).join("")}</select></div>
+          <div><label for="ncP">${T_.crsProvider}</label><input id="ncP" maxlength="80"></div></div>
+        <div><label for="ncArea">${T_.forArea}</label>${areaSelect("ncArea","0")}</div>
+        <button class="btn btn-dark" id="addCrs">${T_.addCrs}</button></div></section>`;
+  }
+  return `<section class="stack"><h1>${T_.planTitle}</h1><p class="muted">${T_.planIntro}</p>
+      <div class="ov"><div><b>${planCount()}/12</b><span>${T_.ovPlan}</span></div><div><b>${bk.length}</b><span>${T_.ovBooks}${fin?` · ${fin} ${T_.ovFinished}`:""}</span></div><div><b>${cr.length}</b><span>${T_.ovCourses}</span></div></div>
+      <div class="seg sub" role="tablist">${tabs.map(([k,n])=>`<button data-psub="${k}" aria-pressed="${planSub===k}">${n}</button>`).join("")}</div>
+      ${planNote?`<p class="ok small" role="status">${esc(planNote)}</p>`:""}</section>
+    ${body}`;
+}
+async function savePlanAll(){
+  await rpc("gd_save_plan", {p_token:store.get("gd_token"), p_plan:me.plan});
+}
+async function mutatePlan(fn){
+  me.plan = me.plan || {}; me.plan.books = books().slice(); me.plan.courses = courses().slice();
+  fn(me.plan);
+  try{ await savePlanAll(); planNote = t().saved2; }catch(e){ planNote = errMsg(e); }
+  renderApp(); setTimeout(()=>{ planNote = ""; }, 50);
 }
 function planStrip(){
   const T_ = t(), d1 = planOf("1").daily, d2 = planOf("2").daily;
   if(d1 || d2) return `<section class="panel plan-strip"><p class="hw-l">${T_.myDaily}</p>
       ${[[1,me.area1,d1],[2,me.area2,d2]].filter(x=>x[2]).map(([k,a,d])=>`<p><span class="ai-s">${AREA_ICON[a-1]}</span> ${esc(d)}</p>`).join("")}
+      ${(()=>{ const b = books().find(x=>x.progress<100); return b ? `<p><span class="ai-s">📖</span> ${T_.nowReading}: <b>${esc(b.title)}</b> · ${b.progress}%</p>` : ""; })()}
       <button class="link small" data-goplan>${T_.openPlan}</button></section>`;
   return `<section class="panel plan-strip nudge"><div><h3>${T_.buildPlan}</h3><p class="muted small">${T_.buildPlanSub}</p>
       <div class="meter"><i style="width:${Math.round(planCount()/12*100)}%"></i></div></div>
@@ -1440,7 +1566,7 @@ function adminRender(){
       const first = p.name.split(" ")[0];
       const msg = p.lang==="fr" ? `Bonjour ${first}, c'est l'équipe Growth Day. Comment avancez-vous avec votre 1 % ?` : `Hi ${first}, it's the Growth Day team. How is your 1% going?`;
       return `<tr class="${s.slipping?"slip":""}">
-        <td><button class="link" data-person="${p.id}" aria-expanded="${admOpen===p.id}"><b>${esc(p.name)}</b></button><br><span class="muted small">${p.lang.toUpperCase()} · plan ${Object.values(p.plan||{}).reduce((n,o)=>n+Object.values(o||{}).filter(v=>String(v).trim()!=="").length,0)}/12</span></td>
+        <td><button class="link" data-person="${p.id}" aria-expanded="${admOpen===p.id}"><b>${esc(p.name)}</b></button><br><span class="muted small">${p.lang.toUpperCase()} · plan ${["1","2"].reduce((n,k)=>n+Object.values((p.plan||{})[k]||{}).filter(v=>String(v).trim()!=="").length,0)}/12${((p.plan||{}).books||[]).length?` · 📚${p.plan.books.length}`:""}</span></td>
         <td><a href="https://wa.me/${esc(p.phone)}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">+${esc(p.phone)}</a></td>
         <td class="small">${AREA_SHORT[p.area1-1]}<br>${AREA_SHORT[p.area2-1]}</td>
         <td><input value="${esc(p.triad||"")}" data-triad="${p.id}" placeholder="e.g. Triad 1" aria-label="Triad for ${esc(p.name)}"></td>
@@ -1453,6 +1579,9 @@ function adminRender(){
         ${admOpen===p.id ? `<tr class="detail"><td colspan="9"><div class="grid2">${[[1,p.area1],[2,p.area2]].map(([k,a])=>{ const pl=(p.plan||{})[k]||{};
           return `<div class="stack"><h3>${AREA_ICON[a-1]} ${AREA_SHORT[a-1]}</h3>
             ${[["honest","Where I am"],["score","Starting score"],["target","6-week target"],["daily","Daily 1%"],["excuse","Usual excuse"],["answer","Answer"]].map(([f,lb])=>`<p class="small"><b>${lb}:</b> ${pl[f]!==undefined&&String(pl[f]).trim()!==""?esc(pl[f]):'<span class="muted">not yet</span>'}</p>`).join("")}</div>`; }).join("")}</div>
+${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length && !cr.length) return "";
+            return `<div class="grid2" style="margin-top:14px"><div><h3>📚 Reading</h3>${bk.map(b=>`<p class="small">${esc(b.title)}${b.author?` <span class="muted">· ${esc(b.author)}</span>`:""} · <b>${b.progress>=100?"finished":b.progress+"%"}</b></p>`).join("")||'<p class="small muted">–</p>'}</div>
+              <div><h3>🎓 Courses & activities</h3>${cr.map(c=>`<p class="small">${esc(c.title)}${c.provider?` <span class="muted">· ${esc(c.provider)}</span>`:""} · <b>${c.progress>=100?"done":c.progress+"%"}</b></p>`).join("")||'<p class="small muted">–</p>'}</div></div>`; })()}
           ${p.testimony ? `<h3 style="margin-top:14px">Story</h3><p class="small">${esc(p.testimony)}</p><p class="small muted">${p.testimony_public?"Agreed to share publicly":"Private"} · <label><input type="checkbox" data-approve="${p.id}" ${p.testimony_approved?"checked":""} ${p.testimony_public?"":"disabled"}> Show on landing page</label></p>` : ""}
           ${(p.notes||[]).length ? `<h3 style="margin-top:14px">Latest card answers</h3>${p.notes.map(n=>`<p class="small"><b>Day ${n.day}:</b> ${n.note1?`${AREA_ICON[p.area1-1]} ${esc(n.note1)}`:""} ${n.note2?` · ${AREA_ICON[p.area2-1]} ${esc(n.note2)}`:""}</p>`).join("")}` : `<p class="muted small" style="margin-top:10px">No written card answers yet.</p>`}
         </td></tr>` : ""}`; }).join("") || `<tr><td colspan="9" class="muted">No one here yet.</td></tr>`}
@@ -1822,6 +1951,9 @@ function guideRender(){
           <a class="btn btn-primary sm" href="https://wa.me/${esc(p.phone)}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">WhatsApp</a></div>
         <div class="grid2">${[[1,p.area1],[2,p.area2]].map(([k,a])=>{ const pl=(p.plan||{})[k]||{};
           return `<div class="small"><b>${AREA_ICON[a-1]} Plan</b>${[["honest","Where I am"],["target","6-week target"],["daily","Daily 1%"],["excuse","Excuse"],["answer","Answer"]].map(([f,lb])=>`<p><span class="muted">${lb}:</span> ${pl[f]?esc(pl[f]):'<span class="muted">–</span>'}</p>`).join("")}</div>`; }).join("")}</div>
+${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length && !cr.length) return "";
+            return `<div class="grid2" style="margin-top:14px"><div><h3>📚 Reading</h3>${bk.map(b=>`<p class="small">${esc(b.title)}${b.author?` <span class="muted">· ${esc(b.author)}</span>`:""} · <b>${b.progress>=100?"finished":b.progress+"%"}</b></p>`).join("")||'<p class="small muted">–</p>'}</div>
+              <div><h3>🎓 Courses & activities</h3>${cr.map(c=>`<p class="small">${esc(c.title)}${c.provider?` <span class="muted">· ${esc(c.provider)}</span>`:""} · <b>${c.progress>=100?"done":c.progress+"%"}</b></p>`).join("")||'<p class="small muted">–</p>'}</div></div>`; })()}
         ${(p.notes||[]).length ? `<div class="small"><b>Latest answers</b>${p.notes.map(n=>`<p><span class="muted">Day ${n.day}:</span> ${n.note1?esc(n.note1):""}${n.note2?` · ${esc(n.note2)}`:""}</p>`).join("")}</div>` : ""}
         ${last && last.reflection ? `<p class="small"><b>Week ${last.week} reflection:</b> ${esc(last.reflection)}</p>` : ""}
       </section>`; }).join("") : `<p class="muted">No one is in ${esc(G.triad)} yet. The admin assigns triads on the People page.</p>`}
