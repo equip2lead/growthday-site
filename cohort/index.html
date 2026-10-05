@@ -17,7 +17,12 @@
 <meta name="twitter:image" content="https://growthday.cc/cohort/og-image.jpg">
 
 <link rel="icon" href="https://growthday.cc/growing-flame.png">
-<link rel="apple-touch-icon" href="https://growthday.cc/growing-flame.png">
+<link rel="apple-touch-icon" href="/cohort/icon-180.png">
+<link rel="manifest" href="/cohort/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Growth Day">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
@@ -288,6 +293,46 @@ pre.wa{white-space:pre-wrap;word-wrap:break-word;font:400 15px/1.45 var(--body);
 .aq{font-size:14px;color:var(--muted);margin:2px 0 6px}
 .tabs button{font-size:13px}
 tr.detail td{background:var(--bg);padding:16px}
+.price-card{display:flex;flex-direction:column;gap:2px;border:1.5px solid var(--ember);border-radius:16px;padding:16px;margin:22px 0 14px;background:color-mix(in srgb,var(--ember) 7%,var(--surface))}
+.price-card b{font-family:var(--display);font-size:30px}
+.price-card .pw{font-weight:600;color:var(--ember-text)}
+.price-card .pm{font-size:14px;color:var(--muted)}
+.pay-panel{border-color:var(--ember)}
+.people{display:flex;flex-direction:column;gap:12px}
+.person{display:flex;align-items:center;gap:12px;justify-content:space-between}
+.person>div{flex:1}
+.avatar.sm{width:38px;height:38px;font-size:13px;display:grid;place-items:center;flex:none}
+.btn.sm{width:auto;padding:9px 14px;font-size:14px}
+.curve{width:100%;height:auto}
+.curve .g{stroke:var(--line)} .curve .gl{fill:var(--muted);font:12px var(--body)}
+.curve polyline{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.curve .c1{stroke:var(--ember);fill:var(--ember)} .curve polyline.c1{fill:none}
+.curve .c2{stroke:#3B82C4;fill:#3B82C4} .curve polyline.c2{fill:none}
+.legend i{display:inline-block;width:14px;height:4px;border-radius:2px;vertical-align:middle}
+.legend .k1{background:var(--ember)} .legend .k2{background:#3B82C4}
+.report h2{font-size:26px}
+.rep-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rep-stats div{background:rgba(255,255,255,.08);border-radius:14px;padding:12px}
+.rep-stats b{display:block;font-family:var(--display);font-size:30px;color:var(--glow)}
+.rep-stats span{font-size:13px;opacity:.75}
+.rep-a{display:flex;align-items:center;gap:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:10px}
+.rep-a b{flex:1}
+.rep-s{font-family:var(--display);font-weight:700;color:var(--glow)}
+.check{display:flex;gap:8px;align-items:flex-start;font-weight:400;font-size:15px}
+.check input{width:auto;margin-top:4px}
+.stories{display:grid;gap:14px;margin-top:20px}
+@media (min-width:800px){.stories{grid-template-columns:repeat(3,1fr)}}
+.story{margin:0;background:var(--bg);border-radius:18px;padding:20px}
+.story blockquote{margin:0 0 12px;font-size:17px;line-height:1.5}
+.story figcaption{font-size:14px;color:var(--muted)}
+.chip-s{display:inline-block;font-size:12.5px;font-weight:600;border-radius:99px;padding:2px 9px;background:var(--line)}
+.chip-s.paid{background:color-mix(in srgb,var(--leaf) 18%,transparent);color:var(--leaf)}
+.chip-s.wait{background:color-mix(in srgb,var(--ember) 18%,transparent);color:var(--ember-text)}
+td select{padding:4px 6px;font-size:13px;margin-top:6px;width:auto}
+.hint-box{background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:12px}
+code.sel{user-select:all;word-break:break-all;font-size:12.5px;background:var(--surface);padding:2px 4px;border-radius:4px}
+.settings-grid{align-items:start}
+.slip-card{box-shadow:inset 4px 0 0 var(--danger)}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -413,6 +458,22 @@ en:{
   nextTitle:"What happens next",
   nextSteps:[["Monday · 6:00","Your first Daily Fire arrives on WhatsApp."],["Monday · evening","Fill your first 1% Card here. Two taps."],["Sunday","Rate your week in your two areas."],["Week 2","Meet your triad and start your weekly calls."]],
   hwTitle:"Today's 1% (your homework)", answerFor:a=>`Your answer for ${a}`, answerPh:"Write it here…", scoreNext:d=>`Weekly Growth Score: Sunday (day ${d})`,
+
+  payTitle:n=>`One last step, ${n}`, paySub:"Secure your seat in the cohort. You pay on a secure Fapshi page with MTN MoMo or Orange Money.",
+  seatsLeft:n=>n===1?"1 seat left":`${n} seats left`, payBtn:p=>`Pay ${p} FCFA`, payLater:"I'll pay later", paying:"Opening the payment page…",
+  payCardTitle:"Secure your seat", payCardSub:"Your seat is confirmed once your payment is received. Then the daily teaching and your 1% Card open here.",
+  checking:"Checking your payment…", notYet:"We haven't received your payment yet. If you just paid, wait a minute and tap Check again.", checkAgain:"Check again",
+  seatOk:"Seat confirmed", waitTitle:"You're on the waiting list", waitSub:"All seats are taken for this cohort. We'll message you on WhatsApp if a seat opens, and you'll be first for the next cohort.",
+  forgotBtn:"Forgot your PIN? Get a code on WhatsApp", fpTitle:"Reset your PIN", fpSub:"We'll send a 6-digit code to your WhatsApp.", sendCode:"Send me a code",
+  codeSent:"Code sent. Check your WhatsApp.", code:"6-digit code", newPin:"New 4-digit PIN", resetPin:"Reset my PIN", resend:"Send a new code",
+  triadTitle:"My triad", guideLbl:"Growth Guide", chat:"Message",
+  curveTitle:"Your growth curve", curveEmpty:"Your curve appears after your first Sunday score. Your starting point comes from your plan.", startLbl:"Start",
+  reportTitle:"Your Growth Report", reportSub:"Six weeks of growing on purpose.", daysDone:"days with a card", bestStreak:"best streak",
+  certBtn:"Download my certificate", certShare:"Share my certificate",
+  testiTitle:"Your story", testiSub:"In a few sentences: what changed for you in these six weeks?", testiPublic:"You can share my story on the Growth Day page (first name only).",
+  testiSave:"Save my story", testiSaved:"✓ Thank you. Your story is saved.",
+  storiesTitle:"Stories from past growers",
+  registered:"You're registered.", perWeek:w=>`That's just ${w} FCFA a week for 6 weeks`,
   plan:"My plan",
   planTitle:"My growth plan", planIntro:"The Daily Fire teaches everyone the same principle. Your plan turns it into your own steps, in your own two areas. Build it during week 1, one piece per day.",
   pf:{honest:["Where I really am","Day 1"],score:["My starting score (1 to 10)","Day 2"],target:["Six weeks from now, better looks like…","Day 3"],daily:["My daily 1%","Day 4"],excuse:["My usual excuse","Day 5"],answer:["My answer to it","Day 5"]},
@@ -452,7 +513,7 @@ en:{
   myAreas:"My growth areas", areasLocked:"Your areas are locked after week 1.", areasOpen:"You can change your areas until the end of week 1.",
   saveChanges:"Save changes", changesSaved:"Changes saved.", triad:"My triad", noTriad:"Your triad will be shared with you in week 2.",
   signOut:"Sign out", whatsapp:"WhatsApp", loading:"Loading…", credit:"An <b>Equip2Lead</b> program · Led by <b>Dr. Denis Ekobena</b>",
-  err:{phone_exists:"This number is already registered. Sign in instead.",not_found:"No account uses this number. Check it, or join the cohort.",wrong_pin:"Wrong PIN. Try again.",locked:"Too many tries. Wait 15 minutes, then try again.",pin_invalid:"Your PIN must be exactly 4 digits.",pin_mismatch:"The two PINs don't match.",name_required:"Enter your full name.",phone_invalid:"Enter a valid WhatsApp number.",areas_needed:"Choose exactly 2 areas.",session_expired:"Please sign in again.",day_closed:"This card is closed. You can fill today's and yesterday's cards only.",week_closed:"This week isn't open yet.",areas_locked:"Your areas are locked after week 1.",network:"No connection. Check your internet and try again."}
+  err:{phone_exists:"This number is already registered. Sign in instead.",not_found:"No account uses this number. Check it, or join the cohort.",wrong_pin:"Wrong PIN. Try again.",locked:"Too many tries. Wait 15 minutes, then try again.",pin_invalid:"Your PIN must be exactly 4 digits.",pin_mismatch:"The two PINs don't match.",name_required:"Enter your full name.",phone_invalid:"Enter a valid WhatsApp number.",areas_needed:"Choose exactly 2 areas.",session_expired:"Please sign in again.",day_closed:"This card is closed. You can fill today's and yesterday's cards only.",week_closed:"This week isn't open yet.",areas_locked:"Your areas are locked after week 1.",network:"No connection. Check your internet and try again.",code_invalid:"That code is not right. Check it and try again.",code_expired:"This code has expired. Ask for a new one.",wait:"Please wait a minute before asking for another code.",whatsapp_failed:"We couldn't send the code on WhatsApp. Ask your Growth Guide to reset your PIN.",payments_not_configured:"Payments aren't open yet. Try again soon.",fapshi_error:"The payment page couldn't open. Try again in a moment."}
 },
 fr:{
   stepOf:n=>`Étape ${n} sur 3`, next:"Continuer", country:"Pays",
@@ -469,6 +530,22 @@ fr:{
   nextTitle:"La suite",
   nextSteps:[["Lundi · 6h00","Votre premier Daily Fire arrive sur WhatsApp."],["Lundi · soir","Remplissez votre première carte 1 % ici. Deux touches."],["Dimanche","Notez votre semaine dans vos deux domaines."],["Semaine 2","Rencontrez votre triade et commencez vos appels."]],
   hwTitle:"Votre 1 % du jour (votre devoir)", answerFor:a=>`Votre réponse pour ${a}`, answerPh:"Écrivez-la ici…", scoreNext:d=>`Bilan de la semaine : dimanche (jour ${d})`,
+
+  payTitle:n=>`Une dernière étape, ${n}`, paySub:"Réservez votre place dans la cohorte. Vous payez sur une page sécurisée Fapshi avec MTN MoMo ou Orange Money.",
+  seatsLeft:n=>n===1?"Plus qu'1 place":`Plus que ${n} places`, payBtn:p=>`Payer ${p} FCFA`, payLater:"Je paierai plus tard", paying:"Ouverture de la page de paiement…",
+  payCardTitle:"Réservez votre place", payCardSub:"Votre place est confirmée dès réception du paiement. L'enseignement quotidien et votre carte 1 % s'ouvrent alors ici.",
+  checking:"Vérification de votre paiement…", notYet:"Nous n'avons pas encore reçu votre paiement. Si vous venez de payer, attendez une minute puis touchez Vérifier.", checkAgain:"Vérifier à nouveau",
+  seatOk:"Place confirmée", waitTitle:"Vous êtes sur la liste d'attente", waitSub:"Toutes les places de cette cohorte sont prises. Nous vous écrirons sur WhatsApp si une place se libère, et vous serez prioritaire pour la prochaine cohorte.",
+  forgotBtn:"Code PIN oublié ? Recevez un code sur WhatsApp", fpTitle:"Réinitialiser votre code PIN", fpSub:"Nous envoyons un code à 6 chiffres sur votre WhatsApp.", sendCode:"Envoyer un code",
+  codeSent:"Code envoyé. Regardez votre WhatsApp.", code:"Code à 6 chiffres", newPin:"Nouveau code PIN à 4 chiffres", resetPin:"Réinitialiser mon code", resend:"Envoyer un nouveau code",
+  triadTitle:"Ma triade", guideLbl:"Growth Guide", chat:"Écrire",
+  curveTitle:"Votre courbe de croissance", curveEmpty:"Votre courbe apparaît après votre premier bilan du dimanche. Votre point de départ vient de votre plan.", startLbl:"Départ",
+  reportTitle:"Votre bilan de croissance", reportSub:"Six semaines à grandir exprès.", daysDone:"jours avec une carte", bestStreak:"meilleure série",
+  certBtn:"Télécharger mon certificat", certShare:"Partager mon certificat",
+  testiTitle:"Votre témoignage", testiSub:"En quelques phrases : qu'est-ce qui a changé pour vous en six semaines ?", testiPublic:"Vous pouvez partager mon témoignage sur la page Growth Day (prénom seulement).",
+  testiSave:"Enregistrer mon témoignage", testiSaved:"✓ Merci. Votre témoignage est enregistré.",
+  storiesTitle:"Témoignages d'anciens participants",
+  registered:"Vous êtes inscrit.", perWeek:w=>`Soit seulement ${w} FCFA par semaine pendant 6 semaines`,
   plan:"Mon plan",
   planTitle:"Mon plan de croissance", planIntro:"Le Daily Fire enseigne le même principe à tout le monde. Votre plan le transforme en vos propres pas, dans vos deux domaines. Construisez-le pendant la semaine 1, un élément par jour.",
   pf:{honest:["Où j'en suis vraiment","Jour 1"],score:["Ma note de départ (1 à 10)","Jour 2"],target:["Dans six semaines, mieux, c'est…","Jour 3"],daily:["Mon 1 % quotidien","Jour 4"],excuse:["Mon excuse habituelle","Jour 5"],answer:["Ma réponse à cette excuse","Jour 5"]},
@@ -508,7 +585,7 @@ fr:{
   myAreas:"Mes domaines de croissance", areasLocked:"Vos domaines sont fixés après la semaine 1.", areasOpen:"Vous pouvez changer vos domaines jusqu'à la fin de la semaine 1.",
   saveChanges:"Enregistrer", changesSaved:"Modifications enregistrées.", triad:"Ma triade", noTriad:"Votre triade vous sera communiquée en semaine 2.",
   signOut:"Se déconnecter", whatsapp:"WhatsApp", loading:"Chargement…", credit:"Un programme <b>Equip2Lead</b> · Dirigé par le <b>Dr Denis Ekobena</b>",
-  err:{phone_exists:"Ce numéro est déjà inscrit. Connectez-vous plutôt.",not_found:"Aucun compte avec ce numéro. Vérifiez-le ou rejoignez la cohorte.",wrong_pin:"Code PIN incorrect. Réessayez.",locked:"Trop d'essais. Attendez 15 minutes puis réessayez.",pin_invalid:"Le code PIN doit contenir exactement 4 chiffres.",pin_mismatch:"Les deux codes PIN sont différents.",name_required:"Entrez votre nom complet.",phone_invalid:"Entrez un numéro WhatsApp valide.",areas_needed:"Choisissez exactement 2 domaines.",session_expired:"Veuillez vous reconnecter.",day_closed:"Cette carte est fermée. Vous pouvez remplir seulement celle d'aujourd'hui et d'hier.",week_closed:"Cette semaine n'est pas encore ouverte.",areas_locked:"Vos domaines sont fixés après la semaine 1.",network:"Pas de connexion. Vérifiez internet et réessayez."}
+  err:{phone_exists:"Ce numéro est déjà inscrit. Connectez-vous plutôt.",not_found:"Aucun compte avec ce numéro. Vérifiez-le ou rejoignez la cohorte.",wrong_pin:"Code PIN incorrect. Réessayez.",locked:"Trop d'essais. Attendez 15 minutes puis réessayez.",pin_invalid:"Le code PIN doit contenir exactement 4 chiffres.",pin_mismatch:"Les deux codes PIN sont différents.",name_required:"Entrez votre nom complet.",phone_invalid:"Entrez un numéro WhatsApp valide.",areas_needed:"Choisissez exactement 2 domaines.",session_expired:"Veuillez vous reconnecter.",day_closed:"Cette carte est fermée. Vous pouvez remplir seulement celle d'aujourd'hui et d'hier.",week_closed:"Cette semaine n'est pas encore ouverte.",areas_locked:"Vos domaines sont fixés après la semaine 1.",network:"Pas de connexion. Vérifiez internet et réessayez.",code_invalid:"Ce code n'est pas correct. Vérifiez-le et réessayez.",code_expired:"Ce code a expiré. Demandez-en un nouveau.",wait:"Patientez une minute avant de redemander un code.",whatsapp_failed:"Impossible d'envoyer le code sur WhatsApp. Demandez à votre Growth Guide de réinitialiser votre code.",payments_not_configured:"Les paiements ne sont pas encore ouverts. Réessayez bientôt.",fapshi_error:"La page de paiement n'a pas pu s'ouvrir. Réessayez dans un instant."}
 }};
 
 /* ---------- utils ---------- */
@@ -533,6 +610,14 @@ async function rpc(fn, args){
   if(!res.ok){ throw new Error((data && data.message) || "network"); }
   return data;
 }
+const APPFN = "https://vjnzvrhbzaqmzneirmjq.supabase.co/functions/v1/gd-app";
+async function callApp(body){
+  let res; try{ res = await fetch(APPFN, {method:"POST", headers:{"Content-Type":"application/json", apikey:KEY}, body:JSON.stringify(body)}); }catch(e){ throw new Error("network"); }
+  const d = await res.json().catch(()=>({}));
+  if(!res.ok || d.error) throw new Error(d.error || "network");
+  return d;
+}
+const fcfa = n => Number(n||0).toLocaleString("fr-FR").replace(/\u202f|\u00a0/g," ");
 const errMsg = e => (t().err[e.message] || e.message);
 
 const FLAME = '<svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-width="1.6" stroke-linejoin="round" d="M12 2.5c.6 3.2-1.4 4.9-3 6.9C7.4 11.3 6 13 6 15.3A6 6 0 0 0 18 15.3c0-2.7-1.5-4.4-2.6-5.5-.2 1.6-.9 2.6-2 3 .6-3.6-.2-7.4-1.4-10.3Z"/></svg>';
@@ -669,6 +754,8 @@ function welcome(){
     <div class="faq">${X.faq.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("")}</div>
   </div></section>
 
+  <section class="ls ls-alt" id="stories" hidden><div class="lin"><h2>${t().storiesTitle}</h2><div class="stories" id="storyList"></div></div></section>
+
   <section class="ls ls-dark final"><div class="lin">
     <h2>${X.final_title}</h2><p class="lead">${X.final_sub}</p>
     <button class="btn btn-primary" id="goJoin3">${X.join}</button>
@@ -708,8 +795,11 @@ function welcome(){
       requestAnimationFrame(step); }, {threshold:.5});
     io.observe(box);
   }
+  rpc("gd_public_testimonies", {}).then(list => { if(!list || !list.length) return; const box = $("#storyList"); if(!box) return;
+    box.innerHTML = list.slice(0,6).map(x=>`<figure class="story"><blockquote>${esc(x.text)}</blockquote><figcaption><b>${esc(x.name)}</b> · ${AREA_ICON[x.area1-1]} ${AREA_ICON[x.area2-1]}</figcaption></figure>`).join("");
+    $("#stories").hidden = false; }).catch(()=>{});
   if(!pubStats) rpc("gd_public_stats", {}).then(st => { pubStats = st;
-    const p = $("#proof"); if(p) p.textContent = `${st.joined >= 5 ? X.joined(st.joined) + " · " : ""}${X.seats}`;
+    const p = $("#proof"); if(p) p.textContent = st.payments_on ? `${fcfa(st.price)} FCFA (${fcfa(Math.round(st.price/6))} FCFA/${lang==="fr"?"semaine":"week"}) · ${t().seatsLeft(st.seats_left)}` : `${st.joined >= 5 ? X.joined(st.joined) + " · " : ""}${X.seats}`;
     const pill = document.querySelector(".lh .pill"); if(pill) pill.textContent = X.date(fmtDate(st.start_date));
   }).catch(()=>{});
 }
@@ -810,7 +900,9 @@ function joinForm(){
     try{
       const tok = await rpc("gd_register", {p_name:draft.name, p_phone:fullPhone(draft.code, draft.phone), p_lang:lang, p_area1:picked[0], p_area2:picked[1], p_pin:draft.pin});
       store.set("gd_token", tok); const nm = firstName(draft.name);
-      draft = {name:"", phone:"", code:"237", areas:[], step:1, pin:""}; doneScreen(nm);
+      draft = {name:"", phone:"", code:"237", areas:[], step:1, pin:""};
+      try{ me = await rpc("gd_me", {p_token: tok}); }catch(e){ me = null; }
+      if(me && me.payments_on && me.status !== "paid") payScreen(nm); else doneScreen(nm);
     }catch(e){ btn.disabled = false;
       if(e.message === "phone_exists" || e.message === "phone_invalid"){ draft.step = 1; joinForm(); }
       err(errMsg(e)); }
@@ -833,14 +925,65 @@ async function doneScreen(name){
     </div></div>`;
   $("#openDash").onclick = () => { document.body.classList.remove("is-auth"); boot(); };
 }
+
+function payScreen(name){
+  document.body.classList.add("is-auth");
+  const T_ = t(), waiting = me.status === "waitlist";
+  root.innerHTML = `<div class="auth done"><div class="auth-body">
+    <div class="big-flame">${FLAME}</div>
+    ${waiting ? `<h1>${T_.waitTitle}</h1><p class="lead-s">${T_.waitSub}</p>
+      <div class="stack" style="margin-top:28px"><button class="btn btn-primary" id="openDash">${T_.openDash}</button></div>`
+    : `<h1>${T_.payTitle(esc(name))}</h1><p class="lead-s">${T_.paySub}</p>
+      <div class="price-card"><b>${fcfa(me.price)} FCFA</b><span class="pw">${T_.perWeek(fcfa(Math.round(me.price/6)))}</span><span>${T_.seatsLeft(me.seats_left)}</span><span class="pm">MTN MoMo · Orange Money</span></div>
+      <p class="err" id="err" role="alert"></p>
+      <div class="stack"><button class="btn btn-primary" id="payNow">${T_.payBtn(fcfa(me.price))}</button>
+        <button class="btn btn-ghost" id="openDash">${T_.payLater}</button></div>`}
+  </div></div>`;
+  $("#openDash").onclick = () => { document.body.classList.remove("is-auth"); boot(); };
+  const pn = $("#payNow"); if(pn) pn.onclick = () => startPay(pn, $("#err"));
+}
+async function startPay(btn, errEl){
+  btn.disabled = true; const old = btn.textContent; btn.textContent = t().paying;
+  try{ const d = await callApp({action:"pay", token:store.get("gd_token")});
+    if(d.link){ location.href = d.link; return; }
+    if(d.paid){ boot(); return; }
+    if(d.waitlist){ me.status = "waitlist"; payScreen(firstName(me.name)); return; }
+  }catch(e){ if(errEl) errEl.textContent = errMsg(e); }
+  btn.disabled = false; btn.textContent = old;
+}
+async function payReturn(){
+  const T_ = t();
+  document.body.classList.add("is-auth");
+  root.innerHTML = `<div class="auth done"><div class="auth-body"><div class="big-flame">${FLAME}</div><h1>${T_.checking}</h1></div></div>`;
+  history.replaceState(null, "", location.pathname);
+  for(let i=0;i<5;i++){
+    try{ const d = await callApp({action:"pay_check", token:store.get("gd_token")});
+      if(d.paid){ me = await rpc("gd_me", {p_token:store.get("gd_token")}); doneScreen(firstName(me.name)); const h=$(".done h1"); if(h) h.textContent = T_.seatOk + " 🎉"; return; }
+    }catch(e){ if(e.message==="session_expired"){ store.del("gd_token"); return loginForm(); } }
+    await new Promise(r=>setTimeout(r, 4000));
+  }
+  document.body.classList.remove("is-auth"); await boot(); payNote = T_.notYet; renderApp();
+}
+let payNote = "";
+function payCard(){
+  const T_ = t();
+  if(me.status === "waitlist") return `<section class="panel stack pay-panel"><h2>${T_.waitTitle}</h2><p class="muted">${T_.waitSub}</p></section>`;
+  return `<section class="panel stack pay-panel"><h2>${T_.payCardTitle}</h2><p class="muted">${T_.payCardSub}</p>
+    <div class="price-card"><b>${fcfa(me.price)} FCFA</b><span class="pw">${T_.perWeek(fcfa(Math.round(me.price/6)))}</span><span>${T_.seatsLeft(me.seats_left)}</span><span class="pm">MTN MoMo · Orange Money</span></div>
+    ${payNote?`<p class="err">${esc(payNote)}</p>`:""}<p class="err" id="payErr" role="alert"></p>
+    <button class="btn btn-primary" id="payNow">${T_.payBtn(fcfa(me.price))}</button>
+    ${payNote?`<button class="btn btn-ghost" id="payCheck">${T_.checkAgain}</button>`:""}</section>`;
+}
+
 function loginForm(){
   document.body.classList.remove("is-land"); document.body.classList.add("is-auth");
   const T_ = t();
   const inner = `<h1>${T_.signInTitle}</h1>
     <div class="stack" style="margin-top:22px">${phoneField(draft.code, "")}
       <div><label for="pin">${T_.yourPin}</label><div class="pin-wrap"><input id="pin" class="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="current-password"><button class="link" id="showPin" type="button">${T_.show}</button></div></div>
-      <p class="muted small">${T_.forgot}</p></div>`;
+      <button class="link" id="forgot" type="button">${T_.forgotBtn}</button></div>`;
   root.innerHTML = authShell(inner, 0, `<button class="btn btn-primary" id="next">${T_.signIn}</button>`);
+  $("#forgot").onclick = () => forgotForm({code:$("#code").value, phone:$("#phone").value});
   bindLang(loginForm);
   $("#aBack").onclick = () => welcome();
   const sp = $("#showPin"); sp.onclick = () => { const i=$("#pin"); const h = i.type==="password"; i.type = h?"text":"password"; sp.textContent = h?T_.hide:T_.show; };
@@ -855,11 +998,35 @@ function loginForm(){
   $("#pin").onkeydown = e => { if(e.key==="Enter") go(); };
 }
 
+
+function forgotForm(st){
+  const T_ = t(); st = st || {}; st.code = st.code || "237";
+  const inner = `<h1>${T_.fpTitle}</h1><p class="muted">${T_.fpSub}</p>
+    <div class="stack" style="margin-top:22px">${phoneField(st.code, st.phone||"")}
+    ${st.sent ? `<p class="ok">${T_.codeSent}</p>
+      <div><label for="otp">${T_.code}</label><input id="otp" class="pin" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" style="letter-spacing:.35em"></div>
+      <div><label for="npin2">${T_.newPin}</label><input id="npin2" class="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="new-password"></div>
+      <button class="link" id="resend" type="button">${T_.resend}</button>` : ""}</div>`;
+  root.innerHTML = authShell(inner, 0, `<button class="btn btn-primary" id="next">${st.sent ? T_.resetPin : T_.sendCode}</button>`);
+  bindLang(() => forgotForm(st));
+  $("#aBack").onclick = () => loginForm();
+  const keep = () => { st.code = $("#code").value; st.phone = $("#phone").value; };
+  const send = async () => { keep(); const btn=$("#next"); btn.disabled = true;
+    try{ await callApp({action:"otp_request", phone: fullPhone(st.code, st.phone)}); st.sent = true; forgotForm(st); }
+    catch(e){ btn.disabled = false; $("#err").textContent = errMsg(e); } };
+  const rs = $("#resend"); if(rs) rs.onclick = send;
+  $("#next").onclick = st.sent ? async () => { keep(); const btn=$("#next"); btn.disabled = true;
+    try{ const d = await callApp({action:"otp_verify", phone: fullPhone(st.code, st.phone), code: $("#otp").value.trim(), pin: $("#npin2").value.trim()});
+      store.set("gd_token", d.token); document.body.classList.remove("is-auth"); boot(); }
+    catch(e){ btn.disabled = false; $("#err").textContent = errMsg(e); } } : send;
+}
+
 /* ---------- participant: app ---------- */
 let me = null, tab = "today", cardDay = null, lastSaved = null;
 
 async function boot(){
   document.body.classList.remove("is-land","is-auth");
+  if(/[?&]pay=return/.test(location.search) && store.get("gd_token")) return payReturn();
   const tok = store.get("gd_token");
   if(!tok) return welcome();
   root.innerHTML = `<div class="wrap"><p class="muted">${t().loading}</p></div>`;
@@ -903,7 +1070,8 @@ function flameGrid(onDark){
 function renderApp(){
   const cur = me.day;
   let body = "";
-  if(tab === "today") body = cur < 1 ? viewBefore() : cur > 42 ? viewFinished() : viewToday();
+  const locked = me.payments_on && me.status !== "paid";
+  if(tab === "today") body = locked ? (cur < 1 ? payCard() + viewBefore() : payCard()) : (cur < 1 ? viewBefore() : cur > 42 ? viewFinished() : viewToday());
   if(tab === "journey") body = viewJourney();
   if(tab === "me") body = viewMe();
   if(tab === "plan") body = viewPlan();
@@ -918,6 +1086,15 @@ function renderApp(){
   bindLang(renderApp);
   document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; cardDay = null; renderApp(); window.scrollTo(0,0); });
   bindView();
+  const pn = $("#payNow"); if(pn) pn.onclick = () => startPay(pn, $("#payErr"));
+  const pc = $("#payCheck"); if(pc) pc.onclick = () => payReturn();
+  const ce = $("#cert"); if(ce) ce.onclick = async () => { const blob = await makeCertificate(); const file = new File([blob], "growth-day-certificate.png", {type:"image/png"});
+    if(navigator.canShare && navigator.canShare({files:[file]})){ try{ await navigator.share({files:[file], title:"Growth Day"}); return; }catch(e){} }
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = file.name; a.click(); };
+  const ts = $("#testiSave"); if(ts) ts.onclick = async () => { const m = $("#testiMsg"); ts.disabled = true;
+    try{ await rpc("gd_save_testimony", {p_token:store.get("gd_token"), p_text:$("#testi").value, p_public:$("#testiPub").checked});
+      me.testimony = $("#testi").value; me.testimony_public = $("#testiPub").checked; m.className="ok"; m.textContent = t().testiSaved; }
+    catch(e){ m.className="err"; m.textContent = errMsg(e); } ts.disabled = false; };
   const tm = $("#toMe"); if(tm) tm.onclick = () => { tab = "me"; renderApp(); window.scrollTo(0,0); };
   document.querySelectorAll("[data-goplan]").forEach(b => b.onclick = () => { tab = "plan"; renderApp(); window.scrollTo(0,0); });
   document.querySelectorAll('.plan-card input[type=range]').forEach(r => r.oninput = () => { r.dataset.touched = '1'; r.nextElementSibling.textContent = r.value; });
@@ -955,7 +1132,7 @@ function viewBefore(){
   const left = 1 - me.day, T_ = t();
   return `<section class="hero2">
       ${ring(0, left, T_.daysUnit(left))}
-      <div class="hero2-t"><p>${T_.startsTitle}</p><h2>${T_.day1Is(fmtDate(me.start_date))}</h2></div>
+      <div class="hero2-t"><p>${me.payments_on && me.status!=="paid" ? T_.registered : T_.startsTitle}</p><h2>${T_.day1Is(fmtDate(me.start_date))}</h2></div>
     </section>
     <section class="stack"><h2 class="sec">${T_.myAreas}</h2>
       <div class="mine">${[me.area1, me.area2].map(a=>`<div class="mine-a"><span class="ai">${AREA_ICON[a-1]}</span><div><b>${esc(areaName(a))}</b><p class="muted small">${esc(AREAS[lang][a-1][1])}</p></div></div>`).join("")}</div></section>
@@ -965,15 +1142,16 @@ function viewBefore(){
     <div class="panel tip"><h3>${T_.tipTitle}</h3><p class="muted small">${T_.tip}</p></div>`;
 }
 function viewFinished(){
-  return `<section class="hero stack"><h1>${t().finishedTitle}</h1><p>${t().finished}</p>${flameGrid(true)}</section>`;
+  return reportBlock() + `<section class="hero stack"><h1>${t().finishedTitle}</h1><p>${t().finished}</p>${flameGrid(true)}</section>`;
 }
 
 function lessonBlock(l){
   if(!l) return "";
   const principle = L(l,"principle");
-  const audio = l.audio_url ? (/\.(mp3|m4a|ogg|opus|wav|aac)(\?|$)/i.test(l.audio_url)
-      ? `<audio controls preload="none" src="${esc(l.audio_url)}"></audio>`
-      : `<a class="btn btn-dark" href="${esc(l.audio_url)}" target="_blank" rel="noopener">▶ ${t().listen}</a>`) : "";
+  const au = (lang === "fr" && l.audio_url_fr) ? l.audio_url_fr : (l.audio_url || l.audio_url_fr);
+  const audio = au ? (/\.(mp3|m4a|ogg|opus|wav|aac|webm)(\?|$)/i.test(au)
+      ? `<audio controls preload="none" src="${esc(au)}"></audio>`
+      : `<a class="btn btn-dark" href="${esc(au)}" target="_blank" rel="noopener">▶ ${t().listen}</a>`) : "";
   if(!principle) return `<section class="panel lesson stack"><h2>${esc(L(l,"title") || L(l,"theme"))}</h2>${audio}<p class="muted">${t().noLesson}</p></section>`;
   return `<section class="panel lesson stack">
     ${L(l,"word") ? `<p class="word">${t().word}: ${esc(L(l,"word"))}</p>` : ""}
@@ -1061,13 +1239,65 @@ function viewJourney(){
   const scores = me.scores.length ? `<div class="tablewrap"><table><thead><tr><th>${lang==="fr"?"Semaine":"Week"}</th><th>${esc(areaName(me.area1))}</th><th>${esc(areaName(me.area2))}</th></tr></thead><tbody>
       ${me.scores.map(s=>`<tr><td>${s.week}</td><td>${s.score1}/10</td><td>${s.score2}/10</td></tr>`).join("")}</tbody></table></div>`
     : `<p class="muted">${t().noScores}</p>`;
-  return `<section class="stack"><h1>${t().journey}</h1>
+  const report = me.day >= 36 ? reportBlock() : "";
+  return `${report}<section class="stack"><h1>${t().journey}</h1>
     <div class="panel">${me.day >= 1 ? flameGrid() : `<p class="muted">${t().starts(fmtDate(me.start_date))}</p>`}
       <div class="legend">
         <span class="f-both">${FLAME}${t().legBoth}</span><span class="f-one">${FLAME}${t().legOne}</span>
         <span class="f-miss">${FLAME}${t().legMiss}</span></div></div>
     <div id="detail"></div></section>
+    <section class="stack"><h2>${t().curveTitle}</h2>${curveBlock()}</section>
     <section class="stack"><h2>${t().scores}</h2>${scores}</section>`;
+}
+
+
+function curveBlock(){
+  const T_ = t(), p1 = planOf("1").score, p2 = planOf("2").score;
+  const pts = [[0, p1, p2]].concat((me.scores||[]).map(s=>[s.week, s.score1, s.score2]));
+  if(!me.scores || !me.scores.length) return `<p class="muted">${T_.curveEmpty}</p>`;
+  const W=320, H=180, padL=26, padB=24, padT=12, padR=12;
+  const x = w => padL + (w/6)*(W-padL-padR), y = v => padT + (1-(v-1)/9)*(H-padT-padB);
+  const line = (idx, cls) => { const ps = pts.filter(p=>p[idx]); if(!ps.length) return "";
+    return `<polyline class="${cls}" points="${ps.map(p=>`${x(p[0]).toFixed(1)},${y(p[idx]).toFixed(1)}`).join(" ")}"/>` +
+      ps.map(p=>`<circle class="${cls}" cx="${x(p[0]).toFixed(1)}" cy="${y(p[idx]).toFixed(1)}" r="3.5"/>`).join(""); };
+  const grid = [1,5,10].map(v=>`<line class="g" x1="${padL}" x2="${W-padR}" y1="${y(v)}" y2="${y(v)}"/><text class="gl" x="${padL-6}" y="${y(v)+4}" text-anchor="end">${v}</text>`).join("");
+  const xs = [0,1,2,3,4,5,6].map(w=>`<text class="gl" x="${x(w)}" y="${H-6}" text-anchor="middle">${w===0?T_.startLbl:(lang==="fr"?"S":"W")+w}</text>`).join("");
+  return `<div class="panel"><svg class="curve" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(T_.curveTitle)}">${grid}${xs}${line(1,"c1")}${line(2,"c2")}</svg>
+    <div class="legend"><span><i class="k1"></i>${AREA_ICON[me.area1-1]} ${esc(areaName(me.area1))}</span><span><i class="k2"></i>${AREA_ICON[me.area2-1]} ${esc(areaName(me.area2))}</span></div></div>`;
+}
+function bestStreak(){ let b=0,c=0; for(let d=1; d<=Math.min(42,me.day); d++){ if(state(d)!=="miss"){ c++; b=Math.max(b,c);} else c=0; } return b; }
+function reportBlock(){
+  const T_ = t(), done = me.checkins.filter(c=>c.done1||c.done2).length, last = (me.scores||[]).slice(-1)[0] || {};
+  const row = (k,a) => { const s0 = planOf(String(k)).score, s1 = last["score"+k]; return `<div class="rep-a"><span class="ai">${AREA_ICON[a-1]}</span><b>${esc(areaName(a))}</b><span class="rep-s">${s0||"–"} → ${s1||"–"}</span></div>`; };
+  return `<section class="hero2 hero2-col report"><div><p>${T_.reportSub}</p><h2>${T_.reportTitle}</h2></div>
+      <div class="rep-stats"><div><b>${done}</b><span>${T_.daysDone}</span></div><div><b>${bestStreak()}</b><span>${T_.bestStreak}</span></div></div>
+      ${row(1,me.area1)}${row(2,me.area2)}
+      <button class="btn btn-primary" id="cert">${T_.certBtn}</button></section>
+    <section class="panel stack"><h2>${T_.testiTitle}</h2><p class="muted small">${T_.testiSub}</p>
+      <textarea id="testi" rows="5" maxlength="1200">${esc(me.testimony||"")}</textarea>
+      <label class="check"><input type="checkbox" id="testiPub" ${me.testimony_public?"checked":""}> ${T_.testiPublic}</label>
+      <p id="testiMsg" role="status"></p><button class="btn btn-dark" id="testiSave">${T_.testiSave}</button></section>`;
+}
+async function makeCertificate(){
+  const T_ = t(), c = document.createElement("canvas"); c.width = 1080; c.height = 1350; const g = c.getContext("2d");
+  try{ await document.fonts.load("700 40px Sora"); }catch(e){}
+  g.fillStyle = "#1C2340"; g.fillRect(0,0,1080,1350);
+  const grd = g.createRadialGradient(860,260,40,860,260,620); grd.addColorStop(0,"rgba(232,137,12,.35)"); grd.addColorStop(1,"rgba(232,137,12,0)"); g.fillStyle = grd; g.fillRect(0,0,1080,1350);
+  const flame = new Path2D("M12 2.5c.6 3.2-1.4 4.9-3 6.9C7.4 11.3 6 13 6 15.3A6 6 0 0 0 18 15.3c0-2.7-1.5-4.4-2.6-5.5-.2 1.6-.9 2.6-2 3 .6-3.6-.2-7.4-1.4-10.3Z");
+  g.save(); g.translate(90,110); g.scale(7,7); g.fillStyle = "#E8890C"; g.fill(flame); g.restore();
+  g.fillStyle = "#FFC94D"; g.font = "600 34px Sora, sans-serif"; g.fillText("Growth Day · " + (lang==="fr"?"Cohorte 6 semaines":"6-week cohort"), 90, 330);
+  g.fillStyle = "#fff"; g.font = "700 84px Sora, sans-serif";
+  (lang==="fr"?["Certificat","de croissance"]:["Certificate","of Growth"]).forEach((l,i)=>g.fillText(l, 90, 450+i*96));
+  g.font = "400 34px Sora, sans-serif"; g.fillStyle = "rgba(255,255,255,.75)"; g.fillText(lang==="fr"?"décerné à":"awarded to", 90, 690);
+  g.font = "700 64px Sora, sans-serif"; g.fillStyle = "#fff"; g.fillText(String(me.name).slice(0,28), 90, 770);
+  const done = me.checkins.filter(x=>x.done1||x.done2).length, last = (me.scores||[]).slice(-1)[0] || {};
+  g.font = "600 36px Sora, sans-serif"; g.fillStyle = "#FFC94D";
+  g.fillText(`${done}/42 ${lang==="fr"?"jours":"days"} · ${lang==="fr"?"série record":"best streak"} ${bestStreak()}`, 90, 870);
+  [[1,me.area1],[2,me.area2]].forEach(([k,a],i)=>{ g.fillStyle="#fff"; g.font="400 36px Sora, sans-serif";
+    g.fillText(`${areaName(a)}: ${planOf(String(k)).score||"–"} → ${last["score"+k]||"–"} / 10`, 90, 960+i*60); });
+  g.fillStyle = "rgba(255,255,255,.6)"; g.font = "400 28px Sora, sans-serif";
+  g.fillText("Equip2Lead · Dr. Denis Ekobena · growthday.cc", 90, 1250);
+  return new Promise(r => c.toBlob(r, "image/png"));
 }
 
 function viewMe(){
@@ -1080,7 +1310,12 @@ function viewMe(){
         return `<button class="chip" data-pick="${i+1}" aria-pressed="${on}" ${!open || (picked.length>=2 && !on) ? "disabled":""}><b>${esc(a[0])}</b>${esc(a[1])}</button>`}).join("")}</div>
       ${open ? `<p id="meMsg" role="status"></p><button class="btn btn-dark" id="saveMe">${t().saveChanges}</button>` : ""}
     </section>
-    <section class="stack"><h2>${t().triad}</h2><div class="panel"><p>${me.triad ? esc(me.triad) : `<span class="muted">${t().noTriad}</span>`}</p></div></section>
+    <section class="stack"><h2>${t().triadTitle}${me.triad?` · ${esc(me.triad)}`:""}</h2>
+      ${me.triad ? `<div class="panel people">${(me.guide?[{...me.guide, isGuide:true}]:[]).concat(me.triad_members||[]).map(m=>`<div class="person">
+          <span class="avatar sm">${esc(String(m.name).trim().split(/\s+/).map(x=>x[0]).slice(0,2).join("").toUpperCase())}</span>
+          <div><b>${esc(m.name)}</b><p class="muted small">${m.isGuide ? t().guideLbl : `${AREA_ICON[m.area1-1]} ${AREA_ICON[m.area2-1]}`}</p></div>
+          <a class="btn btn-ghost sm" href="https://wa.me/${esc(m.phone)}" target="_blank" rel="noopener">${t().chat}</a></div>`).join("") || `<p class="muted">${t().noTriad}</p>`}</div>`
+      : `<div class="panel"><p class="muted">${t().noTriad}</p></div>`}</section>
     <button class="btn btn-ghost" id="signOut">${t().signOut}</button>`;
 }
 
@@ -1185,15 +1420,18 @@ function adminRender(){
   if(admFilter === "slip") list = P.filter(p=>pStats(p).slipping);
   else if(admFilter.startsWith("t:")) list = P.filter(p=>p.triad===admFilter.slice(2));
   else if(admFilter === "none") list = P.filter(p=>!p.triad);
+  else if(admFilter === "unpaid") list = P.filter(p=>p.status==="pending");
+  else if(admFilter === "waitlist") list = P.filter(p=>p.status==="waitlist");
 
   const peopleView = `
     <div class="seg" role="group" aria-label="Filter">
       <button data-f="all" aria-pressed="${admFilter==="all"}">Everyone (${P.length})</button>
       <button data-f="slip" aria-pressed="${admFilter==="slip"}">Slipping (${slip})</button>
       <button data-f="none" aria-pressed="${admFilter==="none"}">No triad</button>
+      ${adm.pay.price>0 ? `<button data-f="unpaid" aria-pressed="${admFilter==="unpaid"}">Not paid (${P.filter(p=>p.status==="pending").length})</button><button data-f="waitlist" aria-pressed="${admFilter==="waitlist"}">Waiting list (${P.filter(p=>p.status==="waitlist").length})</button>` : ""}
       ${triads.map(x=>`<button data-f="t:${esc(x)}" aria-pressed="${admFilter==="t:"+x}">${esc(x)}</button>`).join("")}
     </div>
-    <div class="tablewrap"><table><thead><tr><th>Name</th><th>WhatsApp</th><th>Areas</th><th>Triad</th><th>Last 7 days</th><th>Streak / total</th><th>Latest score</th><th></th></tr></thead><tbody>
+    <div class="tablewrap"><table><thead><tr><th>Name</th><th>WhatsApp</th><th>Areas</th><th>Triad</th><th>Last 7 days</th><th>Streak / total</th><th>Latest score</th><th>Seat</th><th></th></tr></thead><tbody>
     ${list.map(p => { const s = pStats(p); const sc = p.scores[p.scores.length-1];
       const last7 = Array.from({length:7},(_,i)=>cur-6+i).map(d=>`<i class="${d>=1 && p.days.includes(d)?"on":""}" title="Day ${d}"></i>`).join("");
       const first = p.name.split(" ")[0];
@@ -1206,12 +1444,15 @@ function adminRender(){
         <td><span class="mini">${last7}</span></td>
         <td>${s.streak} / ${s.total}</td>
         <td>${sc ? `W${sc.week}: ${sc.score1} · ${sc.score2}` : "—"}</td>
+        <td>${p.status==="paid" ? `<span class="chip-s paid">Paid${p.pay_method==="manual"?" (manual)":""}</span>` : p.status==="waitlist" ? `<span class="chip-s wait">Waiting list</span>` : `<span class="chip-s">Not paid</span>`}
+          <br><select class="small" data-status="${p.id}" aria-label="Seat status for ${esc(p.name)}"><option value="">Change…</option><option value="paid">Mark as paid</option><option value="pending">Not paid</option><option value="waitlist">Waiting list</option></select></td>
         <td><button class="link" data-reset="${p.id}" data-name="${esc(p.name)}">Reset PIN</button></td></tr>
-        ${admOpen===p.id ? `<tr class="detail"><td colspan="8"><div class="grid2">${[[1,p.area1],[2,p.area2]].map(([k,a])=>{ const pl=(p.plan||{})[k]||{};
+        ${admOpen===p.id ? `<tr class="detail"><td colspan="9"><div class="grid2">${[[1,p.area1],[2,p.area2]].map(([k,a])=>{ const pl=(p.plan||{})[k]||{};
           return `<div class="stack"><h3>${AREA_ICON[a-1]} ${AREA_SHORT[a-1]}</h3>
             ${[["honest","Where I am"],["score","Starting score"],["target","6-week target"],["daily","Daily 1%"],["excuse","Usual excuse"],["answer","Answer"]].map(([f,lb])=>`<p class="small"><b>${lb}:</b> ${pl[f]!==undefined&&String(pl[f]).trim()!==""?esc(pl[f]):'<span class="muted">not yet</span>'}</p>`).join("")}</div>`; }).join("")}</div>
+          ${p.testimony ? `<h3 style="margin-top:14px">Story</h3><p class="small">${esc(p.testimony)}</p><p class="small muted">${p.testimony_public?"Agreed to share publicly":"Private"} · <label><input type="checkbox" data-approve="${p.id}" ${p.testimony_approved?"checked":""} ${p.testimony_public?"":"disabled"}> Show on landing page</label></p>` : ""}
           ${(p.notes||[]).length ? `<h3 style="margin-top:14px">Latest card answers</h3>${p.notes.map(n=>`<p class="small"><b>Day ${n.day}:</b> ${n.note1?`${AREA_ICON[p.area1-1]} ${esc(n.note1)}`:""} ${n.note2?` · ${AREA_ICON[p.area2-1]} ${esc(n.note2)}`:""}</p>`).join("")}` : `<p class="muted small" style="margin-top:10px">No written card answers yet.</p>`}
-        </td></tr>` : ""}`; }).join("") || `<tr><td colspan="8" class="muted">No one here yet.</td></tr>`}
+        </td></tr>` : ""}`; }).join("") || `<tr><td colspan="9" class="muted">No one here yet.</td></tr>`}
     </tbody></table></div>
     <p class="muted small">Triad names save when you leave the box. Red edge = no card yesterday or today. Tap a number to message them on WhatsApp. Tap a name to see their growth plan and latest answers.</p>
     <button class="btn btn-ghost" id="csv" style="max-width:260px">Download CSV</button>`;
@@ -1225,21 +1466,44 @@ function adminRender(){
           return `<button class="dcard ${x.day===admDay?"sel":""} ${filled?"":"empty"}" data-lday="${x.day}">
             <span class="dnum">Day ${x.day} · ${["Mon","Tue","Wed","Thu","Fri","Sat","Sun"][(x.day-1)%7]}</span>
             <b>${sun?"Score day":esc(x.title_en||"Empty")}</b>
-            <span class="dbadges">${sun?"📊":filled?"✓ EN":""}${!sun&&x.principle_fr?" ✓ FR":""}${x.audio_url?" 🎙️":""}</span></button>`; }).join("")}</div>`).join("")}</div>
+            <span class="dbadges">${sun?"📊":filled?"✓ EN":""}${!sun&&x.principle_fr?" ✓ FR":""}${x.audio_url?" 🎙️EN":""}${x.audio_url_fr?" 🎙️FR":""}</span></button>`; }).join("")}</div>`).join("")}</div>
       <h2 class="sec" style="margin-top:8px">Editing day ${admDay}${l.title_en?` · ${esc(l.title_en)}`:""}</h2>
       <div class="grid2">
         <div class="stack"><h3>English</h3>${f("title_en","Title")}${f("word_en","Word (scripture reference)")}${f("principle_en","Principle",1)}${f("action_en","1% micro-action",1)}</div>
         <div class="stack"><h3>Français</h3>${f("title_fr","Titre")}${f("word_fr","Parole (référence)")}${f("principle_fr","Principe",1)}${f("action_fr","Micro-action 1 %",1)}</div>
       </div>
-      ${f("audio_url","Audio for this day (upload below, or paste a link)")}
-      <div><label for="laFile">Upload the Daily Fire audio for day ${admDay}</label><input type="file" id="laFile" accept="audio/*">
+      <div class="grid2"><div class="stack">${f("audio_url","English audio (upload below, or paste a link)")}
+        <div><label for="laFile">Upload the English audio</label><input type="file" id="laFile" accept="audio/*"></div></div>
+        <div class="stack">${f("audio_url_fr","Audio en français")}
+        <div><label for="laFileFr">Upload the French audio</label><input type="file" id="laFileFr" accept="audio/*"></div></div></div>
+      <div>
       <p class="hint">Record on your phone (a WhatsApp voice note or any recording works), upload here, then save the day. It is sent after the 6:00 message and plays inside the app.</p></div>
       <p id="lmsg" role="status"></p>
       <button class="btn btn-primary" id="lsave" style="max-width:260px">Save day ${admDay}</button>
       <p class="muted small">Participants only see a day's lesson once that day arrives. If a day has no principle, the app tells them to listen to the Daily Fire on WhatsApp.</p>
     </div>`;
 
-  const settingsView = `<div class="stack" style="max-width:420px">
+  const WH = "https://vjnzvrhbzaqmzneirmjq.supabase.co/functions/v1/gd-app?webhook=fapshi";
+  const settingsView = `<div class="grid2 settings-grid">
+    <div class="panel stack"><h3>Payments (Fapshi)</h3>
+      <p class="muted small">Set a price above 0 to turn payments on. People then pay with MTN MoMo or Orange Money after signing up, and only paid members get the daily messages. Set it to 0 to keep the cohort free.</p>
+      <div class="grid2"><div><label for="ppr">Price (FCFA)</label><input id="ppr" type="number" min="0" step="500" value="${adm.pay.price}"></div>
+        <div><label for="pst">Seats</label><input id="pst" type="number" min="1" value="${adm.pay.seat_limit}"></div></div>
+      <div><label for="penv">Mode</label><select id="penv"><option value="sandbox" ${adm.pay.env!=="live"?"selected":""}>Sandbox (test payments, no real money)</option><option value="live" ${adm.pay.env==="live"?"selected":""}>Live (real payments)</option></select></div>
+      <div><label for="puser">API user ${adm.pay.keys_set?'<span class="ok small">✓ saved</span>':""}</label><input id="puser" autocomplete="off" placeholder="${adm.pay.keys_set?"Leave empty to keep the saved one":""}"></div>
+      <div><label for="pkey">API key</label><input id="pkey" type="password" autocomplete="off" placeholder="${adm.pay.keys_set?"Leave empty to keep the saved one":""}"></div>
+      <div class="hint-box"><p class="small"><b>In your Fapshi dashboard</b>, on this service, set:</p>
+        <p class="small">Webhook URL: <code class="sel">${WH}</code></p>
+        <p class="small">Webhook secret: <code class="sel">${esc(adm.pay.wh_secret||"")}</code></p></div>
+      <p id="paymsg" role="status"></p><button class="btn btn-primary" id="paysave">Save payment settings</button></div>
+    <div class="panel stack"><h3>Growth Guides</h3>
+      <p class="muted small">Each guide signs in at <b>growthday.cc/cohort#guide</b> with their number and PIN, and sees only their triad.</p>
+      ${adm.guides.length ? `<div class="stack">${adm.guides.map(g=>`<div class="person"><div><b>${esc(g.name)}</b><p class="muted small">${esc(g.triad)} · +${esc(g.phone)}</p></div><button class="link small" data-delguide="${g.id}">Remove</button></div>`).join("")}</div>` : `<p class="muted small">No guides yet.</p>`}
+      <div class="grid2"><div><label for="gname">Name</label><input id="gname"></div><div><label for="gphone">WhatsApp</label><input id="gphone" type="tel" placeholder="6…"></div></div>
+      <div class="grid2"><div><label for="gtriad">Triad name</label><input id="gtriad" placeholder="Triad 1" list="triadlist"><datalist id="triadlist">${[...new Set(P.map(p=>p.triad).filter(Boolean))].map(x=>`<option value="${esc(x)}">`).join("")}</datalist></div><div><label for="gpin">4-digit PIN</label><input id="gpin" inputmode="numeric" maxlength="4"></div></div>
+      <p id="gmsg" role="status"></p><button class="btn btn-dark" id="gsave">Add or update guide</button></div>
+  </div>
+  <div class="stack" style="max-width:420px;margin-top:20px">
       <div><label for="sdate">Cohort start date (day 1, a Monday)</label><input type="date" id="sdate" value="${esc(adm.start_date)}"></div>
       <button class="btn btn-dark" id="ssave">Save start date</button>
       <div><label for="npin">New admin PIN (6+ digits)</label><input id="npin" inputmode="numeric"></div>
@@ -1250,7 +1514,7 @@ function adminRender(){
     <div class="top"><div class="brand"><img src="${LOGO}" alt="">Growth Day · Cohort admin</div><button class="link" id="refresh">Refresh</button></div>
     <div class="stats">
       <div class="stat"><b>${cur<1?`Starts in ${1-cur}d`:cur>42?"Finished":`Day ${cur}`}</b><span class="muted small">${cur>=1&&cur<=42?`Week ${Math.ceil(cur/7)}`:fmtDate(adm.start_date)}</span></div>
-      <div class="stat"><b>${P.length}</b><span class="muted small">Participants</span></div>
+      <div class="stat"><b>${adm.pay.price>0 ? `${P.filter(p=>p.status==="paid").length} / ${adm.pay.seat_limit}` : P.length}</b><span class="muted small">${adm.pay.price>0 ? "Paid seats" : "Participants"}</span></div>
       <div class="stat"><b>${cur>=1&&cur<=42?today:"—"}</b><span class="muted small">Cards filled today</span></div>
       <div class="stat"><b>${slip}</b><span class="muted small">Slipping</span></div>
     </div>
@@ -1281,6 +1545,15 @@ function adminRender(){
     const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "growth-day-cohort.csv"; a.click();
   };
   document.querySelectorAll("[data-lday]").forEach(b => b.onclick = () => { admDay = +b.dataset.lday; adminRender(); const h = document.querySelector(".wk-grid + h2"); if(h) h.scrollIntoView({behavior:"smooth"}); });
+  const upAudio = (inp, field) => { if(inp) inp.onchange = async () => {
+    const file = inp.files[0]; if(!file) return; const m = $("#lmsg");
+    if(file.size > 50*1024*1024){ m.className="err"; m.textContent="File is over 50 MB."; return; }
+    m.className=""; m.textContent = "Uploading " + file.name + "…";
+    try{ const fd = new FormData(); fd.append("pin", admPin); fd.append("file", file);
+      const d = await callFn(fd, true); $("#"+field).value = d.url;
+      m.className="ok"; m.textContent = `✓ Uploaded. Now click "Save day ${admDay}".`;
+    }catch(e){ m.className="err"; m.textContent = "Upload failed: " + e.message; } }; };
+  upAudio($("#laFileFr"), "audio_url_fr");
   const la = $("#laFile");
   if(la) la.onchange = async () => {
     const file = la.files[0]; if(!file) return; const m = $("#lmsg");
@@ -1293,7 +1566,7 @@ function adminRender(){
   };
   const ls = $("#lsave");
   if(ls) ls.onclick = async () => {
-    const keys = ["title_en","title_fr","word_en","word_fr","principle_en","principle_fr","action_en","action_fr","audio_url"];
+    const keys = ["title_en","title_fr","word_en","word_fr","principle_en","principle_fr","action_en","action_fr","audio_url","audio_url_fr"];
     const p = {}; keys.forEach(k => p[k] = $("#"+k).value.trim() || null);
     ls.disabled = true;
     try{ await rpc("gd_admin_save_lesson",{p_pin:admPin, p_day:admDay, p});
@@ -1301,6 +1574,24 @@ function adminRender(){
       const m=$("#lmsg"); m.className="ok"; m.textContent=`Day ${admDay} saved.`;
     }catch(e){ ls.disabled=false; const m=$("#lmsg"); m.className="err"; m.textContent="Could not save: "+e.message; }
   };
+  const ps2 = $("#paysave");
+  if(ps2) ps2.onclick = async () => { const m = $("#paymsg");
+    try{ await rpc("gd_admin_payment_settings",{p_pin:admPin, p_price:+$("#ppr").value||0, p_seats:+$("#pst").value||30, p_env:$("#penv").value, p_user:$("#puser").value, p_key:$("#pkey").value});
+      await adminLoad(); const m2=$("#paymsg"); if(m2){ m2.className="ok"; m2.textContent="✓ Payment settings saved."; } }
+    catch(e){ m.className="err"; m.textContent = e.message==="price_invalid" ? "The price must be 0 (free) or at least 100 FCFA." : "Could not save: "+e.message; } };
+  const gs = $("#gsave");
+  if(gs) gs.onclick = async () => { const m = $("#gmsg");
+    try{ await rpc("gd_admin_save_guide",{p_pin:admPin, p_name:$("#gname").value, p_phone:$("#gphone").value, p_triad:$("#gtriad").value, p_gpin:$("#gpin").value});
+      await adminLoad(); const m2=$("#gmsg"); if(m2){ m2.className="ok"; m2.textContent="✓ Guide saved. Send them the link and their PIN."; } }
+    catch(e){ m.className="err"; m.textContent = e.message==="pin_invalid" ? "Give the guide a 4-digit PIN." : e.message==="guide_invalid" ? "Fill name, number and triad." : "Could not save: "+e.message; } };
+  document.querySelectorAll("[data-delguide]").forEach(b => b.onclick = async () => { if(!confirm("Remove this guide?")) return;
+    try{ await rpc("gd_admin_delete_guide",{p_pin:admPin, p_id:b.dataset.delguide}); await adminLoad(); }catch(e){ alert(e.message); } });
+  document.querySelectorAll("[data-status]").forEach(sel => sel.onchange = async () => { if(!sel.value) return;
+    const lbl = {paid:"mark this person as paid (cash or manual payment)", pending:"mark this person as not paid", waitlist:"move this person to the waiting list"}[sel.value];
+    if(!confirm(`Do you want to ${lbl}?`)){ sel.value=""; return; }
+    try{ await rpc("gd_admin_set_status",{p_pin:admPin, p_id:sel.dataset.status, p_status:sel.value}); await adminLoad(); }catch(e){ alert(e.message); } });
+  document.querySelectorAll("[data-approve]").forEach(c => c.onchange = async () => {
+    try{ await rpc("gd_admin_approve_testimony",{p_pin:admPin, p_id:c.dataset.approve, p_ok:c.checked}); const p = adm.participants.find(x=>x.id===c.dataset.approve); if(p) p.testimony_approved = c.checked; }catch(e){ alert(e.message); } });
   const ss = $("#ssave");
   if(ss) ss.onclick = async () => { const m=$("#smsg");
     try{ await rpc("gd_admin_set_start",{p_pin:admPin, p_date:$("#sdate").value}); await adminLoad(); }
@@ -1332,11 +1623,13 @@ async function callFn(body, isForm){
 }
 function audienceCount(){
   const P = adm.participants;
-  if(comp.aud === "all") return P.length;
+  if(comp.aud === "all") return adm.pay.price>0 ? P.filter(p=>p.status==="paid").length : P.length;
   if(comp.aud === "slipping") return P.filter(p=>pStats(p).slipping).length;
   if(comp.aud === "lang") return P.filter(p=>p.lang===comp.val).length;
   if(comp.aud === "triad") return P.filter(p=>p.triad===comp.val).length;
   if(comp.aud === "test") return 1;
+  if(comp.aud === "unpaid") return P.filter(p=>p.status==="pending").length;
+  if(comp.aud === "waitlist") return P.filter(p=>p.status==="waitlist").length;
   return 0;
 }
 const ERR_WA = {whatsapp_not_configured:"Connect WhatsApp first (instance ID and token).", no_recipients:"No one matches this audience.", empty_message:"Write a message or attach a file.", phone_invalid:"Enter a valid test number.", wrong_pin:"Admin PIN rejected. Reload and sign in again.", locked:"Admin is locked for 15 minutes."};
@@ -1404,6 +1697,7 @@ function messagesView(){
         ${opt("lang:en","English speakers",P.filter(p=>p.lang==="en").length)}
         ${opt("lang:fr","French speakers",P.filter(p=>p.lang==="fr").length)}
         ${triads.map(x=>opt("triad:"+x,"Triad: "+x,P.filter(p=>p.triad===x).length)).join("")}
+        ${adm.pay.price>0 ? opt("unpaid","Signed up but not paid yet",P.filter(p=>p.status==="pending").length) + opt("waitlist","Waiting list",P.filter(p=>p.status==="waitlist").length) : ""}
         ${opt("test","Test: send only to one number",null)}
       </select></div>
       ${comp.aud==="test"?`<div class="grid2"><div><label for="mTest">Test number</label><input id="mTest" type="tel" value="${esc(comp.testNum)}" placeholder="+237 6…"></div>
@@ -1494,10 +1788,49 @@ function bindMessages(){
   };
 }
 
+
+/* ---------- growth guide view ---------- */
+let gview = null;
+function guideLogin(msg){
+  document.body.classList.add("admin");
+  root.innerHTML = `<div class="wrap stack-lg" style="max-width:440px"><div class="brand"><img src="${LOGO}" alt="">Growth Day · Growth Guide</div>
+    <div class="stack">${phoneField("237","")}<div><label for="gp">PIN</label><input id="gp" class="pin" type="password" inputmode="numeric" maxlength="4"></div>
+    <p class="err" role="alert">${msg?esc(msg):""}</p><button class="btn btn-primary" id="gl">Open my triad</button></div></div>`;
+  const go = async () => { try{ const tok = await rpc("gd_guide_login",{p_phone:fullPhone($("#code").value,$("#phone").value), p_pin:$("#gp").value.trim()}); store.set("gd_guide", tok); guideLoad(); }
+    catch(e){ guideLogin(e.message==="wrong_pin"?"Wrong PIN.":e.message==="not_found"?"This number is not registered as a guide.":e.message==="locked"?"Locked for 15 minutes.":"Could not sign in: "+e.message); } };
+  $("#gl").onclick = go; $("#gp").onkeydown = e => { if(e.key==="Enter") go(); };
+}
+async function guideLoad(){
+  const tok = store.get("gd_guide"); if(!tok) return guideLogin();
+  try{ gview = await rpc("gd_guide_view",{p_token:tok}); guideRender(); }
+  catch(e){ store.del("gd_guide"); guideLogin(); }
+}
+function guideRender(){
+  const G = gview, cur = G.day;
+  const stat = p => { const set = new Set(p.days); let s=0, d = set.has(cur)?cur:cur-1; while(d>=1 && set.has(d)){ s++; d--; } return {streak:s, slipping: cur>=2 && (!p.last_day || p.last_day < cur-1)}; };
+  root.innerHTML = `<div class="wrap stack-lg" style="max-width:820px">
+    <div class="top"><div class="brand"><img src="${LOGO}" alt="">Growth Guide · ${esc(G.triad)}</div><button class="link" id="gout">Sign out</button></div>
+    <h1>Hello ${esc(firstName(G.name))}</h1>
+    <p class="muted">${cur<1?`The cohort starts in ${1-cur} days.`:cur>42?"The cohort is finished.":`Day ${cur} of 42 · Week ${Math.ceil(cur/7)}.`} Red edge = no card yesterday or today: a good person to call.</p>
+    ${G.members.length ? G.members.map(p => { const st = stat(p), last = p.scores[p.scores.length-1];
+      const first = firstName(p.name), msg = p.lang==="fr" ? `Bonjour ${first}, c'est ${firstName(G.name)}, votre Growth Guide. Comment avance votre 1 % ?` : `Hi ${first}, it's ${firstName(G.name)}, your Growth Guide. How is your 1% going?`;
+      return `<section class="panel stack ${st.slipping?"slip-card":""}">
+        <div class="person"><div><h2>${esc(p.name)}</h2><p class="muted small">${AREA_ICON[p.area1-1]} ${AREA_SHORT[p.area1-1]} · ${AREA_ICON[p.area2-1]} ${AREA_SHORT[p.area2-1]} · streak ${st.streak} · ${p.days.length} cards${last?` · W${last.week}: ${last.score1}/${last.score2}`:""}</p></div>
+          <a class="btn btn-primary sm" href="https://wa.me/${esc(p.phone)}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">WhatsApp</a></div>
+        <div class="grid2">${[[1,p.area1],[2,p.area2]].map(([k,a])=>{ const pl=(p.plan||{})[k]||{};
+          return `<div class="small"><b>${AREA_ICON[a-1]} Plan</b>${[["honest","Where I am"],["target","6-week target"],["daily","Daily 1%"],["excuse","Excuse"],["answer","Answer"]].map(([f,lb])=>`<p><span class="muted">${lb}:</span> ${pl[f]?esc(pl[f]):'<span class="muted">–</span>'}</p>`).join("")}</div>`; }).join("")}</div>
+        ${(p.notes||[]).length ? `<div class="small"><b>Latest answers</b>${p.notes.map(n=>`<p><span class="muted">Day ${n.day}:</span> ${n.note1?esc(n.note1):""}${n.note2?` · ${esc(n.note2)}`:""}</p>`).join("")}</div>` : ""}
+        ${last && last.reflection ? `<p class="small"><b>Week ${last.week} reflection:</b> ${esc(last.reflection)}</p>` : ""}
+      </section>`; }).join("") : `<p class="muted">No one is in ${esc(G.triad)} yet. The admin assigns triads on the People page.</p>`}
+  </div>`;
+  $("#gout").onclick = () => { store.del("gd_guide"); guideLogin(); };
+}
+
 /* ---------- start ---------- */
 document.documentElement.lang = lang;
-if(location.hash === "#admin") adminLogin(); else boot();
-window.addEventListener("hashchange", () => { if(location.hash === "#admin") adminLogin(); else { document.body.classList.remove("admin"); boot(); } });
+const route = () => { if(location.hash === "#admin") adminLogin(); else if(location.hash === "#guide") guideLoad(); else { document.body.classList.remove("admin"); boot(); } };
+route();
+window.addEventListener("hashchange", route);
 </script>
 </body>
 </html>
