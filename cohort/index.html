@@ -504,7 +504,7 @@ en:{
   yes:"Done", no:"Not yet", notePh:"What did you do? One line is enough.",
   save:"Save my card", saved:"Card saved. See you tomorrow.", editCard:"Fill this card",
   catchUp:"You haven't filled yesterday's card.", catchBtn:"Fill yesterday's card", backToday:"Back to today",
-  scoreTitle:"Weekly Growth Score", scoreQ:"How much did you grow this week? 1 is no change, 10 is a big step forward.",
+  scoreTitle:"Weekly Growth Score", scoreQ:"Where are you now in each area? Use the same 1 to 10 scale as your starting score.", scoreRef:(a,b)=>`Start: ${a}${b?` · last Sunday: ${b}`:""}`,
   reflection:"One thing you learned this week", saveScore:"Save my score", scoreSaved:"Score saved.",
   finishedTitle:"You finished the 42 days.", finished:"Well done. Keep the rhythm going, 1% at a time.",
   legBoth:"Both areas", legOne:"One area", legMiss:"Missed", legFut:"Coming",
@@ -576,7 +576,7 @@ fr:{
   yes:"Fait", no:"Pas encore", notePh:"Qu'avez-vous fait ? Une ligne suffit.",
   save:"Enregistrer ma carte", saved:"Carte enregistrée. À demain.", editCard:"Remplir cette carte",
   catchUp:"Vous n'avez pas rempli la carte d'hier.", catchBtn:"Remplir la carte d'hier", backToday:"Revenir à aujourd'hui",
-  scoreTitle:"Bilan de croissance de la semaine", scoreQ:"Combien avez-vous grandi cette semaine ? 1 = aucun changement, 10 = un grand pas.",
+  scoreTitle:"Bilan de croissance de la semaine", scoreQ:"Où en êtes-vous maintenant dans chaque domaine ? Même échelle de 1 à 10 que votre note de départ.", scoreRef:(a,b)=>`Départ : ${a}${b?` · dimanche dernier : ${b}`:""}`,
   reflection:"Une chose apprise cette semaine", saveScore:"Enregistrer mon bilan", scoreSaved:"Bilan enregistré.",
   finishedTitle:"Vous avez terminé les 42 jours.", finished:"Bravo. Gardez le rythme, 1 % à la fois.",
   legBoth:"Deux domaines", legOne:"Un domaine", legMiss:"Manqué", legFut:"À venir",
@@ -1207,14 +1207,17 @@ function cardBlock(d){
 }
 
 function scoreBlock(week){
-  const s = me.scores.find(x=>x.week===week) || {score1:5, score2:5, reflection:""};
+  const T_ = t(), prev = (me.scores||[]).filter(x=>x.week<week).slice(-1)[0] || {};
+  const start = k => (me.plan && me.plan[k] && me.plan[k].score) || null;
+  const s = me.scores.find(x=>x.week===week) || {score1: prev.score1 || start("1") || 5, score2: prev.score2 || start("2") || 5, reflection:""};
   return `<section class="panel stack" id="score" data-w="${week}">
-    <div><h2>${t().scoreTitle}</h2><p class="muted small">${t().week(week)} · ${t().scoreQ}</p></div>
-    ${[[1,me.area1],[2,me.area2]].map(([k,a])=>`<div><label for="s${k}">${esc(areaName(a))}</label>
+    <div><h2>${T_.scoreTitle}</h2><p class="muted small">${T_.week(week)} · ${T_.scoreQ}</p></div>
+    ${[[1,me.area1],[2,me.area2]].map(([k,a])=>`<div><label for="s${k}">${AREA_ICON[a-1]} ${esc(areaName(a))}</label>
+      ${start(String(k)) ? `<p class="hint" style="margin:0 0 4px">${T_.scoreRef(start(String(k)), prev["score"+k])}</p>` : ""}
       <div class="range-row"><input type="range" id="s${k}" min="1" max="10" value="${s["score"+k]}"><output id="o${k}">${s["score"+k]}</output></div></div>`).join("")}
-    <div><label for="refl">${t().reflection}</label><textarea id="refl" maxlength="1000">${esc(s.reflection||"")}</textarea></div>
+    <div><label for="refl">${T_.reflection}</label><textarea id="refl" maxlength="1000">${esc(s.reflection||"")}</textarea></div>
     <p id="scoreMsg" role="status"></p>
-    <button class="btn btn-dark" id="saveScore">${t().saveScore}</button></section>`;
+    <button class="btn btn-dark" id="saveScore">${T_.saveScore}</button></section>`;
 }
 
 function viewToday(){
