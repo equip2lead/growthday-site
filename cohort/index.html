@@ -261,6 +261,19 @@ pre.wa{white-space:pre-wrap;word-wrap:break-word;font:400 15px/1.45 var(--body);
 .ctile[aria-pressed="true"] .tick{background:var(--leaf);border-color:var(--leaf);color:#fff}
 .notes summary{cursor:pointer;color:var(--ember-text);font-weight:600;font-size:15px}
 
+.admin .wrap{max-width:1180px}
+.wk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.wk-col{display:flex;flex-direction:column;gap:6px}
+.wk-col h3{font-size:15px;margin-bottom:2px}
+.dcard{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;border:1.5px solid var(--line);background:var(--surface);color:var(--text);border-radius:12px;padding:8px 10px;cursor:pointer;font:400 14px/1.3 var(--body)}
+.dcard b{font-family:var(--display);font-weight:600;font-size:14px}
+.dcard .dnum{font-size:12px;color:var(--muted)}
+.dcard .dbadges{font-size:12px;color:var(--leaf)}
+.dcard.empty{border-style:dashed;opacity:.7}
+.dcard.empty b{color:var(--muted);font-weight:500}
+.dcard.sel{border-color:var(--ember);box-shadow:inset 0 0 0 1.5px var(--ember);opacity:1}
+.hw{background:color-mix(in srgb,var(--ember) 9%,var(--surface));border-radius:14px;padding:12px 14px}
+.hw-l{font-size:13px;font-weight:600;color:var(--ember-text)}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -385,6 +398,7 @@ en:{
   day1Is:d=>`Day 1 is ${d}`, daysUnit:n=>n===1?"day to go":"days to go",
   nextTitle:"What happens next",
   nextSteps:[["Monday · 6:00","Your first Daily Fire arrives on WhatsApp."],["Monday · evening","Fill your first 1% Card here. Two taps."],["Sunday","Rate your week in your two areas."],["Week 2","Meet your triad and start your weekly calls."]],
+  hwTitle:"Today's 1% (your homework)", answerFor:a=>`Your answer for ${a}`, answerPh:"Write it here…", scoreNext:d=>`Weekly Growth Score: Sunday (day ${d})`,
   thisWeek:"This week", tapHint:"Tap each area where you applied today's principle.",
   addNote:"Add a note (optional)", cardDone:"✓ Today's card is filled. You can still change it.",
   keepGoing:"Keep the flame going tonight.",
@@ -433,6 +447,7 @@ fr:{
   day1Is:d=>`Le jour 1 est le ${d}`, daysUnit:n=>n===1?"jour restant":"jours restants",
   nextTitle:"La suite",
   nextSteps:[["Lundi · 6h00","Votre premier Daily Fire arrive sur WhatsApp."],["Lundi · soir","Remplissez votre première carte 1 % ici. Deux touches."],["Dimanche","Notez votre semaine dans vos deux domaines."],["Semaine 2","Rencontrez votre triade et commencez vos appels."]],
+  hwTitle:"Votre 1 % du jour (votre devoir)", answerFor:a=>`Votre réponse pour ${a}`, answerPh:"Écrivez-la ici…", scoreNext:d=>`Bilan de la semaine : dimanche (jour ${d})`,
   thisWeek:"Cette semaine", tapHint:"Touchez chaque domaine où vous avez appliqué le principe du jour.",
   addNote:"Ajouter une note (facultatif)", cardDone:"✓ La carte du jour est remplie. Vous pouvez encore la modifier.",
   keepGoing:"Gardez la flamme allumée ce soir.",
@@ -898,15 +913,16 @@ function lessonBlock(l){
 }
 
 function cardBlock(d){
-  const c = ck(d) || {}, T_ = t();
+  const c = ck(d) || {}, T_ = t(), les = me.lessons.find(l=>l.day===d), act = L(les,"action");
   return `<section class="panel stack" id="card" data-d="${d}">
     <div><h2>${T_.card}</h2><p class="muted small">${T_.cardFor(d)} · ${ck(d)?T_.cardDone:T_.tapHint}</p></div>
+    ${act ? `<div class="hw"><p class="hw-l">${T_.hwTitle}</p><p>${esc(act)}</p></div>` : ""}
     <div class="tiles2">${[[1,me.area1],[2,me.area2]].map(([k,a])=>`<button class="ctile" data-tile="${k}" aria-pressed="${!!c["done"+k]}">
       <span class="ai">${AREA_ICON[a-1]}</span><b>${esc(areaName(a))}</b><span class="tick" aria-hidden="true">✓</span></button>`).join("")}</div>
-    <details class="notes" ${c.note1||c.note2?"open":""}><summary>${T_.addNote}</summary>
-      <div class="stack" style="margin-top:10px">${[[1,me.area1],[2,me.area2]].map(([k,a])=>`<div><label for="note${k}" class="small">${AREA_ICON[a-1]} ${esc(areaName(a))}</label><input id="note${k}" placeholder="${esc(T_.notePh)}" value="${esc(c["note"+k]||"")}" maxlength="500"></div>`).join("")}</div></details>
+    <div class="stack">${[[1,me.area1],[2,me.area2]].map(([k,a])=>`<div><label for="note${k}" class="small">${AREA_ICON[a-1]} ${T_.answerFor(esc(areaName(a)))}</label><textarea id="note${k}" rows="2" placeholder="${esc(T_.answerPh)}" maxlength="500">${esc(c["note"+k]||"")}</textarea></div>`).join("")}</div>
     <p id="cardMsg" role="status"></p>
     <button class="btn btn-primary" id="saveCard">${T_.save}</button>
+    ${d % 7 !== 0 ? `<p class="muted small">📊 ${T_.scoreNext(Math.ceil(d/7)*7)}</p>` : ""}
   </section>`;
 }
 
@@ -1095,7 +1111,13 @@ function adminRender(){
   const f = (k, label, area) => `<div><label for="${k}">${label}</label>${area?`<textarea id="${k}">${esc(l[k]||"")}</textarea>`:`<input id="${k}" value="${esc(l[k]||"")}">`}</div>`;
   const lessonsView = `
     <div class="stack" style="max-width:780px">
-      <div><label for="lday">Day</label><select id="lday">${adm.lessons.map(x=>`<option value="${x.day}" ${x.day===admDay?"selected":""}>Day ${x.day} · Week ${x.week} ${x.day%7===0?"(Sunday · score day)":""} ${x.principle_en?"":"· empty"}</option>`).join("")}</select></div>
+      <div class="wk-grid">${[1,2,3,4,5,6].map(w=>`<div class="wk-col"><h3>Week ${w} · ${["See","Plan","Practice","Stretch","Deepen","Multiply"][w-1]}</h3>
+        ${adm.lessons.filter(x=>x.week===w).map(x=>{ const sun = x.day%7===0, filled = sun || !!x.principle_en;
+          return `<button class="dcard ${x.day===admDay?"sel":""} ${filled?"":"empty"}" data-lday="${x.day}">
+            <span class="dnum">Day ${x.day} · ${["Mon","Tue","Wed","Thu","Fri","Sat","Sun"][(x.day-1)%7]}</span>
+            <b>${sun?"Score day":esc(x.title_en||"Empty")}</b>
+            <span class="dbadges">${sun?"📊":filled?"✓ EN":""}${!sun&&x.principle_fr?" ✓ FR":""}${x.audio_url?" 🎙️":""}</span></button>`; }).join("")}</div>`).join("")}</div>
+      <h2 class="sec" style="margin-top:8px">Editing day ${admDay}${l.title_en?` · ${esc(l.title_en)}`:""}</h2>
       <div class="grid2">
         <div class="stack"><h3>English</h3>${f("title_en","Title")}${f("word_en","Word (scripture reference)")}${f("principle_en","Principle",1)}${f("action_en","1% micro-action",1)}</div>
         <div class="stack"><h3>Français</h3>${f("title_fr","Titre")}${f("word_fr","Parole (référence)")}${f("principle_fr","Principe",1)}${f("action_fr","Micro-action 1 %",1)}</div>
@@ -1148,7 +1170,7 @@ function adminRender(){
     const blob = new Blob(["\ufeff"+rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(",")).join("\n")], {type:"text/csv"});
     const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "growth-day-cohort.csv"; a.click();
   };
-  const ld = $("#lday"); if(ld) ld.onchange = () => { admDay = +ld.value; adminRender(); };
+  document.querySelectorAll("[data-lday]").forEach(b => b.onclick = () => { admDay = +b.dataset.lday; adminRender(); const h = document.querySelector(".wk-grid + h2"); if(h) h.scrollIntoView({behavior:"smooth"}); });
   const la = $("#laFile");
   if(la) la.onchange = async () => {
     const file = la.files[0]; if(!file) return; const m = $("#lmsg");
