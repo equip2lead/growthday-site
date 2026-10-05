@@ -799,7 +799,7 @@ function welcome(){
     box.innerHTML = list.slice(0,6).map(x=>`<figure class="story"><blockquote>${esc(x.text)}</blockquote><figcaption><b>${esc(x.name)}</b> · ${AREA_ICON[x.area1-1]} ${AREA_ICON[x.area2-1]}</figcaption></figure>`).join("");
     $("#stories").hidden = false; }).catch(()=>{});
   if(!pubStats) rpc("gd_public_stats", {}).then(st => { pubStats = st;
-    const p = $("#proof"); if(p) p.textContent = st.payments_on ? `${fcfa(st.price)} FCFA (${fcfa(Math.round(st.price/6))} FCFA/${lang==="fr"?"semaine":"week"}) · ${t().seatsLeft(st.seats_left)}` : `${st.joined >= 5 ? X.joined(st.joined) + " · " : ""}${X.seats}`;
+    const p = $("#proof"); if(p) p.textContent = st.price > 0 ? `${fcfa(st.price)} FCFA (${fcfa(Math.round(st.price/6))} FCFA/${lang==="fr"?"semaine":"week"}) · ${t().seatsLeft(st.seats_left)}` : `${st.joined >= 5 ? X.joined(st.joined) + " · " : ""}${X.seats}`;
     const pill = document.querySelector(".lh .pill"); if(pill) pill.textContent = X.date(fmtDate(st.start_date));
   }).catch(()=>{});
 }
