@@ -25,14 +25,14 @@
 <meta name="apple-mobile-web-app-title" content="Growth Day">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#1C2340; --text:#1C2340; --muted:#5B6480; --bg:#F3F6FB; --surface:#FFFFFF;
   --line:#D6DDEA; --ember:#E8890C; --glow:#FFC94D; --leaf:#2F855A; --danger:#B42318;
   --ember-text:#A35F00;
   --display:"Sora", "Segoe UI", system-ui, sans-serif;
-  --body:"Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --body:"Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
@@ -433,6 +433,7 @@ code.sel{user-select:all;word-break:break-all;font-size:12.5px;background:var(--
   #printHost blockquote{margin:0;padding:8px 12px;border-left:4px solid #E8890C;background:#FFF8EE;font-size:10.5pt}
   .j-foot{margin-top:18px;border-top:1px solid #D6DDEA;padding-top:6px;font-size:8.5pt;color:#5B6480}
 }
+.stripe-box{border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -508,6 +509,95 @@ td input{padding:6px 8px;font-size:15px;min-width:90px}
   @keyframes ignite{from{transform:scale(.6);opacity:.3}to{transform:scale(1);opacity:1}}
   .fl path{transform-origin:50% 70%}
 }
+
+/* =========================================================
+   Design layer v2 · depth over borders, filled inputs, tactile controls
+   ========================================================= */
+:root{ --bg:#F3F4F7; --line:#E6E8EE; --shadow:0 1px 2px rgba(16,24,40,.04),0 4px 18px rgba(16,24,40,.06); --shadow-lg:0 10px 40px rgba(16,24,40,.12); --fill:#EEF0F4; }
+@media (prefers-color-scheme: dark){ :root{ --bg:#0E1222; --surface:#171C31; --line:#262D4A; --fill:#1F2540; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); } }
+body{font-size:16px;letter-spacing:-.006em;font-feature-settings:"cv11","ss01"}
+h1,h2,h3{letter-spacing:-.022em}
+.panel{border:0;border-radius:22px;box-shadow:var(--shadow);padding:20px}
+.muted{color:var(--muted)}
+label{font-weight:600;font-size:14px;letter-spacing:-.003em}
+input,textarea,select{background:var(--fill);border:1.5px solid transparent;border-radius:14px;padding:13px 15px;font-size:16px;transition:border-color .15s,background .15s,box-shadow .15s}
+input:focus,textarea:focus,select:focus{background:var(--surface);border-color:var(--ember);box-shadow:0 0 0 4px color-mix(in srgb,var(--ember) 18%,transparent)}
+input[type=range]{background:none}
+.btn{border-radius:14px;font-family:var(--body);font-weight:600;letter-spacing:-.01em;transition:transform .12s ease,box-shadow .2s,background .2s}
+.btn:active:not([disabled]){transform:scale(.98)}
+.btn-primary{box-shadow:0 6px 18px color-mix(in srgb,var(--ember) 32%,transparent)}
+.btn-ghost{background:var(--surface);border:0;box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-lg{padding:17px 20px;font-size:17px}
+.link{font-weight:600}
+.chip,.atile,.ctile,.mine-a,.book,.sugb,.dcard,.stat{border-color:transparent}
+.chip,.mine-a,.book,.stat{box-shadow:var(--shadow)}
+.atile,.ctile{background:var(--surface);box-shadow:var(--shadow);border:2px solid transparent}
+.atile[aria-pressed="true"],.ctile[aria-pressed="true"]{box-shadow:none}
+.atile:active,.ctile:active,.chip:active,.plan-opt:active,.method:active{transform:scale(.985)}
+.sugb{background:var(--fill)}
+.hero2,.hero,.demo,.report{border-radius:26px;box-shadow:0 12px 30px rgba(28,35,64,.18)}
+.sc-area,.hint-box,.pay-sum{background:var(--fill)}
+/* frosted tab bar with active pill */
+.tabs{background:color-mix(in srgb,var(--surface) 82%,transparent);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:.5px solid var(--line)}
+.tabs button{position:relative;font-weight:600;font-size:11.5px;letter-spacing:.01em;padding-top:10px}
+.tabs button[aria-current="page"]::before{content:"";position:absolute;top:6px;width:42px;height:30px;border-radius:12px;background:color-mix(in srgb,var(--ember) 14%,transparent);z-index:-1}
+.tabs button svg{width:23px;height:23px}
+/* sticky frosted header inside the app */
+.app-top{position:sticky;top:0;z-index:5;margin:-20px -18px 0;padding:14px 18px 12px;background:color-mix(in srgb,var(--bg) 84%,transparent);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px)}
+.hello{font-size:28px;letter-spacing:-.03em}
+/* gentle entrance */
+@media (prefers-reduced-motion:no-preference){
+  .wrap.stack-lg > *{animation:rise .32s cubic-bezier(.2,.7,.2,1) both}
+  .wrap.stack-lg > *:nth-child(2){animation-delay:.03s} .wrap.stack-lg > *:nth-child(3){animation-delay:.06s} .wrap.stack-lg > *:nth-child(4){animation-delay:.09s} .wrap.stack-lg > *:nth-child(5){animation-delay:.12s}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .pulse svg{animation:pulse 1.2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.9);opacity:.7}}
+}
+/* skeletons */
+.sk{display:block;background:linear-gradient(90deg,var(--fill) 25%,color-mix(in srgb,var(--fill) 60%,var(--surface)) 37%,var(--fill) 63%);background-size:400% 100%;animation:sh 1.3s ease infinite;border-radius:8px}
+.sk-row{display:flex;justify-content:space-between;align-items:center}
+@keyframes sh{0%{background-position:100% 0}100%{background-position:0 0}}
+/* payment sheet */
+.paysheet{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.sec-l{font:600 12px var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.plan-list{display:flex;flex-direction:column;gap:10px}
+.plan-opt{display:grid;grid-template-columns:24px 1fr auto;gap:12px;align-items:center;text-align:left;width:100%;background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:16px;cursor:pointer;color:var(--text);font:inherit;transition:border-color .15s,background .15s,transform .12s}
+.plan-opt[aria-pressed="true"]{border-color:var(--ember);background:color-mix(in srgb,var(--ember) 6%,var(--surface))}
+.radio{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center}
+.plan-opt[aria-pressed="true"] .radio{border-color:var(--ember)}
+.plan-opt[aria-pressed="true"] .radio::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--ember)}
+.po-b{display:flex;flex-direction:column;gap:3px;min-width:0}
+.po-t{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.po-t b{font:600 15.5px var(--display);letter-spacing:-.01em}
+.po-s{font-size:13px;color:var(--muted);line-height:1.35}
+.po-p{text-align:right;white-space:nowrap}
+.po-p b{display:block;font:700 20px var(--display);letter-spacing:-.02em}
+.po-p small{font-size:11.5px;color:var(--muted);font-weight:600}
+.badge{font:600 11.5px var(--body);color:#0B6B3A;background:#DDF5E7;border-radius:99px;padding:2px 8px}
+@media (prefers-color-scheme: dark){.badge{color:#7CE3A7;background:#123A27}}
+.methods{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.method{display:flex;align-items:center;gap:10px;text-align:left;background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:12px 14px;cursor:pointer;color:var(--text);font:inherit}
+.method[aria-pressed="true"]{border-color:var(--ember);background:color-mix(in srgb,var(--ember) 6%,var(--surface))}
+.method[disabled]{opacity:.5;cursor:not-allowed}
+.method b{display:block;font-size:14.5px}
+.method small{font-size:12px;color:var(--muted)}
+.m-ic{font-size:22px}
+.pay-sum{display:flex;justify-content:space-between;align-items:center;border-radius:16px;padding:14px 16px;margin-top:4px}
+.pay-sum span{color:var(--muted);font-weight:600;font-size:14px}
+.pay-sum b{font:700 24px var(--display);letter-spacing:-.02em}
+.pay-sum b small{font-size:13px;color:var(--muted)}
+.secure{font-size:12.5px;color:var(--muted);text-align:center;line-height:1.4}
+.spin{display:inline-block;width:16px;height:16px;border:2.5px solid currentColor;border-right-color:transparent;border-radius:50%;animation:rot .7s linear infinite;vertical-align:-3px}
+@keyframes rot{to{transform:rotate(360deg)}}
+.pay-panel{box-shadow:0 0 0 2px var(--ember),var(--shadow)}
+.renew{box-shadow:0 0 0 2px var(--glow),var(--shadow)}
+.center-v{text-align:center;display:flex;flex-direction:column;align-items:center;padding-top:22vh}
+.acc{display:flex;gap:14px;align-items:center}
+.acc-ic{font-size:26px;width:48px;height:48px;border-radius:14px;background:var(--fill);display:grid;place-items:center;flex:none}
+.wkdots{display:flex;gap:6px;margin-top:8px}
+.wkdots i{width:26px;height:26px;border-radius:8px;background:var(--fill);color:var(--muted);font:600 12px var(--body);font-style:normal;display:grid;place-items:center}
+.wkdots i.on{background:var(--ember);color:#1C2340}
+
 </style>
 </head>
 <body>
@@ -559,7 +649,7 @@ en:{
   nextSteps:[["Monday · 6:00","Your first Daily Fire arrives on WhatsApp."],["Monday · evening","Fill your first 1% Card here. Two taps."],["Sunday","Rate your week in your two areas."],["Week 2","Meet your triad and start your weekly calls."]],
   hwTitle:"Today's 1% (your homework)", answerFor:a=>`Your answer for ${a}`, answerPh:"Write it here…", scoreNext:d=>`Weekly Growth Score: Sunday (day ${d})`,
 
-  payTitle:n=>`One last step, ${n}`, paySub:"Secure your seat in the cohort. You pay on a secure Fapshi page with MTN MoMo or Orange Money.",
+  payTitle:n=>`One last step, ${n}`, paySub:"Choose how you want to pay: week by week, or the full journey at once. You pay with MTN MoMo or Orange Money.",
   seatsLeft:n=>n===1?"1 seat left":`${n} seats left`, payBtn:p=>`Pay ${p} FCFA`, payLater:"I'll pay later", paying:"Opening the payment page…",
   payCardTitle:"Secure your seat", payCardSub:"Your seat is confirmed once your payment is received. Then the daily teaching and your 1% Card open here.",
   checking:"Checking your payment…", notYet:"We haven't received your payment yet. If you just paid, wait a minute and tap Check again.", checkAgain:"Check again",
@@ -587,6 +677,13 @@ en:{
   jDay:"Day", jLesson:"Teaching", jWeek:"Week", jLearned:"What I learned", jLib:"Books", jCrs:"Courses & activities", jStory:"My story",
   jPrinted:"Printed on", jBlankTitle:"My 1% Tracker", jBlankHow:"Each evening, tick each area where you took your 1% and write one line. Every Sunday, give yourself a score from 1 to 10.",
   jDaily:"My daily 1%", jNotes:"Notes", jScore:"Score /10",
+  pPlan:"Choose your plan", pMethod:"Payment method", pFullT:"Full journey · 6 weeks", pFullS:"One payment. All 42 days, seminars and graduation.",
+  pWeekT:w=>`Week ${w} only`, pWeekS:"Pay week by week. Each week opens when it's paid.", pRestT:n=>`The remaining ${n} weeks`, pRestS:"Pay the rest once and finish without interruption.",
+  pSave:x=>`Save ${x} F`, perWk:" / week", pCard:"Bank card", soon:"Coming soon", pNow:"You pay now", pConfirm:"Confirm payment",
+  pSecure:"Secure payment by pawaPay. You'll confirm on your phone with your Mobile Money PIN.", pSecureCard:"Secure card payment by Stripe. Visa, Mastercard and more. Your card details never touch our servers.", pCardSub:"Visa · Mastercard", pCancelled:"Payment cancelled. You can try again whenever you're ready.", pBest:"Best value",
+  lockT:w=>`Week ${w} is waiting for you`, lockS:"Your access covers the weeks you've paid. Pay this week to open the Daily Fire, your 1% Card and the seminar.",
+  renewT:w=>`Week ${w} starts soon`, renewS:d=>d<=0?"Your paid weeks end today. Pay the next week to keep your streak going.":`Your paid weeks end in ${d} day${d>1?"s":""}. Pay ahead to keep your streak going.`,
+  myAccess:"My access", accFull:"Full journey · 6 weeks paid", accWeek:n=>`Weekly · ${n} of 6 weeks paid`, accNone:"Not paid yet", payNext:"Pay next week", payRest:"Pay the rest",
   psAreas:"My areas", psLib:"Library", psCourses:"Courses",
   ovPlan:"plan filled", ovBooks:"books", ovFinished:"finished", ovCourses:"courses & activities",
   libTitle:"My growth library", libSub:"The books feeding your growth right now. Update your progress as you read.",
@@ -637,7 +734,7 @@ en:{
   myAreas:"My growth areas", areasLocked:"Your areas are locked after week 1.", areasOpen:"You can change your areas until the end of week 1.",
   saveChanges:"Save changes", changesSaved:"Changes saved.", triad:"My triad", noTriad:"Your triad will be shared with you in week 2.",
   signOut:"Sign out", whatsapp:"WhatsApp", loading:"Loading…", credit:"An <b>Equip2Lead</b> program · Led by <b>Dr. Denis Ekobena</b>",
-  err:{phone_exists:"This number is already registered. Sign in instead.",not_found:"No account uses this number. Check it, or join the cohort.",wrong_pin:"Wrong PIN. Try again.",locked:"Too many tries. Wait 15 minutes, then try again.",pin_invalid:"Your PIN must be exactly 4 digits.",pin_mismatch:"The two PINs don't match.",name_required:"Enter your full name.",phone_invalid:"Enter a valid WhatsApp number.",areas_needed:"Choose exactly 2 areas.",session_expired:"Please sign in again.",day_closed:"This card is closed. You can fill today's and yesterday's cards only.",week_closed:"This week isn't open yet.",areas_locked:"Your areas are locked after week 1.",network:"No connection. Check your internet and try again.",code_invalid:"That code is not right. Check it and try again.",code_expired:"This code has expired. Ask for a new one.",wait:"Please wait a minute before asking for another code.",whatsapp_failed:"We couldn't send the code on WhatsApp. Ask your Growth Guide to reset your PIN.",payments_not_configured:"Payments aren't open yet. Try again soon.",fapshi_error:"The payment page couldn't open. Try again in a moment."}
+  err:{phone_exists:"This number is already registered. Sign in instead.",not_found:"No account uses this number. Check it, or join the cohort.",wrong_pin:"Wrong PIN. Try again.",locked:"Too many tries. Wait 15 minutes, then try again.",pin_invalid:"Your PIN must be exactly 4 digits.",pin_mismatch:"The two PINs don't match.",name_required:"Enter your full name.",phone_invalid:"Enter a valid WhatsApp number.",areas_needed:"Choose exactly 2 areas.",session_expired:"Please sign in again.",day_closed:"This card is closed. You can fill today's and yesterday's cards only.",week_closed:"This week isn't open yet.",week_locked:"This week isn't paid yet.",pay_start_failed:"The payment page couldn't open. Check your number and try again in a moment.",card_not_configured:"Card payment isn't available yet. Please use Mobile Money.",use_rest:"Choose \"The remaining weeks\" to pay the rest.",pay_failed:"The payment didn't go through. You can try again.",areas_locked:"Your areas are locked after week 1.",network:"No connection. Check your internet and try again.",code_invalid:"That code is not right. Check it and try again.",code_expired:"This code has expired. Ask for a new one.",wait:"Please wait a minute before asking for another code.",whatsapp_failed:"We couldn't send the code on WhatsApp. Ask your Growth Guide to reset your PIN.",payments_not_configured:"Payments aren't open yet. Try again soon.",fapshi_error:"The payment page couldn't open. Try again in a moment."}
 },
 fr:{
   stepOf:n=>`Étape ${n} sur 3`, next:"Continuer", country:"Pays",
@@ -655,7 +752,7 @@ fr:{
   nextSteps:[["Lundi · 6h00","Votre premier Daily Fire arrive sur WhatsApp."],["Lundi · soir","Remplissez votre première carte 1 % ici. Deux touches."],["Dimanche","Notez votre semaine dans vos deux domaines."],["Semaine 2","Rencontrez votre triade et commencez vos appels."]],
   hwTitle:"Votre 1 % du jour (votre devoir)", answerFor:a=>`Votre réponse pour ${a}`, answerPh:"Écrivez-la ici…", scoreNext:d=>`Bilan de la semaine : dimanche (jour ${d})`,
 
-  payTitle:n=>`Une dernière étape, ${n}`, paySub:"Réservez votre place dans la cohorte. Vous payez sur une page sécurisée Fapshi avec MTN MoMo ou Orange Money.",
+  payTitle:n=>`Une dernière étape, ${n}`, paySub:"Choisissez comment payer : semaine par semaine, ou tout le parcours en une fois. Vous payez avec MTN MoMo ou Orange Money.",
   seatsLeft:n=>n===1?"Plus qu'1 place":`Plus que ${n} places`, payBtn:p=>`Payer ${p} FCFA`, payLater:"Je paierai plus tard", paying:"Ouverture de la page de paiement…",
   payCardTitle:"Réservez votre place", payCardSub:"Votre place est confirmée dès réception du paiement. L'enseignement quotidien et votre carte 1 % s'ouvrent alors ici.",
   checking:"Vérification de votre paiement…", notYet:"Nous n'avons pas encore reçu votre paiement. Si vous venez de payer, attendez une minute puis touchez Vérifier.", checkAgain:"Vérifier à nouveau",
@@ -683,6 +780,13 @@ fr:{
   jDay:"Jour", jLesson:"Enseignement", jWeek:"Semaine", jLearned:"Ce que j'ai appris", jLib:"Livres", jCrs:"Formations & activités", jStory:"Mon histoire",
   jPrinted:"Imprimé le", jBlankTitle:"Mon suivi 1 %", jBlankHow:"Chaque soir, cochez chaque domaine où vous avez fait votre 1 % et écrivez une ligne. Chaque dimanche, donnez-vous une note de 1 à 10.",
   jDaily:"Mon 1 % quotidien", jNotes:"Notes", jScore:"Note /10",
+  pPlan:"Choisissez votre formule", pMethod:"Moyen de paiement", pFullT:"Parcours complet · 6 semaines", pFullS:"Un seul paiement. Les 42 jours, les séminaires et la remise de diplômes.",
+  pWeekT:w=>`Semaine ${w} seulement`, pWeekS:"Payez semaine par semaine. Chaque semaine s'ouvre une fois payée.", pRestT:n=>`Les ${n} semaines restantes`, pRestS:"Payez le reste en une fois et terminez sans interruption.",
+  pSave:x=>`Économisez ${x} F`, perWk:" / semaine", pCard:"Carte bancaire", soon:"Bientôt", pNow:"Vous payez maintenant", pConfirm:"Confirmer le paiement",
+  pSecure:"Paiement sécurisé par pawaPay. Vous confirmez sur votre téléphone avec votre code Mobile Money.", pSecureCard:"Paiement par carte sécurisé par Stripe. Visa, Mastercard et plus. Vos données de carte ne passent jamais par nos serveurs.", pCardSub:"Visa · Mastercard", pCancelled:"Paiement annulé. Vous pouvez réessayer quand vous voulez.", pBest:"Meilleure offre",
+  lockT:w=>`La semaine ${w} vous attend`, lockS:"Votre accès couvre les semaines payées. Payez cette semaine pour ouvrir le Daily Fire, votre carte 1 % et le séminaire.",
+  renewT:w=>`La semaine ${w} commence bientôt`, renewS:d=>d<=0?"Vos semaines payées se terminent aujourd'hui. Payez la suivante pour garder votre série.":`Vos semaines payées se terminent dans ${d} jour${d>1?"s":""}. Payez d'avance pour garder votre série.`,
+  myAccess:"Mon accès", accFull:"Parcours complet · 6 semaines payées", accWeek:n=>`Hebdomadaire · ${n} semaine${n>1?"s":""} sur 6 payée${n>1?"s":""}`, accNone:"Pas encore payé", payNext:"Payer la semaine suivante", payRest:"Payer le reste",
   psAreas:"Mes domaines", psLib:"Bibliothèque", psCourses:"Formations",
   ovPlan:"plan rempli", ovBooks:"livres", ovFinished:"terminés", ovCourses:"formations & activités",
   libTitle:"Ma bibliothèque de croissance", libSub:"Les livres qui nourrissent votre croissance en ce moment. Mettez à jour votre progression au fil de la lecture.",
@@ -733,7 +837,7 @@ fr:{
   myAreas:"Mes domaines de croissance", areasLocked:"Vos domaines sont fixés après la semaine 1.", areasOpen:"Vous pouvez changer vos domaines jusqu'à la fin de la semaine 1.",
   saveChanges:"Enregistrer", changesSaved:"Modifications enregistrées.", triad:"Ma triade", noTriad:"Votre triade vous sera communiquée en semaine 2.",
   signOut:"Se déconnecter", whatsapp:"WhatsApp", loading:"Chargement…", credit:"Un programme <b>Equip2Lead</b> · Dirigé par le <b>Dr Denis Ekobena</b>",
-  err:{phone_exists:"Ce numéro est déjà inscrit. Connectez-vous plutôt.",not_found:"Aucun compte avec ce numéro. Vérifiez-le ou rejoignez la cohorte.",wrong_pin:"Code PIN incorrect. Réessayez.",locked:"Trop d'essais. Attendez 15 minutes puis réessayez.",pin_invalid:"Le code PIN doit contenir exactement 4 chiffres.",pin_mismatch:"Les deux codes PIN sont différents.",name_required:"Entrez votre nom complet.",phone_invalid:"Entrez un numéro WhatsApp valide.",areas_needed:"Choisissez exactement 2 domaines.",session_expired:"Veuillez vous reconnecter.",day_closed:"Cette carte est fermée. Vous pouvez remplir seulement celle d'aujourd'hui et d'hier.",week_closed:"Cette semaine n'est pas encore ouverte.",areas_locked:"Vos domaines sont fixés après la semaine 1.",network:"Pas de connexion. Vérifiez internet et réessayez.",code_invalid:"Ce code n'est pas correct. Vérifiez-le et réessayez.",code_expired:"Ce code a expiré. Demandez-en un nouveau.",wait:"Patientez une minute avant de redemander un code.",whatsapp_failed:"Impossible d'envoyer le code sur WhatsApp. Demandez à votre Growth Guide de réinitialiser votre code.",payments_not_configured:"Les paiements ne sont pas encore ouverts. Réessayez bientôt.",fapshi_error:"La page de paiement n'a pas pu s'ouvrir. Réessayez dans un instant."}
+  err:{phone_exists:"Ce numéro est déjà inscrit. Connectez-vous plutôt.",not_found:"Aucun compte avec ce numéro. Vérifiez-le ou rejoignez la cohorte.",wrong_pin:"Code PIN incorrect. Réessayez.",locked:"Trop d'essais. Attendez 15 minutes puis réessayez.",pin_invalid:"Le code PIN doit contenir exactement 4 chiffres.",pin_mismatch:"Les deux codes PIN sont différents.",name_required:"Entrez votre nom complet.",phone_invalid:"Entrez un numéro WhatsApp valide.",areas_needed:"Choisissez exactement 2 domaines.",session_expired:"Veuillez vous reconnecter.",day_closed:"Cette carte est fermée. Vous pouvez remplir seulement celle d'aujourd'hui et d'hier.",week_closed:"Cette semaine n'est pas encore ouverte.",week_locked:"Cette semaine n'est pas encore payée.",pay_start_failed:"La page de paiement n'a pas pu s'ouvrir. Vérifiez votre numéro et réessayez dans un instant.",card_not_configured:"Le paiement par carte n'est pas encore disponible. Utilisez Mobile Money.",use_rest:"Choisissez « Les semaines restantes » pour payer le reste.",pay_failed:"Le paiement n'a pas abouti. Vous pouvez réessayer.",areas_locked:"Vos domaines sont fixés après la semaine 1.",network:"Pas de connexion. Vérifiez internet et réessayez.",code_invalid:"Ce code n'est pas correct. Vérifiez-le et réessayez.",code_expired:"Ce code a expiré. Demandez-en un nouveau.",wait:"Patientez une minute avant de redemander un code.",whatsapp_failed:"Impossible d'envoyer le code sur WhatsApp. Demandez à votre Growth Guide de réinitialiser votre code.",payments_not_configured:"Les paiements ne sont pas encore ouverts. Réessayez bientôt.",fapshi_error:"La page de paiement n'a pas pu s'ouvrir. Réessayez dans un instant."}
 }};
 
 /* ---------- utils ---------- */
@@ -947,7 +1051,7 @@ function welcome(){
     box.innerHTML = list.slice(0,6).map(x=>`<figure class="story"><blockquote>${esc(x.text)}</blockquote><figcaption><b>${esc(x.name)}</b> · ${AREA_ICON[x.area1-1]} ${AREA_ICON[x.area2-1]}</figcaption></figure>`).join("");
     $("#stories").hidden = false; }).catch(()=>{});
   if(!pubStats) rpc("gd_public_stats", {}).then(st => { pubStats = st;
-    const p = $("#proof"); if(p) p.textContent = st.price > 0 ? `${fcfa(st.price)} FCFA (${fcfa(Math.round(st.price/6))} FCFA/${lang==="fr"?"semaine":"week"}) · ${t().seatsLeft(st.seats_left)}` : `${st.joined >= 5 ? X.joined(st.joined) + " · " : ""}${X.seats}`;
+    const p = $("#proof"); if(p) p.textContent = (st.price_week > 0 || st.price_full > 0) ? `${fcfa(st.price_week)} FCFA/${lang==="fr"?"semaine":"week"} · ${lang==="fr"?"ou":"or"} ${fcfa(st.price_full)} FCFA ${lang==="fr"?"les 6 semaines":"for 6 weeks"} · ${t().seatsLeft(st.seats_left)}` : `${st.joined >= 5 ? X.joined(st.joined) + " · " : ""}${X.seats}`;
     const pill = document.querySelector(".lh .pill"); if(pill) pill.textContent = X.date(fmtDate(st.start_date));
   }).catch(()=>{});
 }
@@ -1050,7 +1154,7 @@ function joinForm(){
       const tok = await rpc("gd_register", {p_name:draft.name, p_phone:fullPhone(draft.code, draft.phone), p_lang:lang, p_area1:picked[0], p_area2:picked[1], p_pin:draft.pin});
       store.set("gd_token", tok); const nm = firstName(draft.name);
       draft = {name:"", phone:"", code:"237", areas:[], step:1, pin:""};
-      try{ me = await rpc("gd_me", {p_token: tok}); }catch(e){ me = null; }
+      try{ me = await rpc("gd_me", {p_token: tok}); me.methods = await rpc("gd_methods", {}); }catch(e){ if(!me) me = null; }
       if(me && me.payments_on && me.status !== "paid") payScreen(nm); else doneScreen(nm);
     }catch(e){ btn.disabled = false;
       if(e.message === "phone_exists" || e.message === "phone_invalid"){ draft.step = 1; joinForm(); }
@@ -1076,55 +1180,102 @@ async function doneScreen(name){
   $("#openDash").onclick = () => { document.body.classList.remove("is-auth"); boot(); };
 }
 
+
+/* ---------- payments: weekly or full, Mobile Money via pawaPay ---------- */
+const PAY = { kind: null, method: null };
+const methods = () => (me && me.methods) || {momo:true, card:false};
+const nextWeek = () => Math.min(6, (me.paid_weeks || 0) + 1);
+const priceFor = k => k === "full" ? me.price_full : k === "rest" ? me.rest_price : me.price_week;
+function payKinds(){
+  if(me.plan_type === "full") return [];
+  if(me.plan_type === "weekly") return (me.paid_weeks || 0) >= 6 ? [] : ["week", "rest"];
+  return ["full", "week"].filter(k => priceFor(k) > 0);
+}
+function paySheet(){
+  const T_ = t(), kinds = payKinds(), wk = nextWeek();
+  if(!PAY.kind || !kinds.includes(PAY.kind)) PAY.kind = kinds[0];
+  const M = methods(); if(!PAY.method || !M[PAY.method]) PAY.method = M.momo ? "momo" : "card";
+  const opt = k => {
+    const price = priceFor(k), weeksLeft = 7 - wk;
+    const title = k === "full" ? T_.pFullT : k === "rest" ? T_.pRestT(weeksLeft) : T_.pWeekT(wk);
+    const sub = k === "full" ? T_.pFullS : k === "rest" ? T_.pRestS : T_.pWeekS;
+    const save = k === "full" ? me.price_week * 6 - price : k === "rest" ? me.price_week * weeksLeft - price : 0;
+    return `<button type="button" class="plan-opt" data-pk="${k}" aria-pressed="${PAY.kind === k}">
+      <span class="radio" aria-hidden="true"></span>
+      <span class="po-b"><span class="po-t"><b>${title}</b>${k !== "week" && save > 0 ? `<span class="badge">${T_.pSave(fcfa(save))}</span>` : ""}</span><span class="po-s">${sub}</span></span>
+      <span class="po-p"><b>${fcfa(price)}</b><small>FCFA${k === "week" ? T_.perWk : ""}</small></span></button>`;
+  };
+  return `<div class="paysheet">
+    <p class="sec-l">${T_.pPlan}</p>
+    <div class="plan-list" role="radiogroup">${kinds.map(opt).join("")}</div>
+    <p class="sec-l">${T_.pMethod}</p>
+    <div class="methods">
+      <button type="button" class="method" data-pm="momo" aria-pressed="${PAY.method==="momo"}" ${methods().momo?"":"disabled"}><span class="m-ic">📱</span><span><b>Mobile Money</b><small>${methods().momo?"MTN · Orange":T_.soon}</small></span></button>
+      <button type="button" class="method" data-pm="card" aria-pressed="${PAY.method==="card"}" ${methods().card?"":"disabled"}><span class="m-ic">💳</span><span><b>${T_.pCard}</b><small>${methods().card?T_.pCardSub:T_.soon}</small></span></button>
+    </div>
+    <div class="pay-sum"><span>${T_.pNow}</span><b>${fcfa(priceFor(PAY.kind))} <small>FCFA</small></b></div>
+    <p class="err" id="payErr" role="alert">${payNote ? esc(payNote) : ""}</p>
+    <button class="btn btn-primary btn-lg" id="payNow">${T_.pConfirm} <span aria-hidden="true">→</span></button>
+    <p class="secure">🔒 ${PAY.method==="card" ? T_.pSecureCard : T_.pSecure}</p></div>`;
+}
+function bindPaySheet(rerender){
+  document.querySelectorAll("[data-pk]").forEach(b => b.onclick = () => { PAY.kind = b.dataset.pk; rerender(); });
+  document.querySelectorAll("[data-pm]").forEach(b => b.onclick = () => { if(b.disabled) return; PAY.method = b.dataset.pm; rerender(); });
+  const pn = $("#payNow"); if(pn) pn.onclick = () => startPay(pn, $("#payErr"));
+}
 function payScreen(name){
   document.body.classList.add("is-auth");
   const T_ = t(), waiting = me.status === "waitlist";
   root.innerHTML = `<div class="auth done"><div class="auth-body">
-    <div class="big-flame">${FLAME}</div>
-    ${waiting ? `<h1>${T_.waitTitle}</h1><p class="lead-s">${T_.waitSub}</p>
+    ${waiting ? `<div class="big-flame">${FLAME}</div><h1>${T_.waitTitle}</h1><p class="lead-s">${T_.waitSub}</p>
       <div class="stack" style="margin-top:28px"><button class="btn btn-primary" id="openDash">${T_.openDash}</button></div>`
-    : `<h1>${T_.payTitle(esc(name))}</h1><p class="lead-s">${T_.paySub}</p>
-      <div class="price-card"><b>${fcfa(me.price)} FCFA</b><span class="pw">${T_.perWeek(fcfa(Math.round(me.price/6)))}</span><span>${T_.seatsLeft(me.seats_left)}</span><span class="pm">MTN MoMo · Orange Money</span></div>
-      <p class="err" id="err" role="alert"></p>
-      <div class="stack"><button class="btn btn-primary" id="payNow">${T_.payBtn(fcfa(me.price))}</button>
-        <button class="btn btn-ghost" id="openDash">${T_.payLater}</button></div>`}
+    : `<p class="step-lbl">${T_.seatsLeft(me.seats_left)}</p><h1>${T_.payTitle(esc(name))}</h1><p class="lead-s">${T_.paySub}</p>
+      ${paySheet()}<button class="btn btn-ghost" id="openDash" style="margin-top:10px">${T_.payLater}</button>`}
   </div></div>`;
   $("#openDash").onclick = () => { document.body.classList.remove("is-auth"); boot(); };
-  const pn = $("#payNow"); if(pn) pn.onclick = () => startPay(pn, $("#err"));
+  bindPaySheet(() => payScreen(name));
 }
 async function startPay(btn, errEl){
-  btn.disabled = true; const old = btn.textContent; btn.textContent = t().paying;
-  try{ const d = await callApp({action:"pay", token:store.get("gd_token")});
+  btn.disabled = true; const old = btn.innerHTML; btn.innerHTML = `<span class="spin"></span> ${t().paying}`;
+  try{ const d = await callApp({action:"pay", token:store.get("gd_token"), kind:PAY.kind, method:PAY.method, lang});
     if(d.link){ location.href = d.link; return; }
     if(d.paid){ boot(); return; }
     if(d.waitlist){ me.status = "waitlist"; payScreen(firstName(me.name)); return; }
   }catch(e){ if(errEl) errEl.textContent = errMsg(e); }
-  btn.disabled = false; btn.textContent = old;
+  btn.disabled = false; btn.innerHTML = old;
 }
 async function payReturn(){
-  const T_ = t();
+  const T_ = t(), dep = new URLSearchParams(location.search).get("depositId") || "";
   document.body.classList.add("is-auth");
-  root.innerHTML = `<div class="auth done"><div class="auth-body"><div class="big-flame">${FLAME}</div><h1>${T_.checking}</h1></div></div>`;
+  root.innerHTML = `<div class="auth done"><div class="auth-body center-v"><div class="big-flame pulse">${FLAME}</div><h1>${T_.checking}</h1></div></div>`;
   history.replaceState(null, "", location.pathname);
-  for(let i=0;i<5;i++){
-    try{ const d = await callApp({action:"pay_check", token:store.get("gd_token")});
+  for(let i=0;i<8;i++){
+    try{ const d = await callApp({action:"pay_check", token:store.get("gd_token"), depositId:dep});
       if(d.paid){ me = await rpc("gd_me", {p_token:store.get("gd_token")}); doneScreen(firstName(me.name)); const h=$(".done h1"); if(h) h.textContent = T_.seatOk + " 🎉"; return; }
+      if(d.status === "FAILED"){ payNote = t().err.pay_failed; break; }
     }catch(e){ if(e.message==="session_expired"){ store.del("gd_token"); return loginForm(); } }
-    await new Promise(r=>setTimeout(r, 4000));
+    await new Promise(r=>setTimeout(r, 3500));
   }
-  document.body.classList.remove("is-auth"); await boot(); payNote = T_.notYet; renderApp();
+  if(!payNote) payNote = T_.notYet;
+  document.body.classList.remove("is-auth"); await boot(); renderApp();
 }
 let payNote = "";
 function payCard(){
   const T_ = t();
   if(me.status === "waitlist") return `<section class="panel stack pay-panel"><h2>${T_.waitTitle}</h2><p class="muted">${T_.waitSub}</p></section>`;
-  return `<section class="panel stack pay-panel"><h2>${T_.payCardTitle}</h2><p class="muted">${T_.payCardSub}</p>
-    <div class="price-card"><b>${fcfa(me.price)} FCFA</b><span class="pw">${T_.perWeek(fcfa(Math.round(me.price/6)))}</span><span>${T_.seatsLeft(me.seats_left)}</span><span class="pm">MTN MoMo · Orange Money</span></div>
-    ${payNote?`<p class="err">${esc(payNote)}</p>`:""}<p class="err" id="payErr" role="alert"></p>
-    <button class="btn btn-primary" id="payNow">${T_.payBtn(fcfa(me.price))}</button>
-    ${payNote?`<button class="btn btn-ghost" id="payCheck">${T_.checkAgain}</button>`:""}</section>`;
+  const weekly = me.plan_type === "weekly", wk = nextWeek();
+  return `<section class="panel stack pay-panel">
+    <div><h2>${weekly ? T_.lockT(wk) : T_.payCardTitle}</h2><p class="muted small">${weekly ? T_.lockS : T_.payCardSub}</p></div>
+    ${weekly ? "" : `<p class="small"><b>${T_.seatsLeft(me.seats_left)}</b></p>`}
+    ${paySheet()}</section>`;
 }
-
+function renewCard(){
+  if(!me.payments_on || me.plan_type !== "weekly" || (me.paid_weeks||0) >= 6) return "";
+  const left = me.paid_weeks * 7 - me.day;
+  if(me.day < 1 || left > 2) return "";
+  const T_ = t();
+  return `<section class="panel stack pay-panel renew"><div><h2>${T_.renewT(nextWeek())}</h2><p class="muted small">${T_.renewS(left)}</p></div>${paySheet()}</section>`;
+}
 function loginForm(){
   document.body.classList.remove("is-land"); document.body.classList.add("is-auth");
   const T_ = t();
@@ -1177,11 +1328,13 @@ let me = null, tab = "today", cardDay = null, lastSaved = null;
 async function boot(){
   document.body.classList.remove("is-land","is-auth");
   if(/[?&]pay=return/.test(location.search) && store.get("gd_token")) return payReturn();
+  if(/[?&]pay=cancel/.test(location.search)){ history.replaceState(null, "", location.pathname); payNote = t().pCancelled; }
   const tok = store.get("gd_token");
   if(!tok) return welcome();
-  root.innerHTML = `<div class="wrap"><p class="muted">${t().loading}</p></div>`;
+  root.innerHTML = `<div class="wrap stack-lg" aria-busy="true" aria-label="${t().loading}"><div class="sk-row"><div><i class="sk" style="width:90px;height:12px"></i><i class="sk" style="width:140px;height:24px;margin-top:8px"></i></div><i class="sk" style="width:42px;height:42px;border-radius:50%"></i></div><i class="sk" style="height:190px;border-radius:24px"></i><i class="sk" style="height:120px;border-radius:22px"></i><i class="sk" style="height:220px;border-radius:22px"></i></div>`;
   try{
     me = await rpc("gd_me", {p_token: tok});
+    try{ me.methods = await rpc("gd_methods", {}); }catch(e){}
     if(!store.get("gd_lang")){ lang = me.lang; }
     document.documentElement.lang = lang;
     cardDay = null; renderApp();
@@ -1220,8 +1373,8 @@ function flameGrid(onDark){
 function renderApp(){
   const cur = me.day;
   let body = "";
-  const locked = me.payments_on && me.status !== "paid";
-  if(tab === "today") body = locked ? (cur < 1 ? payCard() + viewBefore() : payCard()) : (cur < 1 ? viewBefore() : cur > 42 ? viewFinished() : viewToday());
+  const locked = me.payments_on && !me.has_access;
+  if(tab === "today") body = locked ? (cur < 1 ? payCard() + viewBefore() : payCard() + `<section class="hero2">${ring(cur/42, cur, t().of42)}<div class="hero2-t"><p>${t().week(Math.ceil(cur/7))}</p><h2>${t().lockT(Math.min(6,Math.ceil(cur/7)))}</h2></div></section>`) : (cur < 1 ? viewBefore() : cur > 42 ? viewFinished() : renewCard() + viewToday());
   if(tab === "journey") body = viewJourney();
   if(tab === "me") body = viewMe();
   if(tab === "plan") body = viewPlan();
@@ -1236,8 +1389,7 @@ function renderApp(){
   bindLang(renderApp);
   document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; cardDay = null; renderApp(); window.scrollTo(0,0); });
   bindView();
-  const pn = $("#payNow"); if(pn) pn.onclick = () => startPay(pn, $("#payErr"));
-  const pc = $("#payCheck"); if(pc) pc.onclick = () => payReturn();
+  bindPaySheet(renderApp);
   const ce = $("#cert"); if(ce) ce.onclick = async () => { const blob = await makeCertificate(); const file = new File([blob], "growth-day-certificate.png", {type:"image/png"});
     if(navigator.canShare && navigator.canShare({files:[file]})){ try{ await navigator.share({files:[file], title:"Growth Day"}); return; }catch(e){} }
     const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = file.name; a.click(); };
@@ -1649,6 +1801,9 @@ function viewMe(){
           <div><b>${esc(m.name)}</b><p class="muted small">${m.isGuide ? t().guideLbl : `${AREA_ICON[m.area1-1]} ${AREA_ICON[m.area2-1]}`}</p></div>
           <a class="btn btn-ghost sm" href="https://wa.me/${esc(m.phone)}" target="_blank" rel="noopener">${t().chat}</a></div>`).join("") || `<p class="muted">${t().noTriad}</p>`}</div>`
       : `<div class="panel"><p class="muted">${t().noTriad}</p></div>`}</section>
+    ${me.payments_on ? `<section class="stack"><h2>${t().myAccess}</h2><div class="panel acc"><span class="acc-ic">${me.plan_type==="full"?"⭐":me.plan_type==="weekly"?"🗓️":"🔒"}</span>
+      <div><b>${me.plan_type==="full"?t().accFull:me.plan_type==="weekly"?t().accWeek(me.paid_weeks):t().accNone}</b>
+      ${me.plan_type==="weekly"?`<div class="wkdots">${[1,2,3,4,5,6].map(w=>`<i class="${w<=me.paid_weeks?"on":""}">${w}</i>`).join("")}</div>`:""}</div></div></section>` : ""}
     ${groupCard()}
     <button class="btn btn-ghost" id="signOut">${t().signOut}</button>`;
 }
@@ -1726,7 +1881,7 @@ function bindView(){
 }
 
 /* ---------- admin ---------- */
-let admOpen = null, admSem = null;
+let admOpen = null, admSem = null, admMeth = null;
 let adm = null, admPin = null, admTab = "people", admFilter = "all", admDay = 1;
 const AREA_SHORT = ["Personal","Spiritual","Relational","Mental","Career","Financial","Physical","Social","Vision"];
 
@@ -1739,7 +1894,7 @@ function adminLogin(msg){
   $("#ago").onclick = go; $("#apin").onkeydown = e => { if(e.key==="Enter") go(); };
 }
 async function adminLoad(){
-  try{ adm = await rpc("gd_admin_dashboard", {p_pin: admPin}); try{ admSem = await rpc("gd_admin_seminar", {p_pin: admPin}); }catch(e){} adminRender(); }
+  try{ adm = await rpc("gd_admin_dashboard", {p_pin: admPin}); try{ admSem = await rpc("gd_admin_seminar", {p_pin: admPin}); }catch(e){} try{ admMeth = await rpc("gd_admin_methods", {p_pin: admPin}); }catch(e){} adminRender(); }
   catch(e){ adminLogin(e.message==="wrong_pin" ? "Wrong PIN." : e.message==="locked" ? "Locked for 15 minutes after too many tries." : "Could not load: " + e.message); }
 }
 function pStats(p){
@@ -1766,7 +1921,7 @@ function adminRender(){
       <button data-f="all" aria-pressed="${admFilter==="all"}">Everyone (${P.length})</button>
       <button data-f="slip" aria-pressed="${admFilter==="slip"}">Slipping (${slip})</button>
       <button data-f="none" aria-pressed="${admFilter==="none"}">No triad</button>
-      ${adm.pay.price>0 ? `<button data-f="unpaid" aria-pressed="${admFilter==="unpaid"}">Not paid (${P.filter(p=>p.status==="pending").length})</button><button data-f="waitlist" aria-pressed="${admFilter==="waitlist"}">Waiting list (${P.filter(p=>p.status==="waitlist").length})</button>` : ""}
+      ${(adm.pay.price_week>0||adm.pay.price_full>0) ? `<button data-f="unpaid" aria-pressed="${admFilter==="unpaid"}">Not paid (${P.filter(p=>p.status==="pending").length})</button><button data-f="waitlist" aria-pressed="${admFilter==="waitlist"}">Waiting list (${P.filter(p=>p.status==="waitlist").length})</button>` : ""}
       ${triads.map(x=>`<button data-f="t:${esc(x)}" aria-pressed="${admFilter==="t:"+x}">${esc(x)}</button>`).join("")}
     </div>
     <div class="tablewrap"><table><thead><tr><th>Name</th><th>WhatsApp</th><th>Areas</th><th>Triad</th><th>Last 7 days</th><th>Streak / total</th><th>Latest score</th><th>Seat</th><th></th></tr></thead><tbody>
@@ -1782,8 +1937,8 @@ function adminRender(){
         <td><span class="mini">${last7}</span></td>
         <td>${s.streak} / ${s.total}</td>
         <td>${sc ? `W${sc.week}: ${sc.score1} · ${sc.score2}` : "—"}</td>
-        <td>${p.status==="paid" ? `<span class="chip-s paid">Paid${p.pay_method==="manual"?" (manual)":""}</span>` : p.status==="waitlist" ? `<span class="chip-s wait">Waiting list</span>` : `<span class="chip-s">Not paid</span>`}
-          <br><select class="small" data-status="${p.id}" aria-label="Seat status for ${esc(p.name)}"><option value="">Change…</option><option value="paid">Mark as paid</option><option value="pending">Not paid</option><option value="waitlist">Waiting list</option></select></td>
+        <td>${p.plan_type==="full" ? `<span class="chip-s paid">Full · 6 wks</span>` : p.plan_type==="weekly" ? `<span class="chip-s paid">Weekly · ${p.paid_weeks}/6</span>` : p.status==="waitlist" ? `<span class="chip-s wait">Waiting list</span>` : `<span class="chip-s">Not paid</span>`}
+          <br><select class="small" data-mpay="${p.id}" aria-label="Payment for ${esc(p.name)}"><option value="">Change…</option><option value="full">Mark 6 weeks paid</option><option value="week">Add one paid week</option><option value="none">Mark as not paid</option><option value="waitlist">Waiting list</option></select></td>
         <td><button class="link" data-reset="${p.id}" data-name="${esc(p.name)}">Reset PIN</button></td></tr>
         ${admOpen===p.id ? `<tr class="detail"><td colspan="9"><div class="grid2">${[[1,p.area1],[2,p.area2]].map(([k,a])=>{ const pl=(p.plan||{})[k]||{};
           return `<div class="stack"><h3>${AREA_ICON[a-1]} ${AREA_SHORT[a-1]}</h3>
@@ -1835,16 +1990,20 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
       <p id="semMsg" role="status"></p>
       <div class="seg"><button id="semSave">Save</button><button id="semMsgBtn">Write the link message on WhatsApp</button></div></div>
   <div class="grid2 settings-grid">
-    <div class="panel stack"><h3>Payments (Fapshi)</h3>
-      <p class="muted small">Set a price above 0 to turn payments on. People then pay with MTN MoMo or Orange Money after signing up, and only paid members get the daily messages. Set it to 0 to keep the cohort free.</p>
-      <div class="grid2"><div><label for="ppr">Price (FCFA)</label><input id="ppr" type="number" min="0" step="500" value="${adm.pay.price}"></div>
-        <div><label for="pst">Seats</label><input id="pst" type="number" min="1" value="${adm.pay.seat_limit}"></div></div>
-      <div><label for="penv">Mode</label><select id="penv"><option value="sandbox" ${adm.pay.env!=="live"?"selected":""}>Sandbox (test payments, no real money)</option><option value="live" ${adm.pay.env==="live"?"selected":""}>Live (real payments)</option></select></div>
-      <div><label for="puser">API user ${adm.pay.keys_set?'<span class="ok small">✓ saved</span>':""}</label><input id="puser" autocomplete="off" placeholder="${adm.pay.keys_set?"Leave empty to keep the saved one":""}"></div>
-      <div><label for="pkey">API key</label><input id="pkey" type="password" autocomplete="off" placeholder="${adm.pay.keys_set?"Leave empty to keep the saved one":""}"></div>
-      <div class="hint-box"><p class="small"><b>In your Fapshi dashboard</b>, on this service, set:</p>
-        <p class="small">Webhook URL: <code class="sel">${WH}</code></p>
-        <p class="small">Webhook secret: <code class="sel">${esc(adm.pay.wh_secret||"")}</code></p></div>
+    <div class="panel stack"><h3>Payments (pawaPay · Mobile Money)</h3>
+      <p class="muted small">People choose to pay <b>week by week</b> or <b>the full 6 weeks</b>. Each person only gets the days, messages and seminars of the weeks they've paid. Payments switch on once pawaPay (Mobile Money) or Stripe (cards) is connected.</p>
+      <div class="grid2"><div><label for="ppw">Price per week (FCFA)</label><input id="ppw" type="number" min="0" step="100" value="${adm.pay.price_week}"></div>
+        <div><label for="ppf">Price for 6 weeks (FCFA)</label><input id="ppf" type="number" min="0" step="100" value="${adm.pay.price_full}"></div></div>
+      <div class="grid2"><div><label for="pst">Seats</label><input id="pst" type="number" min="1" value="${adm.pay.seat_limit}"></div>
+        <div><label for="penv">Mode</label><select id="penv"><option value="sandbox" ${adm.pay.env!=="live"?"selected":""}>Sandbox (tests)</option><option value="live" ${adm.pay.env==="live"?"selected":""}>Live (real money)</option></select></div></div>
+      <div><label for="ptok">pawaPay API token ${adm.pay.token_set?'<span class="ok small">✓ saved</span>':""}</label><input id="ptok" type="password" autocomplete="off" placeholder="${adm.pay.token_set?"Leave empty to keep the saved one":"Paste the token from your pawaPay dashboard"}"></div>
+      <div class="hint-box"><p class="small"><b>In your pawaPay dashboard</b> → System configuration → Callback URLs, set the <b>Deposits</b> callback to:</p>
+        <p class="small"><code class="sel">${WH.replace("webhook=fapshi","webhook=pawapay")}</code></p></div>
+      <div class="stripe-box stack"><h3>💳 Bank card (Stripe) ${admMeth&&admMeth.card?`<span class="ok small">✓ connected · ${admMeth.card_mode==="live"?"LIVE":"test mode"}</span>`:""}</h3>
+        <p class="muted small">Paste your Stripe <b>secret key</b> (starts with <code>sk_test_</code> for tests, <code>sk_live_</code> for real payments). The "Bank card" button appears for participants as soon as it's saved. To disconnect, type <code>remove</code>.</p>
+        <input id="stkey" type="password" autocomplete="off" placeholder="${admMeth&&admMeth.card?"Leave empty to keep the saved key":"sk_test_…"}">
+        <div class="hint-box"><p class="small"><b>In Stripe</b> → Developers → Webhooks → Add endpoint, paste this URL and choose the event <b>checkout.session.completed</b>:</p>
+          <p class="small"><code class="sel">${WH.replace("webhook=fapshi","webhook=stripe")}</code></p></div></div>
       <p id="paymsg" role="status"></p><button class="btn btn-primary" id="paysave">Save payment settings</button></div>
     <div class="panel stack"><h3>Growth Guides</h3>
       <p class="muted small">Each guide signs in at <b>growthday.cc/cohort#guide</b> with their number and PIN, and sees only their triad.</p>
@@ -1864,7 +2023,7 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
     <div class="top"><div class="brand"><img src="${LOGO}" alt="">Growth Day · Cohort admin</div><button class="link" id="refresh">Refresh</button></div>
     <div class="stats">
       <div class="stat"><b>${cur<1?`Starts in ${1-cur}d`:cur>42?"Finished":`Day ${cur}`}</b><span class="muted small">${cur>=1&&cur<=42?`Week ${Math.ceil(cur/7)}`:fmtDate(adm.start_date)}</span></div>
-      <div class="stat"><b>${adm.pay.price>0 ? `${P.filter(p=>p.status==="paid").length} / ${adm.pay.seat_limit}` : P.length}</b><span class="muted small">${adm.pay.price>0 ? "Paid seats" : "Participants"}</span></div>
+      <div class="stat"><b>${(adm.pay.price_week>0||adm.pay.price_full>0) ? `${P.filter(p=>p.status==="paid").length} / ${adm.pay.seat_limit}` : P.length}</b><span class="muted small">${(adm.pay.price_week>0||adm.pay.price_full>0) ? "Paid seats" : "Participants"}</span></div>
       <div class="stat"><b>${cur>=1&&cur<=42?today:"—"}</b><span class="muted small">Cards filled today</span></div>
       <div class="stat"><b>${slip}</b><span class="muted small">Slipping</span></div>
     </div>
@@ -1939,9 +2098,10 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
     admTab = "messages"; adminRender(); loadMessages(); window.scrollTo(0,0); };
   const ps2 = $("#paysave");
   if(ps2) ps2.onclick = async () => { const m = $("#paymsg");
-    try{ await rpc("gd_admin_payment_settings",{p_pin:admPin, p_price:+$("#ppr").value||0, p_seats:+$("#pst").value||30, p_env:$("#penv").value, p_user:$("#puser").value, p_key:$("#pkey").value});
+    try{ await rpc("gd_admin_pay_settings",{p_pin:admPin, p_week:+$("#ppw").value||0, p_full:+$("#ppf").value||0, p_seats:+$("#pst").value||30, p_env:$("#penv").value, p_token:$("#ptok").value});
+      if($("#stkey").value.trim()) await rpc("gd_admin_set_stripe",{p_pin:admPin, p_key:$("#stkey").value.trim()});
       await adminLoad(); const m2=$("#paymsg"); if(m2){ m2.className="ok"; m2.textContent="✓ Payment settings saved."; } }
-    catch(e){ m.className="err"; m.textContent = e.message==="price_invalid" ? "The price must be 0 (free) or at least 100 FCFA." : "Could not save: "+e.message; } };
+    catch(e){ m.className="err"; m.textContent = e.message==="price_invalid" ? "Prices can't be negative." : e.message==="stripe_key_invalid" ? "That doesn't look like a Stripe secret key (sk_test_… or sk_live_…)." : "Could not save: "+e.message; } };
   const gs = $("#gsave");
   if(gs) gs.onclick = async () => { const m = $("#gmsg");
     try{ await rpc("gd_admin_save_guide",{p_pin:admPin, p_name:$("#gname").value, p_phone:$("#gphone").value, p_triad:$("#gtriad").value, p_gpin:$("#gpin").value});
@@ -1949,10 +2109,10 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
     catch(e){ m.className="err"; m.textContent = e.message==="pin_invalid" ? "Give the guide a 4-digit PIN." : e.message==="guide_invalid" ? "Fill name, number and triad." : "Could not save: "+e.message; } };
   document.querySelectorAll("[data-delguide]").forEach(b => b.onclick = async () => { if(!confirm("Remove this guide?")) return;
     try{ await rpc("gd_admin_delete_guide",{p_pin:admPin, p_id:b.dataset.delguide}); await adminLoad(); }catch(e){ alert(e.message); } });
-  document.querySelectorAll("[data-status]").forEach(sel => sel.onchange = async () => { if(!sel.value) return;
-    const lbl = {paid:"mark this person as paid (cash or manual payment)", pending:"mark this person as not paid", waitlist:"move this person to the waiting list"}[sel.value];
+  document.querySelectorAll("[data-mpay]").forEach(sel => sel.onchange = async () => { if(!sel.value) return;
+    const lbl = {full:"mark the full 6 weeks as paid (cash or manual payment)", week:"add one paid week", none:"mark this person as not paid", waitlist:"move this person to the waiting list"}[sel.value];
     if(!confirm(`Do you want to ${lbl}?`)){ sel.value=""; return; }
-    try{ await rpc("gd_admin_set_status",{p_pin:admPin, p_id:sel.dataset.status, p_status:sel.value}); await adminLoad(); }catch(e){ alert(e.message); } });
+    try{ await rpc("gd_admin_manual_pay",{p_pin:admPin, p_id:sel.dataset.mpay, p_action:sel.value}); await adminLoad(); }catch(e){ alert(e.message); } });
   document.querySelectorAll("[data-approve]").forEach(c => c.onchange = async () => {
     try{ await rpc("gd_admin_approve_testimony",{p_pin:admPin, p_id:c.dataset.approve, p_ok:c.checked}); const p = adm.participants.find(x=>x.id===c.dataset.approve); if(p) p.testimony_approved = c.checked; }catch(e){ alert(e.message); } });
   const ss = $("#ssave");
@@ -1986,13 +2146,14 @@ async function callFn(body, isForm){
 }
 function audienceCount(){
   const P = adm.participants;
-  if(comp.aud === "all") return adm.pay.price>0 ? P.filter(p=>p.status==="paid").length : P.length;
+  if(comp.aud === "all") return (adm.pay.price_week>0||adm.pay.price_full>0) ? P.filter(p=>p.status==="paid").length : P.length;
   if(comp.aud === "slipping") return P.filter(p=>pStats(p).slipping).length;
   if(comp.aud === "lang") return P.filter(p=>p.lang===comp.val).length;
   if(comp.aud === "triad") return P.filter(p=>p.triad===comp.val).length;
   if(comp.aud === "test") return 1;
   if(comp.aud === "unpaid") return P.filter(p=>p.status==="pending").length;
   if(comp.aud === "waitlist") return P.filter(p=>p.status==="waitlist").length;
+  if(comp.aud === "next_week_due") return P.filter(p=>p.plan_type==="weekly"&&p.paid_weeks<6&&p.paid_weeks<Math.ceil(Math.max(adm.day,1)/7)+1).length;
   return 0;
 }
 const ERR_WA = {whatsapp_not_configured:"Connect WhatsApp first (instance ID and token).", no_recipients:"No one matches this audience.", empty_message:"Write a message or attach a file.", phone_invalid:"Enter a valid test number.", wrong_pin:"Admin PIN rejected. Reload and sign in again.", locked:"Admin is locked for 15 minutes."};
@@ -2060,7 +2221,7 @@ function messagesView(){
         ${opt("lang:en","English speakers",P.filter(p=>p.lang==="en").length)}
         ${opt("lang:fr","French speakers",P.filter(p=>p.lang==="fr").length)}
         ${triads.map(x=>opt("triad:"+x,"Triad: "+x,P.filter(p=>p.triad===x).length)).join("")}
-        ${adm.pay.price>0 ? opt("unpaid","Signed up but not paid yet",P.filter(p=>p.status==="pending").length) + opt("waitlist","Waiting list",P.filter(p=>p.status==="waitlist").length) : ""}
+        ${(adm.pay.price_week>0||adm.pay.price_full>0) ? opt("unpaid","Signed up but not paid yet",P.filter(p=>p.status==="pending").length) + opt("waitlist","Waiting list",P.filter(p=>p.status==="waitlist").length) + opt("next_week_due","Weekly payers: next week not paid yet",P.filter(p=>p.plan_type==="weekly"&&p.paid_weeks<6&&p.paid_weeks<Math.ceil(Math.max(adm.day,1)/7)+1).length) : ""}
         ${opt("test","Test: send only to one number",null)}
       </select></div>
       ${comp.aud==="test"?`<div class="grid2"><div><label for="mTest">Test number</label><input id="mTest" type="tel" value="${esc(comp.testNum)}" placeholder="+237 6…"></div>
