@@ -437,6 +437,30 @@ code.sel{user-select:all;word-break:break-all;font-size:12.5px;background:var(--
 .top-actions{display:flex;align-items:center;gap:14px}
 .danger-zone{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px;padding-top:12px;border-top:1px dashed var(--line)}
 .btn.danger{color:var(--danger);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--danger) 40%,transparent)}
+.dvideo-wrap{display:flex;justify-content:center;background:#000;border-radius:18px;overflow:hidden}
+.dvideo{width:100%;max-height:72vh;aspect-ratio:9/16;object-fit:contain;background:#000}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:10px}
+.badge-t{display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px;background:var(--surface);border-radius:18px;padding:12px 8px;box-shadow:var(--shadow);opacity:.55}
+.badge-t.on{opacity:1}
+.badge-t .b-ic{font-size:28px;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--fill)}
+.badge-t.on .b-ic{background:radial-gradient(circle at 30% 30%,#FFE29A,#E8890C);box-shadow:0 6px 16px rgba(232,137,12,.35)}
+.badge-t b{font:600 12.5px/1.2 var(--display)}
+.badge-t small{font-size:11px;color:var(--muted);line-height:1.25}
+.celebrate{position:fixed;inset:0;z-index:60;display:grid;place-items:center;background:rgba(14,18,34,.35);overflow:hidden;cursor:pointer}
+.cel-card{background:var(--surface);border-radius:26px;padding:26px 30px;text-align:center;box-shadow:var(--shadow-lg);animation:pop .45s cubic-bezier(.2,1.4,.4,1)}
+.cel-ic{font-size:56px;line-height:1}
+.celebrate i{position:absolute;top:-12px;left:var(--x);width:9px;height:14px;background:var(--c);border-radius:2px;animation:fall 2.2s var(--d) ease-in forwards}
+@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+.ref-link{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--fill);border-radius:12px;padding:10px 12px}
+.ref-link code{font-size:13.5px;word-break:break-all}
+.chart-wrap{overflow-x:auto}
+.cbars{width:100%;min-width:560px;height:auto}
+.cbars rect{fill:var(--ember)} .cbars rect.sun{fill:#3B82C4} .cbars rect.fut{fill:var(--line)}
+.cbars text{font:11px var(--body);fill:var(--muted)} .cbars .axis{stroke:var(--line)} .cbars .dash{stroke-dasharray:4 4}
+.hbar{display:grid;grid-template-columns:120px 1fr 30px;align-items:center;gap:10px;font-size:14px}
+.hbar i{display:block;height:10px;border-radius:99px;background:var(--ember)}
+.hbar b{text-align:right}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -680,6 +704,17 @@ en:{
   jDay:"Day", jLesson:"Teaching", jWeek:"Week", jLearned:"What I learned", jLib:"Books", jCrs:"Courses & activities", jStory:"My story",
   jPrinted:"Printed on", jBlankTitle:"My 1% Tracker", jBlankHow:"Each evening, tick each area where you took your 1% and write one line. Every Sunday, give yourself a score from 1 to 10.",
   jDaily:"My daily 1%", jNotes:"Notes", jScore:"Score /10",
+
+  bTitle:"Badges", bNew:"New badge!", bLocked:"Not yet",
+  B:{first:["🔥","First flame","Fill your first 1% Card"],s3:["⚡","3-day streak","3 days in a row"],s7:["🏅","7-day streak","A full week without missing"],s14:["🏆","14-day streak","Two weeks in a row"],s21:["👑","21-day streak","Three weeks in a row"],
+     plan:["🎯","Plan complete","All 12 plan fields filled"],score:["📊","First score","Your first Sunday score"],week:["📅","Perfect week","7 cards in one week"],stretch:["🌊","Out of the boat","Card filled on stretch day (day 27)"],
+     reader:["📚","Book finished","Finish a book in your library"],learner:["🎓","Learner","Finish a course or activity"],half:["⛰️","Halfway strong","15+ cards by day 21"],story:["✍️","Storyteller","Share your growth story"],grad:["🎉","Graduate","36+ cards in 42 days"]},
+  refTitle:"Invite a friend", refSub:"Share your link. When a friend joins the cohort with it, you both get 500 FCFA off the next cohort.", refShare:"Share on WhatsApp", refCopy:"Copy link", refCopied:"✓ Link copied",
+  refCount:(n,p)=>n?`${n} friend${n>1?"s":""} joined with your link${p?` · ${p} paid`:""}`:"No one has joined with your link yet.",
+  refMsg:l=>`I'm growing 1% a day with the Growth Day cohort: daily teaching on WhatsApp, a personal plan and a triad. Join me 👉 ${l}`,
+  ntTitle:"Reminders on this phone", ntSub:"Get the Daily Fire at 6:00 and a nudge at 20:00 as phone notifications, on top of WhatsApp.", ntOn:"Turn on", ntOff:"Turn off", ntIsOn:"✓ Notifications are on for this phone.",
+  ntIos:"On iPhone, first add the app to your Home Screen (Share → Add to Home Screen), open it from there, then turn on notifications.", ntDenied:"Notifications are blocked in your browser settings. Allow them for growthday.cc, then try again.", ntNo:"This browser doesn't support notifications.",
+  watch2:"Watch today's video",
   pPlan:"Choose your plan", pMethod:"Payment method", pFullT:"Full journey · 6 weeks", pFullS:"One payment. All 42 days, seminars and graduation.",
   pWeekT:w=>`Week ${w} only`, pWeekS:"Pay week by week. Each week opens when it's paid.", pRestT:n=>`The remaining ${n} weeks`, pRestS:"Pay the rest once and finish without interruption.",
   pSave:x=>`Save ${x} F`, perWk:" / week", pCard:"Bank card", soon:"Coming soon", pNow:"You pay now", pConfirm:"Confirm payment",
@@ -783,6 +818,17 @@ fr:{
   jDay:"Jour", jLesson:"Enseignement", jWeek:"Semaine", jLearned:"Ce que j'ai appris", jLib:"Livres", jCrs:"Formations & activités", jStory:"Mon histoire",
   jPrinted:"Imprimé le", jBlankTitle:"Mon suivi 1 %", jBlankHow:"Chaque soir, cochez chaque domaine où vous avez fait votre 1 % et écrivez une ligne. Chaque dimanche, donnez-vous une note de 1 à 10.",
   jDaily:"Mon 1 % quotidien", jNotes:"Notes", jScore:"Note /10",
+
+  bTitle:"Badges", bNew:"Nouveau badge !", bLocked:"Pas encore",
+  B:{first:["🔥","Première flamme","Remplir votre première carte 1 %"],s3:["⚡","Série de 3 jours","3 jours d'affilée"],s7:["🏅","Série de 7 jours","Une semaine entière sans rater"],s14:["🏆","Série de 14 jours","Deux semaines d'affilée"],s21:["👑","Série de 21 jours","Trois semaines d'affilée"],
+     plan:["🎯","Plan complet","Les 12 éléments du plan remplis"],score:["📊","Premier bilan","Votre premier bilan du dimanche"],week:["📅","Semaine parfaite","7 cartes dans une semaine"],stretch:["🌊","Hors de la barque","Carte remplie le jour du défi (jour 27)"],
+     reader:["📚","Livre terminé","Terminer un livre de votre bibliothèque"],learner:["🎓","Apprenant","Terminer une formation ou activité"],half:["⛰️","Mi-parcours solide","15+ cartes au jour 21"],story:["✍️","Témoin","Partager votre histoire"],grad:["🎉","Diplômé","36+ cartes en 42 jours"]},
+  refTitle:"Invitez un ami", refSub:"Partagez votre lien. Quand un ami rejoint la cohorte avec, vous recevez tous les deux 500 FCFA de réduction sur la prochaine cohorte.", refShare:"Partager sur WhatsApp", refCopy:"Copier le lien", refCopied:"✓ Lien copié",
+  refCount:(n,p)=>n?`${n} ami${n>1?"s ont":" a"} rejoint avec votre lien${p?` · ${p} payé${p>1?"s":""}`:""}`:"Personne n'a encore rejoint avec votre lien.",
+  refMsg:l=>`Je grandis de 1 % par jour avec la cohorte Growth Day : un enseignement chaque matin sur WhatsApp, un plan personnel et une triade. Rejoins-moi 👉 ${l}`,
+  ntTitle:"Rappels sur ce téléphone", ntSub:"Recevez le Daily Fire à 6h00 et un rappel à 20h00 en notification, en plus de WhatsApp.", ntOn:"Activer", ntOff:"Désactiver", ntIsOn:"✓ Les notifications sont activées sur ce téléphone.",
+  ntIos:"Sur iPhone, ajoutez d'abord l'application à l'écran d'accueil (Partager → Sur l'écran d'accueil), ouvrez-la depuis là, puis activez les notifications.", ntDenied:"Les notifications sont bloquées dans les réglages du navigateur. Autorisez-les pour growthday.cc, puis réessayez.", ntNo:"Ce navigateur ne prend pas en charge les notifications.",
+  watch2:"Voir la vidéo du jour",
   pPlan:"Choisissez votre formule", pMethod:"Moyen de paiement", pFullT:"Parcours complet · 6 semaines", pFullS:"Un seul paiement. Les 42 jours, les séminaires et la remise de diplômes.",
   pWeekT:w=>`Semaine ${w} seulement`, pWeekS:"Payez semaine par semaine. Chaque semaine s'ouvre une fois payée.", pRestT:n=>`Les ${n} semaines restantes`, pRestS:"Payez le reste en une fois et terminez sans interruption.",
   pSave:x=>`Économisez ${x} F`, perWk:" / semaine", pCard:"Carte bancaire", soon:"Bientôt", pNow:"Vous payez maintenant", pConfirm:"Confirmer le paiement",
@@ -1284,6 +1330,10 @@ function loginForm(){
   const T_ = t();
   const inner = `<h1>${T_.signInTitle}</h1>
     <div class="stack" style="margin-top:22px">${phoneField(draft.code, "")}
+      <div class="grid2"><div class="stack">${f("video_url","Video (English) · optional, vertical 60-second clip")}
+        <div><label for="lvFile">Upload the English video</label><input type="file" id="lvFile" accept="video/*"></div></div>
+        <div class="stack">${f("video_url_fr","Vidéo (français)")}
+        <div><label for="lvFileFr">Upload the French video</label><input type="file" id="lvFileFr" accept="video/*"></div></div></div>
       <div><label for="pin">${T_.yourPin}</label><div class="pin-wrap"><input id="pin" class="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="current-password"><button class="link" id="showPin" type="button">${T_.show}</button></div></div>
       <button class="link" id="forgot" type="button">${T_.forgotBtn}</button></div>`;
   root.innerHTML = authShell(inner, 0, `<button class="btn btn-primary" id="next">${T_.signIn}</button>`);
@@ -1338,6 +1388,8 @@ async function boot(){
   try{
     me = await rpc("gd_me", {p_token: tok});
     try{ me.methods = await rpc("gd_methods", {}); }catch(e){}
+    try{ me.extra = await rpc("gd_me_extra", {p_token: tok}); }catch(e){ me.extra = {}; }
+    const rc = store.get("gd_ref"); if(rc){ rpc("gd_set_referrer", {p_token: tok, p_code: rc}).catch(()=>{}); store.del("gd_ref"); }
     if(!store.get("gd_lang")){ lang = me.lang; }
     document.documentElement.lang = lang;
     cardDay = null; renderApp();
@@ -1402,6 +1454,8 @@ function renderApp(){
     catch(e){ m.className="err"; m.textContent = errMsg(e); } ts.disabled = false; };
   document.querySelectorAll("[data-goj]").forEach(b => b.onclick = () => { tab = "journey"; renderApp(); window.scrollTo(0,0); });
   document.querySelectorAll("[data-print]").forEach(b => b.onclick = () => doPrint(b.dataset.print));
+  const nt = $("#ntToggle"); if(nt) nt.onclick = () => togglePush(nt.dataset.on === "1");
+  const rcp = $("#refCopy"); if(rcp) rcp.onclick = async () => { try{ await navigator.clipboard.writeText(rcp.dataset.link); rcp.textContent = t().refCopied; }catch(e){ prompt("Copy:", rcp.dataset.link); } };
   const tm = $("#toMe"); if(tm) tm.onclick = () => { tab = "me"; renderApp(); window.scrollTo(0,0); };
   document.querySelectorAll("[data-goplan]").forEach(b => b.onclick = () => { tab = "plan"; renderApp(); window.scrollTo(0,0); });
   document.querySelectorAll('.plan-card input[type=range]').forEach(r => r.oninput = () => { r.dataset.touched = '1'; r.nextElementSibling.textContent = r.value; });
@@ -1432,6 +1486,7 @@ function renderApp(){
     }catch(e){ sp.disabled = false; m.className = "err"; m.textContent = errMsg(e); }
   };
   lastSaved = null;
+  setTimeout(checkNewBadges, 400);
 }
 
 function ring(pct, big, small){
@@ -1459,7 +1514,9 @@ function viewBefore(){
     <section class="stack"><h2 class="sec">${T_.myAreas}</h2>
       <div class="mine">${[me.area1, me.area2].map(a=>`<div class="mine-a"><span class="ai">${AREA_ICON[a-1]}</span><div><b>${esc(areaName(a))}</b><p class="muted small">${esc(AREAS[lang][a-1][1])}</p></div></div>`).join("")}</div></section>
     ${groupCard()}
+    ${notifCard()}
     ${planStrip()}
+    ${refCard()}
     <section class="stack"><h2 class="sec">${T_.nextTitle}</h2>
       <ol class="next">${T_.nextSteps.map(n=>`<li><b>${n[0]}</b><span>${n[1]}</span></li>`).join("")}</ol></section>
     <div class="panel tip"><h3>${T_.tipTitle}</h3><p class="muted small">${T_.tip}</p></div>`;
@@ -1475,13 +1532,15 @@ function lessonBlock(l){
   const audio = au ? (/\.(mp3|m4a|ogg|opus|wav|aac|webm)(\?|$)/i.test(au)
       ? `<audio controls preload="none" src="${esc(au)}"></audio>`
       : `<a class="btn btn-dark" href="${esc(au)}" target="_blank" rel="noopener">▶ ${t().listen}</a>`) : "";
-  if(!principle) return `<section class="panel lesson stack"><h2>${esc(L(l,"title") || L(l,"theme"))}</h2>${audio}<p class="muted">${t().noLesson}</p></section>`;
+  const vu = (lang === "fr" && l.video_url_fr) ? l.video_url_fr : (l.video_url || l.video_url_fr);
+  const video = vu ? `<div class="dvideo-wrap"><video class="dvideo" src="${esc(vu)}" controls playsinline preload="metadata"></video></div>` : "";
+  if(!principle) return `<section class="panel lesson stack"><h2>${esc(L(l,"title") || L(l,"theme"))}</h2>${video}${audio}<p class="muted">${t().noLesson}</p></section>`;
   return `<section class="panel lesson stack">
     ${L(l,"word") ? `<p class="word">${t().word}: ${esc(L(l,"word"))}</p>` : ""}
     <h2>${esc(L(l,"title"))}</h2>
     <p class="principle">${esc(principle)}</p>
     ${L(l,"action") ? `<div class="action"><h3>${t().action}</h3><p>${esc(L(l,"action"))}</p></div>` : ""}
-    ${audio}</section>`;
+    ${video}${audio}</section>`;
 }
 
 
@@ -1670,6 +1729,7 @@ function viewJourney(){
         <span class="f-both">${FLAME}${t().legBoth}</span><span class="f-one">${FLAME}${t().legOne}</span>
         <span class="f-miss">${FLAME}${t().legMiss}</span></div></div>
     <div id="detail"></div></section>
+    ${badgesBlock()}
     <section class="stack"><h2>${t().curveTitle}</h2>${curveBlock()}</section>
     <section class="stack"><h2>${t().scores}</h2>${scores}</section>
     ${printCard()}`;
@@ -1788,6 +1848,82 @@ function doPrint(kind){
   Promise.all(imgs.map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; }))).then(() => setTimeout(() => window.print(), 50));
 }
 
+
+/* ---------- badges ---------- */
+function earnedBadges(){
+  const ck2 = me.checkins.filter(c=>c.done1||c.done2), days = new Set(ck2.map(c=>c.day)), bs = bestStreak();
+  const weekFull = [1,2,3,4,5,6].some(w => [1,2,3,4,5,6,7].every(i => days.has((w-1)*7+i)));
+  const e = {
+    first: days.size >= 1, s3: bs >= 3, s7: bs >= 7, s14: bs >= 14, s21: bs >= 21,
+    plan: planCount() >= 12, score: (me.scores||[]).length >= 1, week: weekFull, stretch: days.has(27),
+    reader: books().some(b=>b.progress>=100), learner: courses().some(c=>c.progress>=100),
+    half: me.day >= 21 && [...days].filter(d=>d<=21).length >= 15, story: !!(me.testimony||"").trim(), grad: days.size >= 36,
+  };
+  return e;
+}
+function badgesBlock(){
+  const T_ = t(), e = earnedBadges(), keys = Object.keys(T_.B), n = keys.filter(k=>e[k]).length;
+  return `<section class="stack"><h2>${T_.bTitle} <span class="muted small">${n}/${keys.length}</span></h2>
+    <div class="badges">${keys.map(k=>{ const [ic,nm,how] = T_.B[k]; return `<div class="badge-t ${e[k]?"on":""}" title="${esc(how)}"><span class="b-ic">${e[k]?ic:"🔒"}</span><b>${esc(nm)}</b><small>${e[k]?"":esc(how)}</small></div>`; }).join("")}</div></section>`;
+}
+function checkNewBadges(){
+  if(!me || me.day < 1) return;
+  const e = earnedBadges(), seen = new Set((store.get("gd_badges")||"").split(",").filter(Boolean));
+  const fresh = Object.keys(e).filter(k => e[k] && !seen.has(k));
+  if(!fresh.length) return;
+  fresh.forEach(k => seen.add(k)); store.set("gd_badges", [...seen].join(","));
+  if(!store.get("gd_badges_init")){ store.set("gd_badges_init","1"); if(fresh.length > 2) return; }
+  const [ic, nm] = t().B[fresh[0]];
+  const el = document.createElement("div"); el.className = "celebrate"; el.setAttribute("role","status");
+  el.innerHTML = `<div class="cel-card"><div class="cel-ic">${ic}</div><p class="hw-l">${t().bNew}</p><h2>${esc(nm)}</h2></div>${Array.from({length:18},(_,i)=>`<i style="--x:${(i*37)%100}%;--d:${(i%6)*.08}s;--c:${["#E8890C","#FFC94D","#2F855A","#3B82C4"][i%4]}"></i>`).join("")}`;
+  document.body.appendChild(el); el.onclick = () => el.remove(); setTimeout(() => el.remove(), 3200);
+}
+
+
+/* ---------- referrals ---------- */
+function refCard(){
+  const x = me.extra || {}; if(!x.ref_code) return "";
+  const T_ = t(), link = `https://growthday.cc/cohort?ref=${x.ref_code}`;
+  return `<section class="panel stack"><h3>🎁 ${T_.refTitle}</h3><p class="muted small">${T_.refSub}</p>
+    <div class="ref-link"><code>${esc(link.replace("https://",""))}</code><button class="link small" id="refCopy" data-link="${esc(link)}">${T_.refCopy}</button></div>
+    <a class="btn btn-primary" href="https://wa.me/?text=${encodeURIComponent(T_.refMsg(link))}" target="_blank" rel="noopener">${T_.refShare}</a>
+    <p class="small muted">${T_.refCount(x.referrals||0, x.referrals_paid||0)}</p></section>`;
+}
+/* ---------- push notifications ---------- */
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent), standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+function b64u(s){ const p = "=".repeat((4 - s.length % 4) % 4), b = atob((s + p).replace(/-/g,"+").replace(/_/g,"/")); return Uint8Array.from([...b].map(c=>c.charCodeAt(0))); }
+let ntNote = "";
+function notifCard(){
+  const T_ = t(), x = me.extra || {};
+  if(!x.vapid) return "";
+  const supported = "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
+  let body;
+  if(isIOS && !standalone) body = `<p class="small">${T_.ntIos}</p>`;
+  else if(!supported) body = `<p class="small muted">${T_.ntNo}</p>`;
+  else if(x.push_on && Notification.permission === "granted") body = `<p class="small ok">${T_.ntIsOn}</p><button class="link small" id="ntToggle" data-on="0">${T_.ntOff}</button>`;
+  else body = `<button class="btn btn-dark sm" id="ntToggle" data-on="1">🔔 ${T_.ntOn}</button>`;
+  return `<section class="panel stack"><h3>🔔 ${T_.ntTitle}</h3><p class="muted small">${T_.ntSub}</p>${body}${ntNote?`<p class="small err">${esc(ntNote)}</p>`:""}</section>`;
+}
+async function togglePush(on){
+  const T_ = t();
+  try{
+    const reg = await navigator.serviceWorker.register("/cohort/sw.js", {scope:"/cohort/"});
+    await navigator.serviceWorker.ready;
+    if(on){
+      const perm = await Notification.requestPermission();
+      if(perm !== "granted"){ ntNote = T_.ntDenied; renderApp(); return; }
+      const sub = await reg.pushManager.subscribe({userVisibleOnly:true, applicationServerKey:b64u(me.extra.vapid)});
+      await rpc("gd_save_push", {p_token:store.get("gd_token"), p_sub:sub.toJSON(), p_on:true});
+      me.extra.push_on = true; ntNote = "";
+    } else {
+      const sub = await reg.pushManager.getSubscription();
+      if(sub){ await rpc("gd_save_push", {p_token:store.get("gd_token"), p_sub:sub.toJSON(), p_on:false}); await sub.unsubscribe(); }
+      me.extra.push_on = false;
+    }
+  }catch(e){ ntNote = T_.ntNo; }
+  renderApp();
+}
+
 function viewMe(){
   const open = me.day <= 7;
   const picked = viewMe.picked || [me.area1, me.area2];
@@ -1808,6 +1944,8 @@ function viewMe(){
       <div><b>${me.plan_type==="full"?t().accFull:me.plan_type==="weekly"?t().accWeek(me.paid_weeks):t().accNone}</b>
       ${me.plan_type==="weekly"?`<div class="wkdots">${[1,2,3,4,5,6].map(w=>`<i class="${w<=me.paid_weeks?"on":""}">${w}</i>`).join("")}</div>`:""}</div></div></section>` : ""}
     ${groupCard()}
+    ${notifCard()}
+    ${refCard()}
     <button class="btn btn-ghost" id="signOut">${t().signOut}</button>`;
 }
 
@@ -1967,7 +2105,7 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
           return `<button class="dcard ${x.day===admDay?"sel":""} ${filled?"":"empty"}" data-lday="${x.day}">
             <span class="dnum">Day ${x.day} · ${["Mon","Tue","Wed","Thu","Fri","Sat","Sun"][(x.day-1)%7]}</span>
             <b>${sun?"Score day":esc(x.title_en||"Empty")}</b>
-            <span class="dbadges">${sun?"📊":filled?"✓ EN":""}${!sun&&x.principle_fr?" ✓ FR":""}${x.audio_url?" 🎙️EN":""}${x.audio_url_fr?" 🎙️FR":""}</span></button>`; }).join("")}</div>`).join("")}</div>
+            <span class="dbadges">${sun?"📊":filled?"✓ EN":""}${!sun&&x.principle_fr?" ✓ FR":""}${x.audio_url?" 🎙️EN":""}${x.audio_url_fr?" 🎙️FR":""}${x.video_url||x.video_url_fr?" 🎬":""}</span></button>`; }).join("")}</div>`).join("")}</div>
       <h2 class="sec" style="margin-top:8px">Editing day ${admDay}${l.title_en?` · ${esc(l.title_en)}`:""}</h2>
       <div class="grid2">
         <div class="stack"><h3>English</h3>${f("title_en","Title")}${f("word_en","Word (scripture reference)")}${f("principle_en","Principle",1)}${f("action_en","1% micro-action",1)}</div>
@@ -2032,13 +2170,13 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
       <div class="stat"><b>${cur>=1&&cur<=42?today:"—"}</b><span class="muted small">Cards filled today</span></div>
       <div class="stat"><b>${slip}</b><span class="muted small">Slipping</span></div>
     </div>
-    <div class="seg" role="tablist">${[["people","People"],["messages","WhatsApp"],["lessons","Daily lessons"],["settings","Settings"]].map(([k,n])=>`<button data-at="${k}" aria-pressed="${admTab===k}">${n}</button>`).join("")}</div>
-    ${admTab==="people"?peopleView:admTab==="messages"?messagesView():admTab==="lessons"?lessonsView:settingsView}
+    <div class="seg" role="tablist">${[["people","People"],["insights","Insights"],["messages","WhatsApp"],["lessons","Daily lessons"],["settings","Settings"]].map(([k,n])=>`<button data-at="${k}" aria-pressed="${admTab===k}">${n}</button>`).join("")}</div>
+    ${admTab==="people"?peopleView:admTab==="insights"?insightsView():admTab==="messages"?messagesView():admTab==="lessons"?lessonsView:settingsView}
   </div>`;
 
   $("#refresh").onclick = adminLoad;
   $("#adminOut").onclick = () => { admPin = null; adm = null; admSem = null; admMeth = null; admMsg = null; admOpen = null; clearTimeout(msgTimer); adminLogin(); };
-  document.querySelectorAll("[data-at]").forEach(b=>b.onclick=()=>{admTab=b.dataset.at; adminRender(); if(admTab==="messages") loadMessages();});
+  document.querySelectorAll("[data-at]").forEach(b=>b.onclick=async()=>{admTab=b.dataset.at; adminRender(); if(admTab==="messages") loadMessages(); if(admTab==="insights"||admTab==="settings"){ try{ admX = await rpc("gd_admin_extra",{p_pin:admPin}); }catch(e){} adminRender(); }});
   if(admTab==="messages") bindMessages();
   document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{admFilter=b.dataset.f; adminRender();});
   document.querySelectorAll("[data-person]").forEach(b=>b.onclick=()=>{admOpen = admOpen===b.dataset.person?null:b.dataset.person; adminRender();});
@@ -2075,7 +2213,7 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
       const d = await callFn(fd, true); $("#"+field).value = d.url;
       m.className="ok"; m.textContent = `✓ Uploaded. Now click "Save day ${admDay}".`;
     }catch(e){ m.className="err"; m.textContent = "Upload failed: " + e.message; } }; };
-  upAudio($("#laFileFr"), "audio_url_fr");
+  upAudio($("#laFileFr"), "audio_url_fr"); upAudio($("#lvFile"), "video_url"); upAudio($("#lvFileFr"), "video_url_fr");
   const la = $("#laFile");
   if(la) la.onchange = async () => {
     const file = la.files[0]; if(!file) return; const m = $("#lmsg");
@@ -2088,7 +2226,7 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
   };
   const ls = $("#lsave");
   if(ls) ls.onclick = async () => {
-    const keys = ["title_en","title_fr","word_en","word_fr","principle_en","principle_fr","action_en","action_fr","audio_url","audio_url_fr"];
+    const keys = ["title_en","title_fr","word_en","word_fr","principle_en","principle_fr","action_en","action_fr","audio_url","audio_url_fr","video_url","video_url_fr"];
     const p = {}; keys.forEach(k => p[k] = $("#"+k).value.trim() || null);
     ls.disabled = true;
     try{ await rpc("gd_admin_save_lesson",{p_pin:admPin, p_day:admDay, p});
@@ -2326,6 +2464,42 @@ function bindMessages(){
 }
 
 
+
+/* ---------- admin: insights ---------- */
+let admX = null;
+function insightsView(){
+  if(!admX) return `<p class="muted">Loading…</p>`;
+  const P = adm.participants, paid = P.filter(p=>p.status==="paid"), cur = Math.min(42, adm.day);
+  const active = (adm.pay.price_week>0||adm.pay.price_full>0) ? paid.length : P.length;
+  const byDay = Object.fromEntries((admX.checkins||[]).map(x=>[x.day, x]));
+  const totalCards = (admX.checkins||[]).reduce((n,x)=>n+x.n,0);
+  const avg = active ? (totalCards/active).toFixed(1) : "0";
+  const todayPct = active && cur>=1 ? Math.round(((byDay[cur]||{}).n||0)/active*100) : 0;
+  const W = 760, H = 180, bw = W/42;
+  const bars = Array.from({length:42},(_,i)=>{ const d=i+1, x = byDay[d], pct = active && x ? x.n/active : 0, h = Math.max(pct*140, d<=cur?2:0);
+    return `<rect x="${(i*bw+2).toFixed(1)}" y="${(150-h).toFixed(1)}" width="${(bw-4).toFixed(1)}" height="${h.toFixed(1)}" rx="3" class="${d>cur?"fut":d%7===0?"sun":""}"><title>Day ${d}: ${x?x.n:0} cards (${Math.round(pct*100)}%)</title></rect>`; }).join("");
+  const wk = [1,2,3,4,5,6].map(w=>`<text x="${((w-1)*7+3.5)*bw}" y="172" text-anchor="middle">W${w}</text>`).join("");
+  const areas = (admX.areas||[]), maxA = Math.max(1, ...areas.map(a=>a.n));
+  return `<div class="stack-lg">
+    <div class="stats">
+      <div class="stat"><b>${avg}</b><span class="muted small">cards per person so far</span></div>
+      <div class="stat"><b>${cur>=1?todayPct+"%":"—"}</b><span class="muted small">filled their card today</span></div>
+      <div class="stat"><b>${admX.push}</b><span class="muted small">with phone notifications on</span></div>
+      <div class="stat"><b>${(admX.refs||[]).reduce((n,r)=>n+r.n,0)}</b><span class="muted small">joined through a referral link</span></div>
+    </div>
+    <section class="panel stack"><h3>Daily completion</h3><p class="muted small">Share of ${(adm.pay.price_week>0||adm.pay.price_full>0)?"paid ":""}participants who filled their 1% Card each day. Watch for the day the bars drop: that's where to add encouragement or simplify the content for Cohort 2.</p>
+      <div class="chart-wrap"><svg viewBox="0 0 ${W} ${H}" class="cbars" role="img" aria-label="Daily completion chart"><line x1="0" x2="${W}" y1="150" y2="150" class="axis"/><line x1="0" x2="${W}" y1="10" y2="10" class="axis dash"/><text x="${W}" y="8" text-anchor="end">100%</text>${bars}${wk}</svg></div></section>
+    <div class="grid2">
+      <section class="panel stack"><h3>Average weekly scores</h3>
+        ${(admX.scores||[]).length?`<table><thead><tr><th>Week</th><th>Area 1</th><th>Area 2</th><th>Answers</th></tr></thead><tbody>${admX.scores.map(s=>`<tr><td>${s.week}</td><td>${s.avg1}</td><td>${s.avg2}</td><td>${s.n}</td></tr>`).join("")}</tbody></table>`:`<p class="muted small">Appears after the first Sunday.</p>`}</section>
+      <section class="panel stack"><h3>Most chosen growth areas</h3>
+        ${areas.length?areas.map(a=>`<div class="hbar"><span>${AREA_ICON[a.area-1]} ${AREA_SHORT[a.area-1]}</span><i style="width:${a.n/maxA*100}%"></i><b>${a.n}</b></div>`).join(""):`<p class="muted small">No participants yet.</p>`}</section>
+    </div>
+    <section class="panel stack"><h3>🎁 Referrals</h3>
+      ${(admX.refs||[]).length?`<table><thead><tr><th>Participant</th><th>Friends who joined</th><th>Of whom paid</th></tr></thead><tbody>${admX.refs.map(r=>`<tr><td>${esc(r.name)}</td><td>${r.n}</td><td>${r.paid}</td></tr>`).join("")}</tbody></table>`:`<p class="muted small">No referrals yet. Each participant has a personal link in their Me tab.</p>`}</section>
+  </div>`;
+}
+
 /* ---------- growth guide view ---------- */
 let gview = null;
 function guideLogin(msg){
@@ -2368,6 +2542,7 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
 
 /* ---------- start ---------- */
 document.documentElement.lang = lang;
+(() => { const m = location.search.match(/[?&]ref=([A-Za-z0-9]{4,10})/); if(m){ store.set("gd_ref", m[1].toUpperCase()); } })();
 const route = () => { if(location.hash === "#admin") adminLogin(); else if(location.hash === "#guide") guideLoad(); else { document.body.classList.remove("admin"); boot(); } };
 route();
 window.addEventListener("hashchange", route);
