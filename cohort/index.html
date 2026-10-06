@@ -434,6 +434,9 @@ code.sel{user-select:all;word-break:break-all;font-size:12.5px;background:var(--
   .j-foot{margin-top:18px;border-top:1px solid #D6DDEA;padding-top:6px;font-size:8.5pt;color:#5B6480}
 }
 .stripe-box{border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+.top-actions{display:flex;align-items:center;gap:14px}
+.danger-zone{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px;padding-top:12px;border-top:1px dashed var(--line)}
+.btn.danger{color:var(--danger);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--danger) 40%,transparent)}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -1946,6 +1949,8 @@ function adminRender(){
 ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length && !cr.length) return "";
             return `<div class="grid2" style="margin-top:14px"><div><h3>📚 Reading</h3>${bk.map(b=>`<p class="small">${esc(b.title)}${b.author?` <span class="muted">· ${esc(b.author)}</span>`:""} · <b>${b.progress>=100?"finished":b.progress+"%"}</b></p>`).join("")||'<p class="small muted">–</p>'}</div>
               <div><h3>🎓 Courses & activities</h3>${cr.map(c=>`<p class="small">${esc(c.title)}${c.provider?` <span class="muted">· ${esc(c.provider)}</span>`:""} · <b>${c.progress>=100?"done":c.progress+"%"}</b></p>`).join("")||'<p class="small muted">–</p>'}</div></div>`; })()}
+          <div class="danger-zone"><button class="btn btn-ghost sm danger" data-delp="${p.id}" data-name="${esc(p.name)}" data-paid="${p.status==="paid"?"1":""}">Remove this participant</button>
+            <span class="muted small">Deletes their account, cards, scores and payment records. This can't be undone.</span></div>
           ${p.testimony ? `<h3 style="margin-top:14px">Story</h3><p class="small">${esc(p.testimony)}</p><p class="small muted">${p.testimony_public?"Agreed to share publicly":"Private"} · <label><input type="checkbox" data-approve="${p.id}" ${p.testimony_approved?"checked":""} ${p.testimony_public?"":"disabled"}> Show on landing page</label></p>` : ""}
           ${(p.notes||[]).length ? `<h3 style="margin-top:14px">Latest card answers</h3>${p.notes.map(n=>`<p class="small"><b>Day ${n.day}:</b> ${n.note1?`${AREA_ICON[p.area1-1]} ${esc(n.note1)}`:""} ${n.note2?` · ${AREA_ICON[p.area2-1]} ${esc(n.note2)}`:""}</p>`).join("")}` : `<p class="muted small" style="margin-top:10px">No written card answers yet.</p>`}
         </td></tr>` : ""}`; }).join("") || `<tr><td colspan="9" class="muted">No one here yet.</td></tr>`}
@@ -2020,7 +2025,7 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
       <p id="smsg" role="status"></p></div>`;
 
   root.innerHTML = `<div class="wrap stack-lg">
-    <div class="top"><div class="brand"><img src="${LOGO}" alt="">Growth Day · Cohort admin</div><button class="link" id="refresh">Refresh</button></div>
+    <div class="top"><div class="brand"><img src="${LOGO}" alt="">Growth Day · Cohort admin</div><div class="top-actions"><button class="link" id="refresh">Refresh</button><button class="btn btn-ghost sm" id="adminOut">Sign out</button></div></div>
     <div class="stats">
       <div class="stat"><b>${cur<1?`Starts in ${1-cur}d`:cur>42?"Finished":`Day ${cur}`}</b><span class="muted small">${cur>=1&&cur<=42?`Week ${Math.ceil(cur/7)}`:fmtDate(adm.start_date)}</span></div>
       <div class="stat"><b>${(adm.pay.price_week>0||adm.pay.price_full>0) ? `${P.filter(p=>p.status==="paid").length} / ${adm.pay.seat_limit}` : P.length}</b><span class="muted small">${(adm.pay.price_week>0||adm.pay.price_full>0) ? "Paid seats" : "Participants"}</span></div>
@@ -2032,10 +2037,18 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
   </div>`;
 
   $("#refresh").onclick = adminLoad;
+  $("#adminOut").onclick = () => { admPin = null; adm = null; admSem = null; admMeth = null; admMsg = null; admOpen = null; clearTimeout(msgTimer); adminLogin(); };
   document.querySelectorAll("[data-at]").forEach(b=>b.onclick=()=>{admTab=b.dataset.at; adminRender(); if(admTab==="messages") loadMessages();});
   if(admTab==="messages") bindMessages();
   document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{admFilter=b.dataset.f; adminRender();});
   document.querySelectorAll("[data-person]").forEach(b=>b.onclick=()=>{admOpen = admOpen===b.dataset.person?null:b.dataset.person; adminRender();});
+  document.querySelectorAll("[data-delp]").forEach(b => b.onclick = async () => {
+    const name = b.dataset.name;
+    const warn = b.dataset.paid ? `\n\n⚠️ ${name} has PAID. Removing them does not refund the money; refunds are done in pawaPay or Stripe.` : "";
+    const typed = prompt(`To remove ${name} permanently, type REMOVE below.${warn}`);
+    if((typed||"").trim().toUpperCase() !== "REMOVE") return;
+    try{ await rpc("gd_admin_delete_participant",{p_pin:admPin, p_id:b.dataset.delp}); admOpen = null; await adminLoad(); }
+    catch(e){ alert("Could not remove: " + e.message); } });
   document.querySelectorAll("[data-triad]").forEach(inp => inp.onchange = async () => {
     try{ await rpc("gd_admin_set_triad",{p_pin:admPin, p_id:inp.dataset.triad, p_triad:inp.value});
       const p = adm.participants.find(x=>x.id===inp.dataset.triad); p.triad = inp.value.trim()||null; inp.style.borderColor="var(--leaf)";
