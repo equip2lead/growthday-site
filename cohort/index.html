@@ -461,6 +461,25 @@ code.sel{user-select:all;word-break:break-all;font-size:12.5px;background:var(--
 .hbar{display:grid;grid-template-columns:120px 1fr 30px;align-items:center;gap:10px;font-size:14px}
 .hbar i{display:block;height:10px;border-radius:99px;background:var(--ember)}
 .hbar b{text-align:right}
+.ptoggle{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;background:var(--fill);border-radius:16px;padding:4px;gap:4px}
+.ptoggle button{border:0;background:transparent;border-radius:12px;padding:12px 8px;font:600 15px var(--body);color:var(--muted);cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.ptoggle button[aria-selected="true"]{background:var(--surface);color:var(--text);box-shadow:0 1px 3px rgba(16,24,40,.12)}
+.pt-save{display:inline-block;font:600 11.5px var(--body);color:#0B6B3A;background:#DDF5E7;border-radius:99px;padding:1px 7px;margin-left:4px;vertical-align:1px}
+.price-hero{text-align:center;padding:14px 0 2px}
+.price-hero b{font:700 46px var(--display);letter-spacing:-.03em;line-height:1}
+.price-hero>span{font:600 16px var(--display);color:var(--muted);margin-left:6px}
+.price-hero p{margin-top:6px;font-weight:600;color:var(--ember-text,#A35F00);font-size:14.5px}
+.center{text-align:center}
+.paygos{display:flex;flex-direction:column;gap:10px}
+.paygo{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:16px;cursor:pointer;color:var(--text);font:inherit;transition:border-color .15s,transform .12s,box-shadow .15s}
+.paygo:hover:not([disabled]){border-color:var(--ember);box-shadow:0 6px 18px color-mix(in srgb,var(--ember) 18%,transparent)}
+.paygo:active:not([disabled]){transform:scale(.985)}
+.paygo[disabled]{opacity:.5;cursor:not-allowed}
+.pg-ic{font-size:26px;width:46px;height:46px;border-radius:14px;background:var(--fill);display:grid;place-items:center;flex:none}
+.pg-t{flex:1;display:flex;flex-direction:column}
+.pg-t b{font:600 16.5px var(--display)}
+.pg-t small{font-size:13px;color:var(--muted)}
+.pg-arrow{font-size:20px;color:var(--ember);font-weight:700}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -715,6 +734,11 @@ en:{
   ntTitle:"Reminders on this phone", ntSub:"Get the Daily Fire at 6:00 and a nudge at 20:00 as phone notifications, on top of WhatsApp.", ntOn:"Turn on", ntOff:"Turn off", ntIsOn:"✓ Notifications are on for this phone.",
   ntIos:"On iPhone, first add the app to your Home Screen (Share → Add to Home Screen), open it from there, then turn on notifications.", ntDenied:"Notifications are blocked in your browser settings. Allow them for growthday.cc, then try again.", ntNo:"This browser doesn't support notifications.",
   watch2:"Watch today's video",
+  tAll:"All at once", tWeek:"Per week", tNext:"Next week", tRest:"The rest", howPay:"How do you want to pay?",
+  sFull:x=>`for the 6 weeks · you save ${x} F`, sWeek:x=>`per week · ${x} F over 6 weeks`, sNext:w=>`for week ${w}`, sRest:(n,x)=>`for the remaining ${n} weeks${x>0?` · you save ${fcfa(x)} F`:""}`,
+  dFull:"One payment and you're set for all 42 days, the 3 live seminars and graduation.", dWeek:"Start now and pay each week before it begins. Each week opens once it's paid.",
+  dNext:"Keep your streak going: pay next week now.", dRest:"Pay the remaining weeks at once and finish without interruption.",
+  goMomo:"Mobile Money", goMomoS:"MTN · Orange", goCard:"Bank card", goCardS:"Visa · Mastercard", secure2:"🔒 Secure payment. Mobile Money by pawaPay, cards by Stripe.",
   pPlan:"Choose your plan", pMethod:"Payment method", pFullT:"Full journey · 6 weeks", pFullS:"One payment. All 42 days, seminars and graduation.",
   pWeekT:w=>`Week ${w} only`, pWeekS:"Pay week by week. Each week opens when it's paid.", pRestT:n=>`The remaining ${n} weeks`, pRestS:"Pay the rest once and finish without interruption.",
   pSave:x=>`Save ${x} F`, perWk:" / week", pCard:"Bank card", soon:"Coming soon", pNow:"You pay now", pConfirm:"Confirm payment",
@@ -772,7 +796,7 @@ en:{
   myAreas:"My growth areas", areasLocked:"Your areas are locked after week 1.", areasOpen:"You can change your areas until the end of week 1.",
   saveChanges:"Save changes", changesSaved:"Changes saved.", triad:"My triad", noTriad:"Your triad will be shared with you in week 2.",
   signOut:"Sign out", whatsapp:"WhatsApp", loading:"Loading…", credit:"An <b>Equip2Lead</b> program · Led by <b>Dr. Denis Ekobena</b>",
-  err:{phone_exists:"This number is already registered. Sign in instead.",not_found:"No account uses this number. Check it, or join the cohort.",wrong_pin:"Wrong PIN. Try again.",locked:"Too many tries. Wait 15 minutes, then try again.",pin_invalid:"Your PIN must be exactly 4 digits.",pin_mismatch:"The two PINs don't match.",name_required:"Enter your full name.",phone_invalid:"Enter a valid WhatsApp number.",areas_needed:"Choose exactly 2 areas.",session_expired:"Please sign in again.",day_closed:"This card is closed. You can fill today's and yesterday's cards only.",week_closed:"This week isn't open yet.",week_locked:"This week isn't paid yet.",pay_start_failed:"The payment page couldn't open. Check your number and try again in a moment.",card_not_configured:"Card payment isn't available yet. Please use Mobile Money.",use_rest:"Choose \"The remaining weeks\" to pay the rest.",pay_failed:"The payment didn't go through. You can try again.",areas_locked:"Your areas are locked after week 1.",network:"No connection. Check your internet and try again.",code_invalid:"That code is not right. Check it and try again.",code_expired:"This code has expired. Ask for a new one.",wait:"Please wait a minute before asking for another code.",whatsapp_failed:"We couldn't send the code on WhatsApp. Ask your Growth Guide to reset your PIN.",payments_not_configured:"Payments aren't open yet. Try again soon.",fapshi_error:"The payment page couldn't open. Try again in a moment."}
+  err:{phone_exists:"This number is already registered. Sign in instead.",not_found:"No account uses this number. Check it, or join the cohort.",wrong_pin:"Wrong PIN. Try again.",locked:"Too many tries. Wait 15 minutes, then try again.",pin_invalid:"Your PIN must be exactly 4 digits.",pin_mismatch:"The two PINs don't match.",name_required:"Enter your full name.",phone_invalid:"Enter a valid WhatsApp number.",areas_needed:"Choose exactly 2 areas.",session_expired:"Please sign in again.",day_closed:"This card is closed. You can fill today's and yesterday's cards only.",week_closed:"This week isn't open yet.",week_locked:"This week isn't paid yet.",pay_start_failed:"The payment page couldn't open. Check your number and try again in a moment.",card_not_configured:"Card payment isn't available yet. Please use Mobile Money.",use_rest:"Choose \"The remaining weeks\" to pay the rest.",pay_failed:"The payment didn't go through. You can try again.",areas_locked:"Your areas are locked after week 1.",network:"No connection. Check your internet and try again.",code_invalid:"That code is not right. Check it and try again.",code_expired:"This code has expired. Ask for a new one.",wait:"Please wait a minute before asking for another code.",whatsapp_failed:"We couldn't send the code on WhatsApp. Ask your Growth Guide to reset your PIN.",payments_not_configured:"Payments aren't open yet. Try again soon.",provider_error:"The payment page couldn't open. Try again in a moment."}
 },
 fr:{
   stepOf:n=>`Étape ${n} sur 3`, next:"Continuer", country:"Pays",
@@ -829,6 +853,11 @@ fr:{
   ntTitle:"Rappels sur ce téléphone", ntSub:"Recevez le Daily Fire à 6h00 et un rappel à 20h00 en notification, en plus de WhatsApp.", ntOn:"Activer", ntOff:"Désactiver", ntIsOn:"✓ Les notifications sont activées sur ce téléphone.",
   ntIos:"Sur iPhone, ajoutez d'abord l'application à l'écran d'accueil (Partager → Sur l'écran d'accueil), ouvrez-la depuis là, puis activez les notifications.", ntDenied:"Les notifications sont bloquées dans les réglages du navigateur. Autorisez-les pour growthday.cc, puis réessayez.", ntNo:"Ce navigateur ne prend pas en charge les notifications.",
   watch2:"Voir la vidéo du jour",
+  tAll:"Tout en une fois", tWeek:"Par semaine", tNext:"Semaine suivante", tRest:"Le reste", howPay:"Comment voulez-vous payer ?",
+  sFull:x=>`pour les 6 semaines · vous économisez ${x} F`, sWeek:x=>`par semaine · ${x} F sur 6 semaines`, sNext:w=>`pour la semaine ${w}`, sRest:(n,x)=>`pour les ${n} semaines restantes${x>0?` · vous économisez ${fcfa(x)} F`:""}`,
+  dFull:"Un seul paiement et c'est réglé pour les 42 jours, les 3 séminaires en direct et la remise de diplômes.", dWeek:"Commencez maintenant et payez chaque semaine avant qu'elle commence. Chaque semaine s'ouvre une fois payée.",
+  dNext:"Gardez votre série : payez la semaine suivante maintenant.", dRest:"Payez les semaines restantes en une fois et terminez sans interruption.",
+  goMomo:"Mobile Money", goMomoS:"MTN · Orange", goCard:"Carte bancaire", goCardS:"Visa · Mastercard", secure2:"🔒 Paiement sécurisé. Mobile Money par pawaPay, cartes par Stripe.",
   pPlan:"Choisissez votre formule", pMethod:"Moyen de paiement", pFullT:"Parcours complet · 6 semaines", pFullS:"Un seul paiement. Les 42 jours, les séminaires et la remise de diplômes.",
   pWeekT:w=>`Semaine ${w} seulement`, pWeekS:"Payez semaine par semaine. Chaque semaine s'ouvre une fois payée.", pRestT:n=>`Les ${n} semaines restantes`, pRestS:"Payez le reste en une fois et terminez sans interruption.",
   pSave:x=>`Économisez ${x} F`, perWk:" / semaine", pCard:"Carte bancaire", soon:"Bientôt", pNow:"Vous payez maintenant", pConfirm:"Confirmer le paiement",
@@ -886,7 +915,7 @@ fr:{
   myAreas:"Mes domaines de croissance", areasLocked:"Vos domaines sont fixés après la semaine 1.", areasOpen:"Vous pouvez changer vos domaines jusqu'à la fin de la semaine 1.",
   saveChanges:"Enregistrer", changesSaved:"Modifications enregistrées.", triad:"Ma triade", noTriad:"Votre triade vous sera communiquée en semaine 2.",
   signOut:"Se déconnecter", whatsapp:"WhatsApp", loading:"Chargement…", credit:"Un programme <b>Equip2Lead</b> · Dirigé par le <b>Dr Denis Ekobena</b>",
-  err:{phone_exists:"Ce numéro est déjà inscrit. Connectez-vous plutôt.",not_found:"Aucun compte avec ce numéro. Vérifiez-le ou rejoignez la cohorte.",wrong_pin:"Code PIN incorrect. Réessayez.",locked:"Trop d'essais. Attendez 15 minutes puis réessayez.",pin_invalid:"Le code PIN doit contenir exactement 4 chiffres.",pin_mismatch:"Les deux codes PIN sont différents.",name_required:"Entrez votre nom complet.",phone_invalid:"Entrez un numéro WhatsApp valide.",areas_needed:"Choisissez exactement 2 domaines.",session_expired:"Veuillez vous reconnecter.",day_closed:"Cette carte est fermée. Vous pouvez remplir seulement celle d'aujourd'hui et d'hier.",week_closed:"Cette semaine n'est pas encore ouverte.",week_locked:"Cette semaine n'est pas encore payée.",pay_start_failed:"La page de paiement n'a pas pu s'ouvrir. Vérifiez votre numéro et réessayez dans un instant.",card_not_configured:"Le paiement par carte n'est pas encore disponible. Utilisez Mobile Money.",use_rest:"Choisissez « Les semaines restantes » pour payer le reste.",pay_failed:"Le paiement n'a pas abouti. Vous pouvez réessayer.",areas_locked:"Vos domaines sont fixés après la semaine 1.",network:"Pas de connexion. Vérifiez internet et réessayez.",code_invalid:"Ce code n'est pas correct. Vérifiez-le et réessayez.",code_expired:"Ce code a expiré. Demandez-en un nouveau.",wait:"Patientez une minute avant de redemander un code.",whatsapp_failed:"Impossible d'envoyer le code sur WhatsApp. Demandez à votre Growth Guide de réinitialiser votre code.",payments_not_configured:"Les paiements ne sont pas encore ouverts. Réessayez bientôt.",fapshi_error:"La page de paiement n'a pas pu s'ouvrir. Réessayez dans un instant."}
+  err:{phone_exists:"Ce numéro est déjà inscrit. Connectez-vous plutôt.",not_found:"Aucun compte avec ce numéro. Vérifiez-le ou rejoignez la cohorte.",wrong_pin:"Code PIN incorrect. Réessayez.",locked:"Trop d'essais. Attendez 15 minutes puis réessayez.",pin_invalid:"Le code PIN doit contenir exactement 4 chiffres.",pin_mismatch:"Les deux codes PIN sont différents.",name_required:"Entrez votre nom complet.",phone_invalid:"Entrez un numéro WhatsApp valide.",areas_needed:"Choisissez exactement 2 domaines.",session_expired:"Veuillez vous reconnecter.",day_closed:"Cette carte est fermée. Vous pouvez remplir seulement celle d'aujourd'hui et d'hier.",week_closed:"Cette semaine n'est pas encore ouverte.",week_locked:"Cette semaine n'est pas encore payée.",pay_start_failed:"La page de paiement n'a pas pu s'ouvrir. Vérifiez votre numéro et réessayez dans un instant.",card_not_configured:"Le paiement par carte n'est pas encore disponible. Utilisez Mobile Money.",use_rest:"Choisissez « Les semaines restantes » pour payer le reste.",pay_failed:"Le paiement n'a pas abouti. Vous pouvez réessayer.",areas_locked:"Vos domaines sont fixés après la semaine 1.",network:"Pas de connexion. Vérifiez internet et réessayez.",code_invalid:"Ce code n'est pas correct. Vérifiez-le et réessayez.",code_expired:"Ce code a expiré. Demandez-en un nouveau.",wait:"Patientez une minute avant de redemander un code.",whatsapp_failed:"Impossible d'envoyer le code sur WhatsApp. Demandez à votre Growth Guide de réinitialiser votre code.",payments_not_configured:"Les paiements ne sont pas encore ouverts. Réessayez bientôt.",provider_error:"La page de paiement n'a pas pu s'ouvrir. Réessayez dans un instant."}
 }};
 
 /* ---------- utils ---------- */
@@ -1241,36 +1270,28 @@ function payKinds(){
   return ["full", "week"].filter(k => priceFor(k) > 0);
 }
 function paySheet(){
-  const T_ = t(), kinds = payKinds(), wk = nextWeek();
+  const T_ = t(), kinds = payKinds(), wk = nextWeek(), M = methods();
   if(!PAY.kind || !kinds.includes(PAY.kind)) PAY.kind = kinds[0];
-  const M = methods(); if(!PAY.method || !M[PAY.method]) PAY.method = M.momo ? "momo" : "card";
-  const opt = k => {
-    const price = priceFor(k), weeksLeft = 7 - wk;
-    const title = k === "full" ? T_.pFullT : k === "rest" ? T_.pRestT(weeksLeft) : T_.pWeekT(wk);
-    const sub = k === "full" ? T_.pFullS : k === "rest" ? T_.pRestS : T_.pWeekS;
-    const save = k === "full" ? me.price_week * 6 - price : k === "rest" ? me.price_week * weeksLeft - price : 0;
-    return `<button type="button" class="plan-opt" data-pk="${k}" aria-pressed="${PAY.kind === k}">
-      <span class="radio" aria-hidden="true"></span>
-      <span class="po-b"><span class="po-t"><b>${title}</b>${k !== "week" && save > 0 ? `<span class="badge">${T_.pSave(fcfa(save))}</span>` : ""}</span><span class="po-s">${sub}</span></span>
-      <span class="po-p"><b>${fcfa(price)}</b><small>FCFA${k === "week" ? T_.perWk : ""}</small></span></button>`;
-  };
+  const k = PAY.kind, price = priceFor(k), weeksLeft = 7 - wk;
+  const label = x => x === "full" ? T_.tAll : x === "rest" ? T_.tRest : (me.plan_type === "weekly" ? T_.tNext : T_.tWeek);
+  const sub = k === "full" ? T_.sFull(fcfa(me.price_week * 6 - price))
+            : k === "rest" ? T_.sRest(weeksLeft, Math.max(0, me.price_week * weeksLeft - price))
+            : me.plan_type === "weekly" ? T_.sNext(wk) : T_.sWeek(fcfa(me.price_week * 6));
+  const desc = k === "full" ? T_.dFull : k === "rest" ? T_.dRest : me.plan_type === "weekly" ? T_.dNext : T_.dWeek;
+  const go = (m, ic, name, small) => `<button type="button" class="paygo" data-go="${m}" ${M[m] ? "" : "disabled"}>
+      <span class="pg-ic">${ic}</span><span class="pg-t"><b>${name}</b><small>${M[m] ? small : T_.soon}</small></span><span class="pg-arrow" aria-hidden="true">→</span></button>`;
   return `<div class="paysheet">
-    <p class="sec-l">${T_.pPlan}</p>
-    <div class="plan-list" role="radiogroup">${kinds.map(opt).join("")}</div>
-    <p class="sec-l">${T_.pMethod}</p>
-    <div class="methods">
-      <button type="button" class="method" data-pm="momo" aria-pressed="${PAY.method==="momo"}" ${methods().momo?"":"disabled"}><span class="m-ic">📱</span><span><b>Mobile Money</b><small>${methods().momo?"MTN · Orange":T_.soon}</small></span></button>
-      <button type="button" class="method" data-pm="card" aria-pressed="${PAY.method==="card"}" ${methods().card?"":"disabled"}><span class="m-ic">💳</span><span><b>${T_.pCard}</b><small>${methods().card?T_.pCardSub:T_.soon}</small></span></button>
-    </div>
-    <div class="pay-sum"><span>${T_.pNow}</span><b>${fcfa(priceFor(PAY.kind))} <small>FCFA</small></b></div>
+    ${kinds.length > 1 ? `<div class="ptoggle" role="tablist">${kinds.map(x => `<button type="button" role="tab" data-pk="${x}" aria-selected="${x === k}">${label(x)}${x === "full" || (x === "rest" && me.price_week * weeksLeft > priceFor("rest")) ? ` <span class="pt-save">−${fcfa(x === "full" ? me.price_week * 6 - priceFor("full") : me.price_week * weeksLeft - priceFor("rest"))}</span>` : ""}</button>`).join("")}</div>` : ""}
+    <div class="price-hero"><b>${fcfa(price)}</b><span>FCFA</span><p>${sub}</p></div>
+    <p class="muted small center">${desc}</p>
+    <p class="sec-l">${T_.howPay}</p>
+    <div class="paygos">${go("momo", "📱", T_.goMomo, T_.goMomoS)}${go("card", "💳", T_.goCard, T_.goCardS)}</div>
     <p class="err" id="payErr" role="alert">${payNote ? esc(payNote) : ""}</p>
-    <button class="btn btn-primary btn-lg" id="payNow">${T_.pConfirm} <span aria-hidden="true">→</span></button>
-    <p class="secure">🔒 ${PAY.method==="card" ? T_.pSecureCard : T_.pSecure}</p></div>`;
+    <p class="secure">${T_.secure2}</p></div>`;
 }
 function bindPaySheet(rerender){
-  document.querySelectorAll("[data-pk]").forEach(b => b.onclick = () => { PAY.kind = b.dataset.pk; rerender(); });
-  document.querySelectorAll("[data-pm]").forEach(b => b.onclick = () => { if(b.disabled) return; PAY.method = b.dataset.pm; rerender(); });
-  const pn = $("#payNow"); if(pn) pn.onclick = () => startPay(pn, $("#payErr"));
+  document.querySelectorAll("[data-pk]").forEach(b => b.onclick = () => { PAY.kind = b.dataset.pk; payNote = ""; rerender(); });
+  document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => { if(b.disabled) return; PAY.method = b.dataset.go; startPay(b, $("#payErr")); });
 }
 function payScreen(name){
   document.body.classList.add("is-auth");
@@ -1285,13 +1306,14 @@ function payScreen(name){
   bindPaySheet(() => payScreen(name));
 }
 async function startPay(btn, errEl){
-  btn.disabled = true; const old = btn.innerHTML; btn.innerHTML = `<span class="spin"></span> ${t().paying}`;
+  document.querySelectorAll("[data-go]").forEach(x => x.disabled = true);
+  const old = btn.innerHTML; btn.innerHTML = `<span class="pg-ic"><span class="spin"></span></span><span class="pg-t"><b>${t().paying}</b></span>`;
   try{ const d = await callApp({action:"pay", token:store.get("gd_token"), kind:PAY.kind, method:PAY.method, lang});
     if(d.link){ location.href = d.link; return; }
     if(d.paid){ boot(); return; }
     if(d.waitlist){ me.status = "waitlist"; payScreen(firstName(me.name)); return; }
   }catch(e){ if(errEl) errEl.textContent = errMsg(e); }
-  btn.disabled = false; btn.innerHTML = old;
+  btn.innerHTML = old; const M = methods(); document.querySelectorAll("[data-go]").forEach(x => x.disabled = !M[x.dataset.go]);
 }
 async function payReturn(){
   const T_ = t(), dep = new URLSearchParams(location.search).get("depositId") || "";
@@ -2122,7 +2144,7 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
       <p class="muted small">Participants only see a day's lesson once that day arrives. If a day has no principle, the app tells them to listen to the Daily Fire on WhatsApp.</p>
     </div>`;
 
-  const WH = "https://vjnzvrhbzaqmzneirmjq.supabase.co/functions/v1/gd-app?webhook=fapshi";
+  const WH = "https://vjnzvrhbzaqmzneirmjq.supabase.co/functions/v1/gd-app?webhook=";
   const semDates = SEM_DAYS.map(([d,n])=>`<p class="small"><b>Seminar ${n}${n===3?" + graduation":""}:</b> ${dayDate(adm.start_date,d).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"})} (day ${d})</p>`).join("");
   const settingsView = `<div class="panel stack" style="margin-bottom:20px"><h3>Live seminars and cohort group</h3>
       <p class="muted small">They're set automatically on the Saturdays of weeks 2, 4 and 6. Participants see a reminder card in the app from the Sunday before, and the 6:00 Daily Fire on Friday and Saturday announces it. If you add the Zoom link here, it appears in both. If not, they're told you'll send it on WhatsApp.</p>
@@ -2141,12 +2163,12 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
         <div><label for="penv">Mode</label><select id="penv"><option value="sandbox" ${adm.pay.env!=="live"?"selected":""}>Sandbox (tests)</option><option value="live" ${adm.pay.env==="live"?"selected":""}>Live (real money)</option></select></div></div>
       <div><label for="ptok">pawaPay API token ${adm.pay.token_set?'<span class="ok small">✓ saved</span>':""}</label><input id="ptok" type="password" autocomplete="off" placeholder="${adm.pay.token_set?"Leave empty to keep the saved one":"Paste the token from your pawaPay dashboard"}"></div>
       <div class="hint-box"><p class="small"><b>In your pawaPay dashboard</b> → System configuration → Callback URLs, set the <b>Deposits</b> callback to:</p>
-        <p class="small"><code class="sel">${WH.replace("webhook=fapshi","webhook=pawapay")}</code></p></div>
+        <p class="small"><code class="sel">${WH}pawapay</code></p></div>
       <div class="stripe-box stack"><h3>💳 Bank card (Stripe) ${admMeth&&admMeth.card?`<span class="ok small">✓ connected · ${admMeth.card_mode==="live"?"LIVE":"test mode"}</span>`:""}</h3>
         <p class="muted small">Paste your Stripe <b>secret key</b> (starts with <code>sk_test_</code> for tests, <code>sk_live_</code> for real payments). The "Bank card" button appears for participants as soon as it's saved. To disconnect, type <code>remove</code>.</p>
         <input id="stkey" type="password" autocomplete="off" placeholder="${admMeth&&admMeth.card?"Leave empty to keep the saved key":"sk_test_…"}">
         <div class="hint-box"><p class="small"><b>In Stripe</b> → Developers → Webhooks → Add endpoint, paste this URL and choose the event <b>checkout.session.completed</b>:</p>
-          <p class="small"><code class="sel">${WH.replace("webhook=fapshi","webhook=stripe")}</code></p></div></div>
+          <p class="small"><code class="sel">${WH}stripe</code></p></div></div>
       <p id="paymsg" role="status"></p><button class="btn btn-primary" id="paysave">Save payment settings</button></div>
     <div class="panel stack"><h3>Growth Guides</h3>
       <p class="muted small">Each guide signs in at <b>growthday.cc/cohort#guide</b> with their number and PIN, and sees only their triad.</p>
