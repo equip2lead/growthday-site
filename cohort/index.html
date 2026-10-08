@@ -512,6 +512,81 @@ code.sel{user-select:all;word-break:break-all;font-size:12.5px;background:var(--
 .pin{border:1.5px solid var(--field-line) !important;background:var(--surface) !important}
 input[type=checkbox],input[type=radio],input[type=range],input[type=file]{border:0;background:none}
 input[type=file]{padding:6px 0}
+.back-btn{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--field-line);background:var(--surface);color:var(--text);border-radius:99px;padding:8px 14px;font:600 14px var(--body);cursor:pointer}
+.back-btn:active{transform:scale(.97)}
+.how-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+/* account menu */
+.acct{position:relative}
+.acct-menu{position:absolute;right:0;top:calc(100% + 8px);min-width:220px;background:var(--surface);border-radius:16px;box-shadow:var(--shadow-lg);padding:8px;z-index:40}
+.acct-menu .am-name{font-weight:700;padding:8px 10px 10px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.acct-menu button{display:flex;width:100%;gap:10px;align-items:center;border:0;background:none;color:var(--text);font:500 15px var(--body);padding:10px;border-radius:10px;cursor:pointer;text-align:left}
+.acct-menu button:hover{background:var(--fill)}
+.acct-menu .danger{color:var(--danger)}
+/* pricing cards */
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;align-items:stretch}
+.pcard{position:relative;display:flex;flex-direction:column;background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:22px 20px 20px;box-shadow:var(--shadow)}
+.pcard.best{border-color:var(--ember);box-shadow:0 10px 30px color-mix(in srgb,var(--ember) 22%,transparent)}
+.pc-flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--ember);color:#1C2340;font:700 12px var(--display);letter-spacing:.06em;text-transform:uppercase;padding:5px 14px;border-radius:99px;white-space:nowrap}
+.pcard h3{font:700 19px var(--display);text-align:center}
+.pc-price{text-align:center;margin-top:10px}
+.pc-price b{display:block;font:800 44px/1 var(--display);letter-spacing:-.03em}
+.pc-price span{display:block;color:var(--muted);font-weight:600;font-size:13.5px;margin-top:6px}
+.pc-sub{text-align:center;font-weight:600;font-size:14px;color:var(--muted);margin-top:6px;min-height:20px}
+.pc-sub.save{color:#0B6B3A}
+.pc-feat{list-style:none;padding:0;margin:16px 0 18px;display:flex;flex-direction:column;gap:9px;flex:1}
+.pc-feat li{position:relative;padding-left:26px;font-size:14.5px;line-height:1.4}
+.pc-feat li::before{content:"✓";position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:#DDF5E7;color:#0B6B3A;font-weight:800;font-size:11px;display:grid;place-items:center}
+@media (prefers-color-scheme: dark){.pc-feat li::before{background:#123A27;color:#7CE3A7}.pc-sub.save{color:#7CE3A7}}
+/* payment method sheet */
+#msheet{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center}
+.ms-back{position:absolute;inset:0;background:rgba(14,18,34,.5)}
+.ms-card{position:relative;width:100%;max-width:480px;background:var(--bg);border-radius:24px 24px 0 0;padding:20px 18px calc(22px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px;animation:up .26s cubic-bezier(.2,.8,.2,1)}
+@media (min-width:700px){#msheet{align-items:center}.ms-card{border-radius:24px}}
+.ms-head{display:flex;justify-content:space-between;align-items:center}
+.ms-sum{display:flex;justify-content:space-between;align-items:center;background:var(--surface);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow)}
+.ms-sum span{color:var(--muted);font-weight:600;font-size:14px}
+.ms-sum b{font:700 24px var(--display)}
+@keyframes up{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
+body.no-scroll{overflow:hidden}
+/* onboarding slides */
+.ob .auth-top{gap:12px}
+.ob .steps{flex:1}
+.ob-body{text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:6vh}
+.ob-ic{font-size:64px;width:120px;height:120px;border-radius:36px;background:var(--surface);box-shadow:var(--shadow);display:grid;place-items:center;margin-bottom:8px}
+.ob-body .dvideo-wrap,.ob-body .vid-ph{width:100%;margin-bottom:8px}
+.plan-areas{display:flex;flex-direction:column;gap:18px}
+/* sidebar: hidden on phones */
+.sidebar{display:none}
+.avatar.sm{width:36px;height:36px;font-size:13px;display:grid;place-items:center;flex:none}
+@media (min-width:1100px){
+  .tabs{display:none}
+  .sidebar{display:flex;flex-direction:column;position:fixed;left:0;top:0;bottom:0;width:248px;padding:26px 16px 20px;background:var(--surface);border-right:1px solid var(--line);z-index:20}
+  .sb-brand{display:flex;align-items:center;gap:10px;font:700 20px var(--display);padding:0 10px 26px}
+  .sb-brand img{width:34px;height:34px;object-fit:contain}
+  .sb-nav{display:flex;flex-direction:column;gap:4px}
+  .sb-nav button{display:flex;align-items:center;gap:14px;border:0;background:none;color:var(--text);font:600 16px var(--body);padding:12px 12px;border-radius:14px;cursor:pointer;text-align:left}
+  .sb-nav button svg{width:24px;height:24px}
+  .sb-nav button:hover{background:var(--fill)}
+  .sb-nav button[aria-current="page"]{background:color-mix(in srgb,var(--ember) 14%,transparent);color:var(--ember-text,#A35F00)}
+  .sb-emoji{width:24px;text-align:center;font-size:19px}
+  .sb-foot{margin-top:auto;display:flex;flex-direction:column;gap:16px;padding:0 6px}
+  .sb-user{display:flex;align-items:center;gap:10px}
+  .sb-user div{display:flex;flex-direction:column;align-items:flex-start}
+  .shell .wrap{margin-left:248px;max-width:none;padding:26px 44px 60px}
+  .shell .app-top{position:static;margin:0 0 6px;max-width:1120px;background:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .cols{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:28px;align-items:start;max-width:1120px}
+  .col-rail{position:sticky;top:24px}
+  .col-rail:empty{display:none}
+  .cols:has(.col-rail:empty){grid-template-columns:minmax(0,760px)}
+  .plan-areas{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+  .tab-me .col-main{display:block;columns:2;column-gap:22px}
+  .tab-me .col-main>*{break-inside:avoid;margin-bottom:22px;display:block}
+  .shell .credit{max-width:1120px}
+}
+@media (min-width:700px) and (max-width:1099px){
+  .shell .wrap{max-width:720px}
+  .plan-areas{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -767,6 +842,15 @@ en:{
   ntIos:"On iPhone, first add the app to your Home Screen (Share → Add to Home Screen), open it from there, then turn on notifications.", ntDenied:"Notifications are blocked in your browser settings. Allow them for growthday.cc, then try again.", ntNo:"This browser doesn't support notifications.",
   watch2:"Watch today's video",
 
+
+  pcWeekT:"Weekly", pcNextT:w=>`Week ${w}`, pcFullT:"Full journey", pcRestT:n=>`Remaining ${n} weeks`, pcBest:"Best value",
+  pcUnitWeek:"FCFA / week", pcUnitOnce:"FCFA · one payment",
+  pcWeekSub:x=>`${x}\u00a0F over 6 weeks`, pcFullSub:x=>`You save ${x}\u00a0F`, pcNextSub:"Keep your streak going",
+  pcWeekF:["Daily Fire every morning, on WhatsApp and in the app","Your 1% Card and personal growth plan","Your triad and Growth Guide","Pay each week before it starts"],
+  pcFullF:["Everything in Weekly","All 42 days, no interruption","3 live seminars and graduation","One payment, nothing more to think about"],
+  pcBtnWeek:w=>`Pay week ${w}`, pcBtnFull:x=>`Pay ${x}\u00a0FCFA`, pcPayNow:"You're paying", pcClose:"Close",
+  menuProfile:"My profile", menuHow:"How it works", menuOut:"Sign out", skip:"Skip", next2:"Next", obDone:"Continue",
+  obSlides:[["👋","Welcome to Growth Day","Six weeks to grow 1% a day in the two areas you chose. Here's how it works, in under a minute."],["🔥","Every morning at 6:00","Your Daily Fire arrives on WhatsApp with the day's audio. The same teaching is in the app, under Today."],["✅","Every evening","Fill your 1% Card in the app: two taps and one line. Your flame lights up, and your streak grows."],["📊","Every Sunday","Give yourself a Growth Score from 1 to 10 in each area, and watch your growth curve rise."],["👥","You're not alone","From week 2 you walk with a small triad and a Growth Guide, and every two weeks we meet live on Zoom."]],
   howBtn:"How it works", howNew:"New here? See how it all works", howTitle:"How Growth Day works", howSub:"Everything you need to know, in 3 minutes.",
   howVidSoon:"Welcome video from Dr. Denis Ekobena, coming soon.", howStart:"Let's go",
   howRhythmT:"Your daily rhythm", howRhythm:[["6:00","🔥 The Daily Fire","Arrives on WhatsApp with the day's audio. The same teaching is here in the app, under Today."],["Day","💪 Your 1%","One small step in each of your two areas. Small, but every day."],["Evening","✅ Your 1% Card","Two taps and one line, in the app. Your flame lights up."],["Sunday","📊 Your Growth Score","Rate yourself from 1 to 10 in each area and watch your curve grow."]],
@@ -898,6 +982,15 @@ fr:{
   ntIos:"Sur iPhone, ajoutez d'abord l'application à l'écran d'accueil (Partager → Sur l'écran d'accueil), ouvrez-la depuis là, puis activez les notifications.", ntDenied:"Les notifications sont bloquées dans les réglages du navigateur. Autorisez-les pour growthday.cc, puis réessayez.", ntNo:"Ce navigateur ne prend pas en charge les notifications.",
   watch2:"Voir la vidéo du jour",
 
+
+  pcWeekT:"Hebdomadaire", pcNextT:w=>`Semaine ${w}`, pcFullT:"Parcours complet", pcRestT:n=>`Les ${n} semaines restantes`, pcBest:"Meilleure offre",
+  pcUnitWeek:"FCFA / semaine", pcUnitOnce:"FCFA · paiement unique",
+  pcWeekSub:x=>`${x}\u00a0F sur 6 semaines`, pcFullSub:x=>`Vous économisez ${x}\u00a0F`, pcNextSub:"Gardez votre série",
+  pcWeekF:["Le Daily Fire chaque matin, sur WhatsApp et dans l'application","Votre carte 1 % et votre plan de croissance","Votre triade et votre Growth Guide","Payez chaque semaine avant qu'elle commence"],
+  pcFullF:["Tout ce qui est dans Hebdomadaire","Les 42 jours, sans interruption","3 séminaires en direct et la remise de diplômes","Un seul paiement, plus rien à penser"],
+  pcBtnWeek:w=>`Payer la semaine ${w}`, pcBtnFull:x=>`Payer ${x}\u00a0FCFA`, pcPayNow:"Vous payez", pcClose:"Fermer",
+  menuProfile:"Mon profil", menuHow:"Comment ça marche", menuOut:"Se déconnecter", skip:"Passer", next2:"Suivant", obDone:"Continuer",
+  obSlides:[["👋","Bienvenue à Growth Day","Six semaines pour grandir de 1 % par jour dans les deux domaines que vous avez choisis. Voici comment ça marche, en moins d'une minute."],["🔥","Chaque matin à 6h00","Votre Daily Fire arrive sur WhatsApp avec l'audio du jour. Le même enseignement est dans l'application, sous Aujourd'hui."],["✅","Chaque soir","Remplissez votre carte 1 % dans l'application : deux touches et une ligne. Votre flamme s'allume, et votre série grandit."],["📊","Chaque dimanche","Donnez-vous une note de croissance de 1 à 10 dans chaque domaine, et regardez votre courbe monter."],["👥","Vous n'êtes pas seul","Dès la semaine 2, vous marchez avec une petite triade et un Growth Guide, et toutes les deux semaines nous nous retrouvons en direct sur Zoom."]],
   howBtn:"Comment ça marche", howNew:"Nouveau ? Découvrez comment tout fonctionne", howTitle:"Comment fonctionne Growth Day", howSub:"Tout ce qu'il faut savoir, en 3 minutes.",
   howVidSoon:"Vidéo de bienvenue du Dr Denis Ekobena, bientôt disponible.", howStart:"C'est parti",
   howRhythmT:"Votre rythme quotidien", howRhythm:[["6h00","🔥 Le Daily Fire","Arrive sur WhatsApp avec l'audio du jour. Le même enseignement est ici dans l'application, sous Aujourd'hui."],["Journée","💪 Votre 1 %","Un petit pas dans chacun de vos deux domaines. Petit, mais chaque jour."],["Soir","✅ Votre carte 1 %","Deux touches et une ligne, dans l'application. Votre flamme s'allume."],["Dimanche","📊 Votre bilan","Notez-vous de 1 à 10 dans chaque domaine et regardez votre courbe grandir."]],
@@ -1233,7 +1326,7 @@ function phoneField(code, val){
 }
 function authShell(inner, step, cta){
   return `<div class="auth">
-    <div class="auth-top"><button class="icon-btn" id="aBack" aria-label="${t().back}">←</button>
+    <div class="auth-top"><button class="back-btn" id="aBack">← ${t().back}</button>
       ${step ? `<div class="steps" role="progressbar" aria-label="${t().stepOf(step)}" aria-valuemin="1" aria-valuemax="3" aria-valuenow="${step}">${[1,2,3].map(i=>`<i class="${i<=step?"on":""}"></i>`).join("")}</div>` : `<div class="brand"><img src="${LOGO}" alt="">Growth Day</div>`}
       ${langToggle()}</div>
     <div class="auth-body">${inner}</div>
@@ -1294,12 +1387,38 @@ function joinForm(){
       callApp({action:"welcome", token:tok}).catch(()=>{});
       draft = {name:"", phone:"", code:"237", areas:[], step:1, pin:""};
       try{ me = await rpc("gd_me", {p_token: tok}); me.methods = await rpc("gd_methods", {}); }catch(e){ if(!me) me = null; }
-      if(me && me.payments_on && me.status !== "paid") payScreen(nm); else doneScreen(nm);
+      onboard(0, () => { if(me && me.payments_on && me.status !== "paid") payScreen(nm); else doneScreen(nm); });
     }catch(e){ btn.disabled = false;
       if(e.message === "phone_exists" || e.message === "phone_invalid"){ draft.step = 1; joinForm(); }
       err(errMsg(e)); }
   };
 }
+
+/* ---------- first-time onboarding (right after signup) ---------- */
+async function onboard(i, then){
+  document.body.classList.remove("is-land"); document.body.classList.add("is-auth");
+  await loadOnb();
+  const T_ = t(), S = T_.obSlides, last = i === S.length - 1, o = ONB || {};
+  const vid = lang === "fr" ? (o.video_fr || o.video_en) : (o.video_en || o.video_fr);
+  const [ic, h, p] = S[i];
+  root.innerHTML = `<div class="auth ob">
+    <div class="auth-top">${i > 0 ? `<button class="back-btn" id="obPrev">← ${T_.back}</button>` : `<div class="brand"><img src="${LOGO}" alt="">Growth Day</div>`}
+      <div class="steps">${S.map((_, k) => `<i class="${k <= i ? "on" : ""}"></i>`).join("")}</div>
+      <button class="link" id="obSkip">${T_.skip}</button></div>
+    <div class="auth-body ob-body">
+      ${i === 0 ? (vid ? `<div class="dvideo-wrap"><video class="dvideo" src="${esc(vid)}" controls playsinline preload="metadata"></video></div>` : `<div class="vid-ph"><span>🎬</span><p>${T_.howVidSoon}</p></div>`) : `<div class="ob-ic">${ic}</div>`}
+      <h1>${h}</h1><p class="lead-s">${p}</p>
+      ${i === S.length - 1 ? `<button class="link" id="obMore">🧭 ${T_.howBtn}</button>` : ""}
+    </div>
+    <div class="auth-cta"><button class="btn btn-primary btn-lg" id="obNext">${last ? T_.obDone : T_.next2} →</button></div>
+  </div>`;
+  const done = () => { store.set("gd_onb_done", "1"); document.body.classList.remove("is-auth"); then(); };
+  $("#obSkip").onclick = done;
+  $("#obNext").onclick = () => last ? done() : onboard(i + 1, then);
+  const pv = $("#obPrev"); if(pv) pv.onclick = () => onboard(i - 1, then);
+  const mo = $("#obMore"); if(mo) mo.onclick = async () => { store.set("gd_onb_done", "1"); document.body.classList.remove("is-auth"); await boot(); tab = "how"; renderApp(); };
+}
+
 async function doneScreen(name){
   document.body.classList.add("is-auth");
   let start = (pubStats && pubStats.start_date) || "2026-10-19";
@@ -1333,28 +1452,49 @@ function payKinds(){
   return ["full", "week"].filter(k => priceFor(k) > 0);
 }
 function paySheet(){
-  const T_ = t(), kinds = payKinds(), wk = nextWeek(), M = methods();
-  if(!PAY.kind || !kinds.includes(PAY.kind)) PAY.kind = kinds[0];
-  const k = PAY.kind, price = priceFor(k), weeksLeft = 7 - wk;
-  const label = x => x === "full" ? T_.tAll : x === "rest" ? T_.tRest : (me.plan_type === "weekly" ? T_.tNext : T_.tWeek);
-  const sub = k === "full" ? T_.sFull(fcfa(me.price_week * 6 - price))
-            : k === "rest" ? T_.sRest(weeksLeft, Math.max(0, me.price_week * weeksLeft - price))
-            : me.plan_type === "weekly" ? T_.sNext(wk) : T_.sWeek(fcfa(me.price_week * 6));
-  const desc = k === "full" ? T_.dFull : k === "rest" ? T_.dRest : me.plan_type === "weekly" ? T_.dNext : T_.dWeek;
-  const go = (m, ic, name, small) => `<button type="button" class="paygo" data-go="${m}" ${M[m] ? "" : "disabled"}>
-      <span class="pg-ic">${ic}</span><span class="pg-t"><b>${name}</b><small>${M[m] ? small : T_.soon}</small></span><span class="pg-arrow" aria-hidden="true">→</span></button>`;
-  return `<div class="paysheet">
-    ${kinds.length > 1 ? `<div class="ptoggle" role="tablist">${kinds.map(x => `<button type="button" role="tab" data-pk="${x}" aria-selected="${x === k}">${label(x)}${x === "full" || (x === "rest" && me.price_week * weeksLeft > priceFor("rest")) ? ` <span class="pt-save">−${fcfa(x === "full" ? me.price_week * 6 - priceFor("full") : me.price_week * weeksLeft - priceFor("rest"))}</span>` : ""}</button>`).join("")}</div>` : ""}
-    <div class="price-hero"><b>${fcfa(price)}</b><span>FCFA</span><p>${sub}</p></div>
-    <p class="muted small center">${desc}</p>
-    <p class="sec-l">${T_.howPay}</p>
-    <div class="paygos">${go("momo", "📱", T_.goMomo, T_.goMomoS)}${go("card", "💳", T_.goCard, T_.goCardS)}</div>
+  const T_ = t(), kinds = payKinds(), wk = nextWeek(), weekly = me.plan_type === "weekly";
+  const order = kinds.slice().sort((x,y) => (x === "week" ? -1 : 1) - (y === "week" ? -1 : 1));
+  const card = k => {
+    const price = priceFor(k), left = 7 - wk;
+    const best = k !== "week";
+    const save = k === "full" ? me.price_week * 6 - price : k === "rest" ? me.price_week * left - price : 0;
+    const title = k === "full" ? T_.pcFullT : k === "rest" ? T_.pcRestT(left) : weekly ? T_.pcNextT(wk) : T_.pcWeekT;
+    const unit = k === "week" ? T_.pcUnitWeek : T_.pcUnitOnce;
+    const sub = k === "week" ? (weekly ? T_.pcNextSub : T_.pcWeekSub(fcfa(me.price_week * 6))) : (save > 0 ? T_.pcFullSub(fcfa(save)) : "");
+    const feats = k === "week" ? T_.pcWeekF : T_.pcFullF;
+    const btn = k === "week" ? T_.pcBtnWeek(wk) : T_.pcBtnFull(fcfa(price));
+    return `<article class="pcard ${best ? "best" : ""}">
+      ${best && save > 0 ? `<span class="pc-flag">${T_.pcBest}</span>` : ""}
+      <h3>${title}</h3>
+      <p class="pc-price"><b>${fcfa(price)}</b><span>${unit}</span></p>
+      <p class="pc-sub ${best ? "save" : ""}">${sub || "&nbsp;"}</p>
+      <ul class="pc-feat">${feats.map(f => `<li>${f}</li>`).join("")}</ul>
+      <button type="button" class="btn ${best ? "btn-primary" : "btn-dark"} btn-lg" data-pk="${k}">${btn}</button>
+    </article>`;
+  };
+  return `<div class="paysheet"><div class="pricing">${order.map(card).join("")}</div>
     <p class="err" id="payErr" role="alert">${payNote ? esc(payNote) : ""}</p>
     <p class="secure">${T_.secure2}</p></div>`;
 }
+function methodSheet(){
+  const T_ = t(), M = methods(), k = PAY.kind, wk = nextWeek();
+  const title = k === "full" ? T_.pcFullT : k === "rest" ? T_.pcRestT(7 - wk) : (me.plan_type === "weekly" ? T_.pcNextT(wk) : T_.pcWeekT);
+  const go = (m, ic, name, small) => `<button type="button" class="paygo" data-go="${m}" ${M[m] ? "" : "disabled"}>
+      <span class="pg-ic">${ic}</span><span class="pg-t"><b>${name}</b><small>${M[m] ? small : T_.soon}</small></span><span class="pg-arrow" aria-hidden="true">→</span></button>`;
+  let host = document.getElementById("msheet");
+  if(!host){ host = document.createElement("div"); host.id = "msheet"; document.body.appendChild(host); }
+  host.innerHTML = `<div class="ms-back" data-msclose></div><div class="ms-card" role="dialog" aria-label="${esc(T_.howPay)}">
+    <div class="ms-head"><h2>${T_.howPay}</h2><button class="icon-btn" data-msclose aria-label="${T_.pcClose}">✕</button></div>
+    <div class="ms-sum"><span>${T_.pcPayNow} · ${title}</span><b>${fcfa(priceFor(k))} <small>FCFA</small></b></div>
+    <div class="paygos">${go("momo", "📱", T_.goMomo, T_.goMomoS)}${go("card", "💳", T_.goCard, T_.goCardS)}</div>
+    <p class="err" id="payErr2" role="alert"></p>
+    <p class="secure">${T_.secure2}</p></div>`;
+  document.body.classList.add("no-scroll");
+  host.querySelectorAll("[data-msclose]").forEach(x => x.onclick = () => { host.remove(); document.body.classList.remove("no-scroll"); });
+  host.querySelectorAll("[data-go]").forEach(x => x.onclick = () => { if(x.disabled) return; PAY.method = x.dataset.go; startPay(x, $("#payErr2")); });
+}
 function bindPaySheet(rerender){
-  document.querySelectorAll("[data-pk]").forEach(b => b.onclick = () => { PAY.kind = b.dataset.pk; payNote = ""; rerender(); });
-  document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => { if(b.disabled) return; PAY.method = b.dataset.go; startPay(b, $("#payErr")); });
+  document.querySelectorAll("[data-pk]").forEach(b => b.onclick = () => { PAY.kind = b.dataset.pk; payNote = ""; methodSheet(); });
 }
 function payScreen(name){
   document.body.classList.add("is-auth");
@@ -1517,6 +1657,20 @@ const TAB_ICON = {
     plan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>',
     me:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>'
 };
+
+function sidebar(){
+  const T_ = t(), ini = String(me.name||"?").trim().split(/\s+/).map(x=>x[0]).slice(0,2).join("").toUpperCase();
+  return `<aside class="sidebar" aria-label="Main">
+    <div class="sb-brand"><img src="${LOGO}" alt="">Growth Day</div>
+    <nav class="sb-nav">${["today","plan","journey","me"].map(k=>`<button data-tab="${k}" ${tab===k?'aria-current="page"':""}>${TAB_ICON[k]}<span>${T_[k]}</span></button>`).join("")}
+      <button data-how ${tab==="how"?'aria-current="page"':""}><span class="sb-emoji">🧭</span><span>${T_.howBtn}</span></button></nav>
+    <div class="sb-foot">${langToggle()}
+      <div class="sb-user"><span class="avatar sm">${esc(ini)}</span><div><b>${esc(firstName(me.name))}</b><button class="link small" data-signout>${T_.menuOut}</button></div></div></div>
+  </aside>`;
+}
+const DESK = matchMedia("(min-width: 1100px)");
+DESK.addEventListener ? DESK.addEventListener("change", () => { if(me && document.querySelector(".shell")) renderApp(); }) : null;
+
 function renderApp(){
   const cur = me.day;
   let body = "";
@@ -1527,10 +1681,15 @@ function renderApp(){
   if(tab === "me") body = viewMe();
   if(tab === "plan") body = viewPlan();
   const icon = TAB_ICON;
-  root.innerHTML = `<div class="wrap stack-lg">${appHeader()}${body}${credit()}</div>
+  root.innerHTML = `<div class="shell tab-${tab}">${sidebar()}<div class="wrap stack-lg">${appHeader()}<div class="cols"><div class="col-main stack-lg">${body}</div><aside class="col-rail stack-lg" id="rail"></aside></div>${credit()}</div></div>
     <nav class="tabs" aria-label="Main"><div>${["today","plan","journey","me"].map(k=>`<button data-tab="${k}" ${tab===k?'aria-current="page"':""}>${icon[k]}${t()[k]}</button>`).join("")}</div></nav>`;
+  if(DESK.matches){ const rail = $("#rail"); document.querySelectorAll(".col-main .rail-able").forEach(el => rail.appendChild(el)); }
   bindLang(renderApp);
   document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; cardDay = null; renderApp(); window.scrollTo(0,0); });
+  const av = $("#toMe"), am = $("#acctMenu");
+  if(av && am){ av.onclick = e => { e.stopPropagation(); const open = am.hidden; am.hidden = !open; av.setAttribute("aria-expanded", open); };
+    document.addEventListener("click", () => { am.hidden = true; av.setAttribute("aria-expanded", "false"); }, {once:true}); }
+  document.querySelectorAll("[data-signout]").forEach(b => b.onclick = () => { store.del("gd_token"); store.del("gd_me_cache"); me = null; tab = "today"; welcome(); });
   bindView();
   bindPaySheet(renderApp);
   document.querySelectorAll("[data-how]").forEach(b => b.onclick = async () => { await loadOnb(); tab = "how"; renderApp(); window.scrollTo(0,0); });
@@ -1546,7 +1705,7 @@ function renderApp(){
   document.querySelectorAll("[data-print]").forEach(b => b.onclick = () => doPrint(b.dataset.print));
   const nt = $("#ntToggle"); if(nt) nt.onclick = () => togglePush(nt.dataset.on === "1");
   const rcp = $("#refCopy"); if(rcp) rcp.onclick = async () => { try{ await navigator.clipboard.writeText(rcp.dataset.link); rcp.textContent = t().refCopied; }catch(e){ prompt("Copy:", rcp.dataset.link); } };
-  const tm = $("#toMe"); if(tm) tm.onclick = () => { tab = "me"; renderApp(); window.scrollTo(0,0); };
+
   document.querySelectorAll("[data-goplan]").forEach(b => b.onclick = () => { tab = "plan"; renderApp(); window.scrollTo(0,0); });
   document.querySelectorAll('.plan-card input[type=range]').forEach(r => r.oninput = () => { r.dataset.touched = '1'; r.nextElementSibling.textContent = r.value; });
   document.querySelectorAll("[data-psub]").forEach(b => b.onclick = () => { planSub = b.dataset.psub; libEdit = crsEdit = null; renderApp(); });
@@ -1594,7 +1753,9 @@ function weekStrip(){
 function appHeader(){
   const h = new Date().getHours(), ini = String(me.name||"?").trim().split(/\s+/).map(x=>x[0]).slice(0,2).join("").toUpperCase();
   return `<div class="app-top"><div><p class="muted small">${t().greet(h)},</p><p class="hello">${esc(firstName(me.name))}</p></div>
-    <div class="app-top-r">${langToggle()}<button class="avatar" id="toMe" aria-label="${t().me}">${esc(ini)}</button></div></div>`;
+    <div class="app-top-r">${langToggle()}<div class="acct"><button class="avatar" id="toMe" aria-haspopup="menu" aria-expanded="false" aria-label="${t().me}">${esc(ini)}</button>
+      <div class="acct-menu" id="acctMenu" role="menu" hidden><p class="am-name">${esc(me.name)}</p>
+        <button role="menuitem" data-tab="me">👤 ${t().menuProfile}</button><button role="menuitem" data-how>🧭 ${t().menuHow}</button><button role="menuitem" class="danger" data-signout>↪ ${t().menuOut}</button></div></div></div></div>`;
 }
 
 /* ---------- onboarding: how it works ---------- */
@@ -1604,7 +1765,7 @@ function viewHow(){
   const T_ = t(), o = ONB || {};
   const vid = lang === "fr" ? (o.video_fr || o.video_en) : (o.video_en || o.video_fr);
   return `<section class="stack how">
-    <button class="link small" data-back>← ${T_.today}</button>
+    <div class="how-top"><button class="back-btn" data-back>← ${t().back}</button><button class="btn btn-dark sm" data-back>${T_.howStart} →</button></div>
     <h1>${T_.howTitle}</h1><p class="muted">${T_.howSub}</p>
     ${vid ? `<div class="dvideo-wrap"><video class="dvideo" src="${esc(vid)}" controls playsinline preload="metadata"></video></div>`
           : `<div class="vid-ph"><span>🎬</span><p>${T_.howVidSoon}</p></div>`}
@@ -1617,7 +1778,7 @@ function viewHow(){
     <button class="btn btn-primary btn-lg" data-back>${T_.howStart} →</button>
   </section>`;
 }
-function howEntry(){ return `<button class="panel how-entry" data-how><span class="hm-ic">🧭</span><span><b>${t().howNew}</b></span><span class="pg-arrow">→</span></button>`; }
+function howEntry(){ return `<button class="panel how-entry rail-able" data-how><span class="hm-ic">🧭</span><span><b>${t().howNew}</b></span><span class="pg-arrow">→</span></button>`; }
 function trialCard(){
   if(!me.payments_on || !me.in_trial) return "";
   const left = me.trial_end - me.day; if(left > 1) return "";
@@ -1626,7 +1787,7 @@ function trialCard(){
 
 function viewBefore(){
   const left = 1 - me.day, T_ = t();
-  return `<section class="hero2">
+  return `<section class="hero2 rail-able">
       ${ring(0, left, T_.daysUnit(left))}
       <div class="hero2-t"><p>${me.payments_on && me.status!=="paid" ? T_.registered : T_.startsTitle}</p><h2>${T_.day1Is(fmtDate(me.start_date))}</h2></div>
     </section>
@@ -1690,7 +1851,7 @@ function viewPlan(){
   let body = "";
   if(planSub === "areas"){
     const dayNow = Math.max(1, me.day);
-    body = `${[[1,me.area1],[2,me.area2]].map(([k,a])=>{ const p = planOf(String(k));
+    body = `<div class="plan-areas">${[[1,me.area1],[2,me.area2]].map(([k,a])=>{ const p = planOf(String(k));
       return `<section class="panel stack plan-card" data-slot="${k}">
         <div class="plan-h"><span class="ai">${AREA_ICON[a-1]}</span><h2>${esc(areaName(a))}</h2></div>
         <div class="deeper"><p class="hw-l">${T_.goDeeper} · ${T_.week(Math.min(6,Math.ceil(dayNow/7)))}</p><p>${esc(areaQ(a, me.day))}</p></div>
@@ -1699,7 +1860,7 @@ function viewPlan(){
             <div class="range-row"><input type="range" id="p${k}-score" min="1" max="10" value="${p.score||5}" data-pf="score"><output>${p.score||"–"}</output></div></div>`;
           return `<div class="${today?"pf-today":""}"><label for="p${k}-${f}">${lbl} <span class="dtag">${d}</span></label>
             <textarea id="p${k}-${f}" rows="2" maxlength="400" data-pf="${f}" placeholder="${esc(T_.planPh[f])}">${esc(p[f]||"")}</textarea></div>`; }).join("")}
-      </section>`; }).join("")}
+      </section>`; }).join("")}</div>
       <p id="planMsg" role="status"></p><button class="btn btn-primary" id="savePlan">${T_.savePlan}</button>`;
   } else if(planSub === "lib"){
     const have = new Set(bk.map(b=>b.title.toLowerCase()));
@@ -1745,11 +1906,11 @@ async function mutatePlan(fn){
 }
 function planStrip(){
   const T_ = t(), d1 = planOf("1").daily, d2 = planOf("2").daily;
-  if(d1 || d2) return `<section class="panel plan-strip"><p class="hw-l">${T_.myDaily}</p>
+  if(d1 || d2) return `<section class="panel plan-strip rail-able"><p class="hw-l">${T_.myDaily}</p>
       ${[[1,me.area1,d1],[2,me.area2,d2]].filter(x=>x[2]).map(([k,a,d])=>`<p><span class="ai-s">${AREA_ICON[a-1]}</span> ${esc(d)}</p>`).join("")}
       ${(()=>{ const b = books().find(x=>x.progress<100); return b ? `<p><span class="ai-s">📖</span> ${T_.nowReading}: <b>${esc(b.title)}</b> · ${b.progress}%</p>` : ""; })()}
       <button class="link small" data-goplan>${T_.openPlan}</button></section>`;
-  return `<section class="panel plan-strip nudge"><div><h3>${T_.buildPlan}</h3><p class="muted small">${T_.buildPlanSub}</p>
+  return `<section class="panel plan-strip nudge rail-able"><div><h3>${T_.buildPlan}</h3><p class="muted small">${T_.buildPlanSub}</p>
       <div class="meter"><i style="width:${Math.round(planCount()/12*100)}%"></i></div></div>
       <button class="btn btn-dark" data-goplan>${T_.openPlan}</button></section>`;
 }
@@ -1801,7 +1962,7 @@ function seminarCard(){
   if(!next || cur < 1) return "";
   const [d, n] = next, isToday = d === cur, time = me.seminar_time || "10:00";
   const date = dayDate(me.start_date, d).toLocaleDateString(lang==="fr"?"fr-FR":"en-GB", {weekday:"long", day:"numeric", month:"long"});
-  return `<section class="panel stack sem-card">
+  return `<section class="panel stack sem-card rail-able">
     <div class="sem-h"><div class="sem-date"><b>${dayDate(me.start_date, d).getDate()}</b><span>${dayDate(me.start_date, d).toLocaleDateString(lang==="fr"?"fr-FR":"en-GB",{month:"short"})}</span></div>
       <div><p class="hw-l">📅 ${isToday ? T_.semToday : esc(date)} · ${esc(lang==="fr"?time.replace(":","h"):time)}</p><h2>${T_.semTitle(n)}</h2><p class="muted small">${T_.semWith}</p></div></div>
     ${me.seminar_link ? `<a class="btn btn-primary" href="${esc(me.seminar_link)}" target="_blank" rel="noopener">${T_.semJoin}</a>` : `<p class="small">${T_.semLinkSoon}</p>`}
@@ -1814,7 +1975,7 @@ const TG_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="
 function groupCard(){
   if(!me.community_link) return "";
   const T_ = t();
-  return `<section class="panel grp"><div class="grp-h"><span class="tg">${TG_ICON}</span><div><h3>${T_.grpTitle}</h3><p class="muted small">${T_.grpSub}</p></div></div>
+  return `<section class="panel grp rail-able"><div class="grp-h"><span class="tg">${TG_ICON}</span><div><h3>${T_.grpTitle}</h3><p class="muted small">${T_.grpSub}</p></div></div>
     <a class="btn btn-tg" href="${esc(me.community_link)}" target="_blank" rel="noopener">${TG_ICON} ${T_.grpBtn}</a></section>`;
 }
 
@@ -1824,7 +1985,7 @@ function viewToday(){
   const lesson = me.lessons.find(l=>l.day===cur);
   const st = streak();
   const missedYesterday = cur > 1 && !ck(cur-1) && !cardDay;
-  return `<section class="hero2 hero2-col">
+  return `<section class="hero2 hero2-col rail-able">
       <div class="hero2-row">${ring(cur/42, cur, T_.of42)}
         <div class="hero2-t"><p>${T_.week(week)} · ${esc(L(lesson,"theme"))}</p>${st?`<span class="streak">${T_.streak(st)}</span>`:`<p class="small">${T_.keepGoing}</p>`}</div></div>
       <div><p class="wlbl">${T_.thisWeek}</p>${weekStrip()}</div>
