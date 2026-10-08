@@ -587,6 +587,80 @@ body.no-scroll{overflow:hidden}
   .shell .wrap{max-width:720px}
   .plan-areas{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
 }
+/* onboarding sample screens */
+.mock{width:100%;max-width:340px;background:var(--surface);border-radius:22px;box-shadow:var(--shadow-lg);padding:16px;text-align:left;display:flex;flex-direction:column;gap:10px;margin:4px auto 10px}
+.mock.wa{background:#ECE5DD}
+.wa-head{display:flex;align-items:center;gap:8px;color:#075E54;font-size:15px}.wa-head .wa-ic{color:#25D366;width:20px;height:20px}
+.wa-bub{position:relative;background:#fff;color:#111;border-radius:12px 12px 12px 4px;padding:10px 12px 18px;font-size:14px;line-height:1.45;max-width:92%}
+.wa-bub.audio{display:flex;align-items:center;gap:10px;padding-bottom:10px}
+.wa-bub .pl{width:30px;height:30px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;font-size:12px;flex:none}
+.wa-bub .wave{flex:1;height:18px;background:repeating-linear-gradient(90deg,#9AA3B8 0 3px,transparent 3px 6px);border-radius:3px;opacity:.7}
+.wa-t{position:absolute;right:10px;bottom:4px;font-size:11px;color:#7a7a7a}
+.wa-bub.audio .wa-t{position:static}
+.mk-l{font:700 14px var(--display);color:var(--muted)}
+.mk-tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mk-tile{position:relative;border:2px solid var(--line);border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:4px;font-size:22px}
+.mk-tile b{font-size:13.5px}
+.mk-tile.on{border-color:var(--leaf);background:color-mix(in srgb,var(--leaf) 8%,var(--surface))}
+.mk-tile i{position:absolute;top:8px;right:8px;width:20px;height:20px;border-radius:50%;background:var(--leaf);color:#fff;font-size:11px;font-style:normal;display:grid;place-items:center}
+.mk-note{border:1.5px solid var(--ember);border-radius:12px;padding:10px;font-size:14px}
+.mk-flames{font-size:18px}.mk-flames span{font-size:13px;font-weight:700;color:var(--ember-text,#A35F00)}
+.mk-row{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:600;background:var(--fill);border-radius:12px;padding:10px 12px}
+.mk-q{font-size:14px;line-height:1.4}.mk-q small{display:block;font-size:11.5px;font-weight:700;color:var(--ember-text,#A35F00);text-transform:uppercase;letter-spacing:.05em}
+.mk-chips,.ps-chips{display:flex;flex-wrap:wrap;gap:6px}.mk-chips span,.ps-chips span{background:var(--fill);border-radius:99px;padding:5px 11px;font-size:13px;font-weight:600}
+.mk-book{display:flex;gap:12px;align-items:center}
+.mk-book .cv,.de-book .cv{flex:none;width:46px;height:64px;border-radius:3px 7px 7px 3px;color:#fff;font:600 8.5px/1.15 var(--display);padding:6px 5px;display:flex;align-items:flex-end;box-shadow:inset 4px 0 0 rgba(0,0,0,.18)}
+.mk-book>div{flex:1;display:flex;flex-direction:column;gap:2px;font-size:14px}.mk-book small{color:var(--muted);font-size:12px}
+.mk-book .pbar{margin-top:4px}
+.mk-seg button{height:30px;font-size:12px;pointer-events:none}
+.mk-sem{display:flex;gap:12px;align-items:center}.mk-sem small{display:block;color:var(--muted);font-size:12.5px}.mk-sem b{font-size:15px}
+.mk-tg{display:flex;gap:10px;align-items:center;background:var(--fill);border-radius:14px;padding:10px}.mk-tg .tg{width:36px;height:36px}.mk-tg small{display:block;color:var(--muted);font-size:12.5px}
+.mk-person{display:flex;align-items:center;gap:10px}.mk-person>div{flex:1}.mk-person small{display:block;color:var(--muted);font-size:12.5px}
+.mk-btn{font-size:12px;font-weight:700;border:1.5px solid var(--field-line);border-radius:99px;padding:4px 10px}
+.ob-body h1{margin-top:8px}
+/* survey */
+.sv-hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:10px 0}
+.sv-hero>span{font-size:56px}
+.sv-list{text-align:left;align-self:stretch;background:var(--surface);border-radius:18px;padding:14px 14px 14px 36px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px;font-weight:600}
+.sv-steps{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.sv-steps i{height:5px;border-radius:99px;background:var(--line)}.sv-steps i.on{background:var(--ember)}
+.sv-q{background:var(--surface);border-radius:18px;padding:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+.sc-seg.seg5{grid-template-columns:repeat(5,1fr)}
+.sv-area .plan-h h3{font:700 18px var(--display)}
+.sv-lead{font:600 17px/1.4 var(--display)}
+.sv-cta{text-align:center;align-items:center}.sv-cta-ic{font-size:48px}
+/* plan summary */
+.ps-why{background:linear-gradient(135deg,#1C2340,#2C3566);color:#fff}
+.ps-why small{color:var(--glow);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:12px}
+.ps-why p{font:600 18px/1.45 var(--display);margin-top:6px}
+.ps-score{margin-left:auto;font:700 12.5px var(--body);background:var(--fill);border-radius:99px;padding:4px 10px}
+.plan-h{display:flex;align-items:center;gap:10px}
+.ps-row small,.ps-daily small{display:block;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.ps-row p{margin-top:2px}
+.ps-daily{background:color-mix(in srgb,var(--ember) 10%,var(--surface));border-radius:14px;padding:12px}
+.ps-daily small{color:var(--ember-text,#A35F00)}.ps-daily p{font-weight:700;margin-top:2px}
+.ps-obst{border-left:3px solid var(--line);padding-left:12px;display:flex;flex-direction:column;gap:8px}
+.de-shelf{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.de-book{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.de-book .cv{width:64px;height:88px;font-size:10px}
+.acc-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.col-rail{display:flex;flex-direction:column}
+.lock-preview{position:relative;border-radius:22px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow);cursor:pointer}
+.lp-blur{padding:22px;filter:blur(5px);opacity:.55;user-select:none;display:flex;flex-direction:column;gap:10px;color:var(--muted)}
+.lp-over{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;background:color-mix(in srgb,var(--surface) 35%,transparent);padding:16px}
+.lp-over>span{font-size:34px}.lp-over b{font:700 17px var(--display)}
+.lock-card{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:0;cursor:pointer;color:var(--text);font:inherit}
+.lk-ic{flex:none;width:46px;height:46px;border-radius:14px;background:var(--fill);display:grid;place-items:center;font-size:22px;filter:grayscale(.4)}
+.lk-t{flex:1;display:flex;flex-direction:column}.lk-t small{color:var(--muted);font-size:13px}
+.lk-btn{flex:none;font:700 13px var(--body);color:var(--ember-text,#A35F00);background:color-mix(in srgb,var(--ember) 12%,transparent);border-radius:99px;padding:7px 12px}
+#paywall{position:fixed;inset:0;z-index:58;display:flex;align-items:flex-end;justify-content:center}
+.pw-card{position:relative;width:100%;max-width:640px;max-height:92svh;overflow-y:auto;background:var(--bg);border-radius:24px 24px 0 0;padding:20px 18px calc(22px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:10px;animation:up .26s cubic-bezier(.2,.8,.2,1)}
+@media (min-width:700px){#paywall{align-items:center}.pw-card{border-radius:24px}}
+.pw-card .pricing{margin-top:8px}
+.terms h2{font:700 18px var(--display)}
+.terms p{line-height:1.6}
+.credit a{display:inline-block;margin-top:6px}
+.faq a{color:var(--ember-text,#A35F00);font-weight:600}
+.table-wrap{overflow-x:auto}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -835,7 +909,7 @@ en:{
   B:{first:["🔥","First flame","Fill your first 1% Card"],s3:["⚡","3-day streak","3 days in a row"],s7:["🏅","7-day streak","A full week without missing"],s14:["🏆","14-day streak","Two weeks in a row"],s21:["👑","21-day streak","Three weeks in a row"],
      plan:["🎯","Plan complete","All 12 plan fields filled"],score:["📊","First score","Your first Sunday score"],week:["📅","Perfect week","7 cards in one week"],stretch:["🌊","Out of the boat","Card filled on stretch day (day 27)"],
      reader:["📚","Book finished","Finish a book in your library"],learner:["🎓","Learner","Finish a course or activity"],half:["⛰️","Halfway strong","15+ cards by day 21"],story:["✍️","Storyteller","Share your growth story"],grad:["🎉","Graduate","36+ cards in 42 days"]},
-  refTitle:"Invite a friend", refSub:"Share your link. When a friend joins the cohort with it, you both get 500 FCFA off the next cohort.", refShare:"Share on WhatsApp", refCopy:"Copy link", refCopied:"✓ Link copied",
+  refTitle:"Invite a friend", refSub:"Share your link. When a friend joins the cohort with it, you both get 1 000 FCFA off the next cohort.", refShare:"Share on WhatsApp", refCopy:"Copy link", refCopied:"✓ Link copied",
   refCount:(n,p)=>n?`${n} friend${n>1?"s":""} joined with your link${p?` · ${p} paid`:""}`:"No one has joined with your link yet.",
   refMsg:l=>`I'm growing 1% a day with the Growth Day cohort: daily teaching on WhatsApp, a personal plan and a triad. Join me 👉 ${l}`,
   ntTitle:"Reminders on this phone", ntSub:"Get the Daily Fire at 6:00 and a nudge at 20:00 as phone notifications, on top of WhatsApp.", ntOn:"Turn on", ntOff:"Turn off", ntIsOn:"✓ Notifications are on for this phone.",
@@ -843,14 +917,29 @@ en:{
   watch2:"Watch today's video",
 
 
+
+  lkLesson:d=>`Today's Daily Fire · Day ${d}`, lkLessonS:"Teaching, verse and today's 1% action", lkMedia:"Audio and video of the day", lkCard:"Your 1% Card", lkCardS:"Fill tonight's card and keep your streak", lkUnlock:"Unlock", lkKept:"Your plan, your progress and your badges are kept. My plan and Journey stay open.",
+  svTitle:"Build my growth plan", svIntro:"Seven short steps, about 7 minutes, based on the Growth Day worksheet. Your answers stay private: only you and your Growth Guide see them.", svStart:"Start", svContinue:n=>`Continue (step ${n} of 7)`,
+  svStep:n=>`Step ${n} of 7`, svNext:"Save and continue", svFinish:"Finish my plan", svLater:"Finish later",
+  sv1T:"The honest check", sv1S:"How true is each sentence for you today? 1 = never true, 5 = very true.", sv1:["I keep putting off goals I said were important.","I lack enthusiasm to start things.","I retreat into sleep, entertainment or scrolling for comfort.","I feel I am living below my potential."], svNever:"Never", svVery:"Very true",
+  sv2T:"Your Luke 2:52 growth audit", sv2S:"Jesus grew in wisdom, stature and favour with God and man. Score yourself honestly from 1 to 10.", sv2:["🧠 Intellectual · wisdom","💪 Physical · stature","🙏 Spiritual · favour with God","🤝 Social · favour with man"], svLow:"Low", svHigh:"High",
+  sv3T:"Your two areas today", sv3S:"For each area: where are you really, and what would 'better' look like in six weeks?", svScoreNow:"Where I am today (1 to 10)",
+  sv4T:"Your why", sv4S:"Why do you want to grow in these two areas? Your 'because' is the fuel for the hard days.", sv4Lead:(a,b)=>`This season, I will grow in ${a} and ${b} because…`,
+  sv5T:"Your 1% steps", sv5S:"The smallest step you can do every day, even on your worst day. Then up to three micro-actions, each under 10 minutes.", svMicro:"My micro-actions (under 10 minutes each)", svMicroPh:["For example: read 2 pages before breakfast","For example: pray 5 focused minutes at 6:00","For example: write my expenses at 20:00"],
+  sv6T:"Your obstacles", sv6S:"What do you usually tell yourself when you skip? And what will you answer next time?",
+  sv7T:"Your system", sv7S:"Motivation comes and goes. Systems sustain growth.", svTime:"My daily time", svPlace:"Where", svPlacePh:"For example: at my desk, before work", svJournal:"Where I journal", svJ:["A notebook","Notes on my phone","This app"], svReview:"My weekly review day", svPartner:"My growth partner", svPartnerPh:"A name, for example a friend or my spouse",
+  days7:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+  psMy:n=>`${n}'s growth plan`, psEdit:"Edit my plan", psWhy:"My why", psStart:"Start", psWhere:"Where I am", psTarget:"In six weeks, better looks like", psDaily:"My daily 1%", psObst:"When I want to skip", psAnswer:"I will answer", psMicro:"My micro-actions", psSystem:"My system", psAudit:"Luke 2:52 audit", psCheck:"Honest check", psCheckOf:"/5",
+  psNotYetT:"Your growth plan is waiting", psNotYetS:"Seven short questions turn the daily teaching into your own steps. It takes about 7 minutes.", psDe:"Books by Dr. Denis Ekobena", psDeAdd:"+ Add", psDeIn:"✓ In my library", psNowReading:"Now reading",
+  accSee:"See the plans", accNext:"Pay next week", accRest:"Pay the rest", accUpg:"Pay all remaining weeks",
   pcWeekT:"Weekly", pcNextT:w=>`Week ${w}`, pcFullT:"Full journey", pcRestT:n=>`Remaining ${n} weeks`, pcBest:"Best value",
   pcUnitWeek:"FCFA / week", pcUnitOnce:"FCFA · one payment",
-  pcWeekSub:x=>`${x}\u00a0F over 6 weeks`, pcFullSub:x=>`You save ${x}\u00a0F`, pcNextSub:"Keep your streak going",
+  pcWeekSub:x=>`${x}\u00a0F over 6 weeks`, pcFullSub:x=>`You save ${x}\u00a0F`, pcNextSub:"Keep your streak going", pcRestSub:(n,x)=>`${n} weeks × ${x}\u00a0F · paid at once`,
   pcWeekF:["Daily Fire every morning, on WhatsApp and in the app","Your 1% Card and personal growth plan","Your triad and Growth Guide","Pay each week before it starts"],
   pcFullF:["Everything in Weekly","All 42 days, no interruption","3 live seminars and graduation","One payment, nothing more to think about"],
   pcBtnWeek:w=>`Pay week ${w}`, pcBtnFull:x=>`Pay ${x}\u00a0FCFA`, pcPayNow:"You're paying", pcClose:"Close",
   menuProfile:"My profile", menuHow:"How it works", menuOut:"Sign out", skip:"Skip", next2:"Next", obDone:"Continue",
-  obSlides:[["👋","Welcome to Growth Day","Six weeks to grow 1% a day in the two areas you chose. Here's how it works, in under a minute."],["🔥","Every morning at 6:00","Your Daily Fire arrives on WhatsApp with the day's audio. The same teaching is in the app, under Today."],["✅","Every evening","Fill your 1% Card in the app: two taps and one line. Your flame lights up, and your streak grows."],["📊","Every Sunday","Give yourself a Growth Score from 1 to 10 in each area, and watch your growth curve rise."],["👥","You're not alone","From week 2 you walk with a small triad and a Growth Guide, and every two weeks we meet live on Zoom."]],
+  obSlides:[["welcome","Welcome to Growth Day","Six weeks to grow 1% a day in the two areas you chose. Here's how it works, with Amina's example."],["daily","Every morning at 6:00","The Daily Fire arrives on WhatsApp with the day's audio. The same teaching is in the app, under Today, and works even without internet."],["card","Every evening: your 1% Card","Two taps and one line. Amina wrote what she did for her finances today, and her flame lit up."],["plan","Your growth plan","Seven short questions build your personal plan: where you are, your why, your daily 1% and your system."],["library","Your books and courses","Track what you read and learn. Amina is reading Who Am I? by Dr. Denis Ekobena."],["score","Every Sunday: your Growth Score","Rate yourself from 1 to 10 in each area and watch your curve rise. Amina went from 4 to 7."],["live","Live on Zoom, together on Telegram","Every two weeks, a live seminar with Dr. Denis Ekobena. Every day, the cohort group to share your wins."],["triad","You're not alone","From week 2, you walk with a triad and a Growth Guide who check in on you."]],
   howBtn:"How it works", howNew:"New here? See how it all works", howTitle:"How Growth Day works", howSub:"Everything you need to know, in 3 minutes.",
   howVidSoon:"Welcome video from Dr. Denis Ekobena, coming soon.", howStart:"Let's go",
   howRhythmT:"Your daily rhythm", howRhythm:[["6:00","🔥 The Daily Fire","Arrives on WhatsApp with the day's audio. The same teaching is here in the app, under Today."],["Day","💪 Your 1%","One small step in each of your two areas. Small, but every day."],["Evening","✅ Your 1% Card","Two taps and one line, in the app. Your flame lights up."],["Sunday","📊 Your Growth Score","Rate yourself from 1 to 10 in each area and watch your curve grow."]],
@@ -975,7 +1064,7 @@ fr:{
   B:{first:["🔥","Première flamme","Remplir votre première carte 1 %"],s3:["⚡","Série de 3 jours","3 jours d'affilée"],s7:["🏅","Série de 7 jours","Une semaine entière sans rater"],s14:["🏆","Série de 14 jours","Deux semaines d'affilée"],s21:["👑","Série de 21 jours","Trois semaines d'affilée"],
      plan:["🎯","Plan complet","Les 12 éléments du plan remplis"],score:["📊","Premier bilan","Votre premier bilan du dimanche"],week:["📅","Semaine parfaite","7 cartes dans une semaine"],stretch:["🌊","Hors de la barque","Carte remplie le jour du défi (jour 27)"],
      reader:["📚","Livre terminé","Terminer un livre de votre bibliothèque"],learner:["🎓","Apprenant","Terminer une formation ou activité"],half:["⛰️","Mi-parcours solide","15+ cartes au jour 21"],story:["✍️","Témoin","Partager votre histoire"],grad:["🎉","Diplômé","36+ cartes en 42 jours"]},
-  refTitle:"Invitez un ami", refSub:"Partagez votre lien. Quand un ami rejoint la cohorte avec, vous recevez tous les deux 500 FCFA de réduction sur la prochaine cohorte.", refShare:"Partager sur WhatsApp", refCopy:"Copier le lien", refCopied:"✓ Lien copié",
+  refTitle:"Invitez un ami", refSub:"Partagez votre lien. Quand un ami rejoint la cohorte avec, vous recevez tous les deux 1 000 FCFA de réduction sur la prochaine cohorte.", refShare:"Partager sur WhatsApp", refCopy:"Copier le lien", refCopied:"✓ Lien copié",
   refCount:(n,p)=>n?`${n} ami${n>1?"s ont":" a"} rejoint avec votre lien${p?` · ${p} payé${p>1?"s":""}`:""}`:"Personne n'a encore rejoint avec votre lien.",
   refMsg:l=>`Je grandis de 1 % par jour avec la cohorte Growth Day : un enseignement chaque matin sur WhatsApp, un plan personnel et une triade. Rejoins-moi 👉 ${l}`,
   ntTitle:"Rappels sur ce téléphone", ntSub:"Recevez le Daily Fire à 6h00 et un rappel à 20h00 en notification, en plus de WhatsApp.", ntOn:"Activer", ntOff:"Désactiver", ntIsOn:"✓ Les notifications sont activées sur ce téléphone.",
@@ -983,14 +1072,29 @@ fr:{
   watch2:"Voir la vidéo du jour",
 
 
+
+  lkLesson:d=>`Daily Fire du jour · Jour ${d}`, lkLessonS:"Enseignement, verset et action 1 % du jour", lkMedia:"Audio et vidéo du jour", lkCard:"Votre carte 1 %", lkCardS:"Remplissez la carte du soir et gardez votre série", lkUnlock:"Débloquer", lkKept:"Votre plan, vos progrès et vos badges sont conservés. Mon plan et Parcours restent ouverts.",
+  svTitle:"Construire mon plan de croissance", svIntro:"Sept petites étapes, environ 7 minutes, d'après la fiche de travail Growth Day. Vos réponses restent privées : seuls vous et votre Growth Guide les voyez.", svStart:"Commencer", svContinue:n=>`Continuer (étape ${n} sur 7)`,
+  svStep:n=>`Étape ${n} sur 7`, svNext:"Enregistrer et continuer", svFinish:"Terminer mon plan", svLater:"Terminer plus tard",
+  sv1T:"Le bilan honnête", sv1S:"À quel point chaque phrase est-elle vraie pour vous aujourd'hui ? 1 = jamais vrai, 5 = très vrai.", sv1:["Je repousse des objectifs que j'ai dit importants.","Je manque d'enthousiasme pour commencer les choses.","Je me réfugie dans le sommeil, les divertissements ou les réseaux.","J'ai l'impression de vivre en dessous de mon potentiel."], svNever:"Jamais", svVery:"Très vrai",
+  sv2T:"Votre bilan Luc 2:52", sv2S:"Jésus croissait en sagesse, en stature, et en grâce devant Dieu et devant les hommes. Notez-vous honnêtement de 1 à 10.", sv2:["🧠 Intellectuel · sagesse","💪 Physique · stature","🙏 Spirituel · grâce devant Dieu","🤝 Social · grâce devant les hommes"], svLow:"Faible", svHigh:"Élevé",
+  sv3T:"Vos deux domaines aujourd'hui", sv3S:"Pour chaque domaine : où en êtes-vous vraiment, et à quoi ressemblerait « mieux » dans six semaines ?", svScoreNow:"Où j'en suis aujourd'hui (1 à 10)",
+  sv4T:"Votre pourquoi", sv4S:"Pourquoi voulez-vous grandir dans ces deux domaines ? Votre « parce que » est le carburant des jours difficiles.", sv4Lead:(a,b)=>`Cette saison, je grandis dans ${a} et ${b} parce que…`,
+  sv5T:"Vos pas de 1 %", sv5S:"Le plus petit pas possible chaque jour, même votre pire jour. Puis jusqu'à trois micro-actions, chacune en moins de 10 minutes.", svMicro:"Mes micro-actions (moins de 10 minutes chacune)", svMicroPh:["Par exemple : lire 2 pages avant le petit-déjeuner","Par exemple : prier 5 minutes à 6h00","Par exemple : noter mes dépenses à 20h00"],
+  sv6T:"Vos obstacles", sv6S:"Que vous dites-vous d'habitude quand vous sautez ? Et que répondrez-vous la prochaine fois ?",
+  sv7T:"Votre système", sv7S:"La motivation va et vient. Les systèmes font durer la croissance.", svTime:"Mon heure quotidienne", svPlace:"Où", svPlacePh:"Par exemple : à mon bureau, avant le travail", svJournal:"Où je tiens mon journal", svJ:["Un carnet","Les notes de mon téléphone","Cette application"], svReview:"Mon jour de point hebdomadaire", svPartner:"Mon partenaire de croissance", svPartnerPh:"Un nom, par exemple un ami ou mon conjoint",
+  days7:["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"],
+  psMy:n=>`Le plan de croissance de ${n}`, psEdit:"Modifier mon plan", psWhy:"Mon pourquoi", psStart:"Départ", psWhere:"Où j'en suis", psTarget:"Dans six semaines, mieux ressemble à", psDaily:"Mon 1 % quotidien", psObst:"Quand j'ai envie de sauter", psAnswer:"Je répondrai", psMicro:"Mes micro-actions", psSystem:"Mon système", psAudit:"Bilan Luc 2:52", psCheck:"Bilan honnête", psCheckOf:"/5",
+  psNotYetT:"Votre plan de croissance vous attend", psNotYetS:"Sept petites questions transforment l'enseignement quotidien en vos propres pas. Environ 7 minutes.", psDe:"Livres du Dr Denis Ekobena", psDeAdd:"+ Ajouter", psDeIn:"✓ Dans ma bibliothèque", psNowReading:"En cours de lecture",
+  accSee:"Voir les formules", accNext:"Payer la semaine suivante", accRest:"Payer le reste", accUpg:"Payer toutes les semaines restantes",
   pcWeekT:"Hebdomadaire", pcNextT:w=>`Semaine ${w}`, pcFullT:"Parcours complet", pcRestT:n=>`Les ${n} semaines restantes`, pcBest:"Meilleure offre",
   pcUnitWeek:"FCFA / semaine", pcUnitOnce:"FCFA · paiement unique",
-  pcWeekSub:x=>`${x}\u00a0F sur 6 semaines`, pcFullSub:x=>`Vous économisez ${x}\u00a0F`, pcNextSub:"Gardez votre série",
+  pcWeekSub:x=>`${x}\u00a0F sur 6 semaines`, pcFullSub:x=>`Vous économisez ${x}\u00a0F`, pcNextSub:"Gardez votre série", pcRestSub:(n,x)=>`${n} semaines × ${x}\u00a0F · en une fois`,
   pcWeekF:["Le Daily Fire chaque matin, sur WhatsApp et dans l'application","Votre carte 1 % et votre plan de croissance","Votre triade et votre Growth Guide","Payez chaque semaine avant qu'elle commence"],
   pcFullF:["Tout ce qui est dans Hebdomadaire","Les 42 jours, sans interruption","3 séminaires en direct et la remise de diplômes","Un seul paiement, plus rien à penser"],
   pcBtnWeek:w=>`Payer la semaine ${w}`, pcBtnFull:x=>`Payer ${x}\u00a0FCFA`, pcPayNow:"Vous payez", pcClose:"Fermer",
   menuProfile:"Mon profil", menuHow:"Comment ça marche", menuOut:"Se déconnecter", skip:"Passer", next2:"Suivant", obDone:"Continuer",
-  obSlides:[["👋","Bienvenue à Growth Day","Six semaines pour grandir de 1 % par jour dans les deux domaines que vous avez choisis. Voici comment ça marche, en moins d'une minute."],["🔥","Chaque matin à 6h00","Votre Daily Fire arrive sur WhatsApp avec l'audio du jour. Le même enseignement est dans l'application, sous Aujourd'hui."],["✅","Chaque soir","Remplissez votre carte 1 % dans l'application : deux touches et une ligne. Votre flamme s'allume, et votre série grandit."],["📊","Chaque dimanche","Donnez-vous une note de croissance de 1 à 10 dans chaque domaine, et regardez votre courbe monter."],["👥","Vous n'êtes pas seul","Dès la semaine 2, vous marchez avec une petite triade et un Growth Guide, et toutes les deux semaines nous nous retrouvons en direct sur Zoom."]],
+  obSlides:[["welcome","Bienvenue à Growth Day","Six semaines pour grandir de 1 % par jour dans les deux domaines que vous avez choisis. Voici comment ça marche, avec l'exemple d'Amina."],["daily","Chaque matin à 6h00","Le Daily Fire arrive sur WhatsApp avec l'audio du jour. Le même enseignement est dans l'application, sous Aujourd'hui, même sans internet."],["card","Chaque soir : votre carte 1 %","Deux touches et une ligne. Amina a écrit ce qu'elle a fait pour ses finances aujourd'hui, et sa flamme s'est allumée."],["plan","Votre plan de croissance","Sept petites questions construisent votre plan personnel : où vous en êtes, votre pourquoi, votre 1 % quotidien et votre système."],["library","Vos livres et formations","Suivez ce que vous lisez et apprenez. Amina lit Qui suis-je ? du Dr Denis Ekobena."],["score","Chaque dimanche : votre bilan","Notez-vous de 1 à 10 dans chaque domaine et regardez votre courbe monter. Amina est passée de 4 à 7."],["live","En direct sur Zoom, ensemble sur Telegram","Toutes les deux semaines, un séminaire en direct avec le Dr Denis Ekobena. Chaque jour, le groupe de la cohorte pour partager vos victoires."],["triad","Vous n'êtes pas seul","Dès la semaine 2, vous marchez avec une triade et un Growth Guide qui prennent de vos nouvelles."]],
   howBtn:"Comment ça marche", howNew:"Nouveau ? Découvrez comment tout fonctionne", howTitle:"Comment fonctionne Growth Day", howSub:"Tout ce qu'il faut savoir, en 3 minutes.",
   howVidSoon:"Vidéo de bienvenue du Dr Denis Ekobena, bientôt disponible.", howStart:"C'est parti",
   howRhythmT:"Votre rythme quotidien", howRhythm:[["6h00","🔥 Le Daily Fire","Arrive sur WhatsApp avec l'audio du jour. Le même enseignement est ici dans l'application, sous Aujourd'hui."],["Journée","💪 Votre 1 %","Un petit pas dans chacun de vos deux domaines. Petit, mais chaque jour."],["Soir","✅ Votre carte 1 %","Deux touches et une ligne, dans l'application. Votre flamme s'allume."],["Dimanche","📊 Votre bilan","Notez-vous de 1 à 10 dans chaque domaine et regardez votre courbe grandir."]],
@@ -1115,7 +1219,7 @@ function bindLang(rerender){
     lang = b.dataset.lang; store.set("gd_lang", lang); document.documentElement.lang = lang; rerender();
   });
 }
-const credit = () => `<footer class="credit">Growth Day · ${t().credit}</footer>`;
+const credit = () => `<footer class="credit">Growth Day · ${t().credit}<br><a href="#terms" class="link small">${lang==="fr"?"Conditions, remboursements et confidentialité":"Terms, refunds and privacy"}</a></footer>`;
 function header(rerender){ return `<div class="top"><div class="brand"><img src="${LOGO}" alt="">Growth Day</div>${langToggle()}</div>`; }
 
 /* ---------- participant: auth screens ---------- */
@@ -1141,7 +1245,7 @@ en:{
   lead_title:"Led by Dr. Denis Ekobena",
   lead_body:"Founder of Equip2Lead, Senior Leader of FIRE Church in Yaoundé, and a certified John Maxwell trainer for Africa. The cohort is built on the growth principles he teaches leaders across the continent.",
   faq_title:"Questions",
-  faq:[["How much time does it take?","About 15 minutes a day: 5 to listen, a few minutes to act, 3 to fill your card. Plus one 30-minute triad call each week."],["Which language?","Everything comes in English and in French. You choose when you join."],["Do I need to install an app?","No. It opens in your browser from the link. You can add it to your home screen."],["What if I miss a day?","Fill yesterday's card the next day and keep going. The streak is a guide, not a judge."]],
+  faq:[["How much time does it take?","About 15 minutes a day: 5 to listen, a few minutes to act, 3 to fill your card. Plus one 30-minute triad call each week."],["Which language?","Everything comes in English and in French. You choose when you join."],["Do I need to install an app?","No. It opens in your browser from the link. You can add it to your home screen."],["What if I miss a day?","Fill yesterday's card the next day and keep going. The streak is a guide, not a judge."],["How much does it cost?","10,000 FCFA for the full 6 weeks, paid at once. Or 2,000 FCFA per week, paid before each week (12,000 FCFA in total)."],["How do I pay?","Directly in the app, with MTN MoMo, Orange Money or a bank card. Your access opens as soon as the payment is confirmed."],["What if I don't pay the next week?","Your access to that week pauses until you pay. Your plan, your progress and your badges are kept, and you can pay at any time to continue."],["Can I get a refund?","Yes, under clear conditions: see <a href='#terms'>terms, refunds and privacy</a>."]],
   final_title:"The next 42 days will pass anyway.", final_sub:"Decide who you'll be at the end of them."
 },
 fr:{
@@ -1165,7 +1269,7 @@ fr:{
   lead_title:"Dirigé par le Dr Denis Ekobena",
   lead_body:"Fondateur d'Equip2Lead, Senior Leader de FIRE Church à Yaoundé et formateur certifié John Maxwell pour l'Afrique. La cohorte repose sur les principes de croissance qu'il enseigne aux leaders du continent.",
   faq_title:"Questions",
-  faq:[["Combien de temps cela prend-il ?","Environ 15 minutes par jour : 5 pour écouter, quelques minutes pour agir, 3 pour remplir votre carte. Plus un appel de triade de 30 minutes par semaine."],["Dans quelle langue ?","Tout est en anglais et en français. Vous choisissez à l'inscription."],["Faut-il installer une application ?","Non. Elle s'ouvre dans votre navigateur depuis le lien. Vous pouvez l'ajouter à votre écran d'accueil."],["Et si je rate un jour ?","Remplissez la carte d'hier le lendemain et continuez. La série est un repère, pas un juge."]],
+  faq:[["Combien de temps cela prend-il ?","Environ 15 minutes par jour : 5 pour écouter, quelques minutes pour agir, 3 pour remplir votre carte. Plus un appel de triade de 30 minutes par semaine."],["Dans quelle langue ?","Tout est en anglais et en français. Vous choisissez à l'inscription."],["Faut-il installer une application ?","Non. Elle s'ouvre dans votre navigateur depuis le lien. Vous pouvez l'ajouter à votre écran d'accueil."],["Et si je rate un jour ?","Remplissez la carte d'hier le lendemain et continuez. La série est un repère, pas un juge."],["Combien ça coûte ?","10 000 FCFA pour les 6 semaines, en une fois. Ou 2 000 FCFA par semaine, payés avant chaque semaine (12 000 FCFA au total)."],["Comment payer ?","Directement dans l'application, avec MTN MoMo, Orange Money ou une carte bancaire. Votre accès s'ouvre dès que le paiement est confirmé."],["Et si je ne paie pas la semaine suivante ?","Votre accès à cette semaine est mis en pause jusqu'au paiement. Votre plan, vos progrès et vos badges sont conservés, et vous pouvez payer à tout moment pour continuer."],["Puis-je être remboursé ?","Oui, selon des conditions claires : voir <a href='#terms'>conditions, remboursements et confidentialité</a>."]],
   final_title:"Les 42 prochains jours passeront de toute façon.", final_sub:"Décidez qui vous serez à la fin."
 }};
 
@@ -1354,7 +1458,7 @@ function joinForm(){
       <div class="summary"><p class="muted small">${T_.joiningAs}</p><p><b>${esc(draft.name)}</b></p><p class="wa-num">${WA_ICON} +${esc(fullPhone(draft.code, draft.phone))}</p>
         <div class="mini-areas">${picked.map(a=>`<span>${AREA_ICON[a-1]} ${esc(AREAS[lang][a-1][0])}</span>`).join("")}</div></div>
       <label class="check wa-ok"><input type="checkbox" id="waOk" ${draft.waOk?"checked":""}> ${WA_ICON} ${T_.waConfirm}</label>
-      <p class="muted small" style="margin-top:12px">${T_.consent}</p>`;
+      <p class="muted small" style="margin-top:12px">${T_.consent} <a href="#terms" class="link" target="_blank">${lang==="fr"?"Conditions et confidentialité":"Terms and privacy"}</a></p>`;
     cta = `<button class="btn btn-primary" id="next">${T_.join}</button>`;
   }
   root.innerHTML = authShell(inner, st, cta);
@@ -1394,6 +1498,36 @@ function joinForm(){
   };
 }
 
+
+/* sample screens shown during onboarding (fictional people: Amina, Kofi, Ngozi) */
+function obMock(k){
+  const fr = lang === "fr";
+  const M = {
+    daily: `<div class="mock wa"><div class="wa-head">${WA_ICON}<b>Growth Day</b></div>
+      <div class="wa-bub"><b>🔥 Daily Fire · ${fr?"Jour":"Day"} 3</b><br>${fr?"Bonjour Amina ! Aujourd'hui : <b>Nommer l'écart</b>":"Good morning Amina! Today: <b>Name the gap</b>"}<br>📖 ${fr?"Philippiens":"Philippians"} 3:13-14<span class="wa-t">6:00</span></div>
+      <div class="wa-bub audio"><span class="pl">▶</span><span class="wave"></span><span class="wa-t">4:52</span></div></div>`,
+    card: `<div class="mock"><p class="mk-l">${fr?"Votre carte 1 %":"Your 1% Card"} · ${fr?"Jour":"Day"} 3</p>
+      <div class="mk-tiles"><div class="mk-tile on">💰<b>${fr?"Finances":"Finances"}</b><i>✓</i></div><div class="mk-tile on">🙏<b>${fr?"Vie spirituelle":"Spiritual"}</b><i>✓</i></div></div>
+      <div class="mk-note">${fr?"J'ai mis 500 F de côté avant de dépenser.":"I put aside 500 F before spending anything."}</div><div class="mk-flames">🔥🔥🔥 <span>${fr?"Série de 3 jours":"3-day streak"}</span></div></div>`,
+    plan: `<div class="mock"><p class="mk-l">${fr?"Le plan d'Amina":"Amina's plan"}</p>
+      <div class="mk-row"><span>💰 ${fr?"Finances":"Finances"}</span><b>4 → ?</b></div>
+      <div class="mk-q"><small>${fr?"Mon pourquoi":"My why"}</small>${fr?"« Pour que ma famille puisse construire un avenir. »":"\u201cSo my family can build a future.\u201d"}</div>
+      <div class="mk-q"><small>${fr?"Mon 1 % quotidien":"My daily 1%"}</small>${fr?"Mettre 500 F de côté avant de dépenser":"Put aside 500 F before spending"}</div>
+      <div class="mk-chips"><span>⏰ 6:30</span><span>📓 ${fr?"Carnet":"Notebook"}</span><span>🤝 Kofi</span></div></div>`,
+    library: `<div class="mock"><div class="mk-book"><span class="cv" style="background:#5B3FB8">Who Am I?</span><div><b>${fr?"Qui suis-je ?":"Who Am I?"}</b><small>Denis Ekobena</small><div class="pbar"><i style="width:40%"></i></div><small>${fr?"En cours":"Reading"} · 40%</small></div></div>
+      <div class="mk-book"><span class="cv" style="background:#2E7D5B">Equip 2 Lead</span><div><b>Equip 2 Lead</b><small>Denis Ekobena</small><div class="pbar"><i style="width:100%;background:var(--leaf)"></i></div><small>✓ ${fr?"Terminé":"Finished"}</small></div></div>
+      <div class="mk-row"><span>🎓 ${fr?"Formation : gestion financière":"Course: personal finance"}</span><b>30%</b></div></div>`,
+    score: `<div class="mock"><p class="mk-l">💰 ${fr?"Finances":"Finances"} <b style="float:right">7/10</b></p>
+      <div class="sc-seg mk-seg">${Array.from({length:10},(_,i)=>`<button type="button" class="${i<7?"on":""}" style="--h:${22+i*13}" tabindex="-1">${i+1}</button>`).join("")}</div>
+      <p class="chip-d up" style="display:inline-block;margin-top:10px">▲ +3 ${fr?"depuis le départ":"since you started"}</p></div>`,
+    live: `<div class="mock"><div class="mk-sem"><div class="sem-date"><b>31</b><span>${fr?"oct.":"Oct"}</span></div><div><small>📅 ${fr?"Samedi · 10h00 · Zoom":"Saturday · 10:00 · Zoom"}</small><b>${fr?"Séminaire en direct n°1":"Live seminar 1"}</b></div></div>
+      <div class="mk-tg"><span class="tg">${TG_ICON}</span><div><b>${fr?"Groupe de la cohorte":"Cohort group"}</b><small>Kofi: ${fr?"« J'ai tenu 7 jours ! 🔥 »":"\u201cI made it to 7 days! 🔥\u201d"}</small></div></div></div>`,
+    triad: `<div class="mock"><p class="mk-l">${fr?"Triade 1":"Triad 1"}</p>
+      ${[["NE","Ngozi Eze",fr?"Growth Guide":"Growth Guide"],["AN","Amina Nkeng","💰 🙏"],["KM","Kofi Mensah","💼 💪"]].map(([i,n,d])=>`<div class="mk-person"><span class="avatar sm">${i}</span><div><b>${n}</b><small>${d}</small></div><span class="mk-btn">${fr?"Message":"Message"}</span></div>`).join("")}</div>`,
+  };
+  return M[k] || "";
+}
+
 /* ---------- first-time onboarding (right after signup) ---------- */
 async function onboard(i, then){
   document.body.classList.remove("is-land"); document.body.classList.add("is-auth");
@@ -1406,7 +1540,7 @@ async function onboard(i, then){
       <div class="steps">${S.map((_, k) => `<i class="${k <= i ? "on" : ""}"></i>`).join("")}</div>
       <button class="link" id="obSkip">${T_.skip}</button></div>
     <div class="auth-body ob-body">
-      ${i === 0 ? (vid ? `<div class="dvideo-wrap"><video class="dvideo" src="${esc(vid)}" controls playsinline preload="metadata"></video></div>` : `<div class="vid-ph"><span>🎬</span><p>${T_.howVidSoon}</p></div>`) : `<div class="ob-ic">${ic}</div>`}
+      ${i === 0 ? (vid ? `<div class="dvideo-wrap"><video class="dvideo" src="${esc(vid)}" controls playsinline preload="metadata"></video></div>` : `<div class="vid-ph"><span>🎬</span><p>${T_.howVidSoon}</p></div>`) : obMock(ic)}
       <h1>${h}</h1><p class="lead-s">${p}</p>
       ${i === S.length - 1 ? `<button class="link" id="obMore">🧭 ${T_.howBtn}</button>` : ""}
     </div>
@@ -1416,7 +1550,7 @@ async function onboard(i, then){
   $("#obSkip").onclick = done;
   $("#obNext").onclick = () => last ? done() : onboard(i + 1, then);
   const pv = $("#obPrev"); if(pv) pv.onclick = () => onboard(i - 1, then);
-  const mo = $("#obMore"); if(mo) mo.onclick = async () => { store.set("gd_onb_done", "1"); document.body.classList.remove("is-auth"); await boot(); tab = "how"; renderApp(); };
+  const mo = $("#obMore"); if(mo) mo.remove();
 }
 
 async function doneScreen(name){
@@ -1456,12 +1590,12 @@ function paySheet(){
   const order = kinds.slice().sort((x,y) => (x === "week" ? -1 : 1) - (y === "week" ? -1 : 1));
   const card = k => {
     const price = priceFor(k), left = 7 - wk;
-    const best = k !== "week";
-    const save = k === "full" ? me.price_week * 6 - price : k === "rest" ? me.price_week * left - price : 0;
+    const best = k === "full";
+    const save = k === "full" ? me.price_week * 6 - price : 0;
     const title = k === "full" ? T_.pcFullT : k === "rest" ? T_.pcRestT(left) : weekly ? T_.pcNextT(wk) : T_.pcWeekT;
     const unit = k === "week" ? T_.pcUnitWeek : T_.pcUnitOnce;
-    const sub = k === "week" ? (weekly ? T_.pcNextSub : T_.pcWeekSub(fcfa(me.price_week * 6))) : (save > 0 ? T_.pcFullSub(fcfa(save)) : "");
-    const feats = k === "week" ? T_.pcWeekF : T_.pcFullF;
+    const sub = k === "week" ? (weekly ? T_.pcNextSub : T_.pcWeekSub(fcfa(me.price_week * 6))) : k === "rest" ? T_.pcRestSub(left, fcfa(me.price_week)) : (save > 0 ? T_.pcFullSub(fcfa(save)) : "");
+    const feats = k === "week" ? T_.pcWeekF : k === "rest" ? T_.pcFullF.slice(1) : T_.pcFullF;
     const btn = k === "week" ? T_.pcBtnWeek(wk) : T_.pcBtnFull(fcfa(price));
     return `<article class="pcard ${best ? "best" : ""}">
       ${best && save > 0 ? `<span class="pc-flag">${T_.pcBest}</span>` : ""}
@@ -1469,12 +1603,12 @@ function paySheet(){
       <p class="pc-price"><b>${fcfa(price)}</b><span>${unit}</span></p>
       <p class="pc-sub ${best ? "save" : ""}">${sub || "&nbsp;"}</p>
       <ul class="pc-feat">${feats.map(f => `<li>${f}</li>`).join("")}</ul>
-      <button type="button" class="btn ${best ? "btn-primary" : "btn-dark"} btn-lg" data-pk="${k}">${btn}</button>
+      <button type="button" class="btn ${best || k === "rest" ? "btn-primary" : "btn-dark"} btn-lg" data-pk="${k}">${btn}</button>
     </article>`;
   };
   return `<div class="paysheet"><div class="pricing">${order.map(card).join("")}</div>
     <p class="err" id="payErr" role="alert">${payNote ? esc(payNote) : ""}</p>
-    <p class="secure">${T_.secure2}</p></div>`;
+    <p class="secure">${T_.secure2} <a href="#terms" class="link">${lang==="fr"?"Conditions et remboursements":"Terms and refunds"}</a></p></div>`;
 }
 function methodSheet(){
   const T_ = t(), M = methods(), k = PAY.kind, wk = nextWeek();
@@ -1675,8 +1809,9 @@ function renderApp(){
   const cur = me.day;
   let body = "";
   const locked = me.payments_on && !me.has_access;
-  if(tab === "today") body = locked ? (cur < 1 ? payCard() + viewBefore() : payCard() + `<section class="hero2">${ring(cur/42, cur, t().of42)}<div class="hero2-t"><p>${t().week(Math.ceil(cur/7))}</p><h2>${t().lockT(Math.min(6,Math.ceil(cur/7)))}</h2></div></section>`) : (cur < 1 ? viewBefore() : cur > 42 ? viewFinished() : trialCard() + renewCard() + viewToday());
+  if(tab === "today") body = locked ? (cur < 1 ? payCard() + viewBefore() : lockedView()) : (cur < 1 ? unpaidCard() + viewBefore() : cur > 42 ? viewFinished() : (me.in_trial && me.trial_end - me.day <= 1 ? trialCard() : unpaidCard()) + renewCard() + viewToday());
   if(tab === "how") body = viewHow();
+  if(tab === "survey") body = viewSurvey();
   if(tab === "journey") body = viewJourney();
   if(tab === "me") body = viewMe();
   if(tab === "plan") body = viewPlan();
@@ -1692,6 +1827,10 @@ function renderApp(){
   document.querySelectorAll("[data-signout]").forEach(b => b.onclick = () => { store.del("gd_token"); store.del("gd_me_cache"); me = null; tab = "today"; welcome(); });
   bindView();
   bindPaySheet(renderApp);
+  bindSurvey();
+  document.querySelectorAll("[data-paywall]").forEach(b => b.onclick = () => paywall());
+  if(locked && tab === "today" && me.day >= 1 && !PW_SHOWN){ PW_SHOWN = true; setTimeout(paywall, 500); }
+  document.querySelectorAll("[data-svgo]").forEach(b => { const old = b.onclick; b.onclick = () => { tab = "survey"; SV.step = +b.dataset.svgo || 0; renderApp(); window.scrollTo(0,0); }; });
   document.querySelectorAll("[data-how]").forEach(b => b.onclick = async () => { await loadOnb(); tab = "how"; renderApp(); window.scrollTo(0,0); });
   document.querySelectorAll("[data-back]").forEach(b => b.onclick = () => { tab = "today"; if(location.hash === "#how") history.replaceState(null, "", location.pathname); renderApp(); window.scrollTo(0,0); });
   const ce = $("#cert"); if(ce) ce.onclick = async () => { const blob = await makeCertificate(); const file = new File([blob], "growth-day-certificate.png", {type:"image/png"});
@@ -1779,6 +1918,39 @@ function viewHow(){
   </section>`;
 }
 function howEntry(){ return `<button class="panel how-entry rail-able" data-how><span class="hm-ic">🧭</span><span><b>${t().howNew}</b></span><span class="pg-arrow">→</span></button>`; }
+
+/* ---------- locked days: blurred previews + payment pop-up ---------- */
+let PW_SHOWN = false;
+function lockTitle(){ const T_ = t(), wk = Math.min(6, Math.max(1, Math.ceil(me.day/7)));
+  return me.plan_type === "weekly" ? [T_.lockT(wk), T_.lockS] : me.trial_over ? [T_.trialOverT, T_.trialOverS] : [T_.payCardTitle, T_.payCardSub]; }
+function lockedView(){
+  const T_ = t(), cur = me.day, [h] = lockTitle();
+  const item = (ic, title, sub) => `<button class="panel lock-card" data-paywall>
+      <span class="lk-ic">${ic}</span><span class="lk-t"><b>${title}</b><small>${sub}</small></span><span class="lk-btn">🔒 ${T_.lkUnlock}</span></button>`;
+  return `<section class="hero2 rail-able">${ring(cur/42, cur, T_.of42)}<div class="hero2-t"><p>${T_.week(Math.ceil(cur/7))}</p><h2>${h}</h2></div></section>
+    <div class="lock-preview" data-paywall aria-hidden="true"><div class="lp-blur"><p class="word">📖 ${"▇".repeat(14)}</p><h2>${"▇".repeat(11)}</h2><p>${"▇".repeat(38)}</p><p>${"▇".repeat(30)}</p></div>
+      <div class="lp-over"><span>🔒</span><b>${T_.lkLesson(cur)}</b><button class="btn btn-primary">${T_.lkUnlock} →</button></div></div>
+    ${item("🎧", T_.lkMedia, T_.lkLessonS)}
+    ${item("✅", T_.lkCard, T_.lkCardS)}
+    <p class="muted small center">${T_.lkKept}</p>`;
+}
+function paywall(){
+  const T_ = t(), [h, sub] = lockTitle();
+  let host = document.getElementById("paywall");
+  if(!host){ host = document.createElement("div"); host.id = "paywall"; document.body.appendChild(host); }
+  host.innerHTML = `<div class="ms-back" data-pwclose></div><div class="pw-card" role="dialog" aria-label="${esc(h)}">
+    <div class="ms-head"><div><p class="hw-l">🔒 ${T_.lkUnlock}</p><h2>${h}</h2></div><button class="icon-btn" data-pwclose aria-label="${T_.pcClose}">✕</button></div>
+    <p class="muted small">${sub}</p>${paySheet()}</div>`;
+  document.body.classList.add("no-scroll");
+  const close = () => { host.remove(); document.body.classList.remove("no-scroll"); };
+  host.querySelectorAll("[data-pwclose]").forEach(x => x.onclick = close);
+  host.querySelectorAll("[data-pk]").forEach(b => b.onclick = () => { PAY.kind = b.dataset.pk; payNote = ""; close(); methodSheet(); });
+}
+
+function unpaidCard(){
+  if(!me.payments_on || me.plan_type || me.status === "paid" || me.status === "waitlist") return "";
+  return payCard();
+}
 function trialCard(){
   if(!me.payments_on || !me.in_trial) return "";
   const left = me.trial_end - me.day; if(left > 1) return "";
@@ -1826,7 +1998,7 @@ function lessonBlock(l){
 
 
 const planOf = k => (me.plan && me.plan[k]) || {};
-const planCount = () => [1,2].reduce((n,k)=>n+PLAN_F.filter(f=>{const v=planOf(String(k))[f]; return v!==undefined && String(v).trim()!==""}).length,0);
+const planCount = () => (me.plan && me.plan.survey && me.plan.survey.done) ? 12 : [1,2].reduce((n,k)=>n+PLAN_F.filter(f=>{const v=planOf(String(k))[f]; return v!==undefined && String(v).trim()!==""}).length,0);
 let planSub = "areas", libEdit = null, crsEdit = null, planNote = "";
 const KIND_ICON = {course:"🎓", mentoring:"🤝", training:"🛠️", service:"🙌", other:"✨"};
 const DE_BOOKS = [["Who Am I?","Qui suis-je ?"],["Equip 2 Lead","Equip 2 Lead"],["Leadership from the Inside Out","Leadership from the Inside Out"],["Le Pouvoir de la Vision","Le Pouvoir de la Vision"],["Leadership Starts Here","Leadership Starts Here"],["What Kind of Leader Are You?","What Kind of Leader Are You?"]];
@@ -1850,18 +2022,37 @@ function viewPlan(){
   const tabs = [["areas",T_.psAreas],["lib",T_.psLib+(bk.length?` · ${bk.length}`:"")],["courses",T_.psCourses+(cr.length?` · ${cr.length}`:"")]];
   let body = "";
   if(planSub === "areas"){
-    const dayNow = Math.max(1, me.day);
-    body = `<div class="plan-areas">${[[1,me.area1],[2,me.area2]].map(([k,a])=>{ const p = planOf(String(k));
-      return `<section class="panel stack plan-card" data-slot="${k}">
-        <div class="plan-h"><span class="ai">${AREA_ICON[a-1]}</span><h2>${esc(areaName(a))}</h2></div>
-        <div class="deeper"><p class="hw-l">${T_.goDeeper} · ${T_.week(Math.min(6,Math.ceil(dayNow/7)))}</p><p>${esc(areaQ(a, me.day))}</p></div>
-        ${PLAN_F.map(f=>{ const [lbl, d] = T_.pf[f], today = me.day>=1 && me.day<=6 && d.endsWith(" "+Math.min(5,me.day));
-          if(f==="score") return `<div class="${today?"pf-today":""}"><label for="p${k}-score">${lbl} <span class="dtag">${d}</span></label>
-            <div class="range-row"><input type="range" id="p${k}-score" min="1" max="10" value="${p.score||5}" data-pf="score"><output>${p.score||"–"}</output></div></div>`;
-          return `<div class="${today?"pf-today":""}"><label for="p${k}-${f}">${lbl} <span class="dtag">${d}</span></label>
-            <textarea id="p${k}-${f}" rows="2" maxlength="400" data-pf="${f}" placeholder="${esc(T_.planPh[f])}">${esc(p[f]||"")}</textarea></div>`; }).join("")}
-      </section>`; }).join("")}</div>
-      <p id="planMsg" role="status"></p><button class="btn btn-primary" id="savePlan">${T_.savePlan}</button>`;
+    const S = sv(), dayNow = Math.max(1, me.day);
+    if(!S.done){
+      body = `<section class="panel stack sv-cta"><span class="sv-cta-ic">🧭</span><h2>${T_.psNotYetT}</h2><p class="muted">${T_.psNotYetS}</p>
+        ${S.step ? `<div class="meter"><i style="width:${Math.round((S.step-1)/7*100)}%"></i></div>` : ""}
+        <button class="btn btn-primary btn-lg" data-svgo="${S.step || 0}">${S.step ? T_.svContinue(S.step) : T_.svStart} →</button></section>`;
+    } else {
+      const row = (lbl, v) => v && String(v).trim() ? `<div class="ps-row"><small>${lbl}</small><p>${esc(v)}</p></div>` : "";
+      const micro = (S.micro||[]).filter(x=>x && x.trim());
+      body = `${S.why ? `<section class="panel ps-why"><small>${T_.psWhy}</small><p>“${esc(S.why)}”</p></section>` : ""}
+      <div class="plan-areas">${[[1,me.area1],[2,me.area2]].map(([k,a])=>{ const p = planOf(String(k));
+        return `<section class="panel stack plan-card">
+          <div class="plan-h"><span class="ai">${AREA_ICON[a-1]}</span><h2>${esc(areaName(a))}</h2>${p.score?`<span class="ps-score">${T_.psStart} ${p.score}/10</span>`:""}</div>
+          ${row(T_.psWhere, p.honest)}${row(T_.psTarget, p.target)}
+          ${p.daily ? `<div class="ps-daily"><small>${T_.psDaily}</small><p>${esc(p.daily)}</p></div>` : ""}
+          ${p.excuse || p.answer ? `<div class="ps-obst">${row(T_.psObst, p.excuse)}${row(T_.psAnswer, p.answer)}</div>` : ""}
+          <div class="deeper"><p class="hw-l">${T_.goDeeper} · ${T_.week(Math.min(6,Math.ceil(dayNow/7)))}</p><p>${esc(areaQ(a, me.day))}</p></div>
+        </section>`; }).join("")}</div>
+      ${micro.length ? `<section class="panel stack"><h3>${T_.psMicro}</h3><ul class="pc-feat">${micro.map(m=>`<li>${esc(m)}</li>`).join("")}</ul></section>` : ""}
+      <section class="panel stack"><h3>${T_.psSystem}</h3><div class="ps-chips">
+        ${S.time?`<span>⏰ ${esc(S.time)}</span>`:""}${S.place?`<span>📍 ${esc(S.place)}</span>`:""}${S.journal!==undefined?`<span>📓 ${esc(T_.svJ[+S.journal]||"")}</span>`:""}
+        ${S.review!==undefined?`<span>🗓️ ${esc(T_.days7[+S.review]||"")}</span>`:""}${S.partner?`<span>🤝 ${esc(S.partner)}</span>`:""}</div></section>
+      ${(S.audit||[]).some(Boolean) ? `<section class="panel stack"><h3>${T_.psAudit}</h3>${T_.sv2.map((q,i)=>`<div class="hbar"><span>${q.split(" · ")[0]}</span><i style="width:${((S.audit||[])[i]||0)*10}%"></i><b>${(S.audit||[])[i]||"–"}</b></div>`).join("")}
+        ${(S.stag||[]).some(Boolean) ? `<p class="muted small">${T_.psCheck}: ${(S.stag||[]).map(x=>x||"–").join(" · ")} ${T_.psCheckOf}</p>` : ""}</section>` : ""}
+      <button class="btn btn-ghost" data-svgo="1">✏️ ${T_.psEdit}</button>`;
+    }
+    // right column on wide screens: what I'm reading + Dr. Denis Ekobena's books
+    const reading = books().filter(b2 => b2.progress < 100);
+    const have = new Set(books().map(b2 => b2.title.toLowerCase()));
+    body += `${reading.length ? `<section class="panel stack rail-able"><h3>📖 ${T_.psNowReading}</h3>${reading.slice(0,3).map(b2=>`<div class="mk-book"><span class="cv" style="background:${spine(b2.title)}">${esc(b2.title.slice(0,28))}</span><div><b>${esc(b2.title)}</b><small>${esc(b2.author||"")}</small><div class="pbar"><i style="width:${b2.progress}%"></i></div><small>${b2.progress}%</small></div></div>`).join("")}</section>` : ""}
+      <section class="panel stack rail-able"><h3>${T_.psDe}</h3><div class="de-shelf">${DE_BOOKS.map(x=>{ const ti = x[lang==="fr"?1:0], inLib = have.has(ti.toLowerCase());
+        return `<div class="de-book"><span class="cv" style="background:${spine(ti)}">${esc(ti)}</span>${inLib?`<small class="ok">${T_.psDeIn}</small>`:`<button class="link small" data-sug="${esc(ti)}">${T_.psDeAdd}</button>`}</div>`; }).join("")}</div></section>`;
   } else if(planSub === "lib"){
     const have = new Set(bk.map(b=>b.title.toLowerCase()));
     const sug = DE_BOOKS.map(x=>x[lang==="fr"?1:0]).filter(x=>!have.has(x.toLowerCase()));
@@ -1912,7 +2103,7 @@ function planStrip(){
       <button class="link small" data-goplan>${T_.openPlan}</button></section>`;
   return `<section class="panel plan-strip nudge rail-able"><div><h3>${T_.buildPlan}</h3><p class="muted small">${T_.buildPlanSub}</p>
       <div class="meter"><i style="width:${Math.round(planCount()/12*100)}%"></i></div></div>
-      <button class="btn btn-dark" data-goplan>${T_.openPlan}</button></section>`;
+      <button class="btn btn-dark" data-svgo="${(sv().step)||0}">${T_.openPlan}</button></section>`;
 }
 
 function cardBlock(d){
@@ -2100,6 +2291,12 @@ function journalHTML(kind){
       <div class="j-daily"><p><b>${T_.jDaily}</b></p><p>${a1}: ${p1?esc(p1):"________________________________"}</p><p>${a2}: ${p2?esc(p2):"________________________________"}</p></div>
       <table class="j-t j-blank"><thead><tr><th>${T_.jDay}</th><th></th><th>${AREA_ICON[me.area1-1]}</th><th>${AREA_ICON[me.area2-1]}</th><th>${T_.jNotes}</th></tr></thead><tbody>${rows}</tbody></table>`;
   }
+  const SVY = (me.plan && me.plan.survey) || {};
+  const svyBlock = (SVY.why || (SVY.micro||[]).some(Boolean) || SVY.time) ? `<div class="j-area" style="margin-bottom:10px">
+      ${SVY.why ? `<p><span>${T_.psWhy}</span>“${esc(SVY.why)}”</p>` : ""}
+      ${(SVY.micro||[]).some(Boolean) ? `<p><span>${T_.psMicro}</span>${SVY.micro.filter(Boolean).map(esc).join(" · ")}</p>` : ""}
+      ${SVY.time||SVY.place||SVY.partner ? `<p><span>${T_.psSystem}</span>${[SVY.time, SVY.place, SVY.journal!==undefined ? T_.svJ[+SVY.journal] : "", SVY.review!==undefined ? T_.days7[+SVY.review] : "", SVY.partner].filter(Boolean).map(esc).join(" · ")}</p>` : ""}
+      ${(SVY.audit||[]).some(Boolean) ? `<p><span>${T_.psAudit}</span>${T_.sv2.map((q,i)=>`${q.split(" · ")[0]} ${(SVY.audit||[])[i]||"–"}/10`).join(" · ")}</p>` : ""}</div>` : "";
   const planRows = [[1,me.area1],[2,me.area2]].map(([k,a])=>{ const p = planOf(String(k));
     return `<div class="j-area"><h3>${AREA_ICON[a-1]} ${esc(areaName(a))}</h3>${PLAN_F.map(f=>`<p><span>${T_.pf[f][0]}</span>${p[f]!==undefined && String(p[f]).trim()!=="" ? esc(p[f]) : "—"}</p>`).join("")}</div>`; }).join("");
   const sc = me.scores || [];
@@ -2111,7 +2308,7 @@ function journalHTML(kind){
   for(let d=1; d<=upTo; d++){ const c = ck(d), l = me.lessons.find(x=>x.day===d);
     log += `<tr><td class="c">${d}</td><td>${esc(L(l,"title"))}</td><td>${c?(c.done1?"✓ ":"")+esc(c.note1||""):""}</td><td>${c?(c.done2?"✓ ":"")+esc(c.note2||""):""}</td></tr>`; }
   const bk = books(), cr = courses();
-  return head + `<h2>${T_.jPlan}</h2><div class="j-grid">${planRows}</div>
+  return head + `<h2>${T_.jPlan}</h2>${svyBlock}<div class="j-grid">${planRows}</div>
     <h2>${T_.jScores}</h2>${scoreT}
     <h2>${T_.jLog}</h2>${log ? `<table class="j-t"><thead><tr><th>${T_.jDay}</th><th>${T_.jLesson}</th><th>${a1}</th><th>${a2}</th></tr></thead><tbody>${log}</tbody></table>` : `<p class="j-m">—</p>`}
     ${bk.length||cr.length ? `<div class="j-grid"><div><h2>${T_.jLib}</h2>${bk.map(b=>`<p>📖 <b>${esc(b.title)}</b>${b.author?` · ${esc(b.author)}`:""} — ${b.progress>=100?T_.finished2:b.progress+"%"}</p>`).join("")||"<p>—</p>"}</div>
@@ -2150,6 +2347,7 @@ function badgesBlock(){
 }
 function checkNewBadges(){
   if(!me || me.day < 1) return;
+  if((me.payments_on && !me.has_access) || document.getElementById("paywall") || document.getElementById("msheet")) return;
   const e = earnedBadges(), seen = new Set((store.get("gd_badges")||"").split(",").filter(Boolean));
   const fresh = Object.keys(e).filter(k => e[k] && !seen.has(k));
   if(!fresh.length) return;
@@ -2161,6 +2359,89 @@ function checkNewBadges(){
   document.body.appendChild(el); el.onclick = () => el.remove(); setTimeout(() => el.remove(), 3200);
 }
 
+
+
+/* ---------- the growth plan survey (Growth Day worksheet) ---------- */
+const SV = { step: 0 };
+const sv = () => ((me.plan && me.plan.survey) || {});
+function segRow(name, max, val, lo, hi){
+  return `<div class="sc-seg ${max===5?"seg5":""}" role="radiogroup">${Array.from({length:max},(_,i)=>i+1).map(n=>`<button type="button" role="radio" aria-checked="${n===val}" data-seg="${name}:${n}" class="${val && n<=val?"on":""}" style="--h:${Math.round(max===5 ? 140-(n-1)*30 : 22+(n-1)*13)}">${n}</button>`).join("")}</div>
+    <div class="sc-scale"><span>${lo}</span><span>${hi}</span></div><input type="hidden" id="seg-${name}" value="${val||""}">`;
+}
+function viewSurvey(){
+  const T_ = t(), s0 = sv(), st = SV.step, A1 = esc(areaName(me.area1)), A2 = esc(areaName(me.area2));
+  const area = (k, a, inner) => `<div class="panel stack sv-area"><div class="plan-h"><span class="ai">${AREA_ICON[a-1]}</span><h3>${esc(areaName(a))}</h3></div>${inner}</div>`;
+  const ta = (id, val, ph) => `<textarea id="${id}" rows="2" maxlength="400" placeholder="${esc(ph||"")}">${esc(val||"")}</textarea>`;
+  let title = "", sub = "", body = "";
+  if(st === 1){ title = T_.sv1T; sub = T_.sv1S;
+    body = T_.sv1.map((q,i)=>`<div class="sv-q"><p><b>${q}</b></p>${segRow("stag"+i, 5, (s0.stag||[])[i], T_.svNever, T_.svVery)}</div>`).join(""); }
+  if(st === 2){ title = T_.sv2T; sub = T_.sv2S;
+    body = T_.sv2.map((q,i)=>`<div class="sv-q"><p><b>${q}</b></p>${segRow("audit"+i, 10, (s0.audit||[])[i], T_.svLow, T_.svHigh)}</div>`).join(""); }
+  if(st === 3){ title = T_.sv3T; sub = T_.sv3S;
+    body = [[1,me.area1],[2,me.area2]].map(([k,a])=>{ const p = planOf(String(k));
+      return area(k,a,`<div><label>${T_.svScoreNow}</label>${segRow("score"+k, 10, p.score, T_.svLow, T_.svHigh)}</div>
+        <div><label for="h${k}">${T_.pf.honest[0]}</label>${ta("h"+k, p.honest, T_.planPh.honest)}</div>
+        <div><label for="g${k}">${T_.pf.target[0]}</label>${ta("g"+k, p.target, T_.planPh.target)}</div>`); }).join(""); }
+  if(st === 4){ title = T_.sv4T; sub = T_.sv4S;
+    body = `<div class="panel stack"><p class="sv-lead">${T_.sv4Lead(A1, A2)}</p>${ta("why", s0.why, "")}</div>`; }
+  if(st === 5){ title = T_.sv5T; sub = T_.sv5S;
+    body = [[1,me.area1],[2,me.area2]].map(([k,a])=>{ const p = planOf(String(k)); return area(k,a,`<div><label for="d${k}">${T_.pf.daily[0]}</label>${ta("d"+k, p.daily, T_.planPh.daily)}</div>`); }).join("")
+      + `<div class="panel stack"><label>${T_.svMicro}</label>${[0,1,2].map(i=>`<input id="mi${i}" maxlength="200" value="${esc((s0.micro||[])[i]||"")}" placeholder="${esc(T_.svMicroPh[i])}">`).join("")}</div>`; }
+  if(st === 6){ title = T_.sv6T; sub = T_.sv6S;
+    body = [[1,me.area1],[2,me.area2]].map(([k,a])=>{ const p = planOf(String(k));
+      return area(k,a,`<div><label for="e${k}">${T_.pf.excuse[0]}</label>${ta("e"+k, p.excuse, T_.planPh.excuse)}</div>
+        <div><label for="r${k}">${T_.pf.answer[0]}</label>${ta("r"+k, p.answer, T_.planPh.answer)}</div>`); }).join(""); }
+  if(st === 7){ title = T_.sv7T; sub = T_.sv7S;
+    body = `<div class="panel stack"><div class="grid2"><div><label for="svt">${T_.svTime}</label><input id="svt" type="time" value="${esc(s0.time||"06:30")}"></div>
+        <div><label for="svp">${T_.svPlace}</label><input id="svp" maxlength="120" value="${esc(s0.place||"")}" placeholder="${esc(T_.svPlacePh)}"></div></div>
+      <div class="grid2"><div><label for="svj">${T_.svJournal}</label><select id="svj">${T_.svJ.map((j,i)=>`<option value="${i}" ${String(s0.journal||"2")===String(i)?"selected":""}>${j}</option>`).join("")}</select></div>
+        <div><label for="svr">${T_.svReview}</label><select id="svr">${T_.days7.map((d,i)=>`<option value="${i}" ${String(s0.review||"6")===String(i)?"selected":""}>${d}</option>`).join("")}</select></div></div>
+      <div><label for="svpa">${T_.svPartner}</label><input id="svpa" maxlength="80" value="${esc(s0.partner||"")}" placeholder="${esc(T_.svPartnerPh)}"></div></div>`; }
+  if(st === 0){
+    return `<section class="stack sv"><div class="how-top"><button class="back-btn" data-svexit>← ${T_.back}</button></div>
+      <div class="sv-hero"><span>🧭</span><h1>${T_.svTitle}</h1><p class="lead-s">${T_.svIntro}</p>
+      <ol class="sv-list">${[T_.sv1T,T_.sv2T,T_.sv3T,T_.sv4T,T_.sv5T,T_.sv6T,T_.sv7T].map(x=>`<li>${x}</li>`).join("")}</ol>
+      <button class="btn btn-primary btn-lg" data-svgo="${s0.step && !s0.done ? s0.step : 1}">${s0.step && !s0.done ? T_.svContinue(s0.step) : T_.svStart} →</button></div></section>`;
+  }
+  return `<section class="stack sv"><div class="how-top"><button class="back-btn" data-svprev>← ${T_.back}</button><button class="link" data-svexit>${T_.svLater}</button></div>
+    <div class="steps sv-steps">${[1,2,3,4,5,6,7].map(n=>`<i class="${n<=st?"on":""}"></i>`).join("")}</div>
+    <p class="step-lbl">${T_.svStep(st)}</p><h1>${title}</h1><p class="muted">${sub}</p>
+    ${body}
+    <p id="svMsg" class="err" role="alert"></p>
+    <button class="btn btn-primary btn-lg" data-svnext>${st === 7 ? T_.svFinish : T_.svNext} →</button></section>`;
+}
+function collectSurvey(){
+  const p = JSON.parse(JSON.stringify(me.plan || {})); p["1"] = p["1"] || {}; p["2"] = p["2"] || {}; p.survey = p.survey || {};
+  const g = id => { const el = document.getElementById(id); return el ? el.value : undefined; };
+  const st = SV.step, S = p.survey;
+  if(st === 1) S.stag = [0,1,2,3].map(i => +g("seg-stag"+i) || null);
+  if(st === 2) S.audit = [0,1,2,3].map(i => +g("seg-audit"+i) || null);
+  if(st === 3) [1,2].forEach(k => { const v = +g("seg-score"+k); if(v) p[k].score = v; p[k].honest = g("h"+k); p[k].target = g("g"+k); });
+  if(st === 4) S.why = g("why");
+  if(st === 5){ [1,2].forEach(k => { p[k].daily = g("d"+k); }); S.micro = [0,1,2].map(i => g("mi"+i) || ""); }
+  if(st === 6) [1,2].forEach(k => { p[k].excuse = g("e"+k); p[k].answer = g("r"+k); });
+  if(st === 7){ S.time = g("svt"); S.place = g("svp"); S.journal = g("svj"); S.review = g("svr"); S.partner = g("svpa"); }
+  S.step = Math.max(S.step || 0, Math.min(7, st + 1)); if(st === 7) S.done = true;
+  p.books = books(); p.courses = courses();
+  return p;
+}
+function bindSurvey(){
+  document.querySelectorAll("[data-seg]").forEach(b => b.onclick = () => { const [name, n] = b.dataset.seg.split(":");
+    document.getElementById("seg-"+name).value = n;
+    b.parentElement.querySelectorAll("button").forEach(x => { const v = +x.textContent; x.classList.toggle("on", v <= +n); x.setAttribute("aria-checked", v === +n); }); });
+  document.querySelectorAll("[data-svgo]").forEach(b => b.onclick = () => { SV.step = +b.dataset.svgo || 1; renderApp(); window.scrollTo(0,0); });
+  document.querySelectorAll("[data-svexit]").forEach(b => b.onclick = () => { tab = "plan"; planSub = "areas"; renderApp(); window.scrollTo(0,0); });
+  document.querySelectorAll("[data-svprev]").forEach(b => b.onclick = () => { SV.step = Math.max(0, SV.step - 1); renderApp(); window.scrollTo(0,0); });
+  const nx = document.querySelector("[data-svnext]");
+  if(nx) nx.onclick = async () => {
+    nx.disabled = true; const p = collectSurvey();
+    try{ await rpc("gd_save_plan", {p_token:store.get("gd_token"), p_plan:p}); me.plan = p;
+      try{ store.set("gd_me_cache", JSON.stringify(me)); }catch(e){}
+      if(SV.step >= 7){ tab = "plan"; planSub = "areas"; } else SV.step++;
+      renderApp(); window.scrollTo(0,0);
+    }catch(e){ nx.disabled = false; const m = $("#svMsg"); if(m) m.textContent = errMsg(e); }
+  };
+}
 
 /* ---------- referrals ---------- */
 function refCard(){
@@ -2224,7 +2505,8 @@ function viewMe(){
       : `<div class="panel"><p class="muted">${t().noTriad}</p></div>`}</section>
     ${me.payments_on ? `<section class="stack"><h2>${t().myAccess}</h2><div class="panel acc"><span class="acc-ic">${me.plan_type==="full"?"⭐":me.plan_type==="weekly"?"🗓️":"🔒"}</span>
       <div><b>${me.plan_type==="full"?t().accFull:me.plan_type==="weekly"?t().accWeek(me.paid_weeks):t().accNone}</b>
-      ${me.plan_type==="weekly"?`<div class="wkdots">${[1,2,3,4,5,6].map(w=>`<i class="${w<=me.paid_weeks?"on":""}">${w}</i>`).join("")}</div>`:""}</div></div></section>` : ""}
+      ${me.plan_type==="weekly"?`<div class="wkdots">${[1,2,3,4,5,6].map(w=>`<i class="${w<=me.paid_weeks?"on":""}">${w}</i>`).join("")}</div>`:""}</div></div>
+      ${me.plan_type==="full" ? "" : me.plan_type==="weekly" ? `<div class="acc-btns">${me.paid_weeks<6?`<button class="btn btn-dark sm" data-pk="week">${t().accNext}</button><button class="btn btn-primary sm" data-pk="rest">${t().accUpg} · ${fcfa(me.rest_price)} F</button>`:""}</div>` : `<button class="btn btn-primary" data-pk="full">${t().accSee}</button>`}</section>` : ""}
     ${groupCard()}
     ${howEntry()}
     ${notifCard()}
@@ -2375,9 +2657,22 @@ function adminRender(){
         ${admOpen===p.id ? `<tr class="detail"><td colspan="9"><div class="grid2">${[[1,p.area1],[2,p.area2]].map(([k,a])=>{ const pl=(p.plan||{})[k]||{};
           return `<div class="stack"><h3>${AREA_ICON[a-1]} ${AREA_SHORT[a-1]}</h3>
             ${[["honest","Where I am"],["score","Starting score"],["target","6-week target"],["daily","Daily 1%"],["excuse","Usual excuse"],["answer","Answer"]].map(([f,lb])=>`<p class="small"><b>${lb}:</b> ${pl[f]!==undefined&&String(pl[f]).trim()!==""?esc(pl[f]):'<span class="muted">not yet</span>'}</p>`).join("")}</div>`; }).join("")}</div>
+${(()=>{ const S=(p.plan||{}).survey||{}; if(!S.why && !(S.micro||[]).some(Boolean) && !S.time) return "";
+            const J=["Notebook","Phone notes","This app"], D=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+            return `<div class="small" style="margin-top:12px">${S.why?`<p><span class="muted">Why:</span> ${esc(S.why)}</p>`:""}
+              ${(S.micro||[]).some(Boolean)?`<p><span class="muted">Micro-actions:</span> ${S.micro.filter(Boolean).map(esc).join(" · ")}</p>`:""}
+              ${S.time||S.partner?`<p><span class="muted">System:</span> ${[S.time,S.place,S.journal!==undefined?J[+S.journal]:"",S.review!==undefined?"review "+D[+S.review]:"",S.partner?"partner "+S.partner:""].filter(Boolean).map(esc).join(" · ")}</p>`:""}</div>`; })()}
 ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length && !cr.length) return "";
             return `<div class="grid2" style="margin-top:14px"><div><h3>📚 Reading</h3>${bk.map(b=>`<p class="small">${esc(b.title)}${b.author?` <span class="muted">· ${esc(b.author)}</span>`:""} · <b>${b.progress>=100?"finished":b.progress+"%"}</b></p>`).join("")||'<p class="small muted">–</p>'}</div>
               <div><h3>🎓 Courses & activities</h3>${cr.map(c=>`<p class="small">${esc(c.title)}${c.provider?` <span class="muted">· ${esc(c.provider)}</span>`:""} · <b>${c.progress>=100?"done":c.progress+"%"}</b></p>`).join("")||'<p class="small muted">–</p>'}</div></div>`; })()}
+          ${(()=>{ const S=(p.plan||{}).survey||{}; if(!S.step) return `<p class="small muted" style="margin-top:12px">Growth plan survey: not started yet.</p>`;
+            const J=["Notebook","Phone notes","This app"], D=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+            return `<div style="margin-top:14px"><h3>📝 Growth plan survey ${S.done?'<span class="ok small">✓ complete</span>':`<span class="muted small">step ${S.step} of 7</span>`}</h3>
+              ${S.why?`<p class="small"><b>Why:</b> ${esc(S.why)}</p>`:""}
+              ${(S.stag||[]).some(Boolean)?`<p class="small"><b>Honest check (1–5, higher = more stuck):</b> ${S.stag.map(x=>x||"–").join(" · ")}</p>`:""}
+              ${(S.audit||[]).some(Boolean)?`<p class="small"><b>Luke 2:52 audit (intellectual · physical · spiritual · social):</b> ${S.audit.map(x=>x||"–").join(" · ")}</p>`:""}
+              ${(S.micro||[]).filter(Boolean).length?`<p class="small"><b>Micro-actions:</b> ${S.micro.filter(Boolean).map(esc).join(" · ")}</p>`:""}
+              ${S.time||S.place||S.partner?`<p class="small"><b>System:</b> ${[S.time,S.place,S.journal!==undefined?J[+S.journal]:"",S.review!==undefined?"review "+D[+S.review]:"",S.partner?"partner "+S.partner:""].filter(Boolean).map(esc).join(" · ")}</p>`:""}</div>`; })()}
           <div class="danger-zone"><button class="btn btn-ghost sm danger" data-delp="${p.id}" data-name="${esc(p.name)}" data-paid="${p.status==="paid"?"1":""}">Remove this participant</button>
             <span class="muted small">Deletes their account, cards, scores and payment records. This can't be undone.</span></div>
           ${p.testimony ? `<h3 style="margin-top:14px">Story</h3><p class="small">${esc(p.testimony)}</p><p class="small muted">${p.testimony_public?"Agreed to share publicly":"Private"} · <label><input type="checkbox" data-approve="${p.id}" ${p.testimony_approved?"checked":""} ${p.testimony_public?"":"disabled"}> Show on landing page</label></p>` : ""}
@@ -2483,7 +2778,7 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
 
   $("#refresh").onclick = adminLoad;
   $("#adminOut").onclick = () => { admPin = null; adm = null; admSem = null; admMeth = null; admMsg = null; admOpen = null; clearTimeout(msgTimer); adminLogin(); };
-  document.querySelectorAll("[data-at]").forEach(b=>b.onclick=async()=>{admTab=b.dataset.at; if(admTab==="settings"){ ONB = null; await loadOnb(); } adminRender(); if(admTab==="messages") loadMessages(); if(admTab==="insights"||admTab==="settings"){ try{ admX = await rpc("gd_admin_extra",{p_pin:admPin}); }catch(e){} adminRender(); }});
+  document.querySelectorAll("[data-at]").forEach(b=>b.onclick=async()=>{admTab=b.dataset.at; if(admTab==="settings"){ ONB = null; await loadOnb(); } adminRender(); if(admTab==="messages") loadMessages(); if(admTab==="insights"||admTab==="settings"){ try{ admX = await rpc("gd_admin_extra",{p_pin:admPin}); }catch(e){} if(admTab==="insights"){ try{ admPay = await rpc("gd_admin_payments",{p_pin:admPin}); }catch(e){} } adminRender(); }});
   if(admTab==="messages") bindMessages();
   document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{admFilter=b.dataset.f; adminRender();});
   document.querySelectorAll("[data-person]").forEach(b=>b.onclick=()=>{admOpen = admOpen===b.dataset.person?null:b.dataset.person; adminRender();});
@@ -2553,6 +2848,10 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
     try{ await rpc("gd_admin_set_onboarding", {p_pin:admPin, p:{onb_video_en:$("#onbVen").value, onb_video_fr:$("#onbVfr").value, onb_audio_en:$("#onbAen").value, onb_audio_fr:$("#onbAfr").value, trial_days:$("#trialDays").value}});
       ONB = null; await loadOnb(); m.className="ok"; m.textContent="✓ Onboarding saved."; }
     catch(e){ m.className="err"; m.textContent = "Could not save: " + e.message; } };
+  const pc = $("#payCsv"); if(pc && admPay) pc.onclick = () => {
+    const rows = [["date","name","whatsapp","what","week","amount_fcfa","provider","status"]].concat(admPay.list.map(x=>[x.created_at, x.name||"", x.phone||"", x.kind, x.week||"", x.amount, x.provider, x.status]));
+    const csv = rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(",")).join("\n");
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv],{type:"text/csv"})); a.download = "growthday-payments.csv"; a.click(); };
   const ss2 = $("#semSave");
   if(ss2) ss2.onclick = async () => { const m = $("#semMsg");
     try{ await rpc("gd_admin_set_seminar",{p_pin:admPin, p_time:$("#semTime").value, p_link:$("#semLink").value});
@@ -2793,7 +3092,7 @@ function bindMessages(){
 
 
 /* ---------- admin: insights ---------- */
-let admX = null;
+let admX = null, admPay = null;
 function insightsView(){
   if(!admX) return `<p class="muted">Loading…</p>`;
   const P = adm.participants, paid = P.filter(p=>p.status==="paid"), cur = Math.min(42, adm.day);
@@ -2822,6 +3121,21 @@ function insightsView(){
       <section class="panel stack"><h3>Most chosen growth areas</h3>
         ${areas.length?areas.map(a=>`<div class="hbar"><span>${AREA_ICON[a.area-1]} ${AREA_SHORT[a.area-1]}</span><i style="width:${a.n/maxA*100}%"></i><b>${a.n}</b></div>`).join(""):`<p class="muted small">No participants yet.</p>`}</section>
     </div>
+    ${(()=>{ const P2 = admPay; if(!P2) return "";
+      const prov = P2.by_provider||{}, kind = P2.by_kind||{}, fm = n => fcfa(n||0)+" F";
+      const kl = {week:"Weekly", full:"Full journey", rest:"Remaining weeks"}, pl = {pawapay:"Mobile Money (pawaPay)", stripe:"Card (Stripe)"};
+      return `<section class="panel stack"><h3>💳 Payments</h3>
+        <div class="stats"><div class="stat"><b>${fm(P2.total)}</b><span class="muted small">collected · ${P2.count} payments</span></div>
+          <div class="stat"><b>${fm(prov.pawapay)}</b><span class="muted small">Mobile Money</span></div>
+          <div class="stat"><b>${fm(prov.stripe)}</b><span class="muted small">Card</span></div>
+          <div class="stat"><b>${fm(kind.full)}</b><span class="muted small">full journey · ${fm((kind.week||0)+(kind.rest||0))} weekly</span></div></div>
+        ${P2.failed?`<p class="small muted">${P2.failed} failed or cancelled attempt${P2.failed>1?"s":""} (not counted).</p>`:""}
+        ${P2.list.length ? `<div class="table-wrap"><table><thead><tr><th>Date</th><th>Name</th><th>WhatsApp</th><th>What</th><th>Amount</th><th>Via</th><th>Status</th></tr></thead><tbody>
+          ${P2.list.map(x=>`<tr><td>${new Date(x.created_at).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}</td><td>${esc(x.name||"(removed)")}</td><td>${x.phone?"+"+esc(x.phone):""}</td>
+            <td>${kl[x.kind]||x.kind}${x.week?" "+x.week:""}</td><td><b>${fm(x.amount)}</b></td><td>${pl[x.provider]||x.provider}</td>
+            <td>${x.status==="completed"?'<span class="chip-s paid">Paid</span>':x.status==="pending"?'<span class="chip-s">Pending</span>':'<span class="chip-s wait">Failed</span>'}</td></tr>`).join("")}</tbody></table></div>`
+          : `<p class="muted small">No payments yet.</p>`}
+        <button class="btn btn-ghost sm" id="payCsv" style="max-width:220px">Download as CSV</button></section>`; })()}
     <section class="panel stack"><h3>🎁 Referrals</h3>
       ${(admX.refs||[]).length?`<table><thead><tr><th>Participant</th><th>Friends who joined</th><th>Of whom paid</th></tr></thead><tbody>${admX.refs.map(r=>`<tr><td>${esc(r.name)}</td><td>${r.n}</td><td>${r.paid}</td></tr>`).join("")}</tbody></table>`:`<p class="muted small">No referrals yet. Each participant has a personal link in their Me tab.</p>`}</section>
   </div>`;
@@ -2919,7 +3233,48 @@ function offlineBar(){
 }
 window.addEventListener("online", () => { offlineBar(); flushPending(); if(me) prepareAudio(); });
 window.addEventListener("offline", offlineBar);
-const route = () => { if(location.hash === "#admin") adminLogin(); else if(location.hash === "#guide") guideLoad(); else { document.body.classList.remove("admin"); boot(); } };
+
+/* ---------- terms of sale, refunds and privacy ---------- */
+const TERMS = {
+  en: { title:"Terms, refunds and privacy", updated:"Last updated: 8 October 2026", back:"Back",
+    s:[["Who we are","The Growth Day cohort is a six-week personal growth programme of Equip2Lead, operated by EBUK and led by Dr. Denis Ekobena, in Yaoundé, Cameroon. Payments are received by EBUK, so \"EBUK\" is the name you will see on your card statement or Mobile Money receipt. Contact: contact@growthday.cc, or the WhatsApp number that sends your Daily Fire."],
+       ["What you get","A daily teaching (the Daily Fire) on WhatsApp and in this app, your 1% Card and personal growth plan, weekly scores, a triad and a Growth Guide from week 2, three live seminars on Zoom, and a certificate of completion."],
+       ["Prices","Full journey: 10,000 FCFA, paid in one payment before you start paying weekly. Weekly: 2,000 FCFA for each week, paid before the week begins (12,000 FCFA over 6 weeks). Weekly payers may pay all remaining weeks at once, at 2,000 FCFA per week. Prices include all taxes we are required to charge."],
+       ["Payment","You pay with MTN Mobile Money or Orange Money (processed by pawaPay) or with a bank card (processed by Stripe). We never see or store your Mobile Money PIN or card details. Your access opens as soon as the payment provider confirms the payment."],
+       ["Access","Your access covers the weeks you have paid. If a week is not paid, the Daily Fire, the 1% Card and the seminar link for that week stay locked until you pay; your plan, your progress and your badges are kept. Seats are limited and are held only once paid."],
+       ["Refunds","Full journey: a full refund if you ask before day 1 of the cohort. After day 1, the full weeks that have not yet started are refunded at 2,000 FCFA each, minus the payment provider's fees. Weekly: a week that has started is not refunded; a week paid in advance can be refunded in full if you ask before it starts. To ask for a refund, write to us on WhatsApp or at contact@growthday.cc. We reply within 3 days and send the refund to the same Mobile Money number or card within 7 days."],
+       ["If we cancel","If we cancel or postpone the cohort, you choose between a full refund of what you paid and a seat in the next cohort."],
+       ["Your data","We collect your name, WhatsApp number, language, the two areas you chose, your growth plan and survey answers, your daily cards and scores, and your payment records. We use them only to run the cohort: to send you the daily messages, show your progress and connect you with your triad. Your name and WhatsApp number are shared with your triad and your Growth Guide, who also see your plan and cards to support you. We never sell your data or share it for advertising."],
+       ["Where your data is kept","Your data is stored securely with our hosting provider (Supabase). Messages are sent through our WhatsApp provider (Wamatas). Payments are handled by pawaPay and Stripe under their own privacy policies."],
+       ["Your rights","You can ask us at any time to see, correct or delete your data, or to stop the WhatsApp messages. Write to contact@growthday.cc or on WhatsApp. Deleting your account removes your plan, cards and scores; we keep payment records only as long as the law requires."]] },
+  fr: { title:"Conditions, remboursements et confidentialité", updated:"Dernière mise à jour : 8 octobre 2026", back:"Retour",
+    s:[["Qui nous sommes","La cohorte Growth Day est un parcours de croissance personnelle de six semaines d'Equip2Lead, exploité par EBUK et dirigé par le Dr Denis Ekobena, à Yaoundé, au Cameroun. Les paiements sont reçus par EBUK : c'est donc le nom « EBUK » qui apparaît sur votre relevé de carte ou votre reçu Mobile Money. Contact : contact@growthday.cc, ou le numéro WhatsApp qui vous envoie le Daily Fire."],
+       ["Ce que vous recevez","Un enseignement quotidien (le Daily Fire) sur WhatsApp et dans cette application, votre carte 1 % et votre plan de croissance personnel, des bilans hebdomadaires, une triade et un Growth Guide dès la semaine 2, trois séminaires en direct sur Zoom, et un certificat de fin de parcours."],
+       ["Prix","Parcours complet : 10 000 FCFA, en un seul paiement, avant de commencer à payer à la semaine. Hebdomadaire : 2 000 FCFA par semaine, payés avant le début de chaque semaine (12 000 FCFA sur 6 semaines). Les personnes qui paient à la semaine peuvent payer toutes les semaines restantes en une fois, à 2 000 FCFA par semaine. Les prix incluent les taxes que nous sommes tenus de facturer."],
+       ["Paiement","Vous payez avec MTN Mobile Money ou Orange Money (traité par pawaPay) ou par carte bancaire (traité par Stripe). Nous ne voyons et ne conservons jamais votre code Mobile Money ni vos données de carte. Votre accès s'ouvre dès que le prestataire de paiement confirme le paiement."],
+       ["Accès","Votre accès couvre les semaines payées. Si une semaine n'est pas payée, le Daily Fire, la carte 1 % et le lien du séminaire de cette semaine restent bloqués jusqu'au paiement ; votre plan, vos progrès et vos badges sont conservés. Les places sont limitées et ne sont réservées qu'une fois payées."],
+       ["Remboursements","Parcours complet : remboursement intégral si vous le demandez avant le jour 1 de la cohorte. Après le jour 1, les semaines complètes qui n'ont pas encore commencé sont remboursées à 2 000 FCFA chacune, moins les frais du prestataire de paiement. Hebdomadaire : une semaine commencée n'est pas remboursée ; une semaine payée d'avance peut être remboursée intégralement si vous le demandez avant qu'elle commence. Pour demander un remboursement, écrivez-nous sur WhatsApp ou à contact@growthday.cc. Nous répondons sous 3 jours et remboursons sur le même numéro Mobile Money ou la même carte sous 7 jours."],
+       ["Si nous annulons","Si nous annulons ou reportons la cohorte, vous choisissez entre le remboursement intégral de ce que vous avez payé et une place dans la cohorte suivante."],
+       ["Vos données","Nous collectons votre nom, votre numéro WhatsApp, votre langue, les deux domaines choisis, votre plan de croissance et vos réponses au questionnaire, vos cartes et bilans, et vos paiements. Nous les utilisons uniquement pour faire fonctionner la cohorte : vous envoyer les messages quotidiens, afficher vos progrès et vous relier à votre triade. Votre nom et votre numéro WhatsApp sont partagés avec votre triade et votre Growth Guide, qui voient aussi votre plan et vos cartes pour vous accompagner. Nous ne vendons jamais vos données et ne les partageons pas à des fins publicitaires."],
+       ["Où vos données sont conservées","Vos données sont conservées de façon sécurisée chez notre hébergeur (Supabase). Les messages passent par notre prestataire WhatsApp (Wamatas). Les paiements sont traités par pawaPay et Stripe selon leurs propres politiques de confidentialité."],
+       ["Vos droits","Vous pouvez à tout moment demander à consulter, corriger ou supprimer vos données, ou à ne plus recevoir les messages WhatsApp. Écrivez à contact@growthday.cc ou sur WhatsApp. La suppression de votre compte efface votre plan, vos cartes et vos bilans ; nous conservons les traces de paiement seulement le temps exigé par la loi."]] },
+};
+function termsPage(){
+  ["paywall","msheet"].forEach(id => { const el = document.getElementById(id); if(el) el.remove(); });
+  document.body.classList.remove("is-land","admin","no-scroll"); document.body.classList.add("is-auth");
+  const T2 = TERMS[lang] || TERMS.en;
+  root.innerHTML = `<div class="wrap stack terms" style="max-width:760px">
+    <div class="how-top"><button class="back-btn" id="tBack">← ${T2.back}</button>${langToggle()}</div>
+    <div class="brand"><img src="${LOGO}" alt="">Growth Day</div>
+    <h1>${T2.title}</h1><p class="muted small">${T2.updated}</p>
+    ${T2.s.map(([h,p])=>`<section class="panel stack"><h2>${h}</h2><p>${p}</p></section>`).join("")}
+    ${credit()}</div>`;
+  bindLang(termsPage);
+  $("#tBack").onclick = () => { history.replaceState(null, "", location.pathname); document.body.classList.remove("is-auth"); window.scrollTo(0,0); boot(); };
+  window.scrollTo(0,0);
+}
+
+const route = () => { if(location.hash === "#terms") return termsPage(); if(location.hash === "#admin") adminLogin(); else if(location.hash === "#guide") guideLoad(); else { document.body.classList.remove("admin"); boot(); } };
 route();
 window.addEventListener("hashchange", route);
 </script>
