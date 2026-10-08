@@ -667,6 +667,17 @@ body.no-scroll{overflow:hidden}
 .pay-logos{display:flex;flex-wrap:wrap;gap:6px}
 .pay-logos span{font:700 12.5px var(--body);border-radius:99px;padding:5px 11px}
 .pl-mtn{background:#FFCB05;color:#1C2340}.pl-orange{background:#FF7900;color:#fff}.pl-card{background:#1C2340;color:#fff}
+.ob-art{width:100%;max-width:360px;height:auto;display:block;margin:0 auto 6px;filter:drop-shadow(0 10px 22px rgba(28,35,64,.15))}
+.ob-mock-wrap{transform:scale(.9);transform-origin:top center;margin-bottom:-24px;width:100%}
+.ob-body{padding-top:2vh}
+.plan-first{display:grid;grid-template-columns:1fr;gap:14px;border:2px solid var(--ember)}
+.pf-art .ob-art{max-width:100%;margin:0}
+@media (min-width:700px){.plan-first{grid-template-columns:220px 1fr;align-items:center}}
+.w1{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px}
+.w1 li{display:flex;align-items:center;gap:12px;background:var(--fill);border-radius:14px;padding:10px 12px}
+.w1 li>div{flex:1;display:flex;flex-direction:column}.w1 small{color:var(--muted);font-size:12.5px}
+.w1-d{flex:none;font:700 12.5px var(--display);color:var(--ember-text,#A35F00);width:52px}
+.w1-lock{opacity:.6}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -1505,6 +1516,58 @@ function joinForm(){
 }
 
 
+
+/* cartoon illustrations for the onboarding (flat style, warm Growth Day palette) */
+function person(x, y, skin, hair, shirt, s=1, smile=true){
+  return `<g transform="translate(${x} ${y}) scale(${s})">
+    <rect x="-22" y="34" width="44" height="46" rx="20" fill="${shirt}"/>
+    <circle cx="0" cy="12" r="20" fill="${skin}"/>
+    <path d="M-20 8 Q-18 -14 0 -12 Q18 -14 20 8 Q14 -2 0 -3 Q-14 -2 -20 8Z" fill="${hair}"/>
+    <circle cx="-7" cy="12" r="2.2" fill="#1C2340"/><circle cx="7" cy="12" r="2.2" fill="#1C2340"/>
+    ${smile ? `<path d="M-7 21 Q0 27 7 21" stroke="#1C2340" stroke-width="2.4" fill="none" stroke-linecap="round"/>` : ""}
+  </g>`;
+}
+function obArt(k){
+  const bg = {daily:["#FFE3B3","#FFB766"], card:["#2C3566","#1C2340"], plan:["#DDF5E7","#A8E6C1"], library:["#E9E0FF","#C9B8FF"], score:["#FFF0C2","#FFD36B"], live:["#D9ECFF","#9CCBFF"], triad:["#FFE0D6","#FFB59E"], welcome:["#FFE3B3","#FFB766"]}[k] || ["#eee","#ddd"];
+  const A = {
+    daily: `<circle cx="70" cy="70" r="34" fill="#FFD36B"/><g stroke="#FFD36B" stroke-width="5" stroke-linecap="round">${[0,45,90,135,180].map(a=>{const r=a*Math.PI/180;return `<line x1="${70+Math.cos(r)*44}" y1="${70-Math.sin(r)*44}" x2="${70+Math.cos(r)*56}" y2="${70-Math.sin(r)*56}"/>`}).join("")}</g>
+      <rect x="0" y="118" width="340" height="52" fill="#E8890C" opacity=".35"/>
+      ${person(170, 74, "#8D5524", "#2B1B10", "#E8890C", 1.05)}
+      <rect x="214" y="58" width="58" height="96" rx="12" fill="#1C2340"/><rect x="220" y="66" width="46" height="78" rx="6" fill="#ECE5DD"/>
+      <rect x="225" y="74" width="36" height="16" rx="5" fill="#fff"/><rect x="225" y="95" width="30" height="12" rx="5" fill="#25D366"/><text x="247" y="153" font-size="9" fill="#fff" text-anchor="middle">6:00</text>`,
+    card: `<circle cx="276" cy="44" r="22" fill="#FFE29A"/><circle cx="286" cy="38" r="20" fill="#1C2340"/>
+      ${[[40,30],[90,50],[150,22],[210,60],[310,96]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.4" fill="#fff" opacity=".8"/>`).join("")}
+      ${person(110, 70, "#6B3E1F", "#1C1209", "#3B82C4", 1.05)}
+      <rect x="160" y="70" width="110" height="80" rx="14" fill="#fff"/><text x="215" y="92" font-size="12" font-weight="700" fill="#1C2340" text-anchor="middle">1% Card</text>
+      <rect x="172" y="102" width="40" height="36" rx="8" fill="#DDF5E7"/><rect x="218" y="102" width="40" height="36" rx="8" fill="#DDF5E7"/>
+      <path d="M182 120 l7 7 l14 -14" stroke="#2F855A" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M228 120 l7 7 l14 -14" stroke="#2F855A" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <text x="300" y="150" font-size="26">🔥</text>`,
+    plan: `${person(96, 66, "#A0662E", "#2B1B10", "#2F855A", 1.05)}
+      <rect x="150" y="40" width="130" height="112" rx="10" fill="#fff" transform="rotate(-4 215 96)"/>
+      <g transform="rotate(-4 215 96)"><text x="166" y="66" font-size="13" font-weight="700" fill="#1C2340">My plan</text>
+      ${[84,104,124].map((y,i)=>`<rect x="166" y="${y}" width="${[90,70,80][i]}" height="8" rx="4" fill="#C9D3E3"/><circle cx="262" cy="${y+4}" r="6" fill="${i<2?"#2F855A":"#E8890C"}"/>`).join("")}</g>
+      <circle cx="300" cy="44" r="22" fill="#fff"/><circle cx="300" cy="44" r="14" fill="#E8890C"/><circle cx="300" cy="44" r="6" fill="#fff"/><circle cx="300" cy="44" r="2" fill="#1C2340"/>`,
+    library: `${[["#5B3FB8",40],["#2E7D5B",64],["#C0392B",88],["#E8890C",112]].map(([c,x],i)=>`<rect x="${x}" y="${150-(70+i*8)}" width="22" height="${70+i*8}" rx="3" fill="${c}"/>`).join("")}
+      ${person(200, 70, "#7A4A24", "#1C1209", "#5B3FB8", 1.05)}
+      <rect x="168" y="112" width="64" height="40" rx="4" fill="#fff"/><line x1="200" y1="112" x2="200" y2="152" stroke="#C9B8FF" stroke-width="3"/>
+      <path d="M270 150 q10 -40 30 -50 q-4 24 -16 50z" fill="#2F855A"/><path d="M292 150 q-2 -30 18 -42 q2 22 -10 42z" fill="#3FA56B"/><rect x="266" y="146" width="48" height="10" rx="4" fill="#A0662E"/>`,
+    score: `<line x1="40" y1="150" x2="300" y2="150" stroke="#1C2340" stroke-width="3"/>
+      ${[[60,40],[110,60],[160,80],[210,104],[260,128]].map(([x,h],i)=>`<rect x="${x}" y="${150-h}" width="34" height="${h}" rx="6" fill="${["#C0392B","#E8890C","#D4B106","#7CB342","#2F855A"][i]}"/>`).join("")}
+      <path d="M70 104 L127 86 L177 64 L227 42 L277 18" stroke="#1C2340" stroke-width="3" fill="none" stroke-dasharray="6 5"/><text x="286" y="26" font-size="24">🏆</text>`,
+    live: `<rect x="34" y="34" width="170" height="112" rx="10" fill="#1C2340"/><rect x="42" y="42" width="154" height="92" rx="6" fill="#fff"/>
+      ${[[42,42],[119,42],[42,88],[119,88]].map(([x,y],i)=>`<rect x="${x+2}" y="${y+2}" width="73" height="42" rx="4" fill="${["#FFE3B3","#DDF5E7","#E9E0FF","#FFE0D6"][i]}"/>`).join("")}
+      ${person(80, 52, "#8D5524", "#2B1B10", "#E8890C", .55)}${person(156, 52, "#6B3E1F", "#1C1209", "#2F855A", .55)}${person(80, 98, "#A0662E", "#2B1B10", "#5B3FB8", .55)}${person(156, 98, "#7A4A24", "#1C1209", "#3B82C4", .55)}
+      <rect x="10" y="146" width="218" height="10" rx="5" fill="#1C2340"/>
+      <circle cx="270" cy="96" r="40" fill="#229ED9"/><path d="M248 96 l40 -16 l-8 38 l-12 -10 l-8 8 l1 -12 l17 -15 l-21 12z" fill="#fff"/>`,
+    triad: `${person(100, 64, "#8D5524", "#2B1B10", "#E8890C", 1.1)}${person(170, 56, "#6B3E1F", "#1C1209", "#2F855A", 1.2)}${person(240, 64, "#A0662E", "#2B1B10", "#3B82C4", 1.1)}
+      <path d="M126 112 Q170 132 214 112" stroke="#1C2340" stroke-width="5" fill="none" stroke-linecap="round" opacity=".25"/>
+      <text x="164" y="30" font-size="22">💛</text>`,
+  };
+  A.welcome = A.daily;
+  return `<svg class="ob-art" viewBox="0 0 340 170" role="img" aria-hidden="true"><defs><linearGradient id="g${k}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${bg[0]}"/><stop offset="1" stop-color="${bg[1]}"/></linearGradient></defs>
+    <rect width="340" height="170" rx="22" fill="url(#g${k})"/>${A[k] || ""}</svg>`;
+}
+
 /* sample screens shown during onboarding (fictional people: Amina, Kofi, Ngozi) */
 function obMock(k){
   const fr = lang === "fr";
@@ -1546,7 +1609,7 @@ async function onboard(i, then){
       <div class="steps">${S.map((_, k) => `<i class="${k <= i ? "on" : ""}"></i>`).join("")}</div>
       <button class="link" id="obSkip">${T_.skip}</button></div>
     <div class="auth-body ob-body">
-      ${i === 0 ? (vid ? `<div class="dvideo-wrap"><video class="dvideo" src="${esc(vid)}" controls playsinline preload="metadata"></video></div>` : `<div class="vid-ph"><span>🎬</span><p>${T_.howVidSoon}</p></div>`) : obMock(ic)}
+      ${i === 0 ? (vid ? `<div class="dvideo-wrap"><video class="dvideo" src="${esc(vid)}" controls playsinline preload="metadata"></video></div>` : obArt("triad") + `<p class="muted small">🎬 ${T_.howVidSoon}</p>`) : obArt(ic) + `<div class="ob-mock-wrap">${obMock(ic)}</div>`}
       <h1>${h}</h1><p class="lead-s">${p}</p>
       ${i === S.length - 1 ? `<button class="link" id="obMore">🧭 ${T_.howBtn}</button>` : ""}
     </div>
@@ -1753,6 +1816,7 @@ async function boot(){
     me = await rpc("gd_me", {p_token: tok});
     try{ me.methods = await rpc("gd_methods", {}); }catch(e){}
     try{ me.extra = await rpc("gd_me_extra", {p_token: tok}); }catch(e){ me.extra = {}; }
+    if(me.day < 1){ try{ WEEK1 = await rpc("gd_week_preview", {p_week: 1}); }catch(e){ WEEK1 = null; } }
     const rc = store.get("gd_ref"); if(rc){ rpc("gd_set_referrer", {p_token: tok, p_code: rc}).catch(()=>{}); store.del("gd_ref"); }
     if(!store.get("gd_lang")){ lang = me.lang; }
     document.documentElement.lang = lang;
@@ -1820,7 +1884,7 @@ function renderApp(){
   const cur = me.day;
   let body = "";
   const locked = me.payments_on && !me.has_access;
-  if(tab === "today") body = locked ? (cur < 1 ? payCard() + viewBefore() : lockedView()) : (cur < 1 ? unpaidCard() + viewBefore() : cur > 42 ? viewFinished() : (me.in_trial && me.trial_end - me.day <= 1 ? trialCard() : unpaidCard()) + renewCard() + viewToday());
+  if(tab === "today") body = locked ? (cur < 1 ? payCard() + viewBefore() : lockedView()) : (cur < 1 ? planFirstCard() + unpaidCard() + viewBefore() + week1Card() : cur > 42 ? viewFinished() : (me.in_trial && me.trial_end - me.day <= 1 ? trialCard() : unpaidCard()) + renewCard() + (me.day <= 7 ? planFirstCard() : "") + viewToday());
   if(tab === "how") body = viewHow();
   if(tab === "survey") body = viewSurvey();
   if(tab === "journey") body = viewJourney();
@@ -1958,6 +2022,22 @@ function paywall(){
   host.querySelectorAll("[data-pk]").forEach(b => b.onclick = () => { PAY.kind = b.dataset.pk; payNote = ""; close(); methodSheet(); });
 }
 
+function planFirstCard(){
+  const S = sv(); if(S.done || !me) return "";
+  const T_ = t();
+  return `<section class="panel plan-first"><div class="pf-art">${obArt("plan")}</div>
+    <div class="stack"><p class="hw-l">${lang==="fr"?"Étape 1 · avant le jour 1":"Step 1 · before day 1"}</p><h2>${T_.svTitle}</h2><p class="muted small">${T_.psNotYetS}</p>
+    ${S.step ? `<div class="meter"><i style="width:${Math.round((S.step-1)/7*100)}%"></i></div>` : ""}
+    <button class="btn btn-primary" data-svgo="${S.step || 0}">${S.step ? T_.svContinue(S.step) : T_.svStart} →</button></div></section>`;
+}
+let WEEK1 = null;
+function week1Card(){
+  if(!WEEK1 || !WEEK1.length) return "";
+  const fr = lang === "fr";
+  return `<section class="panel stack"><h3>📅 ${fr?"Ce qui vous attend en semaine 1":"What's coming in week 1"}</h3>
+    <ol class="w1">${WEEK1.map(l=>`<li><span class="w1-d">${fr?"Jour":"Day"} ${l.day}</span><div><b>${esc((fr?l.title_fr:l.title_en)||l.title_en||"")}</b><small>📖 ${esc((fr?l.word_fr:l.word_en)||l.word_en||"")}</small></div><span class="w1-lock">🔒</span></li>`).join("")}</ol>
+    <p class="muted small">${fr?"Chaque matin à 6h00, l'enseignement du jour s'ouvre ici et arrive sur WhatsApp.":"Each morning at 6:00, the day's teaching opens here and arrives on WhatsApp."}</p></section>`;
+}
 function unpaidCard(){
   if(!me.payments_on || me.plan_type || me.status === "paid" || me.status === "waitlist") return "";
   return payCard();
@@ -2058,6 +2138,12 @@ function viewPlan(){
         ${(S.stag||[]).some(Boolean) ? `<p class="muted small">${T_.psCheck}: ${(S.stag||[]).map(x=>x||"–").join(" · ")} ${T_.psCheckOf}</p>` : ""}</section>` : ""}
       <button class="btn btn-ghost" data-svgo="1">✏️ ${T_.psEdit}</button>`;
     }
+    // everything on one page: books and courses under the plan
+    const bk2 = books(), cr2 = courses(), KI = {course:"🎓",mentoring:"🤝",training:"🛠️",service:"🙌",other:"✨"};
+    body += `<section class="panel stack"><div class="top" style="margin:0"><h3>📚 ${T_.libTitle || (lang==="fr"?"Mes livres":"My books")}</h3><button class="link small" data-psub="lib">${lang==="fr"?"Ajouter / mettre à jour":"Add / update"}</button></div>
+      ${bk2.length ? bk2.map(b2=>`<div class="mk-book"><span class="cv" style="background:${spine(b2.title)}">${esc(b2.title.slice(0,28))}</span><div><b>${esc(b2.title)}</b><small>${esc(b2.author||"")}</small><div class="pbar"><i style="width:${b2.progress}%;${b2.progress>=100?"background:var(--leaf)":""}"></i></div><small>${b2.progress>=100?"✓ "+(lang==="fr"?"Terminé":"Finished"):b2.progress+"%"}</small></div></div>`).join("") : `<p class="muted small">${lang==="fr"?"Aucun livre pour l'instant.":"No books yet."}</p>`}</section>
+      <section class="panel stack"><div class="top" style="margin:0"><h3>🎓 ${lang==="fr"?"Mes formations et activités":"My courses and activities"}</h3><button class="link small" data-psub="courses">${lang==="fr"?"Ajouter / mettre à jour":"Add / update"}</button></div>
+      ${cr2.length ? cr2.map(c2=>`<div class="mk-row" style="flex-direction:column;align-items:stretch;gap:6px"><span>${KI[c2.kind]||"🎓"} <b>${esc(c2.title)}</b>${c2.provider?` <small class="muted">· ${esc(c2.provider)}</small>`:""}</span><div class="pbar"><i style="width:${c2.progress}%;${c2.progress>=100?"background:var(--leaf)":""}"></i></div></div>`).join("") : `<p class="muted small">${lang==="fr"?"Aucune formation ou activité pour l'instant.":"No courses or activities yet."}</p>`}</section>`;
     // right column on wide screens: what I'm reading + Dr. Denis Ekobena's books
     const reading = books().filter(b2 => b2.progress < 100);
     const have = new Set(books().map(b2 => b2.title.toLowerCase()));
@@ -2112,6 +2198,7 @@ function planStrip(){
       ${[[1,me.area1,d1],[2,me.area2,d2]].filter(x=>x[2]).map(([k,a,d])=>`<p><span class="ai-s">${AREA_ICON[a-1]}</span> ${esc(d)}</p>`).join("")}
       ${(()=>{ const b = books().find(x=>x.progress<100); return b ? `<p><span class="ai-s">📖</span> ${T_.nowReading}: <b>${esc(b.title)}</b> · ${b.progress}%</p>` : ""; })()}
       <button class="link small" data-goplan>${T_.openPlan}</button></section>`;
+  if(!sv().done) return "";
   return `<section class="panel plan-strip nudge rail-able"><div><h3>${T_.buildPlan}</h3><p class="muted small">${T_.buildPlanSub}</p>
       <div class="meter"><i style="width:${Math.round(planCount()/12*100)}%"></i></div></div>
       <button class="btn btn-dark" data-svgo="${(sv().step)||0}">${T_.openPlan}</button></section>`;
