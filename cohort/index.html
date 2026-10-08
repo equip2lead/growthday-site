@@ -661,6 +661,12 @@ body.no-scroll{overflow:hidden}
 .credit a{display:inline-block;margin-top:6px}
 .faq a{color:var(--ember-text,#A35F00);font-weight:600}
 .table-wrap{overflow-x:auto}
+.pay-note{background:color-mix(in srgb,var(--ember) 12%,var(--surface));border:1.5px solid color-mix(in srgb,var(--ember) 45%,transparent);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;margin:6px 0 14px}
+.pay-note p{font-size:16px;line-height:1.5}
+.pay-note b{color:var(--ember-text,#A35F00)}
+.pay-logos{display:flex;flex-wrap:wrap;gap:6px}
+.pay-logos span{font:700 12.5px var(--body);border-radius:99px;padding:5px 11px}
+.pl-mtn{background:#FFCB05;color:#1C2340}.pl-orange{background:#FF7900;color:#fff}.pl-card{background:#1C2340;color:#fff}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -876,7 +882,7 @@ en:{
   nextSteps:[["Monday · 6:00","Your first Daily Fire arrives on WhatsApp."],["Monday · evening","Fill your first 1% Card here. Two taps."],["Sunday","Rate your week in your two areas."],["Week 2","Meet your triad and start your weekly calls."]],
   hwTitle:"Today's 1% (your homework)", answerFor:a=>`Your answer for ${a}`, answerPh:"Write it here…", scoreNext:d=>`Weekly Growth Score: Sunday (day ${d})`,
 
-  payTitle:n=>`One last step, ${n}`, paySub:"Choose how you want to pay: week by week, or the full journey at once. You pay with MTN MoMo or Orange Money.",
+  payTitle:n=>`One last step, ${n}`, paySub:"Choose your plan: <b>week by week</b>, or <b>the full journey at once</b>. Then pay with <b>MTN MoMo</b>, <b>Orange Money</b> or a <b>bank card</b> (Visa, Mastercard).",
   seatsLeft:n=>n===1?"1 seat left":`${n} seats left`, payBtn:p=>`Pay ${p} FCFA`, payLater:"I'll pay later", paying:"Opening the payment page…",
   payCardTitle:"Secure your seat", payCardSub:"Your seat is confirmed once your payment is received. Then the daily teaching and your 1% Card open here.",
   checking:"Checking your payment…", notYet:"We haven't received your payment yet. If you just paid, wait a minute and tap Check again.", checkAgain:"Check again",
@@ -1031,7 +1037,7 @@ fr:{
   nextSteps:[["Lundi · 6h00","Votre premier Daily Fire arrive sur WhatsApp."],["Lundi · soir","Remplissez votre première carte 1 % ici. Deux touches."],["Dimanche","Notez votre semaine dans vos deux domaines."],["Semaine 2","Rencontrez votre triade et commencez vos appels."]],
   hwTitle:"Votre 1 % du jour (votre devoir)", answerFor:a=>`Votre réponse pour ${a}`, answerPh:"Écrivez-la ici…", scoreNext:d=>`Bilan de la semaine : dimanche (jour ${d})`,
 
-  payTitle:n=>`Une dernière étape, ${n}`, paySub:"Choisissez comment payer : semaine par semaine, ou tout le parcours en une fois. Vous payez avec MTN MoMo ou Orange Money.",
+  payTitle:n=>`Une dernière étape, ${n}`, paySub:"Choisissez votre formule : <b>semaine par semaine</b>, ou <b>tout le parcours en une fois</b>. Puis payez avec <b>MTN MoMo</b>, <b>Orange Money</b> ou une <b>carte bancaire</b> (Visa, Mastercard).",
   seatsLeft:n=>n===1?"Plus qu'1 place":`Plus que ${n} places`, payBtn:p=>`Payer ${p} FCFA`, payLater:"Je paierai plus tard", paying:"Ouverture de la page de paiement…",
   payCardTitle:"Réservez votre place", payCardSub:"Votre place est confirmée dès réception du paiement. L'enseignement quotidien et votre carte 1 % s'ouvrent alors ici.",
   checking:"Vérification de votre paiement…", notYet:"Nous n'avons pas encore reçu votre paiement. Si vous venez de payer, attendez une minute puis touchez Vérifier.", checkAgain:"Vérifier à nouveau",
@@ -1197,7 +1203,7 @@ const APPFN = "https://vjnzvrhbzaqmzneirmjq.supabase.co/functions/v1/gd-app";
 async function callApp(body){
   let res; try{ res = await fetch(APPFN, {method:"POST", headers:{"Content-Type":"application/json", apikey:KEY}, body:JSON.stringify(body)}); }catch(e){ throw new Error("network"); }
   const d = await res.json().catch(()=>({}));
-  if(!res.ok || d.error) throw new Error(d.error || "network");
+  if(!res.ok || d.error){ const e = new Error(d.error || "network"); e.detail = d.detail; throw e; }
   return d;
 }
 const fcfa = n => Number(n||0).toLocaleString("fr-FR").replace(/\u202f|\u00a0| /g,"\u00a0");
@@ -1636,10 +1642,13 @@ function payScreen(name){
   root.innerHTML = `<div class="auth done"><div class="auth-body">
     ${waiting ? `<div class="big-flame">${FLAME}</div><h1>${T_.waitTitle}</h1><p class="lead-s">${T_.waitSub}</p>
       <div class="stack" style="margin-top:28px"><button class="btn btn-primary" id="openDash">${T_.openDash}</button></div>`
-    : `<p class="step-lbl">${T_.seatsLeft(me.seats_left)}</p><h1>${T_.payTitle(esc(name))}</h1><p class="lead-s">${T_.paySub}</p>
+    : `<div class="how-top"><button class="back-btn" id="payBack">← ${T_.back}</button></div>
+      <p class="step-lbl">${T_.seatsLeft(me.seats_left)}</p><h1>${T_.payTitle(esc(name))}</h1>
+      <div class="pay-note"><p>${T_.paySub}</p><div class="pay-logos"><span class="pl-mtn">MTN MoMo</span><span class="pl-orange">Orange Money</span><span class="pl-card">💳 Visa · Mastercard</span></div></div>
       ${paySheet()}<button class="btn btn-ghost" id="openDash" style="margin-top:10px">${T_.payLater}</button>`}
   </div></div>`;
   $("#openDash").onclick = () => { document.body.classList.remove("is-auth"); boot(); };
+  const pb = $("#payBack"); if(pb) pb.onclick = () => onboard(t().obSlides.length - 1, () => payScreen(name));
   bindPaySheet(() => payScreen(name));
 }
 async function startPay(btn, errEl){
@@ -1649,7 +1658,7 @@ async function startPay(btn, errEl){
     if(d.link){ location.href = d.link; return; }
     if(d.paid){ boot(); return; }
     if(d.waitlist){ me.status = "waitlist"; payScreen(firstName(me.name)); return; }
-  }catch(e){ if(errEl) errEl.textContent = errMsg(e); }
+  }catch(e){ if(errEl) errEl.textContent = errMsg(e) + (e.detail ? ` (${String(e.detail).slice(0,140)})` : ""); }
   btn.innerHTML = old; const M = methods(); document.querySelectorAll("[data-go]").forEach(x => x.disabled = !M[x.dataset.go]);
 }
 async function payReturn(){
@@ -1750,6 +1759,8 @@ async function boot(){
     try{ store.set("gd_me_cache", JSON.stringify(me)); }catch(e){}
     cardDay = null;
     if(location.hash === "#how"){ await loadOnb(); tab = "how"; }
+    // everyone sees the onboarding once on each device, existing accounts included
+    if(!store.get("gd_onb_done") && location.hash !== "#how"){ onboard(0, () => { renderApp(); offlineBar(); flushPending(); }); setTimeout(prefetchAudio, 1500); return; }
     renderApp(); offlineBar(); flushPending(); setTimeout(prefetchAudio, 1500);
   }catch(e){
     if(e.message === "session_expired"){ store.del("gd_token"); return loginForm(); }
