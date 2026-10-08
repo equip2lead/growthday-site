@@ -729,6 +729,10 @@ body.admin{background:#F4F6FA}
 .score-entry>span:nth-child(2){flex:1;display:flex;flex-direction:column}.score-entry small{color:var(--muted);font-size:13px}
 .se-ic{flex:none;width:46px;height:46px;border-radius:14px;background:var(--ember);color:#1C2340;display:grid;place-items:center}.se-ic svg{width:26px;height:26px}
 @media (min-width:1100px){.score-entry{display:none}}
+.pay-banner{display:flex;align-items:center;gap:12px;border:2px solid var(--ember);background:color-mix(in srgb,var(--ember) 8%,var(--surface))}
+.pay-banner>span{font-size:26px}.pay-banner p{flex:1;line-height:1.45}
+.pb-acts{display:flex;align-items:center;gap:8px}
+.sv-hero .ob-art,.sv-cta .ob-art{max-width:300px}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -960,8 +964,8 @@ en:{
   storiesTitle:"Stories from past growers",
   registered:"You're registered.", perWeek:w=>`That's just ${w} FCFA a week for 6 weeks`,
 
-  semTitle:n=>n===3?"Live seminar 3 & graduation":`Live seminar ${n}`, semToday:"Today", semWith:"On Zoom with Dr. Denis Ekobena",
-  semJoin:"Join on Zoom", semLinkSoon:"The Zoom link will be sent to you on WhatsApp.", semAdd:"Put it in your calendar now. It's 90 minutes that will move your 6 weeks forward.",
+  semTitle:n=>n===3?"Live seminar 3 & graduation":`Live seminar ${n}`, semToday:"Today", semWith:"Live in the Telegram group, with Dr. Denis Ekobena",
+  semJoin:"Join live on Telegram", semLinkSoon:"It happens live in the cohort Telegram group.", semAdd:"Put it in your calendar now. It's 90 minutes that will move your 6 weeks forward.",
   grpTitle:"The cohort group", grpSub:"Share your wins, ask questions and encourage each other between the Daily Fires.", grpBtn:"Join on Telegram",
   scStart:"Start", scLast:"Last week", scSince:d=>d>0?`▲ +${d} since you started`:d<0?`▼ ${d} since you started`:"Same as when you started",
   scPrompts:["This week I learned…","I struggled with…","Next week I will…"], scDone:"Score saved. See your curve in Journey.", scSeeCurve:"See my growth curve",
@@ -986,7 +990,8 @@ en:{
 
 
 
-  tab_card:"1% Card", tab_score:"Growth Score", tab_today:"Today",
+  tab_card:"1% Card", tab_score:"Growth Score", tab_today:"Daily Fire",
+  pbBack:"Back to my dashboard", pbWait:"This can take a few seconds. You'll also get a WhatsApp receipt when the payment is confirmed.", pbTry:"Try again", pbStill:"We haven't received the confirmation yet. If you paid, your access opens automatically within a few minutes and you'll get a WhatsApp receipt.", pbNo:"The payment didn't go through or was cancelled. No money was taken. You can try again whenever you're ready.",
   cdTitle:"Your 1% Card", cdSub:"Tap each area where you applied today's principle, then write one line. It takes 1 minute.", cdSoonT:"Your 1% Card opens on day 1", cdSoonS:d=>`From ${d}, you fill it here every evening: two taps and one line. Here's Amina's card as an example.`, cdLast7:"Your last 7 days",
   scTitle:"Growth Score", scSub:"Every Sunday, rate yourself from 1 to 10 in each area and watch your growth curve rise.", scNext:(d,n)=>`Your next score: Sunday ${d} (day ${n}).`, scStart:"Your starting scores", scSetStart:"Set your starting scores in your growth plan (step 3).", scOpenPlan:"Start my growth plan", scOpen:"Open my Growth Score",
   lkLesson:d=>`Today's Daily Fire · Day ${d}`, lkLessonS:"Teaching, verse and today's 1% action", lkMedia:"Audio and video of the day", lkCard:"Your 1% Card", lkCardS:"Fill tonight's card and keep your streak", lkUnlock:"Unlock", lkKept:"Your plan, your progress and your badges are kept. My plan and Journey stay open.",
@@ -1010,14 +1015,14 @@ en:{
   pcFullF:["Everything in Weekly","All 42 days, no interruption","3 live seminars and graduation","One payment, nothing more to think about"],
   pcBtnWeek:w=>`Pay week ${w}`, pcBtnFull:x=>`Pay ${x}\u00a0FCFA`, pcPayNow:"You're paying", pcClose:"Close",
   menuProfile:"My profile", menuHow:"How it works", menuOut:"Sign out", skip:"Skip", next2:"Next", obDone:"Continue",
-  obSlides:[["welcome","Welcome to Growth Day","Six weeks to grow 1% a day in the two areas you chose. Here's how it works, with Amina's example."],["daily","Every morning at 6:00","The Daily Fire arrives on WhatsApp with the day's audio. The same teaching is in the app, under Today, and works even without internet."],["card","Every evening: your 1% Card","Two taps and one line. Amina wrote what she did for her finances today, and her flame lit up."],["plan","Your growth plan","Seven short questions build your personal plan: where you are, your why, your daily 1% and your system."],["library","Your books and courses","Track what you read and learn: Amina is reading Who Am I? and Atomic Habits, and taking a finance course and an AI course."],["score","Every Sunday: your Growth Score","Rate yourself from 1 to 10 in each area and watch your curve rise. Amina went from 4 to 7."],["live","Live on Zoom, together on Telegram","Every two weeks, a live seminar with Dr. Denis Ekobena. Every day, the cohort group to share your wins."],["triad","You're not alone","From week 2, you walk with a triad and a Growth Guide who check in on you."]],
+  obSlides:[["welcome","Welcome to Growth Day","Six weeks to grow 1% a day in the two areas you chose. Here's how it works, with Amina's example."],["daily","Every morning at 6:00","The Daily Fire arrives on WhatsApp with the day's audio. The same teaching is in the app, under Today, and works even without internet."],["card","Every evening: your 1% Card","Two taps and one line. Amina wrote what she did for her finances today, and her flame lit up."],["plan","Your growth plan","Seven short questions build your personal plan: where you are, your why, your daily 1% and your system."],["library","Your books and courses","Track what you read and learn: Amina is reading Who Am I? and Atomic Habits, and taking a finance course and an AI course."],["score","Every Sunday: your Growth Score","Rate yourself from 1 to 10 in each area and watch your curve rise. Amina went from 4 to 7."],["live","Together on Telegram","Join the cohort group now: every day you share your wins there, and every two weeks Dr. Denis Ekobena holds the live seminar right in the group."],["triad","You're not alone","From week 2, you walk with a triad and a Growth Guide who check in on you."]],
   howBtn:"How it works", howNew:"New here? See how it all works", howTitle:"How Growth Day works", howSub:"Everything you need to know, in 3 minutes.",
   howVidSoon:"Welcome video from Dr. Denis Ekobena, coming soon.", howStart:"Let's go",
   howRhythmT:"Your daily rhythm", howRhythm:[["6:00","🔥 The Daily Fire","Arrives on WhatsApp with the day's audio. The same teaching is here in the app, under Today."],["Day","💪 Your 1%","One small step in each of your two areas. Small, but every day."],["Evening","✅ Your 1% Card","Two taps and one line, in the app. Your flame lights up."],["Sunday","📊 Your Growth Score","Rate yourself from 1 to 10 in each area and watch your curve grow."]],
   howTabsT:"The app, tab by tab",
   howTabs:{today:["Today","Your progress ring, this week's flames, the day's teaching with its audio and video, and your 1% Card."],plan:["My plan","Your growth plan for each area, built during week 1, plus your books, courses and activities."],journey:["Journey","All 42 flames, your growth curve, your badges, and in week 6 your Growth Report and certificate."],me:["Me","Your two areas, your triad and Growth Guide, the cohort group, notifications, your invite link and your access."]},
   howMoreT:"Also good to know",
-  howMore:[["🎥","Live seminars","On Zoom, the Saturdays of weeks 2, 4 and 6. The last one is the graduation."],["👥","Your triad","Two other participants and a Growth Guide who walk with you from week 2."],["📴","No internet?","Open the app once with internet each day: the audio is then saved on your phone and plays offline. Your card is sent when you're back online."],["📲","Install the app","On Android: menu ⋮ → Add to Home screen. On iPhone: Share → Add to Home Screen. It then opens like a real app."]],
+  howMore:[["🎥","Live seminars","Live in the Telegram group, on the Saturdays of weeks 2, 4 and 6. The last one is the graduation."],["👥","Your triad","Two other participants and a Growth Guide who walk with you from week 2."],["📴","No internet?","Open the app once with internet each day: the audio is then saved on your phone and plays offline. Your card is sent when you're back online."],["📲","Install the app","On Android: menu ⋮ → Add to Home screen. On iPhone: Share → Add to Home Screen. It then opens like a real app."]],
   trialEndT:d=>d<=0?"Your free access ends tonight":"Your free access ends tomorrow", trialEndS:"Secure your seat now to keep your Daily Fire, your 1% Card and your streak going.",
   trialOverT:"Your free days are over", trialOverS:"You've seen how it works. Secure your seat to continue: your plan and your progress are kept.",
   tAll:"All at once", tWeek:"Per week", tNext:"Next week", tRest:"The rest", howPay:"How do you want to pay?",
@@ -1118,8 +1123,8 @@ fr:{
   storiesTitle:"Témoignages d'anciens participants",
   registered:"Vous êtes inscrit.", perWeek:w=>`Soit seulement ${w} FCFA par semaine pendant 6 semaines`,
 
-  semTitle:n=>n===3?"Séminaire 3 et remise de diplômes":`Séminaire en direct n°${n}`, semToday:"Aujourd'hui", semWith:"Sur Zoom avec le Dr Denis Ekobena",
-  semJoin:"Rejoindre sur Zoom", semLinkSoon:"Le lien Zoom vous sera envoyé sur WhatsApp.", semAdd:"Notez-le dès maintenant dans votre agenda. Ce sont 90 minutes qui feront avancer vos 6 semaines.",
+  semTitle:n=>n===3?"Séminaire 3 et remise de diplômes":`Séminaire en direct n°${n}`, semToday:"Aujourd'hui", semWith:"En direct dans le groupe Telegram, avec le Dr Denis Ekobena",
+  semJoin:"Rejoindre en direct sur Telegram", semLinkSoon:"Il a lieu en direct dans le groupe Telegram de la cohorte.", semAdd:"Notez-le dès maintenant dans votre agenda. Ce sont 90 minutes qui feront avancer vos 6 semaines.",
   grpTitle:"Le groupe de la cohorte", grpSub:"Partagez vos victoires, posez vos questions et encouragez-vous entre deux Daily Fire.", grpBtn:"Rejoindre sur Telegram",
   scStart:"Départ", scLast:"Semaine dernière", scSince:d=>d>0?`▲ +${d} depuis le départ`:d<0?`▼ ${d} depuis le départ`:"Comme au départ",
   scPrompts:["Cette semaine j'ai appris…","J'ai eu du mal avec…","La semaine prochaine je vais…"], scDone:"Bilan enregistré. Voyez votre courbe dans Parcours.", scSeeCurve:"Voir ma courbe de croissance",
@@ -1144,7 +1149,8 @@ fr:{
 
 
 
-  tab_card:"Carte 1 %", tab_score:"Bilan", tab_today:"Aujourd'hui",
+  tab_card:"Carte 1 %", tab_score:"Bilan", tab_today:"Daily Fire",
+  pbBack:"Retour à mon tableau de bord", pbWait:"Cela peut prendre quelques secondes. Vous recevrez aussi un reçu sur WhatsApp dès que le paiement est confirmé.", pbTry:"Réessayer", pbStill:"Nous n'avons pas encore reçu la confirmation. Si vous avez payé, votre accès s'ouvre automatiquement dans quelques minutes et vous recevrez un reçu sur WhatsApp.", pbNo:"Le paiement n'a pas abouti ou a été annulé. Aucun montant n'a été prélevé. Vous pouvez réessayer quand vous voulez.",
   cdTitle:"Votre carte 1 %", cdSub:"Touchez chaque domaine où vous avez appliqué le principe du jour, puis écrivez une ligne. Une minute suffit.", cdSoonT:"Votre carte 1 % s'ouvre au jour 1", cdSoonS:d=>`À partir du ${d}, vous la remplissez ici chaque soir : deux touches et une ligne. Voici la carte d'Amina comme exemple.`, cdLast7:"Vos 7 derniers jours",
   scTitle:"Bilan de croissance", scSub:"Chaque dimanche, notez-vous de 1 à 10 dans chaque domaine et regardez votre courbe monter.", scNext:(d,n)=>`Votre prochain bilan : dimanche ${d} (jour ${n}).`, scStart:"Vos notes de départ", scSetStart:"Indiquez vos notes de départ dans votre plan de croissance (étape 3).", scOpenPlan:"Commencer mon plan", scOpen:"Ouvrir mon bilan",
   lkLesson:d=>`Daily Fire du jour · Jour ${d}`, lkLessonS:"Enseignement, verset et action 1 % du jour", lkMedia:"Audio et vidéo du jour", lkCard:"Votre carte 1 %", lkCardS:"Remplissez la carte du soir et gardez votre série", lkUnlock:"Débloquer", lkKept:"Votre plan, vos progrès et vos badges sont conservés. Mon plan et Parcours restent ouverts.",
@@ -1168,14 +1174,14 @@ fr:{
   pcFullF:["Tout ce qui est dans Hebdomadaire","Les 42 jours, sans interruption","3 séminaires en direct et la remise de diplômes","Un seul paiement, plus rien à penser"],
   pcBtnWeek:w=>`Payer la semaine ${w}`, pcBtnFull:x=>`Payer ${x}\u00a0FCFA`, pcPayNow:"Vous payez", pcClose:"Fermer",
   menuProfile:"Mon profil", menuHow:"Comment ça marche", menuOut:"Se déconnecter", skip:"Passer", next2:"Suivant", obDone:"Continuer",
-  obSlides:[["welcome","Bienvenue à Growth Day","Six semaines pour grandir de 1 % par jour dans les deux domaines que vous avez choisis. Voici comment ça marche, avec l'exemple d'Amina."],["daily","Chaque matin à 6h00","Le Daily Fire arrive sur WhatsApp avec l'audio du jour. Le même enseignement est dans l'application, sous Aujourd'hui, même sans internet."],["card","Chaque soir : votre carte 1 %","Deux touches et une ligne. Amina a écrit ce qu'elle a fait pour ses finances aujourd'hui, et sa flamme s'est allumée."],["plan","Votre plan de croissance","Sept petites questions construisent votre plan personnel : où vous en êtes, votre pourquoi, votre 1 % quotidien et votre système."],["library","Vos livres et formations","Suivez ce que vous lisez et apprenez : Amina lit Qui suis-je ? et Atomic Habits, et suit une formation en finances et une formation en IA."],["score","Chaque dimanche : votre bilan","Notez-vous de 1 à 10 dans chaque domaine et regardez votre courbe monter. Amina est passée de 4 à 7."],["live","En direct sur Zoom, ensemble sur Telegram","Toutes les deux semaines, un séminaire en direct avec le Dr Denis Ekobena. Chaque jour, le groupe de la cohorte pour partager vos victoires."],["triad","Vous n'êtes pas seul","Dès la semaine 2, vous marchez avec une triade et un Growth Guide qui prennent de vos nouvelles."]],
+  obSlides:[["welcome","Bienvenue à Growth Day","Six semaines pour grandir de 1 % par jour dans les deux domaines que vous avez choisis. Voici comment ça marche, avec l'exemple d'Amina."],["daily","Chaque matin à 6h00","Le Daily Fire arrive sur WhatsApp avec l'audio du jour. Le même enseignement est dans l'application, sous Aujourd'hui, même sans internet."],["card","Chaque soir : votre carte 1 %","Deux touches et une ligne. Amina a écrit ce qu'elle a fait pour ses finances aujourd'hui, et sa flamme s'est allumée."],["plan","Votre plan de croissance","Sept petites questions construisent votre plan personnel : où vous en êtes, votre pourquoi, votre 1 % quotidien et votre système."],["library","Vos livres et formations","Suivez ce que vous lisez et apprenez : Amina lit Qui suis-je ? et Atomic Habits, et suit une formation en finances et une formation en IA."],["score","Chaque dimanche : votre bilan","Notez-vous de 1 à 10 dans chaque domaine et regardez votre courbe monter. Amina est passée de 4 à 7."],["live","Ensemble sur Telegram","Rejoignez dès maintenant le groupe de la cohorte : chaque jour vous y partagez vos victoires, et toutes les deux semaines le Dr Denis Ekobena y anime le séminaire en direct."],["triad","Vous n'êtes pas seul","Dès la semaine 2, vous marchez avec une triade et un Growth Guide qui prennent de vos nouvelles."]],
   howBtn:"Comment ça marche", howNew:"Nouveau ? Découvrez comment tout fonctionne", howTitle:"Comment fonctionne Growth Day", howSub:"Tout ce qu'il faut savoir, en 3 minutes.",
   howVidSoon:"Vidéo de bienvenue du Dr Denis Ekobena, bientôt disponible.", howStart:"C'est parti",
   howRhythmT:"Votre rythme quotidien", howRhythm:[["6h00","🔥 Le Daily Fire","Arrive sur WhatsApp avec l'audio du jour. Le même enseignement est ici dans l'application, sous Aujourd'hui."],["Journée","💪 Votre 1 %","Un petit pas dans chacun de vos deux domaines. Petit, mais chaque jour."],["Soir","✅ Votre carte 1 %","Deux touches et une ligne, dans l'application. Votre flamme s'allume."],["Dimanche","📊 Votre bilan","Notez-vous de 1 à 10 dans chaque domaine et regardez votre courbe grandir."]],
   howTabsT:"L'application, onglet par onglet",
   howTabs:{today:["Aujourd'hui","Votre anneau de progression, les flammes de la semaine, l'enseignement du jour avec son audio et sa vidéo, et votre carte 1 %."],plan:["Mon plan","Votre plan de croissance pour chaque domaine, construit en semaine 1, plus vos livres, formations et activités."],journey:["Parcours","Les 42 flammes, votre courbe de croissance, vos badges et, en semaine 6, votre bilan et votre certificat."],me:["Moi","Vos deux domaines, votre triade et votre Growth Guide, le groupe de la cohorte, les notifications, votre lien d'invitation et votre accès."]},
   howMoreT:"Bon à savoir aussi",
-  howMore:[["🎥","Séminaires en direct","Sur Zoom, les samedis des semaines 2, 4 et 6. Le dernier est la remise de diplômes."],["👥","Votre triade","Deux autres participants et un Growth Guide qui marchent avec vous dès la semaine 2."],["📴","Pas d'internet ?","Ouvrez l'application une fois par jour avec internet : l'audio est alors enregistré sur votre téléphone et fonctionne hors ligne. Votre carte est envoyée au retour de la connexion."],["📲","Installer l'application","Sur Android : menu ⋮ → Ajouter à l'écran d'accueil. Sur iPhone : Partager → Sur l'écran d'accueil. Elle s'ouvre alors comme une vraie application."]],
+  howMore:[["🎥","Séminaires en direct","En direct dans le groupe Telegram, les samedis des semaines 2, 4 et 6. Le dernier est la remise de diplômes."],["👥","Votre triade","Deux autres participants et un Growth Guide qui marchent avec vous dès la semaine 2."],["📴","Pas d'internet ?","Ouvrez l'application une fois par jour avec internet : l'audio est alors enregistré sur votre téléphone et fonctionne hors ligne. Votre carte est envoyée au retour de la connexion."],["📲","Installer l'application","Sur Android : menu ⋮ → Ajouter à l'écran d'accueil. Sur iPhone : Partager → Sur l'écran d'accueil. Elle s'ouvre alors comme une vraie application."]],
   trialEndT:d=>d<=0?"Votre accès gratuit se termine ce soir":"Votre accès gratuit se termine demain", trialEndS:"Réservez votre place maintenant pour garder votre Daily Fire, votre carte 1 % et votre série.",
   trialOverT:"Vos jours gratuits sont terminés", trialOverS:"Vous avez vu comment ça marche. Réservez votre place pour continuer : votre plan et vos progrès sont conservés.",
   tAll:"Tout en une fois", tWeek:"Par semaine", tNext:"Semaine suivante", tRest:"Le reste", howPay:"Comment voulez-vous payer ?",
@@ -1651,7 +1657,7 @@ function obMock(k){
     score: `<div class="mock"><p class="mk-l">💰 ${fr?"Finances":"Finances"} <b style="float:right">7/10</b></p>
       <div class="sc-seg mk-seg">${Array.from({length:10},(_,i)=>`<button type="button" class="${i<7?"on":""}" style="--h:${22+i*13}" tabindex="-1">${i+1}</button>`).join("")}</div>
       <p class="chip-d up" style="display:inline-block;margin-top:10px">▲ +3 ${fr?"depuis le départ":"since you started"}</p></div>`,
-    live: `<div class="mock"><div class="mk-sem"><div class="sem-date"><b>31</b><span>${fr?"oct.":"Oct"}</span></div><div><small>📅 ${fr?"Samedi · 10h00 · Zoom":"Saturday · 10:00 · Zoom"}</small><b>${fr?"Séminaire en direct n°1":"Live seminar 1"}</b></div></div>
+    live: `<div class="mock"><div class="mk-sem"><div class="sem-date"><b>31</b><span>${fr?"oct.":"Oct"}</span></div><div><small>📅 ${fr?"Samedi · 10h00 · en direct sur Telegram":"Saturday · 10:00 · live on Telegram"}</small><b>${fr?"Séminaire en direct n°1":"Live seminar 1"}</b></div></div>
       <div class="mk-tg"><span class="tg">${TG_ICON}</span><div><b>${fr?"Groupe de la cohorte":"Cohort group"}</b><small>Kofi: ${fr?"« J'ai tenu 7 jours ! 🔥 »":"\u201cI made it to 7 days! 🔥\u201d"}</small></div></div></div>`,
     triad: `<div class="mock"><p class="mk-l">${fr?"Triade 1":"Triad 1"}</p>
       ${[["NE","Ngozi Eze",fr?"Growth Guide":"Growth Guide"],["AN","Amina Nkeng","💰 🙏"],["KM","Kofi Mensah","💼 💪"]].map(([i,n,d])=>`<div class="mk-person"><span class="avatar sm">${i}</span><div><b>${n}</b><small>${d}</small></div><span class="mk-btn">${fr?"Message":"Message"}</span></div>`).join("")}</div>`,
@@ -1673,6 +1679,7 @@ async function onboard(i, then){
     <div class="auth-body ob-body">
       ${i === 0 ? (vid ? `<div class="dvideo-wrap"><video class="dvideo" src="${esc(vid)}" controls playsinline preload="metadata"></video></div>` : obArt("triad") + `<p class="muted small">🎬 ${T_.howVidSoon}</p>`) : obArt(ic) + `<div class="ob-mock-wrap">${obMock(ic)}</div>`}
       <h1>${h}</h1><p class="lead-s">${p}</p>
+      ${ic === "live" && (ONB || {}).community ? `<a class="btn btn-tg" href="${esc(ONB.community)}" target="_blank" rel="noopener" style="max-width:340px">${TG_ICON} ${lang==="fr"?"Rejoindre le groupe Telegram":"Join the Telegram group"}</a>` : ""}
       ${i === S.length - 1 ? `<button class="link" id="obMore">🧭 ${T_.howBtn}</button>` : ""}
     </div>
     <div class="auth-cta"><button class="btn btn-primary btn-lg" id="obNext">${last ? T_.obDone : T_.next2} →</button></div>
@@ -1786,20 +1793,30 @@ async function startPay(btn, errEl){
   }catch(e){ if(errEl) errEl.textContent = errMsg(e) + (e.detail ? ` (${String(e.detail).slice(0,140)})` : ""); }
   btn.innerHTML = old; const M = methods(); document.querySelectorAll("[data-go]").forEach(x => x.disabled = !M[x.dataset.go]);
 }
+let PAY_BANNER = null;
 async function payReturn(){
   const T_ = t(), dep = new URLSearchParams(location.search).get("depositId") || "";
   document.body.classList.add("is-auth");
-  root.innerHTML = `<div class="auth done"><div class="auth-body center-v"><div class="big-flame pulse">${FLAME}</div><h1>${T_.checking}</h1></div></div>`;
+  let stop = false;
+  root.innerHTML = `<div class="auth done"><div class="auth-body center-v"><div class="big-flame pulse">${FLAME}</div><h1>${T_.checking}</h1>
+    <p class="muted">${T_.pbWait}</p><button class="btn btn-ghost" id="pbBack" style="margin-top:22px;max-width:320px">← ${T_.pbBack}</button></div></div>`;
   history.replaceState(null, "", location.pathname);
-  for(let i=0;i<8;i++){
+  const leave = async (msg) => { stop = true; PAY_BANNER = msg; document.body.classList.remove("is-auth"); tab = "today"; await boot(); };
+  $("#pbBack").onclick = () => leave(T_.pbStill);
+  for(let i = 0; i < 6 && !stop; i++){
     try{ const d = await callApp({action:"pay_check", token:store.get("gd_token"), depositId:dep});
-      if(d.paid){ me = await rpc("gd_me", {p_token:store.get("gd_token")}); doneScreen(firstName(me.name)); const h=$(".done h1"); if(h) h.textContent = T_.seatOk + " 🎉"; return; }
-      if(d.status === "FAILED"){ payNote = t().err.pay_failed; break; }
-    }catch(e){ if(e.message==="session_expired"){ store.del("gd_token"); return loginForm(); } }
-    await new Promise(r=>setTimeout(r, 3500));
+      if(stop) return;
+      if(d.paid){ stop = true; me = await rpc("gd_me", {p_token:store.get("gd_token")}); doneScreen(firstName(me.name)); const h=$(".done h1"); if(h) h.textContent = T_.seatOk + " 🎉"; return; }
+      if(["FAILED","REJECTED","CANCELLED","EXPIRED","NONE"].includes(String(d.status||"").toUpperCase())) return leave(T_.pbNo);
+    }catch(e){ if(e.message === "session_expired"){ store.del("gd_token"); return loginForm(); } }
+    await new Promise(r => setTimeout(r, 3000));
   }
-  if(!payNote) payNote = T_.notYet;
-  document.body.classList.remove("is-auth"); await boot(); renderApp();
+  if(!stop) leave(T_.pbStill);
+}
+function payBanner(){
+  if(!PAY_BANNER) return "";
+  return `<section class="panel pay-banner" role="status"><span>💳</span><p>${esc(PAY_BANNER)}</p>
+    <div class="pb-acts">${me && me.payments_on && me.plan_type !== "full" ? `<button class="btn btn-primary sm" id="pbTry">${t().pbTry}</button>` : ""}<button class="icon-btn" id="pbX" aria-label="${t().pcClose}">✕</button></div></section>`;
 }
 let payNote = "";
 function payCard(){
@@ -1870,7 +1887,7 @@ let me = null, tab = "today", cardDay = null, lastSaved = null;
 async function boot(){
   document.body.classList.remove("is-land","is-auth");
   if(/[?&]pay=return/.test(location.search) && store.get("gd_token")) return payReturn();
-  if(/[?&]pay=cancel/.test(location.search)){ history.replaceState(null, "", location.pathname); payNote = t().pCancelled; }
+  if(/[?&]pay=cancel/.test(location.search)){ history.replaceState(null, "", location.pathname); PAY_BANNER = t().pbNo; }
   const tok = store.get("gd_token");
   if(!tok) return welcome();
   root.innerHTML = `<div class="wrap stack-lg" aria-busy="true" aria-label="${t().loading}"><div class="sk-row"><div><i class="sk" style="width:90px;height:12px"></i><i class="sk" style="width:140px;height:24px;margin-top:8px"></i></div><i class="sk" style="width:42px;height:42px;border-radius:50%"></i></div><i class="sk" style="height:190px;border-radius:24px"></i><i class="sk" style="height:120px;border-radius:22px"></i><i class="sk" style="height:220px;border-radius:22px"></i></div>`;
@@ -1923,6 +1940,7 @@ function flameGrid(onDark){
 }
 
 const TAB_ICON = {
+    fire:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3c1 3.2 4.5 4.8 4.5 9.2A4.5 4.5 0 0 1 12 17a4.5 4.5 0 0 1-4.5-4.8c0-2 1-3.2 2-4.2.3 1.6 1 2.4 2 2.8C11.2 8.6 11 6 12 3z"/><path d="M8 20.5h8"/></svg>',
     card:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><path d="M8 12.5l3 3 5.5-6"/></svg>',
     score:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20h16"/><rect x="5.5" y="12" width="3" height="6" rx="1"/><rect x="10.5" y="8" width="3" height="10" rx="1"/><rect x="15.5" y="4" width="3" height="14" rx="1"/></svg>',
     today:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
@@ -1935,7 +1953,7 @@ function sidebar(){
   const T_ = t(), ini = String(me.name||"?").trim().split(/\s+/).map(x=>x[0]).slice(0,2).join("").toUpperCase();
   return `<aside class="sidebar" aria-label="Main">
     <div class="sb-brand"><img src="${LOGO}" alt="">Growth Day</div>
-    <nav class="sb-nav">${["today","card","score","plan","journey","me"].map(k=>`<button data-tab="${k}" ${tab===k?'aria-current="page"':""}>${TAB_ICON[k]}<span>${tabLabel(k)}</span></button>`).join("")}
+    <nav class="sb-nav">${["today","card","score","plan","journey","me"].map(k=>`<button data-tab="${k}" ${tab===k?'aria-current="page"':""}>${k==="today"?TAB_ICON.fire:TAB_ICON[k]}<span>${tabLabel(k)}</span></button>`).join("")}
       <button data-how ${tab==="how"?'aria-current="page"':""}><span class="sb-emoji">🧭</span><span>${T_.howBtn}</span></button></nav>
     <div class="sb-foot">${langToggle()}
       <div class="sb-user"><span class="avatar sm">${esc(ini)}</span><div><b>${esc(firstName(me.name))}</b><button class="link small" data-signout>${T_.menuOut}</button></div></div></div>
@@ -1957,8 +1975,8 @@ function renderApp(){
   if(tab === "me") body = viewMe();
   if(tab === "plan") body = viewPlan();
   const icon = TAB_ICON;
-  root.innerHTML = `<div class="shell tab-${tab}">${sidebar()}<div class="wrap stack-lg">${appHeader()}<div class="cols"><div class="col-main stack-lg">${body}</div><aside class="col-rail stack-lg" id="rail"></aside></div>${credit()}</div></div>
-    <nav class="tabs" aria-label="Main"><div>${["today","card","plan","journey","me"].map(k=>`<button data-tab="${k}" ${tab===k?'aria-current="page"':""}>${icon[k]}${tabLabel(k)}</button>`).join("")}</div></nav>`;
+  root.innerHTML = `<div class="shell tab-${tab}">${sidebar()}<div class="wrap stack-lg">${appHeader()}<div class="cols"><div class="col-main stack-lg">${tab === "today" ? payBanner() : ""}${body}</div><aside class="col-rail stack-lg" id="rail"></aside></div>${credit()}</div></div>
+    <nav class="tabs" aria-label="Main"><div>${["today","card","plan","journey","me"].map(k=>`<button data-tab="${k}" ${tab===k?'aria-current="page"':""}>${k==="today"?TAB_ICON.fire:icon[k]}${tabLabel(k)}</button>`).join("")}</div></nav>`;
   if(DESK.matches){ const rail = $("#rail"); document.querySelectorAll(".col-main .rail-able").forEach(el => rail.appendChild(el)); }
   bindLang(renderApp);
   document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; cardDay = null; renderApp(); window.scrollTo(0,0); });
@@ -1970,6 +1988,8 @@ function renderApp(){
   bindPaySheet(renderApp);
   bindSurvey();
   document.querySelectorAll("[data-paywall]").forEach(b => b.onclick = () => paywall());
+  const pbx = $("#pbX"); if(pbx) pbx.onclick = () => { PAY_BANNER = null; renderApp(); };
+  const pbt = $("#pbTry"); if(pbt) pbt.onclick = () => { PAY_BANNER = null; renderApp(); paywall(); };
   document.querySelectorAll("[data-tabgo]").forEach(b => b.onclick = () => { tab = b.dataset.tabgo; cardDay = null; renderApp(); window.scrollTo(0,0); });
   if(locked && tab === "today" && me.day >= 1 && !PW_SHOWN){ PW_SHOWN = true; setTimeout(paywall, 500); }
   document.querySelectorAll("[data-svgo]").forEach(b => { const old = b.onclick; b.onclick = () => { tab = "survey"; SV.step = +b.dataset.svgo || 0; renderApp(); window.scrollTo(0,0); }; });
@@ -2192,7 +2212,7 @@ function viewPlan(){
   if(planSub === "areas"){
     const S = sv(), dayNow = Math.max(1, me.day);
     if(!S.done){
-      body = `<section class="panel stack sv-cta"><span class="sv-cta-ic">🧭</span><h2>${T_.psNotYetT}</h2><p class="muted">${T_.psNotYetS}</p>
+      body = `<section class="panel stack sv-cta">${obArt("plan")}<h2>${T_.psNotYetT}</h2><p class="muted">${T_.psNotYetS}</p>
         ${S.step ? `<div class="meter"><i style="width:${Math.round((S.step-1)/7*100)}%"></i></div>` : ""}
         <button class="btn btn-primary btn-lg" data-svgo="${S.step || 0}">${S.step ? T_.svContinue(S.step) : T_.svStart} →</button></section>`;
     } else {
@@ -2330,7 +2350,7 @@ function seminarCard(){
   return `<section class="panel stack sem-card rail-able">
     <div class="sem-h"><div class="sem-date"><b>${dayDate(me.start_date, d).getDate()}</b><span>${dayDate(me.start_date, d).toLocaleDateString(lang==="fr"?"fr-FR":"en-GB",{month:"short"})}</span></div>
       <div><p class="hw-l">📅 ${isToday ? T_.semToday : esc(date)} · ${esc(lang==="fr"?time.replace(":","h"):time)}</p><h2>${T_.semTitle(n)}</h2><p class="muted small">${T_.semWith}</p></div></div>
-    ${me.seminar_link ? `<a class="btn btn-primary" href="${esc(me.seminar_link)}" target="_blank" rel="noopener">${T_.semJoin}</a>` : `<p class="small">${T_.semLinkSoon}</p>`}
+    ${me.seminar_link || me.community_link ? `<a class="btn btn-tg" href="${esc(me.seminar_link || me.community_link)}" target="_blank" rel="noopener">${TG_ICON} ${T_.semJoin}</a>` : `<p class="small">${T_.semLinkSoon}</p>`}
     ${isToday ? "" : `<p class="muted small">${T_.semAdd}</p>`}
   </section>`;
 }
@@ -2608,7 +2628,7 @@ function viewSurvey(){
       <div><label for="svpa">${T_.svPartner}</label><input id="svpa" maxlength="80" value="${esc(s0.partner||"")}" placeholder="${esc(T_.svPartnerPh)}"></div></div>`; }
   if(st === 0){
     return `<section class="stack sv"><div class="how-top"><button class="back-btn" data-svexit>← ${T_.back}</button></div>
-      <div class="sv-hero"><span>🧭</span><h1>${T_.svTitle}</h1><p class="lead-s">${T_.svIntro}</p>
+      <div class="sv-hero">${obArt("plan")}<h1>${T_.svTitle}</h1><p class="lead-s">${T_.svIntro}</p>
       <ol class="sv-list">${[T_.sv1T,T_.sv2T,T_.sv3T,T_.sv4T,T_.sv5T,T_.sv6T,T_.sv7T].map(x=>`<li>${x}</li>`).join("")}</ol>
       <button class="btn btn-primary btn-lg" data-svgo="${s0.step && !s0.done ? s0.step : 1}">${s0.step && !s0.done ? T_.svContinue(s0.step) : T_.svStart} →</button></div></section>`;
   }
@@ -2936,10 +2956,10 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
         <p class="muted small" style="margin-top:6px">Counted from each person's first Daily Fire. Not announced to participants; on the last free day they get a reminder at 20:00.</p></div>
       <p id="onbMsg" role="status"></p><button class="btn btn-dark" id="onbSave" style="max-width:260px">Save onboarding</button></div>
   <div class="panel stack" style="margin-bottom:20px"><h3>Live seminars and cohort group</h3>
-      <p class="muted small">They're set automatically on the Saturdays of weeks 2, 4 and 6. Participants see a reminder card in the app from the Sunday before, and the 6:00 Daily Fire on Friday and Saturday announces it. If you add the Zoom link here, it appears in both. If not, they're told you'll send it on WhatsApp.</p>
+      <p class="muted small">They're set automatically on the Saturdays of weeks 2, 4 and 6. Participants see a reminder card in the app from the Sunday before, and the 6:00 Daily Fire on Friday and Saturday announces it. The seminar happens in the Telegram group, so the group link is used automatically. Only fill this box if you want a different link. If you leave both empty, they're told you'll send it on WhatsApp.</p>
       ${semDates}
       <div class="grid2"><div><label for="semTime">Time (Yaoundé)</label><input id="semTime" type="time" value="${esc((admSem&&admSem.time)||"10:00")}"></div>
-        <div><label for="semLink">Zoom link (optional, update before each seminar)</label><input id="semLink" placeholder="https://zoom.us/j/…" value="${esc((admSem&&admSem.link)||"")}"></div></div>
+        <div><label for="semLink">Separate seminar link (optional — the Telegram group is used by default, update before each seminar)</label><input id="semLink" placeholder="Optional: leave empty to use the Telegram group" value="${esc((admSem&&admSem.link)||"")}"></div></div>
       <div><label for="grpLink">Cohort group link (Telegram) · shown only to members who have paid</label><input id="grpLink" placeholder="https://t.me/+…" value="${esc((admSem&&admSem.community)||"")}"></div>
       <p id="semMsg" role="status"></p>
       <div class="seg"><button id="semSave">Save</button><button id="semMsgBtn">Write the link message on WhatsApp</button></div></div>
@@ -3068,11 +3088,11 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
       admSem = {time:$("#semTime").value, link:$("#semLink").value.trim(), community:$("#grpLink").value.trim()};
       m.className="ok"; m.textContent="✓ Seminar settings saved."; }catch(e){ m.className="err"; m.textContent = e.message==="time_invalid"?"Enter a time like 10:00.":"Could not save: "+e.message; } };
   const smb = $("#semMsgBtn");
-  if(smb) smb.onclick = () => { const link = $("#semLink").value.trim() || "[Zoom link]", tm = $("#semTime").value || "10:00";
+  if(smb) smb.onclick = () => { const link = $("#semLink").value.trim() || (admSem && admSem.community) || "[Telegram group link]", tm = $("#semTime").value || "10:00";
     const next = SEM_DAYS.find(([d]) => d >= adm.day) || SEM_DAYS[0], n = next[1];
     comp.aud = "all"; comp.val = "";
-    comp.en = `📅 *Live seminar ${n}${n===3?" & graduation":""}* · Saturday at ${tm}\n\nHi {name}! Here is the Zoom link for Saturday's seminar with Dr. Denis Ekobena:\n\n🔗 ${link}\n\nCome with one win and one question from your 1% in {area1} and {area2}. See you there! 🔥`;
-    comp.fr = `📅 *${n===3?"Séminaire 3 et remise de diplômes":"Séminaire en direct n°"+n}* · samedi à ${tm.replace(":","h")}\n\nBonjour {name} ! Voici le lien Zoom du séminaire de samedi avec le Dr Denis Ekobena :\n\n🔗 ${link}\n\nVenez avec une victoire et une question de votre 1 % dans {area1} et {area2}. À samedi ! 🔥`;
+    comp.en = `📅 *Live seminar ${n}${n===3?" & graduation":""}* · Saturday at ${tm}\n\nHi {name}! Saturday's live seminar with Dr. Denis Ekobena happens in our Telegram group. Join here:\n\n🔗 ${link}\n\nCome with one win and one question from your 1% in {area1} and {area2}. See you there! 🔥`;
+    comp.fr = `📅 *${n===3?"Séminaire 3 et remise de diplômes":"Séminaire en direct n°"+n}* · samedi à ${tm.replace(":","h")}\n\nBonjour {name} ! Voici le le séminaire en direct de samedi avec le Dr Denis Ekobena a lieu dans notre groupe Telegram. Rejoignez-le ici :\n\n🔗 ${link}\n\nVenez avec une victoire et une question de votre 1 % dans {area1} et {area2}. À samedi ! 🔥`;
     admTab = "messages"; adminRender(); loadMessages(); window.scrollTo(0,0); };
   const ps2 = $("#paysave");
   if(ps2) ps2.onclick = async () => { const m = $("#paymsg");
@@ -3447,7 +3467,7 @@ window.addEventListener("offline", offlineBar);
 const TERMS = {
   en: { title:"Terms, refunds and privacy", updated:"Last updated: 8 October 2026", back:"Back",
     s:[["Who we are","The Growth Day cohort is a six-week personal growth programme of Equip2Lead, operated by EBUK and led by Dr. Denis Ekobena, in Yaoundé, Cameroon. Payments are received by EBUK, so \"EBUK\" is the name you will see on your card statement or Mobile Money receipt. Contact: contact@growthday.cc, or the WhatsApp number that sends your Daily Fire."],
-       ["What you get","A daily teaching (the Daily Fire) on WhatsApp and in this app, your 1% Card and personal growth plan, weekly scores, a triad and a Growth Guide from week 2, three live seminars on Zoom, and a certificate of completion."],
+       ["What you get","A daily teaching (the Daily Fire) on WhatsApp and in this app, your 1% Card and personal growth plan, weekly scores, a triad and a Growth Guide from week 2, three live seminars in the cohort Telegram group, and a certificate of completion."],
        ["Prices","Full journey: 10,000 FCFA, paid in one payment before you start paying weekly. Weekly: 2,000 FCFA for each week, paid before the week begins (12,000 FCFA over 6 weeks). Weekly payers may pay all remaining weeks at once, at 2,000 FCFA per week. Prices include all taxes we are required to charge."],
        ["Payment","You pay with MTN Mobile Money or Orange Money (processed by pawaPay) or with a bank card (processed by Stripe). We never see or store your Mobile Money PIN or card details. Your access opens as soon as the payment provider confirms the payment."],
        ["Access","Your access covers the weeks you have paid. If a week is not paid, the Daily Fire, the 1% Card and the seminar link for that week stay locked until you pay; your plan, your progress and your badges are kept. Seats are limited and are held only once paid."],
@@ -3458,7 +3478,7 @@ const TERMS = {
        ["Your rights","You can ask us at any time to see, correct or delete your data, or to stop the WhatsApp messages. Write to contact@growthday.cc or on WhatsApp. Deleting your account removes your plan, cards and scores; we keep payment records only as long as the law requires."]] },
   fr: { title:"Conditions, remboursements et confidentialité", updated:"Dernière mise à jour : 8 octobre 2026", back:"Retour",
     s:[["Qui nous sommes","La cohorte Growth Day est un parcours de croissance personnelle de six semaines d'Equip2Lead, exploité par EBUK et dirigé par le Dr Denis Ekobena, à Yaoundé, au Cameroun. Les paiements sont reçus par EBUK : c'est donc le nom « EBUK » qui apparaît sur votre relevé de carte ou votre reçu Mobile Money. Contact : contact@growthday.cc, ou le numéro WhatsApp qui vous envoie le Daily Fire."],
-       ["Ce que vous recevez","Un enseignement quotidien (le Daily Fire) sur WhatsApp et dans cette application, votre carte 1 % et votre plan de croissance personnel, des bilans hebdomadaires, une triade et un Growth Guide dès la semaine 2, trois séminaires en direct sur Zoom, et un certificat de fin de parcours."],
+       ["Ce que vous recevez","Un enseignement quotidien (le Daily Fire) sur WhatsApp et dans cette application, votre carte 1 % et votre plan de croissance personnel, des bilans hebdomadaires, une triade et un Growth Guide dès la semaine 2, trois séminaires en direct dans le groupe Telegram de la cohorte, et un certificat de fin de parcours."],
        ["Prix","Parcours complet : 10 000 FCFA, en un seul paiement, avant de commencer à payer à la semaine. Hebdomadaire : 2 000 FCFA par semaine, payés avant le début de chaque semaine (12 000 FCFA sur 6 semaines). Les personnes qui paient à la semaine peuvent payer toutes les semaines restantes en une fois, à 2 000 FCFA par semaine. Les prix incluent les taxes que nous sommes tenus de facturer."],
        ["Paiement","Vous payez avec MTN Mobile Money ou Orange Money (traité par pawaPay) ou par carte bancaire (traité par Stripe). Nous ne voyons et ne conservons jamais votre code Mobile Money ni vos données de carte. Votre accès s'ouvre dès que le prestataire de paiement confirme le paiement."],
        ["Accès","Votre accès couvre les semaines payées. Si une semaine n'est pas payée, le Daily Fire, la carte 1 % et le lien du séminaire de cette semaine restent bloqués jusqu'au paiement ; votre plan, vos progrès et vos badges sont conservés. Les places sont limitées et ne sont réservées qu'une fois payées."],
