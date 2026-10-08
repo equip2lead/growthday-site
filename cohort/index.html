@@ -509,6 +509,9 @@ code.sel{user-select:all;word-break:break-all;font-size:12.5px;background:var(--
 .how-entry{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:0;cursor:pointer;color:var(--text);font:inherit}
 .how-entry>span:nth-child(2){flex:1}
 .how h2{margin-top:10px}
+.pin{border:1.5px solid var(--field-line) !important;background:var(--surface) !important}
+input[type=checkbox],input[type=radio],input[type=range],input[type=file]{border:0;background:none}
+input[type=file]{padding:6px 0}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -588,14 +591,14 @@ td input{padding:6px 8px;font-size:15px;min-width:90px}
 /* =========================================================
    Design layer v2 · depth over borders, filled inputs, tactile controls
    ========================================================= */
-:root{ --bg:#F3F4F7; --line:#E6E8EE; --shadow:0 1px 2px rgba(16,24,40,.04),0 4px 18px rgba(16,24,40,.06); --shadow-lg:0 10px 40px rgba(16,24,40,.12); --fill:#EEF0F4; }
-@media (prefers-color-scheme: dark){ :root{ --bg:#0E1222; --surface:#171C31; --line:#262D4A; --fill:#1F2540; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); } }
+:root{ --field-line:#B9C1D0; --bg:#F3F4F7; --line:#E6E8EE; --shadow:0 1px 2px rgba(16,24,40,.04),0 4px 18px rgba(16,24,40,.06); --shadow-lg:0 10px 40px rgba(16,24,40,.12); --fill:#EEF0F4; }
+@media (prefers-color-scheme: dark){ :root{ --field-line:#46507A; --bg:#0E1222; --surface:#171C31; --line:#262D4A; --fill:#1F2540; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); } }
 body{font-size:16px;letter-spacing:-.006em;font-feature-settings:"cv11","ss01"}
 h1,h2,h3{letter-spacing:-.022em}
 .panel{border:0;border-radius:22px;box-shadow:var(--shadow);padding:20px}
 .muted{color:var(--muted)}
 label{font-weight:600;font-size:14px;letter-spacing:-.003em}
-input,textarea,select{background:var(--fill);border:1.5px solid transparent;border-radius:14px;padding:13px 15px;font-size:16px;transition:border-color .15s,background .15s,box-shadow .15s}
+input,textarea,select{background:var(--surface);border:1.5px solid var(--field-line);border-radius:14px;padding:13px 15px;font-size:16px;transition:border-color .15s,background .15s,box-shadow .15s}
 input:focus,textarea:focus,select:focus{background:var(--surface);border-color:var(--ember);box-shadow:0 0 0 4px color-mix(in srgb,var(--ember) 18%,transparent)}
 input[type=range]{background:none}
 .btn{border-radius:14px;font-family:var(--body);font-weight:600;letter-spacing:-.01em;transition:transform .12s ease,box-shadow .2s,background .2s}
@@ -1412,10 +1415,6 @@ function loginForm(){
   const T_ = t();
   const inner = `<h1>${T_.signInTitle}</h1>
     <div class="stack" style="margin-top:22px">${phoneField(draft.code, "")}
-      <div class="grid2"><div class="stack">${f("video_url","Video (English) · optional, vertical 60-second clip")}
-        <div><label for="lvFile">Upload the English video</label><input type="file" id="lvFile" accept="video/*"></div></div>
-        <div class="stack">${f("video_url_fr","Vidéo (français)")}
-        <div><label for="lvFileFr">Upload the French video</label><input type="file" id="lvFileFr" accept="video/*"></div></div></div>
       <div><label for="pin">${T_.yourPin}</label><div class="pin-wrap"><input id="pin" class="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="current-password"><button class="link" id="showPin" type="button">${T_.show}</button></div></div>
       <button class="link" id="forgot" type="button">${T_.forgotBtn}</button></div>`;
   root.innerHTML = authShell(inner, 0, `<button class="btn btn-primary" id="next">${T_.signIn}</button>`);
@@ -2246,6 +2245,10 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
         <div><label for="laFile">Upload the English audio</label><input type="file" id="laFile" accept="audio/*"></div></div>
         <div class="stack">${f("audio_url_fr","Audio en français")}
         <div><label for="laFileFr">Upload the French audio</label><input type="file" id="laFileFr" accept="audio/*"></div></div></div>
+      <div class="grid2"><div class="stack">${f("video_url","Video (English) · optional, vertical 60-second clip")}
+        <div><label for="lvFile">Upload the English video</label><input type="file" id="lvFile" accept="video/*"></div></div>
+        <div class="stack">${f("video_url_fr","Vidéo (français)")}
+        <div><label for="lvFileFr">Upload the French video</label><input type="file" id="lvFileFr" accept="video/*"></div></div></div>
       <div>
       <p class="hint">Record on your phone (a WhatsApp voice note or any recording works), upload here, then save the day. It is sent after the 6:00 message and plays inside the app.</p></div>
       <p id="lmsg" role="status"></p>
