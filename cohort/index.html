@@ -733,6 +733,24 @@ body.admin{background:#F4F6FA}
 .pay-banner>span{font-size:26px}.pay-banner p{flex:1;line-height:1.45}
 .pb-acts{display:flex;align-items:center;gap:8px}
 .sv-hero .ob-art,.sv-cta .ob-art{max-width:300px}
+/* vertical videos keep their phone shape; on computers the text sits beside them */
+.dvideo-wrap{background:transparent;justify-content:center}
+.dvideo{width:auto;max-width:100%;height:auto;max-height:72vh;aspect-ratio:9/16;border-radius:18px;background:#000;box-shadow:0 18px 40px rgba(28,35,64,.25)}
+.ob-visual,.ob-text{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%}
+.ob-body .dvideo{max-height:52vh}
+@media (min-width:900px){
+  .ob .auth-body.ob-body{flex-direction:row;align-items:center;justify-content:center;gap:64px;max-width:1040px;margin:0 auto;padding-top:5vh;text-align:left}
+  .ob .ob-visual{width:auto;flex:none;max-width:440px}
+  .ob .ob-visual .ob-art{width:420px}
+  .ob .ob-visual .ob-mock-wrap{width:420px}
+  .ob .ob-body .dvideo{height:min(66vh,620px);max-height:none}
+  .ob .ob-text{align-items:flex-start;flex:1;max-width:520px}
+  .ob .ob-text h1{font-size:44px;line-height:1.1}
+  .ob .ob-text .lead-s{font-size:19px}
+  .ob .auth-cta{max-width:1040px;margin:0 auto;display:flex;justify-content:flex-end}
+  .ob .auth-cta .btn{width:auto;min-width:280px;padding-left:40px;padding-right:40px}
+  .how .dvideo-wrap{justify-content:flex-start}
+}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -1676,12 +1694,12 @@ async function onboard(i, then){
     <div class="auth-top">${i > 0 ? `<button class="back-btn" id="obPrev">← ${T_.back}</button>` : `<div class="brand"><img src="${LOGO}" alt="">Growth Day</div>`}
       <div class="steps">${S.map((_, k) => `<i class="${k <= i ? "on" : ""}"></i>`).join("")}</div>
       <button class="link" id="obSkip">${T_.skip}</button></div>
-    <div class="auth-body ob-body">
+    <div class="auth-body ob-body"><div class="ob-visual">
       ${i === 0 ? (vid ? `<div class="dvideo-wrap"><video class="dvideo" src="${esc(vid)}" controls playsinline preload="metadata"></video></div>` : obArt("triad") + `<p class="muted small">🎬 ${T_.howVidSoon}</p>`) : obArt(ic) + `<div class="ob-mock-wrap">${obMock(ic)}</div>`}
-      <h1>${h}</h1><p class="lead-s">${p}</p>
+      </div><div class="ob-text"><h1>${h}</h1><p class="lead-s">${p}</p>
       ${ic === "live" && (ONB || {}).community ? `<a class="btn btn-tg" href="${esc(ONB.community)}" target="_blank" rel="noopener" style="max-width:340px">${TG_ICON} ${lang==="fr"?"Rejoindre le groupe Telegram":"Join the Telegram group"}</a>` : ""}
       ${i === S.length - 1 ? `<button class="link" id="obMore">🧭 ${T_.howBtn}</button>` : ""}
-    </div>
+    </div></div>
     <div class="auth-cta"><button class="btn btn-primary btn-lg" id="obNext">${last ? T_.obDone : T_.next2} →</button></div>
   </div>`;
   const done = () => { store.set("gd_onb_done", "1"); document.body.classList.remove("is-auth"); then(); };
