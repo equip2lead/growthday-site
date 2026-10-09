@@ -751,6 +751,8 @@ body.admin{background:#F4F6FA}
   .ob .auth-cta .btn{width:auto;min-width:280px;padding-left:40px;padding-right:40px}
   .how .dvideo-wrap{justify-content:flex-start}
 }
+body.no-orange .pl-orange{display:none}
+.momo-note{background:#FFF8E1;border:1.5px solid #FFCB05;border-radius:14px;padding:12px 14px;font-size:14px;line-height:1.45;color:#1C2340}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -1107,7 +1109,7 @@ en:{
   myAreas:"My growth areas", areasLocked:"Your areas are locked after week 1.", areasOpen:"You can change your areas until the end of week 1.",
   saveChanges:"Save changes", changesSaved:"Changes saved.", triad:"My triad", noTriad:"Your triad will be shared with you in week 2.",
   signOut:"Sign out", whatsapp:"WhatsApp", loading:"Loading…", credit:"An <b>Equip2Lead</b> program · Led by <b>Dr. Denis Ekobena</b>",
-  err:{phone_exists:"This number is already registered. Sign in instead.",not_found:"No account uses this number. Check it, or join the cohort.",wrong_pin:"Wrong PIN. Try again.",locked:"Too many tries. Wait 15 minutes, then try again.",pin_invalid:"Your PIN must be exactly 4 digits.",pin_mismatch:"The two PINs don't match.",name_required:"Enter your full name.",phone_invalid:"Enter a valid WhatsApp number.",areas_needed:"Choose exactly 2 areas.",session_expired:"Please sign in again.",day_closed:"This card is closed. You can fill today's and yesterday's cards only.",week_closed:"This week isn't open yet.",week_locked:"This week isn't paid yet.",pay_start_failed:"The payment page couldn't open. Check your number and try again in a moment.",card_not_configured:"Card payment isn't available yet. Please use Mobile Money.",use_rest:"Choose \"The remaining weeks\" to pay the rest.",pay_failed:"The payment didn't go through. You can try again.",areas_locked:"Your areas are locked after week 1.",network:"No connection. Check your internet and try again.",code_invalid:"That code is not right. Check it and try again.",code_expired:"This code has expired. Ask for a new one.",wait:"Please wait a minute before asking for another code.",whatsapp_failed:"We couldn't send the code on WhatsApp. Ask your Growth Guide to reset your PIN.",payments_not_configured:"Payments aren't open yet. Try again soon.",provider_error:"The payment page couldn't open. Try again in a moment."}
+  err:{phone_exists:"This number is already registered. Sign in instead.",not_found:"No account uses this number. Check it, or join the cohort.",wrong_pin:"Wrong PIN. Try again.",locked:"Too many tries. Wait 15 minutes, then try again.",pin_invalid:"Your PIN must be exactly 4 digits.",pin_mismatch:"The two PINs don't match.",name_required:"Enter your full name.",phone_invalid:"Enter a valid WhatsApp number.",areas_needed:"Choose exactly 2 areas.",session_expired:"Please sign in again.",day_closed:"This card is closed. You can fill today's and yesterday's cards only.",week_closed:"This week isn't open yet.",week_locked:"This week isn't paid yet.",momo_provider_off:"Orange Money isn't available yet. Please pay with an MTN MoMo number or a bank card.",pay_start_failed:"The payment page couldn't open. Check your number and try again in a moment.",card_not_configured:"Card payment isn't available yet. Please use Mobile Money.",use_rest:"Choose \"The remaining weeks\" to pay the rest.",pay_failed:"The payment didn't go through. You can try again.",areas_locked:"Your areas are locked after week 1.",network:"No connection. Check your internet and try again.",code_invalid:"That code is not right. Check it and try again.",code_expired:"This code has expired. Ask for a new one.",wait:"Please wait a minute before asking for another code.",whatsapp_failed:"We couldn't send the code on WhatsApp. Ask your Growth Guide to reset your PIN.",payments_not_configured:"Payments aren't open yet. Try again soon.",provider_error:"The payment page couldn't open. Try again in a moment."}
 },
 fr:{
   stepOf:n=>`Étape ${n} sur 3`, next:"Continuer", country:"Pays",
@@ -1266,7 +1268,7 @@ fr:{
   myAreas:"Mes domaines de croissance", areasLocked:"Vos domaines sont fixés après la semaine 1.", areasOpen:"Vous pouvez changer vos domaines jusqu'à la fin de la semaine 1.",
   saveChanges:"Enregistrer", changesSaved:"Modifications enregistrées.", triad:"Ma triade", noTriad:"Votre triade vous sera communiquée en semaine 2.",
   signOut:"Se déconnecter", whatsapp:"WhatsApp", loading:"Chargement…", credit:"Un programme <b>Equip2Lead</b> · Dirigé par le <b>Dr Denis Ekobena</b>",
-  err:{phone_exists:"Ce numéro est déjà inscrit. Connectez-vous plutôt.",not_found:"Aucun compte avec ce numéro. Vérifiez-le ou rejoignez la cohorte.",wrong_pin:"Code PIN incorrect. Réessayez.",locked:"Trop d'essais. Attendez 15 minutes puis réessayez.",pin_invalid:"Le code PIN doit contenir exactement 4 chiffres.",pin_mismatch:"Les deux codes PIN sont différents.",name_required:"Entrez votre nom complet.",phone_invalid:"Entrez un numéro WhatsApp valide.",areas_needed:"Choisissez exactement 2 domaines.",session_expired:"Veuillez vous reconnecter.",day_closed:"Cette carte est fermée. Vous pouvez remplir seulement celle d'aujourd'hui et d'hier.",week_closed:"Cette semaine n'est pas encore ouverte.",week_locked:"Cette semaine n'est pas encore payée.",pay_start_failed:"La page de paiement n'a pas pu s'ouvrir. Vérifiez votre numéro et réessayez dans un instant.",card_not_configured:"Le paiement par carte n'est pas encore disponible. Utilisez Mobile Money.",use_rest:"Choisissez « Les semaines restantes » pour payer le reste.",pay_failed:"Le paiement n'a pas abouti. Vous pouvez réessayer.",areas_locked:"Vos domaines sont fixés après la semaine 1.",network:"Pas de connexion. Vérifiez internet et réessayez.",code_invalid:"Ce code n'est pas correct. Vérifiez-le et réessayez.",code_expired:"Ce code a expiré. Demandez-en un nouveau.",wait:"Patientez une minute avant de redemander un code.",whatsapp_failed:"Impossible d'envoyer le code sur WhatsApp. Demandez à votre Growth Guide de réinitialiser votre code.",payments_not_configured:"Les paiements ne sont pas encore ouverts. Réessayez bientôt.",provider_error:"La page de paiement n'a pas pu s'ouvrir. Réessayez dans un instant."}
+  err:{phone_exists:"Ce numéro est déjà inscrit. Connectez-vous plutôt.",not_found:"Aucun compte avec ce numéro. Vérifiez-le ou rejoignez la cohorte.",wrong_pin:"Code PIN incorrect. Réessayez.",locked:"Trop d'essais. Attendez 15 minutes puis réessayez.",pin_invalid:"Le code PIN doit contenir exactement 4 chiffres.",pin_mismatch:"Les deux codes PIN sont différents.",name_required:"Entrez votre nom complet.",phone_invalid:"Entrez un numéro WhatsApp valide.",areas_needed:"Choisissez exactement 2 domaines.",session_expired:"Veuillez vous reconnecter.",day_closed:"Cette carte est fermée. Vous pouvez remplir seulement celle d'aujourd'hui et d'hier.",week_closed:"Cette semaine n'est pas encore ouverte.",week_locked:"Cette semaine n'est pas encore payée.",momo_provider_off:"Orange Money n'est pas encore disponible. Payez avec un numéro MTN MoMo ou une carte bancaire.",pay_start_failed:"La page de paiement n'a pas pu s'ouvrir. Vérifiez votre numéro et réessayez dans un instant.",card_not_configured:"Le paiement par carte n'est pas encore disponible. Utilisez Mobile Money.",use_rest:"Choisissez « Les semaines restantes » pour payer le reste.",pay_failed:"Le paiement n'a pas abouti. Vous pouvez réessayer.",areas_locked:"Vos domaines sont fixés après la semaine 1.",network:"Pas de connexion. Vérifiez internet et réessayez.",code_invalid:"Ce code n'est pas correct. Vérifiez-le et réessayez.",code_expired:"Ce code a expiré. Demandez-en un nouveau.",wait:"Patientez une minute avant de redemander un code.",whatsapp_failed:"Impossible d'envoyer le code sur WhatsApp. Demandez à votre Growth Guide de réinitialiser votre code.",payments_not_configured:"Les paiements ne sont pas encore ouverts. Réessayez bientôt.",provider_error:"La page de paiement n'a pas pu s'ouvrir. Réessayez dans un instant."}
 }};
 
 /* ---------- utils ---------- */
@@ -1766,6 +1768,8 @@ function paySheet(){
     <p class="err" id="payErr" role="alert">${payNote ? esc(payNote) : ""}</p>
     <p class="secure">${T_.secure2} <a href="#terms" class="link">${lang==="fr"?"Conditions et remboursements":"Terms and refunds"}</a></p></div>`;
 }
+// MTN Cameroon numbers: 650-654, 67x, 680-683 (same rule as the payment engine)
+function isMtnUser(){ const d = String((me && me.phone) || "").replace(/\D/g, ""); return /^(237)?(65[0-4]|67\d|68[0-3])\d{6}$/.test(d); }
 function methodSheet(){
   const T_ = t(), M = methods(), k = PAY.kind, wk = nextWeek();
   const title = k === "full" ? T_.pcFullT : k === "rest" ? T_.pcRestT(7 - wk) : (me.plan_type === "weekly" ? T_.pcNextT(wk) : T_.pcWeekT);
@@ -1777,6 +1781,7 @@ function methodSheet(){
     <div class="ms-head"><h2>${T_.howPay}</h2><button class="icon-btn" data-msclose aria-label="${T_.pcClose}">✕</button></div>
     <div class="ms-sum"><span>${T_.pcPayNow} · ${title}</span><b>${fcfa(priceFor(k))} <small>FCFA</small></b></div>
     <div class="paygos">${go("momo", "📱", T_.goMomo, T_.goMomoS)}${go("card", "💳", T_.goCard, T_.goCardS)}</div>
+    ${!ORANGE ? `<div class="momo-note"><b>${lang==="fr"?"Mobile Money : MTN MoMo uniquement pour l'instant.":"Mobile Money: MTN MoMo only for now."}</b> ${isMtnUser() ? (lang==="fr"?"Votre numéro MTN sera prérempli sur la page suivante.":"Your MTN number will be filled in on the next page.") : (lang==="fr"?"Votre numéro WhatsApp n'est pas MTN : sur la page suivante, entrez un numéro MTN MoMo (le vôtre ou celui d'un proche), ou payez par carte bancaire.":"Your WhatsApp number isn't MTN: on the next page, enter an MTN MoMo number (yours or a family member's), or pay by bank card.")}</div>` : ""}
     <p class="err" id="payErr2" role="alert"></p>
     <p class="secure">${T_.secure2}</p></div>`;
   document.body.classList.add("no-scroll");
@@ -1808,7 +1813,7 @@ async function startPay(btn, errEl){
     if(d.link){ location.href = d.link; return; }
     if(d.paid){ boot(); return; }
     if(d.waitlist){ me.status = "waitlist"; payScreen(firstName(me.name)); return; }
-  }catch(e){ if(errEl) errEl.textContent = errMsg(e) + (e.detail ? ` (${String(e.detail).slice(0,140)})` : ""); }
+  }catch(e){ if(errEl) errEl.textContent = errMsg(e) + (e.detail && e.message !== "momo_provider_off" ? ` (${String(e.detail).slice(0,140)})` : ""); }
   btn.innerHTML = old; const M = methods(); document.querySelectorAll("[data-go]").forEach(x => x.disabled = !M[x.dataset.go]);
 }
 let PAY_BANNER = null;
@@ -2961,7 +2966,10 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
 
   const WH = "https://vjnzvrhbzaqmzneirmjq.supabase.co/functions/v1/gd-app?webhook=";
   const semDates = SEM_DAYS.map(([d,n])=>`<p class="small"><b>Seminar ${n}${n===3?" + graduation":""}:</b> ${dayDate(adm.start_date,d).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"})} (day ${d})</p>`).join("");
-  const settingsView = `<div class="panel stack" style="margin-bottom:20px"><h3>🧭 Onboarding and free trial</h3>
+  const settingsView = `<div class="panel stack" style="margin-bottom:20px"><h3>🟠 Orange Money</h3>
+      <p class="muted small">Turn this on only once pawaPay has activated <b>ORANGE_CMR</b> on your live account. While it's off, the app, terms and FAQ mention <b>MTN MoMo</b> only, so nobody chooses a method that won't work.</p>
+      <label class="check"><input type="checkbox" id="orangeOn" ${admMeth&&admMeth.orange?"checked":""}> Orange Money is active on pawaPay</label><p id="orangeMsg" role="status"></p></div>
+  <div class="panel stack" style="margin-bottom:20px"><h3>🧭 Onboarding and free trial</h3>
       <p class="muted small">Right after signing up, each person gets a WhatsApp welcome message with the <b>welcome audio</b> in their language. In the app, the "How it works" page shows the <b>welcome video</b> in their language (a placeholder appears until you upload one). If only one language is uploaded, everyone gets that one.</p>
       <div class="grid2">
         <div class="stack"><b class="small">English</b>
@@ -3099,6 +3107,10 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
     const rows = [["date","name","whatsapp","what","week","amount_fcfa","provider","status"]].concat(admPay.list.map(x=>[x.created_at, x.name||"", x.phone||"", x.kind, x.week||"", x.amount, x.provider, x.status]));
     const csv = rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(",")).join("\n");
     const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv],{type:"text/csv"})); a.download = "growthday-payments.csv"; a.click(); };
+  const oo = $("#orangeOn");
+  if(oo) oo.onchange = async () => { const m = $("#orangeMsg");
+    try{ await rpc("gd_admin_set_orange", {p_pin:admPin, p_on:oo.checked}); admMeth = Object.assign(admMeth||{}, {orange:oo.checked}); m.className="ok"; m.textContent = oo.checked ? "✓ Orange Money is now shown to participants." : "✓ Only MTN MoMo is shown now."; }
+    catch(e){ m.className="err"; m.textContent = "Could not save: " + e.message; } };
   const ss2 = $("#semSave");
   if(ss2) ss2.onclick = async () => { const m = $("#semMsg");
     try{ await rpc("gd_admin_set_seminar",{p_pin:admPin, p_time:$("#semTime").value, p_link:$("#semLink").value});
@@ -3521,8 +3533,25 @@ function termsPage(){
   window.scrollTo(0,0);
 }
 
+
+/* Orange Money is shown only once it's active on the live pawaPay account (Admin → Settings switch) */
+let ORANGE = true;
+function scrubOrange(o){
+  if(typeof o === "string") return o
+    .replace(/MTN · Orange/g, "MTN MoMo")
+    .replace(/ (or|ou) (<b>)?Orange Money(<\/b>)?/g, "")
+    .replace(/, (<b>)?Orange Money(<\/b>)?/g, "");
+  if(Array.isArray(o)) return o.map(scrubOrange);
+  if(o && typeof o === "object"){ for(const k in o){ if(typeof o[k] !== "function") o[k] = scrubOrange(o[k]); } return o; }
+  return o;
+}
+async function checkOrange(){
+  try{ const m = await rpc("gd_methods", {}); ORANGE = !!m.orange; }catch(e){ ORANGE = true; }
+  if(!ORANGE){ document.body.classList.add("no-orange"); [T, LT, TERMS].forEach(x => { try{ scrubOrange(x); }catch(e){} }); }
+}
+
 const route = () => { if(location.hash === "#terms") return termsPage(); if(location.hash === "#admin") adminLogin(); else if(location.hash === "#guide") guideLoad(); else { document.body.classList.remove("admin"); boot(); } };
-route();
+checkOrange().finally(route);
 window.addEventListener("hashchange", route);
 </script>
 </body>
