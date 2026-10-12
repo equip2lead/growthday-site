@@ -753,6 +753,32 @@ body.admin{background:#F4F6FA}
 }
 body.no-orange .pl-orange{display:none}
 .momo-note{background:#FFF8E1;border:1.5px solid #FFCB05;border-radius:14px;padding:12px 14px;font-size:14px;line-height:1.45;color:#1C2340}
+.row-btns{display:flex;gap:10px;flex-wrap:wrap}
+#lpv{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:20px}
+.lpv-card{position:relative;width:100%;max-width:1000px;max-height:92vh;overflow:auto;background:var(--bg);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-lg)}
+.lpv-tools{display:flex;gap:10px;align-items:center}
+.lpv-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+@media (max-width:760px){.lpv-grid{grid-template-columns:1fr}}
+.lpv-lbl{font:700 13px var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.lpv-wa{background:#ECE5DD;border-radius:18px;padding:14px;min-height:200px}
+.lpv-bub{position:relative;background:#fff;color:#111;border-radius:10px 10px 10px 3px;padding:10px 12px 20px;font-size:14.5px;line-height:1.45;max-width:95%;box-shadow:0 1px 1px rgba(0,0,0,.08);margin-bottom:8px}
+.lpv-bub>span{position:absolute;right:9px;bottom:4px;font-size:10.5px;color:#888}
+.lpv-au audio{width:100%}
+.lpv-app{background:var(--bg);border-radius:18px}
+.fullteach{border-top:1px solid var(--line);padding-top:12px}
+.fullteach summary{cursor:pointer;font-weight:700;color:var(--ember-text,#A35F00);list-style:none}
+.fullteach summary::-webkit-details-marker{display:none}
+.fullteach[open] summary{margin-bottom:10px}
+.ft-body p{line-height:1.65;margin-bottom:12px}
+.ctry-list{display:flex;flex-direction:column;gap:8px;max-height:52vh;overflow:auto;padding-right:2px}
+.ctry{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;cursor:pointer;color:var(--text);font:inherit}
+.ctry:hover{border-color:var(--ember)}.ctry.mine{border-color:var(--ember);background:color-mix(in srgb,var(--ember) 7%,var(--surface))}
+.ctry:disabled{opacity:.6;cursor:wait}
+.ct-flag{font-size:28px;line-height:1}.ct-t{flex:1;display:flex;flex-direction:column}.ct-t small{color:var(--muted);font-size:12.5px}
+.ct-t em{font-style:normal;font-size:11.5px;font-weight:700;color:var(--ember-text,#A35F00);margin-right:4px}
+.ct-p{font:800 16px var(--display);white-space:nowrap}
+.intl-note{font-size:13.5px;color:var(--muted);text-align:center;margin-top:10px}
+.mp-table input{width:110px}
 /* hero */
 .hero{background:var(--ink);color:#fff;border-radius:20px;padding:26px 22px;position:relative;overflow:hidden}
 .hero .big{font-family:var(--display);font-size:44px;font-weight:700;line-height:1}
@@ -1109,7 +1135,7 @@ en:{
   myAreas:"My growth areas", areasLocked:"Your areas are locked after week 1.", areasOpen:"You can change your areas until the end of week 1.",
   saveChanges:"Save changes", changesSaved:"Changes saved.", triad:"My triad", noTriad:"Your triad will be shared with you in week 2.",
   signOut:"Sign out", whatsapp:"WhatsApp", loading:"Loading…", credit:"An <b>Equip2Lead</b> program · Led by <b>Dr. Denis Ekobena</b>",
-  err:{phone_exists:"This number is already registered. Sign in instead.",not_found:"No account uses this number. Check it, or join the cohort.",wrong_pin:"Wrong PIN. Try again.",locked:"Too many tries. Wait 15 minutes, then try again.",pin_invalid:"Your PIN must be exactly 4 digits.",pin_mismatch:"The two PINs don't match.",name_required:"Enter your full name.",phone_invalid:"Enter a valid WhatsApp number.",areas_needed:"Choose exactly 2 areas.",session_expired:"Please sign in again.",day_closed:"This card is closed. You can fill today's and yesterday's cards only.",week_closed:"This week isn't open yet.",week_locked:"This week isn't paid yet.",momo_provider_off:"Orange Money isn't available yet. Please pay with an MTN MoMo number or a bank card.",pay_start_failed:"The payment page couldn't open. Check your number and try again in a moment.",card_not_configured:"Card payment isn't available yet. Please use Mobile Money.",use_rest:"Choose \"The remaining weeks\" to pay the rest.",pay_failed:"The payment didn't go through. You can try again.",areas_locked:"Your areas are locked after week 1.",network:"No connection. Check your internet and try again.",code_invalid:"That code is not right. Check it and try again.",code_expired:"This code has expired. Ask for a new one.",wait:"Please wait a minute before asking for another code.",whatsapp_failed:"We couldn't send the code on WhatsApp. Ask your Growth Guide to reset your PIN.",payments_not_configured:"Payments aren't open yet. Try again soon.",provider_error:"The payment page couldn't open. Try again in a moment."}
+  err:{phone_exists:"This number is already registered. Sign in instead.",not_found:"No account uses this number. Check it, or join the cohort.",wrong_pin:"Wrong PIN. Try again.",locked:"Too many tries. Wait 15 minutes, then try again.",pin_invalid:"Your PIN must be exactly 4 digits.",pin_mismatch:"The two PINs don't match.",name_required:"Enter your full name.",phone_invalid:"Enter a valid WhatsApp number.",areas_needed:"Choose exactly 2 areas.",session_expired:"Please sign in again.",day_closed:"This card is closed. You can fill today's and yesterday's cards only.",week_closed:"This week isn't open yet.",week_locked:"This week isn't paid yet.",momo_provider_off:"Orange Money isn't available yet. Please pay with an MTN MoMo number or a bank card.",momo_country_off:"Mobile Money isn't available in this country right now. Please choose another country or pay by bank card.",pay_start_failed:"The payment page couldn't open. Check your number and try again in a moment.",card_not_configured:"Card payment isn't available yet. Please use Mobile Money.",use_rest:"Choose \"The remaining weeks\" to pay the rest.",pay_failed:"The payment didn't go through. You can try again.",areas_locked:"Your areas are locked after week 1.",network:"No connection. Check your internet and try again.",code_invalid:"That code is not right. Check it and try again.",code_expired:"This code has expired. Ask for a new one.",wait:"Please wait a minute before asking for another code.",whatsapp_failed:"We couldn't send the code on WhatsApp. Ask your Growth Guide to reset your PIN.",payments_not_configured:"Payments aren't open yet. Try again soon.",provider_error:"The payment page couldn't open. Try again in a moment."}
 },
 fr:{
   stepOf:n=>`Étape ${n} sur 3`, next:"Continuer", country:"Pays",
@@ -1268,7 +1294,7 @@ fr:{
   myAreas:"Mes domaines de croissance", areasLocked:"Vos domaines sont fixés après la semaine 1.", areasOpen:"Vous pouvez changer vos domaines jusqu'à la fin de la semaine 1.",
   saveChanges:"Enregistrer", changesSaved:"Modifications enregistrées.", triad:"Ma triade", noTriad:"Votre triade vous sera communiquée en semaine 2.",
   signOut:"Se déconnecter", whatsapp:"WhatsApp", loading:"Chargement…", credit:"Un programme <b>Equip2Lead</b> · Dirigé par le <b>Dr Denis Ekobena</b>",
-  err:{phone_exists:"Ce numéro est déjà inscrit. Connectez-vous plutôt.",not_found:"Aucun compte avec ce numéro. Vérifiez-le ou rejoignez la cohorte.",wrong_pin:"Code PIN incorrect. Réessayez.",locked:"Trop d'essais. Attendez 15 minutes puis réessayez.",pin_invalid:"Le code PIN doit contenir exactement 4 chiffres.",pin_mismatch:"Les deux codes PIN sont différents.",name_required:"Entrez votre nom complet.",phone_invalid:"Entrez un numéro WhatsApp valide.",areas_needed:"Choisissez exactement 2 domaines.",session_expired:"Veuillez vous reconnecter.",day_closed:"Cette carte est fermée. Vous pouvez remplir seulement celle d'aujourd'hui et d'hier.",week_closed:"Cette semaine n'est pas encore ouverte.",week_locked:"Cette semaine n'est pas encore payée.",momo_provider_off:"Orange Money n'est pas encore disponible. Payez avec un numéro MTN MoMo ou une carte bancaire.",pay_start_failed:"La page de paiement n'a pas pu s'ouvrir. Vérifiez votre numéro et réessayez dans un instant.",card_not_configured:"Le paiement par carte n'est pas encore disponible. Utilisez Mobile Money.",use_rest:"Choisissez « Les semaines restantes » pour payer le reste.",pay_failed:"Le paiement n'a pas abouti. Vous pouvez réessayer.",areas_locked:"Vos domaines sont fixés après la semaine 1.",network:"Pas de connexion. Vérifiez internet et réessayez.",code_invalid:"Ce code n'est pas correct. Vérifiez-le et réessayez.",code_expired:"Ce code a expiré. Demandez-en un nouveau.",wait:"Patientez une minute avant de redemander un code.",whatsapp_failed:"Impossible d'envoyer le code sur WhatsApp. Demandez à votre Growth Guide de réinitialiser votre code.",payments_not_configured:"Les paiements ne sont pas encore ouverts. Réessayez bientôt.",provider_error:"La page de paiement n'a pas pu s'ouvrir. Réessayez dans un instant."}
+  err:{phone_exists:"Ce numéro est déjà inscrit. Connectez-vous plutôt.",not_found:"Aucun compte avec ce numéro. Vérifiez-le ou rejoignez la cohorte.",wrong_pin:"Code PIN incorrect. Réessayez.",locked:"Trop d'essais. Attendez 15 minutes puis réessayez.",pin_invalid:"Le code PIN doit contenir exactement 4 chiffres.",pin_mismatch:"Les deux codes PIN sont différents.",name_required:"Entrez votre nom complet.",phone_invalid:"Entrez un numéro WhatsApp valide.",areas_needed:"Choisissez exactement 2 domaines.",session_expired:"Veuillez vous reconnecter.",day_closed:"Cette carte est fermée. Vous pouvez remplir seulement celle d'aujourd'hui et d'hier.",week_closed:"Cette semaine n'est pas encore ouverte.",week_locked:"Cette semaine n'est pas encore payée.",momo_provider_off:"Orange Money n'est pas encore disponible. Payez avec un numéro MTN MoMo ou une carte bancaire.",momo_country_off:"Le Mobile Money n'est pas disponible dans ce pays pour le moment. Choisissez un autre pays ou payez par carte bancaire.",pay_start_failed:"La page de paiement n'a pas pu s'ouvrir. Vérifiez votre numéro et réessayez dans un instant.",card_not_configured:"Le paiement par carte n'est pas encore disponible. Utilisez Mobile Money.",use_rest:"Choisissez « Les semaines restantes » pour payer le reste.",pay_failed:"Le paiement n'a pas abouti. Vous pouvez réessayer.",areas_locked:"Vos domaines sont fixés après la semaine 1.",network:"Pas de connexion. Vérifiez internet et réessayez.",code_invalid:"Ce code n'est pas correct. Vérifiez-le et réessayez.",code_expired:"Ce code a expiré. Demandez-en un nouveau.",wait:"Patientez une minute avant de redemander un code.",whatsapp_failed:"Impossible d'envoyer le code sur WhatsApp. Demandez à votre Growth Guide de réinitialiser votre code.",payments_not_configured:"Les paiements ne sont pas encore ouverts. Réessayez bientôt.",provider_error:"La page de paiement n'a pas pu s'ouvrir. Réessayez dans un instant."}
 }};
 
 /* ---------- utils ---------- */
@@ -1345,7 +1371,7 @@ en:{
   lead_title:"Led by Dr. Denis Ekobena",
   lead_body:"Founder of Equip2Lead, Senior Leader of FIRE Church in Yaoundé, and a certified John Maxwell trainer for Africa. The cohort is built on the growth principles he teaches leaders across the continent.",
   faq_title:"Questions",
-  faq:[["How much time does it take?","About 15 minutes a day: 5 to listen, a few minutes to act, 3 to fill your card. Plus one 30-minute triad call each week."],["Which language?","Everything comes in English and in French. You choose when you join."],["Do I need to install an app?","No. It opens in your browser from the link. You can add it to your home screen."],["What if I miss a day?","Fill yesterday's card the next day and keep going. The streak is a guide, not a judge."],["How much does it cost?","10,000 FCFA for the full 6 weeks, paid at once. Or 2,000 FCFA per week, paid before each week (12,000 FCFA in total)."],["How do I pay?","Directly in the app, with MTN MoMo, Orange Money or a bank card. Your access opens as soon as the payment is confirmed."],["What if I don't pay the next week?","Your access to that week pauses until you pay. Your plan, your progress and your badges are kept, and you can pay at any time to continue."],["Can I get a refund?","Yes, under clear conditions: see <a href='#terms'>terms, refunds and privacy</a>."]],
+  faq:[["How much time does it take?","About 15 minutes a day: 5 to listen, a few minutes to act, 3 to fill your card. Plus one 30-minute triad call each week."],["Which language?","Everything comes in English and in French. You choose when you join."],["Do I need to install an app?","No. It opens in your browser from the link. You can add it to your home screen."],["What if I miss a day?","Fill yesterday's card the next day and keep going. The streak is a guide, not a judge."],["How much does it cost?","10,000 FCFA for the full 6 weeks, paid at once. Or 2,000 FCFA per week, paid before each week (12,000 FCFA in total)."],["How do I pay?","Directly in the app, with MTN MoMo, Orange Money or a bank card. From outside Cameroon, Mobile Money works in 13 African countries in your own currency, and cards work from anywhere. Your access opens as soon as the payment is confirmed."],["What if I don't pay the next week?","Your access to that week pauses until you pay. Your plan, your progress and your badges are kept, and you can pay at any time to continue."],["Can I get a refund?","Yes, under clear conditions: see <a href='#terms'>terms, refunds and privacy</a>."]],
   final_title:"The next 42 days will pass anyway.", final_sub:"Decide who you'll be at the end of them."
 },
 fr:{
@@ -1369,7 +1395,7 @@ fr:{
   lead_title:"Dirigé par le Dr Denis Ekobena",
   lead_body:"Fondateur d'Equip2Lead, Senior Leader de FIRE Church à Yaoundé et formateur certifié John Maxwell pour l'Afrique. La cohorte repose sur les principes de croissance qu'il enseigne aux leaders du continent.",
   faq_title:"Questions",
-  faq:[["Combien de temps cela prend-il ?","Environ 15 minutes par jour : 5 pour écouter, quelques minutes pour agir, 3 pour remplir votre carte. Plus un appel de triade de 30 minutes par semaine."],["Dans quelle langue ?","Tout est en anglais et en français. Vous choisissez à l'inscription."],["Faut-il installer une application ?","Non. Elle s'ouvre dans votre navigateur depuis le lien. Vous pouvez l'ajouter à votre écran d'accueil."],["Et si je rate un jour ?","Remplissez la carte d'hier le lendemain et continuez. La série est un repère, pas un juge."],["Combien ça coûte ?","10 000 FCFA pour les 6 semaines, en une fois. Ou 2 000 FCFA par semaine, payés avant chaque semaine (12 000 FCFA au total)."],["Comment payer ?","Directement dans l'application, avec MTN MoMo, Orange Money ou une carte bancaire. Votre accès s'ouvre dès que le paiement est confirmé."],["Et si je ne paie pas la semaine suivante ?","Votre accès à cette semaine est mis en pause jusqu'au paiement. Votre plan, vos progrès et vos badges sont conservés, et vous pouvez payer à tout moment pour continuer."],["Puis-je être remboursé ?","Oui, selon des conditions claires : voir <a href='#terms'>conditions, remboursements et confidentialité</a>."]],
+  faq:[["Combien de temps cela prend-il ?","Environ 15 minutes par jour : 5 pour écouter, quelques minutes pour agir, 3 pour remplir votre carte. Plus un appel de triade de 30 minutes par semaine."],["Dans quelle langue ?","Tout est en anglais et en français. Vous choisissez à l'inscription."],["Faut-il installer une application ?","Non. Elle s'ouvre dans votre navigateur depuis le lien. Vous pouvez l'ajouter à votre écran d'accueil."],["Et si je rate un jour ?","Remplissez la carte d'hier le lendemain et continuez. La série est un repère, pas un juge."],["Combien ça coûte ?","10 000 FCFA pour les 6 semaines, en une fois. Ou 2 000 FCFA par semaine, payés avant chaque semaine (12 000 FCFA au total)."],["Comment payer ?","Directement dans l'application, avec MTN MoMo, Orange Money ou une carte bancaire. Hors du Cameroun, le Mobile Money fonctionne dans 13 pays d'Afrique dans votre monnaie, et la carte partout dans le monde. Votre accès s'ouvre dès que le paiement est confirmé."],["Et si je ne paie pas la semaine suivante ?","Votre accès à cette semaine est mis en pause jusqu'au paiement. Votre plan, vos progrès et vos badges sont conservés, et vous pouvez payer à tout moment pour continuer."],["Puis-je être remboursé ?","Oui, selon des conditions claires : voir <a href='#terms'>conditions, remboursements et confidentialité</a>."]],
   final_title:"Les 42 prochains jours passeront de toute façon.", final_sub:"Décidez qui vous serez à la fin."
 }};
 
@@ -1766,7 +1792,54 @@ function paySheet(){
   };
   return `<div class="paysheet"><div class="pricing">${order.map(card).join("")}</div>
     <p class="err" id="payErr" role="alert">${payNote ? esc(payNote) : ""}</p>
+    <p class="intl-note">🌍 ${lang==="fr"?"Hors du Cameroun ? Payez par Mobile Money dans 13 pays d'Afrique, dans votre monnaie, ou par carte bancaire partout dans le monde.":"Outside Cameroon? Pay by Mobile Money in 13 African countries, in your currency, or by bank card from anywhere in the world."}</p>
     <p class="secure">${T_.secure2} <a href="#terms" class="link">${lang==="fr"?"Conditions et remboursements":"Terms and refunds"}</a></p></div>`;
+}
+/* ---------- Mobile Money in every country active on pawaPay ---------- */
+const CTRY = {
+  CMR:["🇨🇲","Cameroon","Cameroun"], CIV:["🇨🇮","Côte d'Ivoire","Côte d'Ivoire"], SEN:["🇸🇳","Senegal","Sénégal"], BEN:["🇧🇯","Benin","Bénin"],
+  GAB:["🇬🇦","Gabon","Gabon"], COG:["🇨🇬","Congo-Brazzaville","Congo-Brazzaville"], COD:["🇨🇩","DR Congo","RD Congo"], KEN:["🇰🇪","Kenya","Kenya"],
+  RWA:["🇷🇼","Rwanda","Rwanda"], UGA:["🇺🇬","Uganda","Ouganda"], ZMB:["🇿🇲","Zambia","Zambie"], MOZ:["🇲🇿","Mozambique","Mozambique"], SLE:["🇸🇱","Sierra Leone","Sierra Leone"] };
+const ctryName = c => (CTRY[c] ? CTRY[c][lang==="fr"?2:1] : c);
+const curLabel = c => (c === "XAF" || c === "XOF") ? "FCFA" : c;
+const money2 = (n, c) => `${fcfa(n)} ${curLabel(c)}`;
+let MOMO = null;
+async function loadMomo(){ if(MOMO) return MOMO; try{ const d = await callApp({action:"countries"}); MOMO = d.countries || []; }catch(e){ MOMO = []; } return MOMO; }
+// "MTN, Orange, Moov, Airtel, M-Pesa and more · 13 countries", built from the networks active on pawaPay
+function momoSub(){
+  const fr = lang === "fr", list = MOMO || [];
+  const all = list.flatMap(c => c.providers.map(p => /safaricom|mpesa|m-pesa|vodacom/i.test(p) ? "M-Pesa" : p.replace(/ ?(momo|money|mobile).*$/i,"").trim()));
+  const order = ["MTN","Orange","Moov","Airtel","M-Pesa","Free","Zamtel"];
+  const names = order.filter(n => all.some(a => a.toLowerCase() === n.toLowerCase()));
+  const shown = (names.length ? names : ["MTN","Orange","Moov","Airtel","M-Pesa"]).slice(0,5);
+  const n = list.length || 13;
+  return `${shown.join(", ")} ${fr?"et plus":"and more"} · ${n} ${fr?"pays":"countries"}`;
+}
+function myCountry(list){
+  const d = String((me && me.phone) || "").replace(/\D/g, "");
+  const hit = (list||[]).filter(c => c.prefix && d.startsWith(c.prefix)).sort((a,b)=>b.prefix.length-a.prefix.length)[0];
+  return hit ? hit.country : "CMR";
+}
+function localPrice(c, k){ if(k === "full") return c.full; if(k === "rest") return c.week * (7 - nextWeek()); return c.week; }
+function countryPicker(){
+  const T_ = t(), host = document.getElementById("msheet"); if(!host || !MOMO) return;
+  const mine = myCountry(MOMO), k = PAY.kind;
+  const list = [...MOMO].sort((a,b) => (a.country===mine?-1:b.country===mine?1:0) || ctryName(a.country).localeCompare(ctryName(b.country)));
+  const fr = lang === "fr";
+  const body = host.querySelector(".ms-card");
+  body.innerHTML = `<div class="ms-head"><button class="back-btn" id="cpBack">← ${T_.back}</button><button class="icon-btn" data-msclose aria-label="${T_.pcClose}">✕</button></div>
+    <h2>${fr?"Où est votre compte Mobile Money ?":"Where is your Mobile Money account?"}</h2>
+    <p class="muted small">${fr?"Vous payez dans la monnaie de ce pays. Votre numéro WhatsApp peut être différent.":"You pay in that country's currency. Your WhatsApp number can be different."}</p>
+    <div class="ctry-list">${list.map(c => `<button type="button" class="ctry ${c.country===mine?"mine":""}" data-cc="${c.country}">
+        <span class="ct-flag">${CTRY[c.country]?CTRY[c.country][0]:"🌍"}</span>
+        <span class="ct-t"><b>${esc(ctryName(c.country))}</b><small>${c.country===mine?`<em>✓ ${fr?"votre numéro":"your number"}</em> `:""}${esc(c.providers.join(" · "))}</small></span>
+        <span class="ct-p">${money2(localPrice(c,k), c.currency)}</span></button>`).join("")}</div>
+    ${!ORANGE && mine === "CMR" && !isMtnUser() ? `<div class="momo-note">${fr?"<b>Cameroun : MTN MoMo uniquement pour l'instant.</b> Votre numéro WhatsApp n'est pas MTN : sur la page suivante, entrez un numéro MTN MoMo, ou payez par carte bancaire.":"<b>Cameroon: MTN MoMo only for now.</b> Your WhatsApp number isn't MTN: on the next page, enter an MTN MoMo number, or pay by bank card."}</div>` : ""}
+    <p class="err" id="payErr3" role="alert"></p>
+    <p class="secure">${T_.secure2}</p>`;
+  body.querySelectorAll("[data-msclose]").forEach(x => x.onclick = () => { host.remove(); document.body.classList.remove("no-scroll"); });
+  $("#cpBack").onclick = () => methodSheet();
+  body.querySelectorAll("[data-cc]").forEach(x => x.onclick = () => { PAY.method = "momo"; PAY.country = x.dataset.cc; startPay(x, $("#payErr3")); });
 }
 // MTN Cameroon numbers: 650-654, 67x, 680-683 (same rule as the payment engine)
 function isMtnUser(){ const d = String((me && me.phone) || "").replace(/\D/g, ""); return /^(237)?(65[0-4]|67\d|68[0-3])\d{6}$/.test(d); }
@@ -1780,13 +1853,17 @@ function methodSheet(){
   host.innerHTML = `<div class="ms-back" data-msclose></div><div class="ms-card" role="dialog" aria-label="${esc(T_.howPay)}">
     <div class="ms-head"><h2>${T_.howPay}</h2><button class="icon-btn" data-msclose aria-label="${T_.pcClose}">✕</button></div>
     <div class="ms-sum"><span>${T_.pcPayNow} · ${title}</span><b>${fcfa(priceFor(k))} <small>FCFA</small></b></div>
-    <div class="paygos">${go("momo", "📱", T_.goMomo, T_.goMomoS)}${go("card", "💳", T_.goCard, T_.goCardS)}</div>
-    ${!ORANGE ? `<div class="momo-note"><b>${lang==="fr"?"Mobile Money : MTN MoMo uniquement pour l'instant.":"Mobile Money: MTN MoMo only for now."}</b> ${isMtnUser() ? (lang==="fr"?"Votre numéro MTN sera prérempli sur la page suivante.":"Your MTN number will be filled in on the next page.") : (lang==="fr"?"Votre numéro WhatsApp n'est pas MTN : sur la page suivante, entrez un numéro MTN MoMo (le vôtre ou celui d'un proche), ou payez par carte bancaire.":"Your WhatsApp number isn't MTN: on the next page, enter an MTN MoMo number (yours or a family member's), or pay by bank card.")}</div>` : ""}
+    <div class="paygos">${go("momo", "📱", T_.goMomo, momoSub())}${go("card", "💳", T_.goCard, lang==="fr"?"Visa, Mastercard · partout dans le monde":"Visa, Mastercard · from anywhere")}</div>
+    ${!ORANGE && /^(237)/.test(String((me&&me.phone)||"").replace(/\D/g,"")) ? `<div class="momo-note"><b>${lang==="fr"?"Au Cameroun : MTN MoMo uniquement pour l'instant (Orange bientôt).":"In Cameroon: MTN MoMo only for now (Orange coming soon)."}</b> ${isMtnUser() ? (lang==="fr"?"Votre numéro MTN sera prérempli sur la page suivante.":"Your MTN number will be filled in on the next page.") : (lang==="fr"?"Votre numéro WhatsApp n'est pas MTN : sur la page suivante, entrez un numéro MTN MoMo (le vôtre ou celui d'un proche), ou payez par carte bancaire.":"Your WhatsApp number isn't MTN: on the next page, enter an MTN MoMo number (yours or a family member's), or pay by bank card.")}</div>` : ""}
     <p class="err" id="payErr2" role="alert"></p>
     <p class="secure">${T_.secure2}</p></div>`;
   document.body.classList.add("no-scroll");
   host.querySelectorAll("[data-msclose]").forEach(x => x.onclick = () => { host.remove(); document.body.classList.remove("no-scroll"); });
-  host.querySelectorAll("[data-go]").forEach(x => x.onclick = () => { if(x.disabled) return; PAY.method = x.dataset.go; startPay(x, $("#payErr2")); });
+  host.querySelectorAll("[data-go]").forEach(x => x.onclick = async () => {
+    if(x.disabled) return; PAY.method = x.dataset.go;
+    if(x.dataset.go === "momo"){ await loadMomo(); if(MOMO && MOMO.length > 1){ countryPicker(); return; } PAY.country = (MOMO && MOMO[0] && MOMO[0].country) || "CMR"; }
+    startPay(x, $("#payErr2")); });
+  loadMomo().then(() => { const sm = host.querySelector('[data-go="momo"] small'); if(sm && methods().momo) sm.textContent = momoSub(); });
 }
 function bindPaySheet(rerender){
   document.querySelectorAll("[data-pk]").forEach(b => b.onclick = () => { PAY.kind = b.dataset.pk; payNote = ""; methodSheet(); });
@@ -1807,14 +1884,14 @@ function payScreen(name){
   bindPaySheet(() => payScreen(name));
 }
 async function startPay(btn, errEl){
-  document.querySelectorAll("[data-go]").forEach(x => x.disabled = true);
+  document.querySelectorAll("[data-go],[data-cc]").forEach(x => x.disabled = true);
   const old = btn.innerHTML; btn.innerHTML = `<span class="pg-ic"><span class="spin"></span></span><span class="pg-t"><b>${t().paying}</b></span>`;
-  try{ const d = await callApp({action:"pay", token:store.get("gd_token"), kind:PAY.kind, method:PAY.method, lang});
+  try{ const d = await callApp({action:"pay", token:store.get("gd_token"), kind:PAY.kind, method:PAY.method, country:PAY.country||"CMR", lang});
     if(d.link){ location.href = d.link; return; }
     if(d.paid){ boot(); return; }
     if(d.waitlist){ me.status = "waitlist"; payScreen(firstName(me.name)); return; }
   }catch(e){ if(errEl) errEl.textContent = errMsg(e) + (e.detail && e.message !== "momo_provider_off" ? ` (${String(e.detail).slice(0,140)})` : ""); }
-  btn.innerHTML = old; const M = methods(); document.querySelectorAll("[data-go]").forEach(x => x.disabled = !M[x.dataset.go]);
+  btn.innerHTML = old; const M = methods(); document.querySelectorAll("[data-go]").forEach(x => x.disabled = !M[x.dataset.go]); document.querySelectorAll("[data-cc]").forEach(x => x.disabled = false);
 }
 let PAY_BANNER = null;
 async function payReturn(){
@@ -2204,7 +2281,8 @@ function lessonBlock(l){
     <h2>${esc(L(l,"title"))}</h2>
     <p class="principle">${esc(principle)}</p>
     ${L(l,"action") ? `<div class="action"><h3>${t().action}</h3><p>${esc(L(l,"action"))}</p></div>` : ""}
-    ${video}${audio}</section>`;
+    ${video}${audio}
+    ${(l["body_"+lang]||"").trim() ? `<details class="fullteach"><summary>📖 ${lang==="fr"?"Lire l'enseignement complet":"Read the full teaching"}</summary><div class="ft-body">${String(l["body_"+lang]).split(/\n\s*\n/).map(pa=>`<p>${esc(pa).replace(/\n/g,"<br>")}</p>`).join("")}</div></details>` : ""}</section>`;
 }
 
 
@@ -2897,7 +2975,8 @@ function adminRender(){
       const msg = p.lang==="fr" ? `Bonjour ${first}, c'est l'équipe Growth Day. Comment avancez-vous avec votre 1 % ?` : `Hi ${first}, it's the Growth Day team. How is your 1% going?`;
       return `<tr class="${s.slipping?"slip":""}">
         <td><button class="link" data-person="${p.id}" aria-expanded="${admOpen===p.id}"><b>${esc(p.name)}</b></button><br><span class="muted small">${p.lang.toUpperCase()} · plan ${["1","2"].reduce((n,k)=>n+Object.values((p.plan||{})[k]||{}).filter(v=>String(v).trim()!=="").length,0)}/12${((p.plan||{}).books||[]).length?` · 📚${p.plan.books.length}`:""}</span></td>
-        <td><a href="https://wa.me/${esc(p.phone)}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">+${esc(p.phone)}</a></td>
+        <td><a href="https://wa.me/${esc(p.phone)}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">+${esc(p.phone)}</a>
+          <br>${p.wa_ok === true ? `<span class="chip-s paid" title="WhatsApp accepted the welcome message">✓ Welcome sent</span>` : p.wa_ok === false ? `<span class="chip-s wait" title="${esc(p.wa_detail||"")}">✕ Not delivered</span>` : `<span class="chip-s" title="Signed up before delivery tracking started">Not checked</span>`}</td>
         <td class="small">${AREA_SHORT[p.area1-1]}<br>${AREA_SHORT[p.area2-1]}</td>
         <td><input value="${esc(p.triad||"")}" data-triad="${p.id}" placeholder="e.g. Triad 1" aria-label="Triad for ${esc(p.name)}"></td>
         <td><span class="mini">${last7}</span></td>
@@ -2905,7 +2984,7 @@ function adminRender(){
         <td>${sc ? `W${sc.week}: ${sc.score1} · ${sc.score2}` : "—"}</td>
         <td>${p.plan_type==="full" ? `<span class="chip-s paid">Full · 6 wks</span>` : p.plan_type==="weekly" ? `<span class="chip-s paid">Weekly · ${p.paid_weeks}/6</span>` : p.status==="waitlist" ? `<span class="chip-s wait">Waiting list</span>` : `<span class="chip-s">Not paid</span>`}
           <br><select class="small" data-mpay="${p.id}" aria-label="Payment for ${esc(p.name)}"><option value="">Change…</option><option value="full">Mark 6 weeks paid</option><option value="week">Add one paid week</option><option value="none">Mark as not paid</option><option value="waitlist">Waiting list</option></select></td>
-        <td><button class="link" data-reset="${p.id}" data-name="${esc(p.name)}">Reset PIN</button></td></tr>
+        <td><button class="link" data-reset="${p.id}" data-name="${esc(p.name)}">Reset PIN</button><br><button class="link small" data-rewelcome="${p.id}" data-name="${esc(p.name)}">Resend welcome</button></td></tr>
         ${admOpen===p.id ? `<tr class="detail"><td colspan="9"><div class="grid2">${[[1,p.area1],[2,p.area2]].map(([k,a])=>{ const pl=(p.plan||{})[k]||{};
           return `<div class="stack"><h3>${AREA_ICON[a-1]} ${AREA_SHORT[a-1]}</h3>
             ${[["honest","Where I am"],["score","Starting score"],["target","6-week target"],["daily","Daily 1%"],["excuse","Usual excuse"],["answer","Answer"]].map(([f,lb])=>`<p class="small"><b>${lb}:</b> ${pl[f]!==undefined&&String(pl[f]).trim()!==""?esc(pl[f]):'<span class="muted">not yet</span>'}</p>`).join("")}</div>`; }).join("")}</div>
@@ -2946,8 +3025,8 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
             <span class="dbadges">${sun?"📊":filled?"✓ EN":""}${!sun&&x.principle_fr?" ✓ FR":""}${x.audio_url?" 🎙️EN":""}${x.audio_url_fr?" 🎙️FR":""}${x.video_url||x.video_url_fr?" 🎬":""}</span></button>`; }).join("")}</div>`).join("")}</div>
       <h2 class="sec" style="margin-top:8px">Editing day ${admDay}${l.title_en?` · ${esc(l.title_en)}`:""}</h2>
       <div class="grid2">
-        <div class="stack"><h3>English</h3>${f("title_en","Title")}${f("word_en","Word (scripture reference)")}${f("principle_en","Principle",1)}${f("action_en","1% micro-action",1)}</div>
-        <div class="stack"><h3>Français</h3>${f("title_fr","Titre")}${f("word_fr","Parole (référence)")}${f("principle_fr","Principe",1)}${f("action_fr","Micro-action 1 %",1)}</div>
+        <div class="stack"><h3>English</h3>${f("title_en","Title")}${f("word_en","Word (scripture reference)")}${f("principle_en","Principle",1)}${f("action_en","1% micro-action",1)}${f("body_en","Full teaching (optional) · the complete text, for people who prefer to read",1)}</div>
+        <div class="stack"><h3>Français</h3>${f("title_fr","Titre")}${f("word_fr","Parole (référence)")}${f("principle_fr","Principe",1)}${f("action_fr","Micro-action 1 %",1)}${f("body_fr","Enseignement complet (facultatif) · le texte entier, pour ceux qui préfèrent lire",1)}</div>
       </div>
       <div class="grid2"><div class="stack">${f("audio_url","English audio (upload below, or paste a link)")}
         <div><label for="laFile">Upload the English audio</label><input type="file" id="laFile" accept="audio/*"></div></div>
@@ -2960,13 +3039,22 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
       <div>
       <p class="hint">Record on your phone (a WhatsApp voice note or any recording works), upload here, then save the day. It is sent after the 6:00 message and plays inside the app.</p></div>
       <p id="lmsg" role="status"></p>
-      <button class="btn btn-primary" id="lsave" style="max-width:260px">Save day ${admDay}</button>
+      <div class="row-btns"><button class="btn btn-primary" id="lsave" style="max-width:260px">Save day ${admDay}</button>
+        <button class="btn btn-dark" id="lprev" style="max-width:300px">👁 Save &amp; preview day ${admDay}</button></div>
       <p class="muted small">Participants only see a day's lesson once that day arrives. If a day has no principle, the app tells them to listen to the Daily Fire on WhatsApp.</p>
     </div>`;
 
   const WH = "https://vjnzvrhbzaqmzneirmjq.supabase.co/functions/v1/gd-app?webhook=";
   const semDates = SEM_DAYS.map(([d,n])=>`<p class="small"><b>Seminar ${n}${n===3?" + graduation":""}:</b> ${dayDate(adm.start_date,d).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"})} (day ${d})</p>`).join("");
-  const settingsView = `<div class="panel stack" style="margin-bottom:20px"><h3>🟠 Orange Money</h3>
+  const MP = admMomoPrices || {};
+  const settingsView = `<div class="panel stack" style="margin-bottom:20px"><h3>🌍 Mobile Money prices by currency</h3>
+      <p class="muted small">People outside Cameroon pay by Mobile Money in their own currency (13 countries are active on pawaPay). <b>XAF and XOF always use your main prices</b> (1 XAF = 1 XOF). Set the other currencies below; whole numbers only. People see these prices before they confirm.</p>
+      <div class="table-wrap"><table class="mp-table"><thead><tr><th>Currency</th><th>Countries</th><th>Per week</th><th>Full 6 weeks</th></tr></thead><tbody>
+        ${[["USD","DR Congo"],["CDF","DR Congo (not used, USD preferred)"],["KES","Kenya"],["RWF","Rwanda"],["UGX","Uganda"],["ZMW","Zambia"],["MZN","Mozambique"],["SLE","Sierra Leone"]].map(([c,n])=>`<tr><td><b>${c}</b></td><td class="muted small">${n}</td>
+          <td><input type="number" min="1" step="1" data-mpw="${c}" value="${MP[c]?MP[c].week:""}"></td><td><input type="number" min="1" step="1" data-mpf="${c}" value="${MP[c]?MP[c].full:""}"></td></tr>`).join("")}
+      </tbody></table></div>
+      <button class="btn btn-primary sm" id="mpSave" style="max-width:260px">Save prices</button><p id="mpMsg" role="status"></p></div>
+  <div class="panel stack" style="margin-bottom:20px"><h3>🟠 Orange Money</h3>
       <p class="muted small">Turn this on only once pawaPay has activated <b>ORANGE_CMR</b> on your live account. While it's off, the app, terms and FAQ mention <b>MTN MoMo</b> only, so nobody chooses a method that won't work.</p>
       <label class="check"><input type="checkbox" id="orangeOn" ${admMeth&&admMeth.orange?"checked":""}> Orange Money is active on pawaPay</label><p id="orangeMsg" role="status"></p></div>
   <div class="panel stack" style="margin-bottom:20px"><h3>🧭 Onboarding and free trial</h3>
@@ -3033,7 +3121,7 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
 
   $("#refresh").onclick = adminLoad;
   $("#adminOut").onclick = () => { admPin = null; adm = null; admSem = null; admMeth = null; admMsg = null; admOpen = null; clearTimeout(msgTimer); adminLogin(); };
-  document.querySelectorAll("[data-at]").forEach(b=>b.onclick=async()=>{admTab=b.dataset.at; if(admTab==="settings"){ ONB = null; await loadOnb(); } adminRender(); if(admTab==="messages") loadMessages(); if(admTab==="insights"||admTab==="settings"){ try{ admX = await rpc("gd_admin_extra",{p_pin:admPin}); }catch(e){} if(admTab==="insights"){ try{ admPay = await rpc("gd_admin_payments",{p_pin:admPin}); }catch(e){} } adminRender(); }});
+  document.querySelectorAll("[data-at]").forEach(b=>b.onclick=async()=>{admTab=b.dataset.at; if(admTab==="settings"){ ONB = null; await loadOnb(); } adminRender(); if(admTab==="messages") loadMessages(); if(admTab==="insights"||admTab==="settings"){ try{ admX = await rpc("gd_admin_extra",{p_pin:admPin}); }catch(e){} if(admTab==="settings"){ try{ admMomoPrices = await rpc("gd_admin_momo_prices",{p_pin:admPin}); }catch(e){} } if(admTab==="insights"){ try{ admPay = await rpc("gd_admin_payments",{p_pin:admPin}); }catch(e){} } adminRender(); }});
   if(admTab==="messages") bindMessages();
   document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{admFilter=b.dataset.f; adminRender();});
   document.querySelectorAll("[data-person]").forEach(b=>b.onclick=()=>{admOpen = admOpen===b.dataset.person?null:b.dataset.person; adminRender();});
@@ -3081,9 +3169,23 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
       m.className="ok"; m.textContent = `✓ Uploaded. Now click "Save day ${admDay}".`;
     }catch(e){ m.className="err"; m.textContent = "Upload failed: " + e.message; }
   };
+  const lp = $("#lprev");
+  if(lp) lp.onclick = async () => {
+    const keys = ["title_en","title_fr","word_en","word_fr","principle_en","principle_fr","action_en","action_fr","body_en","body_fr","audio_url","audio_url_fr","video_url","video_url_fr"];
+    const p = {}; keys.forEach(k => p[k] = $("#"+k).value.trim() || null);
+    const m = $("#lmsg"); lp.disabled = true; m.className = ""; m.textContent = "Saving and preparing the preview…";
+    try{
+      await rpc("gd_admin_save_lesson",{p_pin:admPin, p_day:admDay, p});
+      Object.assign(adm.lessons.find(x=>x.day===admDay), p);
+      let wa = null; try{ wa = await callFn({pin:admPin, action:"preview", kind:"morning", day:admDay}); }catch(e){ wa = {error: e.message}; }
+      m.className = "ok"; m.textContent = `Day ${admDay} saved.`;
+      lessonPreview(Object.assign({day:admDay, week:Math.ceil(admDay/7)}, adm.lessons.find(x=>x.day===admDay)), wa, "en");
+    }catch(e){ m.className = "err"; m.textContent = "Could not save: " + e.message; }
+    lp.disabled = false;
+  };
   const ls = $("#lsave");
   if(ls) ls.onclick = async () => {
-    const keys = ["title_en","title_fr","word_en","word_fr","principle_en","principle_fr","action_en","action_fr","audio_url","audio_url_fr","video_url","video_url_fr"];
+    const keys = ["title_en","title_fr","word_en","word_fr","principle_en","principle_fr","action_en","action_fr","body_en","body_fr","audio_url","audio_url_fr","video_url","video_url_fr"];
     const p = {}; keys.forEach(k => p[k] = $("#"+k).value.trim() || null);
     ls.disabled = true;
     try{ await rpc("gd_admin_save_lesson",{p_pin:admPin, p_day:admDay, p});
@@ -3104,13 +3206,25 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
       ONB = null; await loadOnb(); m.className="ok"; m.textContent="✓ Onboarding saved."; }
     catch(e){ m.className="err"; m.textContent = "Could not save: " + e.message; } };
   const pc = $("#payCsv"); if(pc && admPay) pc.onclick = () => {
-    const rows = [["date","name","whatsapp","what","week","amount_fcfa","provider","status"]].concat(admPay.list.map(x=>[x.created_at, x.name||"", x.phone||"", x.kind, x.week||"", x.amount, x.provider, x.status]));
+    const rows = [["date","name","whatsapp","what","week","amount","currency","country","provider","status"]].concat(admPay.list.map(x=>[x.created_at, x.name||"", x.phone||"", x.kind, x.week||"", x.amount, x.currency||"XAF", x.country||"", x.provider, x.status]));
     const csv = rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(",")).join("\n");
     const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv],{type:"text/csv"})); a.download = "growthday-payments.csv"; a.click(); };
+  const mps = $("#mpSave");
+  if(mps) mps.onclick = async () => { const m = $("#mpMsg"), out = {};
+    document.querySelectorAll("[data-mpw]").forEach(i => { const c = i.dataset.mpw, w = Math.round(+i.value), f = Math.round(+document.querySelector(`[data-mpf="${c}"]`).value); if(w > 0 && f > 0) out[c] = {week:w, full:f}; });
+    try{ await rpc("gd_admin_set_momo_prices", {p_pin:admPin, p_prices:out}); admMomoPrices = out; m.className="ok"; m.textContent = "✓ Prices saved. They apply to the next payments (within 30 minutes at most)."; }
+    catch(e){ m.className="err"; m.textContent = "Could not save: " + e.message; } };
   const oo = $("#orangeOn");
   if(oo) oo.onchange = async () => { const m = $("#orangeMsg");
     try{ await rpc("gd_admin_set_orange", {p_pin:admPin, p_on:oo.checked}); admMeth = Object.assign(admMeth||{}, {orange:oo.checked}); m.className="ok"; m.textContent = oo.checked ? "✓ Orange Money is now shown to participants." : "✓ Only MTN MoMo is shown now."; }
     catch(e){ m.className="err"; m.textContent = "Could not save: " + e.message; } };
+  document.querySelectorAll("[data-rewelcome]").forEach(b => b.onclick = async () => {
+    if(!confirm(`Send the welcome message again to ${b.dataset.name} on WhatsApp?`)) return;
+    b.disabled = true; b.textContent = "Sending…";
+    try{ const d = await callApp({action:"admin_welcome", pin:admPin, id:b.dataset.rewelcome});
+      const p = adm.participants.find(x=>x.id===b.dataset.rewelcome); if(p){ p.wa_ok = !!d.ok; p.wa_detail = d.detail || ""; }
+      adminRender(); alert(d.ok ? `✓ WhatsApp accepted the message for ${b.dataset.name}.` : `✕ WhatsApp did not accept it.\n\n${String(d.detail||d.whatsapp||"").slice(0,200)}\n\nCheck the number with the person: it must be the number their WhatsApp account uses.`); }
+    catch(e){ b.disabled = false; b.textContent = "Resend welcome"; alert("Could not send: " + e.message); } });
   const ss2 = $("#semSave");
   if(ss2) ss2.onclick = async () => { const m = $("#semMsg");
     try{ await rpc("gd_admin_set_seminar",{p_pin:admPin, p_time:$("#semTime").value, p_link:$("#semLink").value});
@@ -3350,8 +3464,35 @@ function bindMessages(){
 
 
 
+
+/* ---------- admin: preview a day exactly as participants receive it ---------- */
+function waHTML(t){ return esc(t||"").replace(/\*([^*\n]+)\*/g,"<b>$1</b>").replace(/\n/g,"<br>"); }
+function lessonPreview(l, wa, pl){
+  let host = document.getElementById("lpv");
+  if(!host){ host = document.createElement("div"); host.id = "lpv"; document.body.appendChild(host); }
+  const keepLang = lang; lang = pl;                       // render the app view in the chosen language
+  const appView = lessonBlock(l); lang = keepLang;
+  const txt = wa && !wa.error ? (pl === "fr" ? wa.text_fr : wa.text_en) : "";
+  const au = wa && !wa.error ? (pl === "fr" ? (wa.media_url_fr || wa.media_url) : (wa.media_url || wa.media_url_fr)) : null;
+  const sunday = l.day % 7 === 0;
+  host.innerHTML = `<div class="ms-back" data-lpx></div><div class="lpv-card" role="dialog" aria-label="Preview">
+    <div class="ms-head"><div><p class="hw-l">Preview · day ${l.day}</p><h2>${esc((pl==="fr"?l.title_fr:l.title_en)||l.title_en||"")}</h2></div>
+      <div class="lpv-tools"><div class="seg"><button data-lpl="en" aria-pressed="${pl==="en"}">EN</button><button data-lpl="fr" aria-pressed="${pl==="fr"}">FR</button></div><button class="icon-btn" data-lpx aria-label="Close">✕</button></div></div>
+    <div class="lpv-grid">
+      <div><p class="lpv-lbl">💬 WhatsApp at 6:00</p>
+        <div class="lpv-wa">${wa && wa.error ? `<p class="err small">WhatsApp preview unavailable: ${esc(wa.error)}</p>`
+          : `<div class="lpv-bub">${waHTML(txt)}<span>6:00</span></div>
+             ${au ? `<div class="lpv-bub lpv-au"><audio controls preload="none" src="${esc(au)}"></audio><span>6:00</span></div>` : `<p class="small muted" style="margin:8px 4px">${sunday ? "Sunday: score reminder, no audio." : "No audio for this language yet: only the text is sent."}</p>`}`}</div></div>
+      <div><p class="lpv-lbl">📱 In the app · Daily Fire</p><div class="lpv-app">${appView || `<p class="muted small">${sunday?"Sunday: the app shows the weekly Growth Score.":"Nothing to show yet."}</p>`}</div></div>
+    </div>
+    <p class="muted small">This is exactly what participants will see on day ${l.day}. Close, edit, and preview again as often as you like.</p></div>`;
+  host.querySelectorAll("[data-lpx]").forEach(x => x.onclick = () => host.remove());
+  host.querySelectorAll("[data-lpl]").forEach(x => x.onclick = () => lessonPreview(l, wa, x.dataset.lpl));
+  host.querySelectorAll("details.fullteach").forEach(d => d.open = true);
+}
+
 /* ---------- admin: insights ---------- */
-let admX = null, admPay = null;
+let admX = null, admPay = null, admMomoPrices = null;
 function insightsView(){
   if(!admX) return `<p class="muted">Loading…</p>`;
   const P = adm.participants, paid = P.filter(p=>p.status==="paid"), cur = Math.min(42, adm.day);
@@ -3384,14 +3525,16 @@ function insightsView(){
       const prov = P2.by_provider||{}, kind = P2.by_kind||{}, fm = n => fcfa(n||0)+" F";
       const kl = {week:"Weekly", full:"Full journey", rest:"Remaining weeks"}, pl = {pawapay:"Mobile Money (pawaPay)", stripe:"Card (Stripe)"};
       return `<section class="panel stack"><h3>💳 Payments</h3>
-        <div class="stats"><div class="stat"><b>${fm(P2.total)}</b><span class="muted small">collected · ${P2.count} payments</span></div>
+        <div class="stats"><div class="stat"><b>${fm(P2.total)}</b><span class="muted small">FCFA collected · ${P2.count} payments</span></div>
           <div class="stat"><b>${fm(prov.pawapay)}</b><span class="muted small">Mobile Money</span></div>
           <div class="stat"><b>${fm(prov.stripe)}</b><span class="muted small">Card</span></div>
           <div class="stat"><b>${fm(kind.full)}</b><span class="muted small">full journey · ${fm((kind.week||0)+(kind.rest||0))} weekly</span></div></div>
+        ${Object.keys(P2.by_currency||{}).filter(c=>!["XAF","XOF"].includes(c)).length ? `<p class="small"><b>Other currencies:</b> ${Object.entries(P2.by_currency).filter(([c])=>!["XAF","XOF"].includes(c)).map(([c,v])=>`${fcfa(v)} ${c}`).join(" · ")}</p>` : ""}
+        ${Object.keys(P2.by_country||{}).length ? `<p class="small muted">By country: ${Object.entries(P2.by_country).map(([c,n])=>`${c==="card"?"💳 card":(CTRY[c]?CTRY[c][0]+" "+CTRY[c][1]:c)} ${n}`).join(" · ")}</p>` : ""}
         ${P2.failed?`<p class="small muted">${P2.failed} failed or cancelled attempt${P2.failed>1?"s":""} (not counted).</p>`:""}
         ${P2.list.length ? `<div class="table-wrap"><table><thead><tr><th>Date</th><th>Name</th><th>WhatsApp</th><th>What</th><th>Amount</th><th>Via</th><th>Status</th></tr></thead><tbody>
           ${P2.list.map(x=>`<tr><td>${new Date(x.created_at).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}</td><td>${esc(x.name||"(removed)")}</td><td>${x.phone?"+"+esc(x.phone):""}</td>
-            <td>${kl[x.kind]||x.kind}${x.week?" "+x.week:""}</td><td><b>${fm(x.amount)}</b></td><td>${pl[x.provider]||x.provider}</td>
+            <td>${kl[x.kind]||x.kind}${x.week?" "+x.week:""}</td><td><b>${x.currency && !["XAF","XOF"].includes(x.currency) ? fcfa(x.amount)+" "+x.currency : fm(x.amount)}</b></td><td>${pl[x.provider]||x.provider}${x.country?` · ${CTRY[x.country]?CTRY[x.country][0]:""} ${x.country}`:""}</td>
             <td>${x.status==="completed"?'<span class="chip-s paid">Paid</span>':x.status==="pending"?'<span class="chip-s">Pending</span>':'<span class="chip-s wait">Failed</span>'}</td></tr>`).join("")}</tbody></table></div>`
           : `<p class="muted small">No payments yet.</p>`}
         <button class="btn btn-ghost sm" id="payCsv" style="max-width:220px">Download as CSV</button></section>`; })()}
@@ -3498,7 +3641,7 @@ const TERMS = {
   en: { title:"Terms, refunds and privacy", updated:"Last updated: 8 October 2026", back:"Back",
     s:[["Who we are","The Growth Day cohort is a six-week personal growth programme of Equip2Lead, operated by EBUK and led by Dr. Denis Ekobena, in Yaoundé, Cameroon. Payments are received by EBUK, so \"EBUK\" is the name you will see on your card statement or Mobile Money receipt. Contact: contact@growthday.cc, or the WhatsApp number that sends your Daily Fire."],
        ["What you get","A daily teaching (the Daily Fire) on WhatsApp and in this app, your 1% Card and personal growth plan, weekly scores, a triad and a Growth Guide from week 2, three live seminars in the cohort Telegram group, and a certificate of completion."],
-       ["Prices","Full journey: 10,000 FCFA, paid in one payment before you start paying weekly. Weekly: 2,000 FCFA for each week, paid before the week begins (12,000 FCFA over 6 weeks). Weekly payers may pay all remaining weeks at once, at 2,000 FCFA per week. Prices include all taxes we are required to charge."],
+       ["Prices","Full journey: 10,000 FCFA, paid in one payment before you start paying weekly. Weekly: 2,000 FCFA for each week, paid before the week begins (12,000 FCFA over 6 weeks). Weekly payers may pay all remaining weeks at once, at 2,000 FCFA per week. Prices include all taxes we are required to charge. When you pay by Mobile Money from another country, you pay the equivalent price in that country's currency, shown before you confirm."],
        ["Payment","You pay with MTN Mobile Money or Orange Money (processed by pawaPay) or with a bank card (processed by Stripe). We never see or store your Mobile Money PIN or card details. Your access opens as soon as the payment provider confirms the payment."],
        ["Access","Your access covers the weeks you have paid. If a week is not paid, the Daily Fire, the 1% Card and the seminar link for that week stay locked until you pay; your plan, your progress and your badges are kept. Seats are limited and are held only once paid."],
        ["Refunds","Full journey: a full refund if you ask before day 1 of the cohort. After day 1, the full weeks that have not yet started are refunded at 2,000 FCFA each, minus the payment provider's fees. Weekly: a week that has started is not refunded; a week paid in advance can be refunded in full if you ask before it starts. To ask for a refund, write to us on WhatsApp or at contact@growthday.cc. We reply within 3 days and send the refund to the same Mobile Money number or card within 7 days."],
@@ -3509,7 +3652,7 @@ const TERMS = {
   fr: { title:"Conditions, remboursements et confidentialité", updated:"Dernière mise à jour : 8 octobre 2026", back:"Retour",
     s:[["Qui nous sommes","La cohorte Growth Day est un parcours de croissance personnelle de six semaines d'Equip2Lead, exploité par EBUK et dirigé par le Dr Denis Ekobena, à Yaoundé, au Cameroun. Les paiements sont reçus par EBUK : c'est donc le nom « EBUK » qui apparaît sur votre relevé de carte ou votre reçu Mobile Money. Contact : contact@growthday.cc, ou le numéro WhatsApp qui vous envoie le Daily Fire."],
        ["Ce que vous recevez","Un enseignement quotidien (le Daily Fire) sur WhatsApp et dans cette application, votre carte 1 % et votre plan de croissance personnel, des bilans hebdomadaires, une triade et un Growth Guide dès la semaine 2, trois séminaires en direct dans le groupe Telegram de la cohorte, et un certificat de fin de parcours."],
-       ["Prix","Parcours complet : 10 000 FCFA, en un seul paiement, avant de commencer à payer à la semaine. Hebdomadaire : 2 000 FCFA par semaine, payés avant le début de chaque semaine (12 000 FCFA sur 6 semaines). Les personnes qui paient à la semaine peuvent payer toutes les semaines restantes en une fois, à 2 000 FCFA par semaine. Les prix incluent les taxes que nous sommes tenus de facturer."],
+       ["Prix","Parcours complet : 10 000 FCFA, en un seul paiement, avant de commencer à payer à la semaine. Hebdomadaire : 2 000 FCFA par semaine, payés avant le début de chaque semaine (12 000 FCFA sur 6 semaines). Les personnes qui paient à la semaine peuvent payer toutes les semaines restantes en une fois, à 2 000 FCFA par semaine. Les prix incluent les taxes que nous sommes tenus de facturer. Si vous payez par Mobile Money depuis un autre pays, vous payez le prix équivalent dans la monnaie de ce pays, affiché avant de confirmer."],
        ["Paiement","Vous payez avec MTN Mobile Money ou Orange Money (traité par pawaPay) ou par carte bancaire (traité par Stripe). Nous ne voyons et ne conservons jamais votre code Mobile Money ni vos données de carte. Votre accès s'ouvre dès que le prestataire de paiement confirme le paiement."],
        ["Accès","Votre accès couvre les semaines payées. Si une semaine n'est pas payée, le Daily Fire, la carte 1 % et le lien du séminaire de cette semaine restent bloqués jusqu'au paiement ; votre plan, vos progrès et vos badges sont conservés. Les places sont limitées et ne sont réservées qu'une fois payées."],
        ["Remboursements","Parcours complet : remboursement intégral si vous le demandez avant le jour 1 de la cohorte. Après le jour 1, les semaines complètes qui n'ont pas encore commencé sont remboursées à 2 000 FCFA chacune, moins les frais du prestataire de paiement. Hebdomadaire : une semaine commencée n'est pas remboursée ; une semaine payée d'avance peut être remboursée intégralement si vous le demandez avant qu'elle commence. Pour demander un remboursement, écrivez-nous sur WhatsApp ou à contact@growthday.cc. Nous répondons sous 3 jours et remboursons sur le même numéro Mobile Money ou la même carte sous 7 jours."],
