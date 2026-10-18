@@ -2984,7 +2984,7 @@ function adminRender(){
         <td>${sc ? `W${sc.week}: ${sc.score1} · ${sc.score2}` : "—"}</td>
         <td>${p.plan_type==="full" ? `<span class="chip-s paid">Full · 6 wks</span>` : p.plan_type==="weekly" ? `<span class="chip-s paid">Weekly · ${p.paid_weeks}/6</span>` : p.status==="waitlist" ? `<span class="chip-s wait">Waiting list</span>` : `<span class="chip-s">Not paid</span>`}
           <br><select class="small" data-mpay="${p.id}" aria-label="Payment for ${esc(p.name)}"><option value="">Change…</option><option value="full">Mark 6 weeks paid</option><option value="week">Add one paid week</option><option value="none">Mark as not paid</option><option value="waitlist">Waiting list</option></select></td>
-        <td><button class="link" data-reset="${p.id}" data-name="${esc(p.name)}">Reset PIN</button><br><button class="link small" data-rewelcome="${p.id}" data-name="${esc(p.name)}">Resend welcome</button></td></tr>
+        <td><button class="link" data-reset="${p.id}" data-name="${esc(p.name)}">Reset PIN</button><br><button class="link small" data-editph="${p.id}">Change number</button><br><button class="link small" data-rewelcome="${p.id}" data-name="${esc(p.name)}">Resend welcome</button></td></tr>
         ${admOpen===p.id ? `<tr class="detail"><td colspan="9"><div class="grid2">${[[1,p.area1],[2,p.area2]].map(([k,a])=>{ const pl=(p.plan||{})[k]||{};
           return `<div class="stack"><h3>${AREA_ICON[a-1]} ${AREA_SHORT[a-1]}</h3>
             ${[["honest","Where I am"],["score","Starting score"],["target","6-week target"],["daily","Daily 1%"],["excuse","Usual excuse"],["answer","Answer"]].map(([f,lb])=>`<p class="small"><b>${lb}:</b> ${pl[f]!==undefined&&String(pl[f]).trim()!==""?esc(pl[f]):'<span class="muted">not yet</span>'}</p>`).join("")}</div>`; }).join("")}</div>
@@ -3218,6 +3218,28 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
   if(oo) oo.onchange = async () => { const m = $("#orangeMsg");
     try{ await rpc("gd_admin_set_orange", {p_pin:admPin, p_on:oo.checked}); admMeth = Object.assign(admMeth||{}, {orange:oo.checked}); m.className="ok"; m.textContent = oo.checked ? "✓ Orange Money is now shown to participants." : "✓ Only MTN MoMo is shown now."; }
     catch(e){ m.className="err"; m.textContent = "Could not save: " + e.message; } };
+  document.querySelectorAll("[data-editph]").forEach(b => b.onclick = async () => {
+    const p = adm.participants.find(x=>x.id===b.dataset.editph); if(!p) return;
+    let v = prompt(`New WhatsApp number for ${p.name}\n\nCurrent: +${p.phone}\n\nType it with the country code, e.g. 237 6XX XX XX XX`, "+" + p.phone);
+    if(v === null) return;
+    const digits = v.replace(/\D/g, "");
+    if(digits.length < 8){ alert("That number looks too short. Include the country code (e.g. 237…)."); return; }
+    if(digits === p.phone){ alert("That is the same number. Nothing changed."); return; }
+    if(!confirm(`Change ${p.name}'s number?\n\nFrom: +${p.phone}\nTo:   +${digits}\n\nThey will sign in with the NEW number and the same PIN. Daily messages will go to the new number.`)) return;
+    b.disabled = true; b.textContent = "Saving…";
+    try{
+      const d = await rpc("gd_admin_edit_participant", {p_pin:admPin, p_id:p.id, p_phone:digits, p_name:null});
+      p.phone = (d && d.phone) || digits; p.wa_ok = null; p.wa_detail = "";
+      adminRender();
+      if(confirm(`✓ Number changed to +${p.phone}.\n\nSend the welcome message to the new number now so they get the app link and can confirm it works?`)){
+        try{ const w = await callApp({action:"admin_welcome", pin:admPin, id:p.id}); p.wa_ok = !!w.ok; p.wa_detail = w.detail || ""; adminRender();
+          alert(w.ok ? "✓ WhatsApp accepted the welcome message on the new number." : "✕ WhatsApp did not accept it. Check that this is the number their WhatsApp account uses."); }
+        catch(e){ alert("Number saved, but the welcome could not be sent: " + e.message); }
+      }
+    }catch(e){
+      b.disabled = false; b.textContent = "Change number";
+      alert(e.message === "phone_exists" ? `Another participant already uses +${digits}.` : e.message === "phone_invalid" ? "That number is not valid." : "Could not save: " + e.message);
+    } });
   document.querySelectorAll("[data-rewelcome]").forEach(b => b.onclick = async () => {
     if(!confirm(`Send the welcome message again to ${b.dataset.name} on WhatsApp?`)) return;
     b.disabled = true; b.textContent = "Sending…";
