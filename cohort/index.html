@@ -211,6 +211,10 @@ pre.wa{white-space:pre-wrap;word-wrap:break-word;font:400 15px/1.45 var(--body);
 .w-tick{width:24px;height:24px;border-radius:50%;background:#17a24a;color:#fff;display:grid;place-items:center;font-weight:800;flex:none}
 .w-total{display:flex;justify-content:space-between;align-items:baseline;margin:14px 0 10px;padding-top:12px;border-top:1px dashed rgba(0,0,0,.15)}.w-total b{font-size:20px}
 .w-pay{width:100%;font-size:17px;padding:15px}.w-pay:disabled{opacity:.45}.w-card{display:block;margin:12px auto 4px;text-align:center}
+.wa-act{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(135deg,#E9F9EF,#F4FCF7);border:1.5px solid #9BDDB2}.wa-act h3{margin:0 0 4px}.wa-act p{margin:0 0 10px}
+.wa-act-ic{width:44px;height:44px;border-radius:14px;background:#25D366;color:#fff;display:grid;place-items:center;flex:none;font-weight:800;font-size:20px}.wa-act-ic svg{width:24px;height:24px;fill:#fff}
+.btn-wa{background:#25D366;color:#fff !important;border:0;font-weight:700;display:inline-flex;justify-content:center;align-items:center;gap:6px;text-decoration:none}.btn-wa:hover{background:#1ebe5b}
+@media (prefers-color-scheme: dark){.wa-act{background:rgba(37,211,102,.10);border-color:rgba(37,211,102,.35)}}
 .phone-row{display:grid;grid-template-columns:116px 1fr;gap:8px}
 .phone-row select{padding:12px 8px}
 .tiles9{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
@@ -1779,6 +1783,7 @@ async function doneScreen(name){
       <h1>${T_.doneTitle(esc(name))}</h1>
       <p class="lead-s">${T_.doneSub(fmtDate(start))}</p>
       <div class="stack" style="margin-top:28px">
+        ${waActDone() ? "" : `<a class="btn btn-wa" data-waact href="${waActLink()}" target="_blank" rel="noopener">📲 ${lang==="fr"?"Activer mes messages WhatsApp":"Activate my WhatsApp messages"}</a><p class="small muted" style="margin:-4px 0 4px;text-align:center">${lang==="fr"?"Une seule fois, pour recevoir le Daily Fire chaque matin.":"Just once, so the Daily Fire reaches you every morning."}</p>`}
         <button class="btn btn-primary" id="openDash">${T_.openDash}</button>
         <button class="btn btn-ghost" id="openHow">🧭 ${T_.howBtn}</button>
         ${me && me.community_link ? `<a class="btn btn-tg" href="${esc(me.community_link)}" target="_blank" rel="noopener">${TG_ICON} ${T_.grpBtn}</a>` : ""}
@@ -1790,6 +1795,26 @@ async function doneScreen(name){
   const oh = $("#openHow"); if(oh) oh.onclick = async () => { document.body.classList.remove("is-auth"); await loadOnb(); await boot(); tab = "how"; renderApp(); window.scrollTo(0,0); };
 }
 
+
+/* ---------- WhatsApp activation: the participant sends START to the cohort number once ---------- */
+const COHORT_WA = "237674991704";
+const waActDone = () => { try{ return !!localStorage.getItem("gd_wa_act"); }catch(e){ return false; } };
+const waActLink = () => `https://wa.me/${COHORT_WA}?text=${encodeURIComponent(lang==="fr" ? "START - Growth Day" : "START - Growth Day")}`;
+function waActCard(){
+  if(waActDone() || (me && me.wa_activated_at)) return "";
+  const fr = lang === "fr";
+  return `<section class="panel wa-act" id="waAct"><div class="wa-act-ic">${WA_ICON}</div><div class="wa-act-t">
+    <h3>${fr?"Recevez le Daily Fire sur WhatsApp":"Get the Daily Fire on WhatsApp"}</h3>
+    <p class="small">${fr?"Une seule fois : envoyez « START » au numéro Growth Day (+237 674 99 17 04). Sans ce message, WhatsApp peut bloquer nos envois.":"Just once: send \u201cSTART\u201d to the Growth Day number (+237 674 99 17 04). Without it, WhatsApp may block our messages."}</p>
+    <a class="btn btn-wa" data-waact href="${waActLink()}" target="_blank" rel="noopener">📲 ${fr?"Activer mes messages WhatsApp":"Activate my WhatsApp messages"}</a></div></section>`;
+}
+document.addEventListener("click", e => {
+  const a = e.target.closest && e.target.closest("[data-waact]"); if(!a) return;
+  try{ localStorage.setItem("gd_wa_act", "1"); }catch(_){}
+  const tok = store.get("gd_token"); if(tok) rpc("gd_wa_activated", {p_token: tok}).catch(() => {});
+  if(me) me.wa_activated_at = new Date().toISOString();
+  setTimeout(() => { const c = document.getElementById("waAct"); if(c) c.innerHTML = `<div class="wa-act-ic">✓</div><div class="wa-act-t"><h3>${lang==="fr"?"Merci ! Envoyez le message dans WhatsApp.":"Thank you! Send the message in WhatsApp."}</h3><p class="small">${lang==="fr"?"Vos Daily Fire arriveront chaque matin à 6h.":"Your Daily Fire will arrive every morning at 6:00."}</p></div>`; }, 400);
+});
 
 /* ---------- payments: weekly or full, Mobile Money via pawaPay ---------- */
 const PAY = { kind: null, method: null };
@@ -2169,7 +2194,7 @@ function renderApp(){
   const cur = me.day;
   let body = "";
   const locked = me.payments_on && !me.has_access;
-  if(tab === "today") body = locked ? (cur < 1 ? payCard() + viewBefore() : lockedView()) : (cur < 1 ? unpaidCard() + planFirstCard() + dayOnePreview() + viewBefore() + week1Card() : cur > 42 ? viewFinished() : (me.in_trial && me.trial_end - me.day <= 1 ? trialCard() : unpaidCard()) + renewCard() + (me.day <= 7 ? planFirstCard() : "") + viewToday());
+  if(tab === "today") body = waActCard() + (locked ? (cur < 1 ? payCard() + viewBefore() : lockedView()) : (cur < 1 ? unpaidCard() + planFirstCard() + dayOnePreview() + viewBefore() + week1Card() : cur > 42 ? viewFinished() : (me.in_trial && me.trial_end - me.day <= 1 ? trialCard() : unpaidCard()) + renewCard() + (me.day <= 7 ? planFirstCard() : "") + viewToday()));
   if(tab === "how") body = viewHow();
   if(tab === "card") body = viewCard();
   if(tab === "score") body = viewScore();
@@ -3121,7 +3146,7 @@ function adminRender(){
       return `<tr class="${s.slipping?"slip":""}">
         <td class="sticky-col"><button class="link" data-person="${p.id}" aria-expanded="${admOpen===p.id}"><b>${esc(p.name)}</b></button><br><span class="muted small" title="${esc(AREA_SHORT[p.area1-1])} · ${esc(AREA_SHORT[p.area2-1])}">${AREA_ICON[p.area1-1]||""}${AREA_ICON[p.area2-1]||""} ${p.lang.toUpperCase()} · plan ${["1","2"].reduce((n,k)=>n+Object.values((p.plan||{})[k]||{}).filter(v=>String(v).trim()!=="").length,0)}/12${((p.plan||{}).books||[]).length?` · 📚${p.plan.books.length}`:""}</span></td>
         <td><a href="https://wa.me/${esc(p.phone)}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">+${esc(p.phone)}</a>
-          <br>${p.wa_ok === true ? `<span class="chip-s paid" title="WhatsApp accepted the welcome message">✓ Welcome sent</span>` : p.wa_ok === false ? `<span class="chip-s wait" title="${esc(p.wa_detail||"")}">✕ Not delivered</span>` : `<span class="chip-s" title="Signed up before delivery tracking started">Not checked</span>`}</td>
+          <br>${p.wa_ok === true ? `<span class="chip-s paid" title="WhatsApp accepted the welcome message">✓ Welcome sent</span>` : p.wa_ok === false ? `<span class="chip-s wait" title="${esc(p.wa_detail||"")}">✕ Not delivered</span>` : `<span class="chip-s" title="Signed up before delivery tracking started">Not checked</span>`}${p.wa_activated_at ? `<br><span class="chip-s paid" title="Tapped Activate on ${new Date(p.wa_activated_at).toLocaleString("en-GB")}">📲 Activated</span>` : `<br><span class="chip-s" title="Has not tapped Activate my WhatsApp messages yet">📲 Not activated</span>`}</td>
         <td>${cur>=1&&cur<=42 ? actIcons(p, cur) : "—"}${p.last_seen?`<br><span class="muted small">Seen ${new Date(p.last_seen).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit",timeZone:"Africa/Douala"})}</span>`:""}</td>
         <td><input value="${esc(p.triad||"")}" data-triad="${p.id}" placeholder="e.g. Triad 1" aria-label="Triad for ${esc(p.name)}"></td>
         <td><span class="mini">${last7}</span></td>
