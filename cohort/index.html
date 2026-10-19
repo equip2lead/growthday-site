@@ -201,6 +201,16 @@ pre.wa{white-space:pre-wrap;word-wrap:break-word;font:400 15px/1.45 var(--body);
 .auth-cta .err{min-height:0;margin-bottom:8px}
 .auth-cta .err:empty{display:none}
 .actrow{display:inline-flex;gap:3px;white-space:nowrap}.acti{filter:grayscale(1);opacity:.28;font-size:15px}.acti.on{filter:none;opacity:1}.acttbl td,.acttbl th{white-space:nowrap}
+.w-hero{display:flex;gap:12px;align-items:flex-start;margin:4px 0 14px}.w-ic{font-size:26px;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(232,137,12,.12);flex:none}.w-hero h2{margin:0 0 4px}
+.w-lbl{display:block;font-weight:600;font-size:14px;margin:12px 0 6px}.w-select select{width:100%;padding:13px 12px;font-size:16px;border-radius:12px}
+.w-nets{font-size:12.5px;color:var(--muted,#6b7280);margin:8px 0 2px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}.w-net{background:rgba(23,162,74,.10);color:#137a3a;border-radius:999px;padding:2px 9px;font-weight:600}
+.w-num{display:flex;align-items:stretch;border:1.5px solid rgba(0,0,0,.15);border-radius:12px;overflow:hidden;background:#fff}.w-num:focus-within{border-color:#E8890C;box-shadow:0 0 0 3px rgba(232,137,12,.18)}
+.w-pre{padding:0 12px;display:flex;align-items:center;font-weight:700;background:rgba(0,0,0,.04);white-space:nowrap}.w-num input{border:0;flex:1;font-size:18px;letter-spacing:.5px;padding:13px 12px;min-width:0;outline:none;background:transparent}
+.w-status{min-height:22px;margin:10px 0 2px;font-size:14px;display:flex;gap:10px;align-items:flex-start;border-radius:12px}.w-status.hint{color:var(--muted,#6b7280)}.w-status.busy{color:var(--muted,#6b7280);align-items:center}
+.w-status.good{background:rgba(23,162,74,.09);border:1px solid rgba(23,162,74,.35);padding:10px 12px;color:#0f5f2e}.w-status.bad{background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.3);padding:10px 12px;color:#991b1b;display:block}
+.w-tick{width:24px;height:24px;border-radius:50%;background:#17a24a;color:#fff;display:grid;place-items:center;font-weight:800;flex:none}
+.w-total{display:flex;justify-content:space-between;align-items:baseline;margin:14px 0 10px;padding-top:12px;border-top:1px dashed rgba(0,0,0,.15)}.w-total b{font-size:20px}
+.w-pay{width:100%;font-size:17px;padding:15px}.w-pay:disabled{opacity:.45}.w-card{display:block;margin:12px auto 4px;text-align:center}
 .phone-row{display:grid;grid-template-columns:116px 1fr;gap:8px}
 .phone-row select{padding:12px 8px}
 .tiles9{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
@@ -706,6 +716,15 @@ body.admin{background:#F4F6FA}
 @media (prefers-color-scheme: dark){body.admin{background:var(--bg)}}
 .admin .wrap{max-width:1440px;padding:28px 32px 60px}
 .admin .panel:has(> table), .admin section:has(> table){overflow-x:auto}
+@media (min-width:1100px){.admin .wrap{max-width:min(1680px,97vw);padding:24px 28px 60px}}
+.admin .tablewrap table{font-size:14px}.admin .tablewrap th{white-space:nowrap}
+.admin .tablewrap td{vertical-align:top}
+.admin .tablewrap input[data-triad]{width:104px;padding:8px 10px}
+.admin .tablewrap select[data-mpay]{max-width:150px;font-size:13px;padding:6px 8px}
+.admin .sticky-col{position:sticky;left:0;z-index:1;background:var(--surface,#fff);min-width:170px;max-width:220px}
+.admin tr.slip .sticky-col{background:inherit}.admin thead th.sticky-col{background:inherit}.admin thead tr{background:var(--surface-2,#F6F7FA)}
+.actbtns{display:flex;gap:6px}.iconbtn{width:36px;height:36px;border-radius:10px;border:1px solid rgba(0,0,0,.12);background:var(--surface,#fff);font-size:16px;cursor:pointer;display:grid;place-items:center}
+.iconbtn:hover{border-color:#E8890C;background:rgba(232,137,12,.08)}.iconbtn:disabled{opacity:.5}
 .admin .top{background:var(--surface);border-radius:18px;padding:14px 20px;box-shadow:var(--shadow);margin-bottom:18px}
 .admin .top .brand{font:700 18px var(--display)}
 .admin .stats{grid-template-columns:repeat(4,1fr);gap:14px}
@@ -832,7 +851,7 @@ audio{width:100%}
 .tabs button[aria-current="page"]{color:var(--ember-text)}
 
 /* admin */
-.admin .wrap{max-width:1100px}
+.admin .wrap{max-width:1440px}@media (min-width:1100px){.admin .wrap{max-width:min(1680px,97vw)}}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
 .stat b{display:block;font-family:var(--display);font-size:28px}
@@ -1831,8 +1850,11 @@ function momoSub(){
 function myCountry(list){
   const d = String((me && me.phone) || "").replace(/\D/g, "");
   const hit = (list||[]).filter(c => c.prefix && d.startsWith(c.prefix)).sort((a,b)=>b.prefix.length-a.prefix.length)[0];
-  return hit ? hit.country : "CMR";
+  return hit ? hit.country : null;
 }
+// Countries where Mobile Money works (dialling prefixes); everyone else pays by card
+const MOMO_PREFIXES = ["237","225","221","229","241","242","243","254","250","256","260","258","232"];
+function hasMomoCountry(){ const d = String((me && me.phone) || "").replace(/\D/g, ""); return !d || MOMO_PREFIXES.some(x => d.startsWith(x)); }
 function localPrice(c, k){ if(k === "full") return c.full; if(k === "rest") return c.week * (7 - nextWeek()); return c.week; }
 function countryPicker(){
   const T_ = t(), host = document.getElementById("msheet"); if(!host || !MOMO) return;
@@ -1854,6 +1876,75 @@ function countryPicker(){
   $("#cpBack").onclick = () => methodSheet();
   body.querySelectorAll("[data-cc]").forEach(x => x.onclick = () => { PAY.method = "momo"; PAY.country = x.dataset.cc; startPay(x, $("#payErr3")); });
 }
+/* ---------- Mobile Money: enter the wallet number, verified live with pawaPay ---------- */
+const NAT_LEN = {CMR:9,CIV:10,SEN:9,BEN:10,GAB:8,COG:9,COD:9,KEN:9,RWA:9,UGA:9,ZMB:9,MOZ:9,SLE:8};
+const NAT_EX = {CMR:"6 77 12 34 56",CIV:"07 01 23 45 67",SEN:"77 123 45 67",BEN:"01 97 12 34 56",GAB:"06 12 34 56",COG:"06 123 4567",COD:"81 234 5678",KEN:"712 345 678",RWA:"78 123 4567",UGA:"77 123 4567",ZMB:"96 123 4567",MOZ:"84 123 4567",SLE:"76 123456"};
+function walletSheet(){
+  const T_ = t(), fr = lang === "fr", host = document.getElementById("msheet"); if(!host || !MOMO) return;
+  const body = host.querySelector(".ms-card"), k = PAY.kind;
+  const list = [...MOMO].sort((a,b) => ctryName(a.country).localeCompare(ctryName(b.country), fr?"fr":"en"));
+  const mine = myCountry(MOMO);
+  let cc = PAY.country && list.some(c => c.country === PAY.country) ? PAY.country : (mine || "CMR");
+  if(!list.some(c => c.country === cc)) cc = list[0].country;
+  const wa = String((me && me.phone) || "").replace(/\D/g, "");
+  const confOf = c => list.find(x => x.country === c);
+  const startNum = () => { const c = confOf(cc); if(c && wa.startsWith(c.prefix) && (cc !== "CMR" || ORANGE || isMtnUser())) return wa.slice(c.prefix.length); return ""; };
+  body.innerHTML = `<div class="ms-head"><button class="back-btn" id="wBack">← ${T_.back}</button><button class="icon-btn" data-msclose aria-label="${T_.pcClose}">✕</button></div>
+    <div class="w-hero"><span class="w-ic">📱</span><div><h2>${fr?"Votre compte Mobile Money":"Your Mobile Money account"}</h2>
+      <p class="muted small">${fr?"Entrez le numéro qui va payer. Il peut être différent de votre numéro WhatsApp.":"Enter the number that will pay. It can be different from your WhatsApp number."}</p></div></div>
+    <label for="wCountry" class="w-lbl">${fr?"Pays du compte":"Country of the account"}</label>
+    <div class="w-select"><select id="wCountry">${list.map(c => `<option value="${c.country}" ${c.country===cc?"selected":""}>${CTRY[c.country]?CTRY[c.country][0]:"🌍"}  ${esc(ctryName(c.country))}  (+${c.prefix})</option>`).join("")}</select></div>
+    <p class="w-nets" id="wNets"></p>
+    <label for="wNum" class="w-lbl">${fr?"Numéro Mobile Money":"Mobile Money number"}</label>
+    <div class="w-num"><span class="w-pre" id="wPre"></span><input id="wNum" type="tel" inputmode="numeric" autocomplete="tel-national" value="${esc(startNum())}"></div>
+    <div class="w-status" id="wStatus" role="status" aria-live="polite"></div>
+    <div class="w-total"><span>${fr?"À payer":"To pay"}</span><b id="wAmt"></b></div>
+    <button class="btn btn-primary w-pay" id="wPay" disabled>${fr?"Payer":"Pay"}</button>
+    <p class="err" id="payErr3" role="alert"></p>
+    <button class="link w-card" id="wCard">💳 ${fr?"Pas de Mobile Money ? Payer par carte bancaire":"No Mobile Money? Pay by bank card"}</button>
+    <p class="secure">${T_.secure2}</p>`;
+  const sel = $("#wCountry"), num = $("#wNum"), st = $("#wStatus"), pay = $("#wPay");
+  let timer = null, seq = 0, ok = null;
+  const amountTxt = (amt, cur) => money2(amt, cur);
+  const paint = () => { const c = confOf(cc);
+    $("#wPre").textContent = `${CTRY[cc]?CTRY[cc][0]:""} +${c.prefix}`;
+    num.placeholder = NAT_EX[cc] || "";
+    $("#wNets").innerHTML = `${fr?"Réseaux acceptés":"Accepted networks"} : ${c.providers.map(n => `<span class="w-net">${esc(n)}</span>`).join("")}`;
+    $("#wAmt").textContent = amountTxt(localPrice(c, k), c.currency); };
+  const setState = (kind, html) => { st.className = "w-status " + kind; st.innerHTML = html; };
+  const check = () => {
+    ok = null; pay.disabled = true; PAY.wallet = null; pay.textContent = fr ? "Payer" : "Pay";
+    const c = confOf(cc); let d = num.value.replace(/\D/g, "").replace(/^0+(?=\d{8})/, "");
+    if(d.startsWith(c.prefix) && d.length > (NAT_LEN[cc]||9)) d = d.slice(c.prefix.length);
+    if(!d){ setState("", ""); return; }
+    const need = NAT_LEN[cc] || 8;
+    if(d.length < need){ setState("hint", `${fr?"Encore":"Keep typing:"} ${need - d.length} ${fr?"chiffre(s)":"digit(s) to go"}`); return; }
+    setState("busy", `<span class="spin"></span> ${fr?"Vérification du numéro…":"Checking the number…"}`);
+    const my = ++seq;
+    const ask = callApp({action:"momo_check", token:store.get("gd_token"), phone:c.prefix + d, kind:k})
+      .catch(e => e.message === "network" ? Promise.reject(e) : ({ ok:false, error:e.message, detail:e.detail }));
+    ask.then(r => {
+      if(my !== seq) return;
+      if(r && r.ok){ ok = r; PAY.wallet = r.phone; PAY.country = r.country;
+        setState("good", `<span class="w-tick">✓</span><span><b>${esc(r.providerName)} Mobile Money</b> · ${esc(ctryName(r.country))}<br><small>+${esc(r.phone)}</small></span>`);
+        $("#wAmt").textContent = amountTxt(r.amount, r.currency);
+        pay.disabled = false; pay.textContent = `${fr?"Payer":"Pay"} ${amountTxt(r.amount, r.currency)}`; return; }
+      const e = (r && r.error) || "momo_number_invalid";
+      const nets = (r && r.networks) || c.providers;
+      if(e === "momo_provider_off") setState("bad", `<b>${fr?"Ce réseau n'est pas encore accepté.":"This network isn't accepted yet."}</b><br>${fr?`Dans ce pays, payez avec : ${nets.join(", ")}. Ou payez par carte bancaire.`:`In this country, pay with: ${nets.join(", ")}. Or pay by bank card.`}`);
+      else if(e === "momo_country_off" || /country/i.test((r && r.detail) || "")) setState("bad", `<b>${fr?"Le Mobile Money n'est pas disponible pour ce pays.":"Mobile Money isn't available for this country."}</b><br>${fr?"Choisissez un pays de la liste, ou payez par carte bancaire.":"Choose a country from the list, or pay by bank card."}`);
+      else setState("bad", `<b>${fr?"Ce numéro n'est pas reconnu comme un compte Mobile Money.":"This number isn't recognised as a Mobile Money account."}</b><br>${fr?"Vérifiez le pays et le numéro.":"Check the country and the number."}`);
+    }).catch(() => { if(my === seq) setState("bad", fr?"Connexion impossible. Réessayez.":"Couldn't connect. Try again."); });
+  };
+  paint(); if(num.value) check();
+  sel.onchange = () => { cc = sel.value; PAY.country = cc; if(!num.value || num.dataset.auto !== "0"){ num.value = startNum(); } paint(); check(); };
+  num.oninput = () => { num.dataset.auto = "0"; clearTimeout(timer); timer = setTimeout(check, 450); };
+  body.querySelectorAll("[data-msclose]").forEach(x => x.onclick = () => { host.remove(); document.body.classList.remove("no-scroll"); });
+  $("#wBack").onclick = () => methodSheet();
+  $("#wCard").onclick = () => { PAY.method = "card"; PAY.wallet = null; startPay($("#wCard"), $("#payErr3")); };
+  pay.onclick = () => { if(!ok) return; PAY.method = "momo"; startPay(pay, $("#payErr3")); };
+  setTimeout(() => { if(!num.value) num.focus(); }, 60);
+}
 // MTN Cameroon numbers: 650-654, 67x, 680-683 (same rule as the payment engine)
 function isMtnUser(){ const d = String((me && me.phone) || "").replace(/\D/g, ""); return /^(237)?(65[0-4]|67\d|68[0-3])\d{6}$/.test(d); }
 function methodSheet(){
@@ -1867,14 +1958,13 @@ function methodSheet(){
     <div class="ms-head"><h2>${T_.howPay}</h2><button class="icon-btn" data-msclose aria-label="${T_.pcClose}">✕</button></div>
     <div class="ms-sum"><span>${T_.pcPayNow} · ${title}</span><b>${fcfa(priceFor(k))} <small>FCFA</small></b></div>
     <div class="paygos">${go("momo", "📱", T_.goMomo, momoSub())}${go("card", "💳", T_.goCard, lang==="fr"?"Visa, Mastercard · partout dans le monde":"Visa, Mastercard · from anywhere")}</div>
-    ${!ORANGE && /^(237)/.test(String((me&&me.phone)||"").replace(/\D/g,"")) ? `<div class="momo-note"><b>${lang==="fr"?"Au Cameroun : MTN MoMo uniquement pour l'instant (Orange bientôt).":"In Cameroon: MTN MoMo only for now (Orange coming soon)."}</b> ${isMtnUser() ? (lang==="fr"?"Votre numéro MTN sera prérempli sur la page suivante.":"Your MTN number will be filled in on the next page.") : (lang==="fr"?"Votre numéro WhatsApp n'est pas MTN : sur la page suivante, entrez un numéro MTN MoMo (le vôtre ou celui d'un proche), ou payez par carte bancaire.":"Your WhatsApp number isn't MTN: on the next page, enter an MTN MoMo number (yours or a family member's), or pay by bank card.")}</div>` : ""}
     <p class="err" id="payErr2" role="alert"></p>
     <p class="secure">${T_.secure2}</p></div>`;
   document.body.classList.add("no-scroll");
   host.querySelectorAll("[data-msclose]").forEach(x => x.onclick = () => { host.remove(); document.body.classList.remove("no-scroll"); });
   host.querySelectorAll("[data-go]").forEach(x => x.onclick = async () => {
     if(x.disabled) return; PAY.method = x.dataset.go;
-    if(x.dataset.go === "momo"){ await loadMomo(); if(MOMO && MOMO.length > 1){ countryPicker(); return; } PAY.country = (MOMO && MOMO[0] && MOMO[0].country) || "CMR"; }
+    if(x.dataset.go === "momo"){ x.disabled = true; await loadMomo(); x.disabled = false; if(MOMO && MOMO.length){ walletSheet(); return; } PAY.country = "CMR"; }
     startPay(x, $("#payErr2")); });
   loadMomo().then(() => { const sm = host.querySelector('[data-go="momo"] small'); if(sm && methods().momo) sm.textContent = momoSub(); });
 }
@@ -1897,9 +1987,9 @@ function payScreen(name){
   bindPaySheet(() => payScreen(name));
 }
 async function startPay(btn, errEl){
-  document.querySelectorAll("[data-go],[data-cc]").forEach(x => x.disabled = true);
+  document.querySelectorAll("[data-go],[data-cc],#wPay").forEach(x => x.disabled = true);
   const old = btn.innerHTML; btn.innerHTML = `<span class="pg-ic"><span class="spin"></span></span><span class="pg-t"><b>${t().paying}</b></span>`;
-  try{ const d = await callApp({action:"pay", token:store.get("gd_token"), kind:PAY.kind, method:PAY.method, country:PAY.country||"CMR", lang});
+  try{ const d = await callApp({action:"pay", token:store.get("gd_token"), kind:PAY.kind, method:PAY.method, country:PAY.country||"CMR", momo_phone: PAY.method === "momo" ? (PAY.wallet || undefined) : undefined, lang});
     if(d.link){ location.href = d.link; return; }
     if(d.paid){ boot(); return; }
     if(d.waitlist){ me.status = "waitlist"; payScreen(firstName(me.name)); return; }
@@ -3023,25 +3113,24 @@ function adminRender(){
       ${(adm.pay.price_week>0||adm.pay.price_full>0) ? `<button data-f="unpaid" aria-pressed="${admFilter==="unpaid"}">Not paid (${P.filter(p=>p.status==="pending").length})</button><button data-f="waitlist" aria-pressed="${admFilter==="waitlist"}">Waiting list (${P.filter(p=>p.status==="waitlist").length})</button>` : ""}
       ${triads.map(x=>`<button data-f="t:${esc(x)}" aria-pressed="${admFilter==="t:"+x}">${esc(x)}</button>`).join("")}
     </div>
-    <div class="tablewrap"><table><thead><tr><th>Name</th><th>WhatsApp</th><th>${cur>=1&&cur<=42?`Day ${cur} today`:"Today"}</th><th>Areas</th><th>Triad</th><th>Last 7 days</th><th>Streak / total</th><th>Latest score</th><th>Seat</th><th></th></tr></thead><tbody>
+    <div class="tablewrap"><table><thead><tr><th class="sticky-col">Name</th><th>WhatsApp</th><th>${cur>=1&&cur<=42?`Day ${cur} today`:"Today"}</th><th>Triad</th><th>Last 7 days</th><th>Streak</th><th>Score</th><th>Seat</th><th>Actions</th></tr></thead><tbody>
     ${list.map(p => { const s = pStats(p); const sc = p.scores[p.scores.length-1];
       const last7 = Array.from({length:7},(_,i)=>cur-6+i).map(d=>`<i class="${d>=1 && p.days.includes(d)?"on":""}" title="Day ${d}"></i>`).join("");
       const first = p.name.split(" ")[0];
       const msg = p.lang==="fr" ? `Bonjour ${first}, c'est l'équipe Growth Day. Comment avancez-vous avec votre 1 % ?` : `Hi ${first}, it's the Growth Day team. How is your 1% going?`;
       return `<tr class="${s.slipping?"slip":""}">
-        <td><button class="link" data-person="${p.id}" aria-expanded="${admOpen===p.id}"><b>${esc(p.name)}</b></button><br><span class="muted small">${p.lang.toUpperCase()} · plan ${["1","2"].reduce((n,k)=>n+Object.values((p.plan||{})[k]||{}).filter(v=>String(v).trim()!=="").length,0)}/12${((p.plan||{}).books||[]).length?` · 📚${p.plan.books.length}`:""}</span></td>
+        <td class="sticky-col"><button class="link" data-person="${p.id}" aria-expanded="${admOpen===p.id}"><b>${esc(p.name)}</b></button><br><span class="muted small" title="${esc(AREA_SHORT[p.area1-1])} · ${esc(AREA_SHORT[p.area2-1])}">${AREA_ICON[p.area1-1]||""}${AREA_ICON[p.area2-1]||""} ${p.lang.toUpperCase()} · plan ${["1","2"].reduce((n,k)=>n+Object.values((p.plan||{})[k]||{}).filter(v=>String(v).trim()!=="").length,0)}/12${((p.plan||{}).books||[]).length?` · 📚${p.plan.books.length}`:""}</span></td>
         <td><a href="https://wa.me/${esc(p.phone)}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">+${esc(p.phone)}</a>
           <br>${p.wa_ok === true ? `<span class="chip-s paid" title="WhatsApp accepted the welcome message">✓ Welcome sent</span>` : p.wa_ok === false ? `<span class="chip-s wait" title="${esc(p.wa_detail||"")}">✕ Not delivered</span>` : `<span class="chip-s" title="Signed up before delivery tracking started">Not checked</span>`}</td>
         <td>${cur>=1&&cur<=42 ? actIcons(p, cur) : "—"}${p.last_seen?`<br><span class="muted small">Seen ${new Date(p.last_seen).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit",timeZone:"Africa/Douala"})}</span>`:""}</td>
-        <td class="small">${AREA_SHORT[p.area1-1]}<br>${AREA_SHORT[p.area2-1]}</td>
         <td><input value="${esc(p.triad||"")}" data-triad="${p.id}" placeholder="e.g. Triad 1" aria-label="Triad for ${esc(p.name)}"></td>
         <td><span class="mini">${last7}</span></td>
         <td>${s.streak} / ${s.total}</td>
         <td>${sc ? `W${sc.week}: ${sc.score1} · ${sc.score2}` : "—"}</td>
         <td>${p.plan_type==="full" ? `<span class="chip-s paid">Full · 6 wks</span>` : p.plan_type==="weekly" ? `<span class="chip-s paid">Weekly · ${p.paid_weeks}/6</span>` : p.status==="waitlist" ? `<span class="chip-s wait">Waiting list</span>` : `<span class="chip-s">Not paid</span>`}
           <br><select class="small" data-mpay="${p.id}" aria-label="Payment for ${esc(p.name)}"><option value="">Change…</option><option value="full">Mark 6 weeks paid</option><option value="week">Add one paid week</option><option value="none">Mark as not paid</option><option value="waitlist">Waiting list</option></select></td>
-        <td><button class="link" data-reset="${p.id}" data-name="${esc(p.name)}">Reset PIN</button><br><button class="link small" data-editph="${p.id}">Change number</button><br><button class="link small" data-rewelcome="${p.id}" data-name="${esc(p.name)}">Resend welcome</button></td></tr>
-        ${admOpen===p.id ? `<tr class="detail"><td colspan="10">${actTable(p, cur)}<div class="grid2">${[[1,p.area1],[2,p.area2]].map(([k,a])=>{ const pl=(p.plan||{})[k]||{};
+        <td><div class="actbtns"><button class="iconbtn" data-reset="${p.id}" data-name="${esc(p.name)}" title="Reset PIN" aria-label="Reset PIN for ${esc(p.name)}">🔑</button><button class="iconbtn" data-editph="${p.id}" title="Change number" aria-label="Change number for ${esc(p.name)}">📞</button><button class="iconbtn" data-rewelcome="${p.id}" data-name="${esc(p.name)}" title="Resend welcome" aria-label="Resend welcome to ${esc(p.name)}">👋</button></div></td></tr>
+        ${admOpen===p.id ? `<tr class="detail"><td colspan="9">${actTable(p, cur)}<div class="grid2">${[[1,p.area1],[2,p.area2]].map(([k,a])=>{ const pl=(p.plan||{})[k]||{};
           return `<div class="stack"><h3>${AREA_ICON[a-1]} ${AREA_SHORT[a-1]}</h3>
             ${[["honest","Where I am"],["score","Starting score"],["target","6-week target"],["daily","Daily 1%"],["excuse","Usual excuse"],["answer","Answer"]].map(([f,lb])=>`<p class="small"><b>${lb}:</b> ${pl[f]!==undefined&&String(pl[f]).trim()!==""?esc(pl[f]):'<span class="muted">not yet</span>'}</p>`).join("")}</div>`; }).join("")}</div>
 ${(()=>{ const S=(p.plan||{}).survey||{}; if(!S.why && !(S.micro||[]).some(Boolean) && !S.time) return "";
@@ -3064,9 +3153,9 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
             <span class="muted small">Deletes their account, cards, scores and payment records. This can't be undone.</span></div>
           ${p.testimony ? `<h3 style="margin-top:14px">Story</h3><p class="small">${esc(p.testimony)}</p><p class="small muted">${p.testimony_public?"Agreed to share publicly":"Private"} · <label><input type="checkbox" data-approve="${p.id}" ${p.testimony_approved?"checked":""} ${p.testimony_public?"":"disabled"}> Show on landing page</label></p>` : ""}
           ${(p.notes||[]).length ? `<h3 style="margin-top:14px">Latest card answers</h3>${p.notes.map(n=>`<p class="small"><b>Day ${n.day}:</b> ${n.note1?`${AREA_ICON[p.area1-1]} ${esc(n.note1)}`:""} ${n.note2?` · ${AREA_ICON[p.area2-1]} ${esc(n.note2)}`:""}</p>`).join("")}` : `<p class="muted small" style="margin-top:10px">No written card answers yet.</p>`}
-        </td></tr>` : ""}`; }).join("") || `<tr><td colspan="10" class="muted">No one here yet.</td></tr>`}
+        </td></tr>` : ""}`; }).join("") || `<tr><td colspan="9" class="muted">No one here yet.</td></tr>`}
     </tbody></table></div>
-    <p class="muted small">Triad names save when you leave the box. Red edge = no card yesterday or today. Tap a number to message them on WhatsApp. Tap a name to see their growth plan and latest answers.</p>
+    <p class="muted small">Actions: 🔑 Reset PIN · 📞 Change number · 👋 Resend welcome. Icons under “Day today”: 📩 WhatsApp sent · 👁 opened · 🎧 audio · 📖 full teaching · ✅ 1% Card. Triad names save when you leave the box. Red edge = no card yesterday or today. Tap a number to message them on WhatsApp. Tap a name to see their growth plan and latest answers.</p>
     <button class="btn btn-ghost" id="csv" style="max-width:260px">Download CSV</button>`;
 
   const l = adm.lessons.find(x=>x.day===admDay) || {};
@@ -3282,7 +3371,7 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
     if(digits.length < 8){ alert("That number looks too short. Include the country code (e.g. 237…)."); return; }
     if(digits === p.phone){ alert("That is the same number. Nothing changed."); return; }
     if(!confirm(`Change ${p.name}'s number?\n\nFrom: +${p.phone}\nTo:   +${digits}\n\nThey will sign in with the NEW number and the same PIN. Daily messages will go to the new number.`)) return;
-    b.disabled = true; b.textContent = "Saving…";
+    b.disabled = true; b.textContent = "⏳";
     try{
       const d = await rpc("gd_admin_edit_participant", {p_pin:admPin, p_id:p.id, p_phone:digits, p_name:null});
       p.phone = (d && d.phone) || digits; p.wa_ok = null; p.wa_detail = "";
@@ -3293,16 +3382,16 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
         catch(e){ alert("Number saved, but the welcome could not be sent: " + e.message); }
       }
     }catch(e){
-      b.disabled = false; b.textContent = "Change number";
+      b.disabled = false; b.textContent = "📞";
       alert(e.message === "phone_exists" ? `Another participant already uses +${digits}.` : e.message === "phone_invalid" ? "That number is not valid." : "Could not save: " + e.message);
     } });
   document.querySelectorAll("[data-rewelcome]").forEach(b => b.onclick = async () => {
     if(!confirm(`Send the welcome message again to ${b.dataset.name} on WhatsApp?`)) return;
-    b.disabled = true; b.textContent = "Sending…";
+    b.disabled = true; b.textContent = "⏳";
     try{ const d = await callApp({action:"admin_welcome", pin:admPin, id:b.dataset.rewelcome});
       const p = adm.participants.find(x=>x.id===b.dataset.rewelcome); if(p){ p.wa_ok = !!d.ok; p.wa_detail = d.detail || ""; }
       adminRender(); alert(d.ok ? `✓ WhatsApp accepted the message for ${b.dataset.name}.` : `✕ WhatsApp did not accept it.\n\n${String(d.detail||d.whatsapp||"").slice(0,200)}\n\nCheck the number with the person: it must be the number their WhatsApp account uses.`); }
-    catch(e){ b.disabled = false; b.textContent = "Resend welcome"; alert("Could not send: " + e.message); } });
+    catch(e){ b.disabled = false; b.textContent = "👋"; alert("Could not send: " + e.message); } });
   const ss2 = $("#semSave");
   if(ss2) ss2.onclick = async () => { const m = $("#semMsg");
     try{ await rpc("gd_admin_set_seminar",{p_pin:admPin, p_time:$("#semTime").value, p_link:$("#semLink").value});
