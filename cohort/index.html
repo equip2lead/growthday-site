@@ -1014,7 +1014,7 @@ en:{
   nextSteps:[["Monday · 6:00","Your first Daily Fire arrives on WhatsApp."],["Monday · evening","Fill your first 1% Card here. Two taps."],["Sunday","Rate your week in your two areas."],["Week 2","Meet your triad and start your weekly calls."]],
   hwTitle:"Today's 1% (your homework)", answerFor:a=>`Your answer for ${a}`, answerPh:"Write it here…", scoreNext:d=>`Weekly Growth Score: Sunday (day ${d})`,
 
-  payTitle:n=>`One last step, ${n}`, paySub:"Choose your plan: <b>week by week</b>, or <b>the full journey at once</b>. Then pay with <b>MTN MoMo</b>, <b>Orange Money</b> or a <b>bank card</b> (Visa, Mastercard).",
+  payTitle:n=>`One last step, ${n}`, paySub:"Choose your plan: <b>week by week</b>, or <b>the full journey at once</b>. Then pay with <b>Mobile Money</b> or a <b>bank card</b> (Visa, Mastercard).",
   seatsLeft:n=>n===1?"1 seat left":`${n} seats left`, payBtn:p=>`Pay ${p} FCFA`, payLater:"I'll pay later", paying:"Opening the payment page…",
   payCardTitle:"Secure your seat", payCardSub:"Your seat is confirmed once your payment is received. Then the daily teaching and your 1% Card open here.",
   checking:"Checking your payment…", notYet:"We haven't received your payment yet. If you just paid, wait a minute and tap Check again.", checkAgain:"Check again",
@@ -1173,7 +1173,7 @@ fr:{
   nextSteps:[["Lundi · 6h00","Votre premier Daily Fire arrive sur WhatsApp."],["Lundi · soir","Remplissez votre première carte 1 % ici. Deux touches."],["Dimanche","Notez votre semaine dans vos deux domaines."],["Semaine 2","Rencontrez votre triade et commencez vos appels."]],
   hwTitle:"Votre 1 % du jour (votre devoir)", answerFor:a=>`Votre réponse pour ${a}`, answerPh:"Écrivez-la ici…", scoreNext:d=>`Bilan de la semaine : dimanche (jour ${d})`,
 
-  payTitle:n=>`Une dernière étape, ${n}`, paySub:"Choisissez votre formule : <b>semaine par semaine</b>, ou <b>tout le parcours en une fois</b>. Puis payez avec <b>MTN MoMo</b>, <b>Orange Money</b> ou une <b>carte bancaire</b> (Visa, Mastercard).",
+  payTitle:n=>`Une dernière étape, ${n}`, paySub:"Choisissez votre formule : <b>semaine par semaine</b>, ou <b>tout le parcours en une fois</b>. Puis payez avec <b>Mobile Money</b> ou une <b>carte bancaire</b> (Visa, Mastercard).",
   seatsLeft:n=>n===1?"Plus qu'1 place":`Plus que ${n} places`, payBtn:p=>`Payer ${p} FCFA`, payLater:"Je paierai plus tard", paying:"Ouverture de la page de paiement…",
   payCardTitle:"Réservez votre place", payCardSub:"Votre place est confirmée dès réception du paiement. L'enseignement quotidien et votre carte 1 % s'ouvrent alors ici.",
   checking:"Vérification de votre paiement…", notYet:"Nous n'avons pas encore reçu votre paiement. Si vous venez de payer, attendez une minute puis touchez Vérifier.", checkAgain:"Vérifier à nouveau",
@@ -1977,13 +1977,13 @@ function payScreen(name){
   root.innerHTML = `<div class="auth done"><div class="auth-body">
     ${waiting ? `<div class="big-flame">${FLAME}</div><h1>${T_.waitTitle}</h1><p class="lead-s">${T_.waitSub}</p>
       <div class="stack" style="margin-top:28px"><button class="btn btn-primary" id="openDash">${T_.openDash}</button></div>`
-    : `<div class="how-top"><button class="back-btn" id="payBack">← ${T_.back}</button></div>
+    : `<div class="how-top"><button class="back-btn" id="payBack">← ${lang==="fr"?"Retour à mon tableau de bord":"Back to my dashboard"}</button></div>
       <p class="step-lbl">${T_.seatsLeft(me.seats_left)}</p><h1>${T_.payTitle(esc(name))}</h1>
-      <div class="pay-note"><p>${T_.paySub}</p><div class="pay-logos"><span class="pl-mtn">MTN MoMo</span><span class="pl-orange">Orange Money</span><span class="pl-card">💳 Visa · Mastercard</span></div></div>
+      <div class="pay-note"><p>${T_.paySub}</p><div class="pay-logos"><span class="pl-mtn">MTN MoMo</span>${ORANGE ? `<span class="pl-orange">Orange Money</span>` : ""}<span class="pl-card">💳 Visa · Mastercard</span></div></div>
       ${paySheet()}<button class="btn btn-ghost" id="openDash" style="margin-top:10px">${T_.payLater}</button>`}
   </div></div>`;
   $("#openDash").onclick = () => { document.body.classList.remove("is-auth"); boot(); };
-  const pb = $("#payBack"); if(pb) pb.onclick = () => onboard(t().obSlides.length - 1, () => payScreen(name));
+  const pb = $("#payBack"); if(pb) pb.onclick = () => { document.body.classList.remove("is-auth"); tab = "today"; boot(); };
   bindPaySheet(() => payScreen(name));
 }
 async function startPay(btn, errEl){
