@@ -3304,7 +3304,7 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
 
 /* ---------- admin: WhatsApp messages ---------- */
 const FN = "https://vjnzvrhbzaqmzneirmjq.supabase.co/functions/v1/gd-send";
-let admMsg = null, showWaSetup = false, msgTimer = null;
+let admMsg = null, showWaSetup = false, msgTimer = null, msgOpen = null, msgFind = "";
 const comp = {aud:"all", val:"", testNum:"", testLang:"en", en:"", fr:"", media:null, busy:false, note:""};
 
 async function loadMessages(){
@@ -3384,12 +3384,25 @@ function messagesView(){
         : /\.(mp4|mov|webm)$/i.test(n) ? `<video controls src="${u}" style="max-width:220px;border-radius:10px"></video>` : "";
       return `<div class="stack"><p class="ok">✓ Attached: ${esc(n)}</p>${prev}<button class="link" id="mRemove">Remove file</button></div>`; })()
     : `<div><label for="mFile">Attach an image, audio, video or PDF (optional, max 50 MB)</label><input type="file" id="mFile" accept="image/*,audio/*,video/*,application/pdf"></div>`;
-  const hist = admMsg.messages.length ? `<div class="tablewrap"><table><thead><tr><th>When</th><th>To</th><th>Message</th><th>Sent</th><th>Status</th></tr></thead><tbody>
-      ${admMsg.messages.map(m=>`<tr><td class="small">${new Date(m.created_at).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}</td>
+  const fmtT = d => new Date(d).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+  const tick = r => r.ok ? `<span class="ok" title="WhatsApp accepted it">✓</span>` : `<span class="err" title="${esc(r.d||"Not sent")}">✕</span>`;
+  const q = msgFind.trim().toLowerCase().replace(/\s+/g," ");
+  const hitsFor = m => (m.results||[]).filter(r => q && ((r.n||"").toLowerCase().includes(q) || (r.p||"").includes(q.replace(/\D/g,"") || "~")));
+  const findBox = `<div class="stack" style="gap:6px"><label for="mFind">Find a person: which messages were sent to them?</label>
+    <input id="mFind" placeholder="Type a name or a number" value="${esc(msgFind)}" autocomplete="off">
+    ${q ? (()=>{ const rows = admMsg.messages.flatMap(m => hitsFor(m).map(r => ({m, r})));
+      return rows.length ? `<div class="tablewrap"><table><thead><tr><th>Person</th><th>Message</th><th>When</th><th>Result</th></tr></thead><tbody>${rows.map(({m,r})=>`<tr><td class="small"><b>${esc(r.n||"")}</b><br><span class="muted">+${esc(r.p||"")}</span></td><td class="small">${esc(m.audience)}</td><td class="small">${fmtT(r.t||m.created_at)}</td><td>${tick(r)}${r.ok?"":` <span class="small err">${esc(r.d||"")}</span>`}</td></tr>`).join("")}</tbody></table></div>`
+        : `<p class="muted small">No message in the recent history was sent to “${esc(msgFind)}”.</p>`; })() : ""}</div>`;
+  const hist = admMsg.messages.length ? findBox + `<div class="tablewrap"><table><thead><tr><th>When</th><th>To</th><th>Message</th><th>Sent</th><th>Status</th></tr></thead><tbody>
+      ${admMsg.messages.map(m=>{ const res = m.results||[];
+        return `<tr><td class="small">${fmtT(m.created_at)}</td>
         <td class="small">${esc(m.audience)}</td>
         <td class="small">${esc((m.text_en||m.text_fr||"").slice(0,80))}${m.media_name?`<br>📎 ${esc(m.media_name)}`:""}</td>
-        <td>${m.sent}/${m.total}${m.failed?` <span class="err">· ${m.failed} failed</span>`:""}</td>
-        <td>${m.status==="sending"?"Sending…":"Done"}${m.failed?`<br><button class="link small" data-errs="${m.id}">See errors</button>`:""}</td></tr>`).join("")}
+        <td>${m.sent}/${m.total}${m.failed?` <span class="err">· ${m.failed} failed</span>`:""}${res.length?`<br><button class="link small" data-mwho="${m.id}">${msgOpen===m.id?"Hide":"See who"} (${res.length})</button>`:""}</td>
+        <td>${m.status==="sending"?"Sending…":"Done"}${m.failed?`<br><button class="link small" data-errs="${m.id}">See errors</button>`:""}</td></tr>
+        ${msgOpen===m.id ? `<tr class="detail"><td colspan="5"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px">${res.map(r=>`<div class="small">${tick(r)} <b>${esc(r.n||"")}</b> <span class="muted">+${esc(r.p||"")}</span>${r.ok?"":`<br><span class="err">${esc(r.d||"Not sent")}</span>`}</div>`).join("")}</div>
+          ${res.length < m.total ? `<p class="muted small">${m.total - res.length} more still to send…</p>` : ""}
+          <p class="muted small" style="margin-top:8px">✓ means WhatsApp accepted the message for that number. The blue ticks on your phone show whether the person actually received and read it.</p></td></tr>` : ""}`; }).join("")}
     </tbody></table></div>` : `<p class="muted">No messages sent yet.</p>`;
   return `<div class="stack-lg" style="max-width:780px">
     ${!admMsg.configured || showWaSetup ? setup : `<p class="ok">✓ WhatsApp connected (instance ${esc(admMsg.instance_hint)}) <button class="link" id="waChange">Change</button></p>`}
@@ -3475,6 +3488,8 @@ function bindMessages(){
     comp.busy = false; adminRender();
   };
   const rm = $("#mRemove"); if(rm) rm.onclick = () => { keep(); comp.media = null; adminRender(); };
+  document.querySelectorAll("[data-mwho]").forEach(b => b.onclick = () => { const id = Number(b.dataset.mwho); msgOpen = msgOpen === id ? null : id; adminRender(); });
+  const mf = $("#mFind"); if(mf){ mf.oninput = () => { msgFind = mf.value; clearTimeout(mf._t); mf._t = setTimeout(() => { const pos = mf.selectionStart; adminRender(); const n = $("#mFind"); if(n){ n.focus(); try{ n.setSelectionRange(pos,pos); }catch(e){} } }, 350); }; }
   document.querySelectorAll("[data-errs]").forEach(b => b.onclick = () => {
     const m = admMsg.messages.find(x => String(x.id) === b.dataset.errs);
     alert((m.errors||[]).map(x => `${x.name} (+${x.phone}): ${x.detail}`).join("\n\n") || "No details.");
