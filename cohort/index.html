@@ -1008,7 +1008,7 @@ en:{
   s2Title:"Pick your two areas", s3Title:"Create your PIN",
   s3Sub:"4 digits. With your WhatsApp number, it lets you sign in on any phone.", show:"Show", hide:"Hide",
   joiningAs:"You're joining as", consent:"By joining, you agree to receive the cohort messages on WhatsApp, and to share your name and WhatsApp number with your triad and Growth Guide.",
-  doneTitle:n=>`You're in, ${n}!`, doneSub:d=>`Day 1 is ${d}. Your first Daily Fire arrives on WhatsApp at 6:00 that morning.`,
+  doneTitle:n=>`You're in, ${n}!`, doneSub:d=>`Your Day 1 starts today. Your Daily Fire arrives on WhatsApp, then a new day every morning at 6:00.`,
   openDash:"Open my dashboard", invite:"Invite a friend on WhatsApp",
   inviteMsg:"I just joined the Growth Day cohort: grow 1% a day for 42 days, with daily teaching on WhatsApp. Join me 👉 https://growthday.cc/cohort",
   tipTitle:"Keep it one tap away", tip:"On iPhone, tap Share then \"Add to Home Screen\". On Android, tap ⋮ then \"Add to home screen\".",
@@ -1167,7 +1167,7 @@ fr:{
   s2Title:"Choisissez vos deux domaines", s3Title:"Créez votre code PIN",
   s3Sub:"4 chiffres. Avec votre numéro WhatsApp, il vous permet de vous connecter sur n'importe quel téléphone.", show:"Afficher", hide:"Masquer",
   joiningAs:"Vous vous inscrivez en tant que", consent:"En vous inscrivant, vous acceptez de recevoir les messages de la cohorte sur WhatsApp, et de partager votre nom et votre numéro WhatsApp avec votre triade et votre Growth Guide.",
-  doneTitle:n=>`Vous êtes inscrit, ${n} !`, doneSub:d=>`Le jour 1 est le ${d}. Votre premier Daily Fire arrive sur WhatsApp à 6h00 ce matin-là.`,
+  doneTitle:n=>`Vous êtes inscrit, ${n} !`, doneSub:d=>`Votre Jour 1 commence aujourd'hui. Votre Daily Fire arrive sur WhatsApp, puis un nouveau jour chaque matin à 6h00.`,
   openDash:"Ouvrir mon tableau de bord", invite:"Inviter un ami sur WhatsApp",
   inviteMsg:"Je viens de rejoindre la cohorte Growth Day : grandir de 1 % par jour pendant 42 jours, avec un enseignement quotidien sur WhatsApp. Rejoins-moi 👉 https://growthday.cc/cohort",
   tipTitle:"Gardez-la à portée de main", tip:"Sur iPhone, touchez Partager puis « Sur l'écran d'accueil ». Sur Android, touchez ⋮ puis « Ajouter à l'écran d'accueil ».",
@@ -1375,7 +1375,7 @@ function header(rerender){ return `<div class="top"><div class="brand"><img src=
 /* ---------- participant: auth screens ---------- */
 const LT = {
 en:{
-  signin:"Sign in", wa:"Your daily teaching arrives on WhatsApp, every morning at 6:00", watch:"Watch the Growth Day recap", close:"Close", date:d=>`Starts ${d}`,
+  signin:"Sign in", wa:"Your daily teaching arrives on WhatsApp, every morning at 6:00", watch:"Watch the Growth Day recap", close:"Close", date:d=>"Start any day · your Day 1 is the day you join",
   h1:"Grow 1% a day. For 42 days.",
   sub:"A 6-week cohort for people who are done waiting to change. One teaching each morning, one small step each day, and a community that keeps you going.",
   join:"Join the cohort", have:"I already joined",
@@ -1399,7 +1399,7 @@ en:{
   final_title:"The next 42 days will pass anyway.", final_sub:"Decide who you'll be at the end of them."
 },
 fr:{
-  signin:"Connexion", wa:"Votre enseignement arrive sur WhatsApp, chaque matin à 6h00", watch:"Revoir la Journée de croissance", close:"Fermer", date:d=>`Début le ${d}`,
+  signin:"Connexion", wa:"Votre enseignement arrive sur WhatsApp, chaque matin à 6h00", watch:"Revoir la Journée de croissance", close:"Fermer", date:d=>"Commencez quand vous voulez · votre Jour 1 commence dès l'inscription",
   h1:"Grandir de 1 % par jour. Pendant 42 jours.",
   sub:"Une cohorte de 6 semaines pour ceux qui ne veulent plus attendre pour changer. Un enseignement chaque matin, un petit pas chaque jour, et une communauté qui vous fait avancer.",
   join:"Rejoindre la cohorte", have:"Je suis déjà inscrit",
@@ -2590,13 +2590,15 @@ function scoreBlock(week){
 
 const SEM_DAYS = [[13,1],[27,2],[41,3]];
 const dayDate = (start, d) => { const x = new Date(start + "T12:00:00"); x.setDate(x.getDate() + d - 1); return x; };
+const COHORT_START = () => (pubStats && pubStats.start_date) || "2026-10-19";
+const calDay = () => Math.floor((new Date(new Date().toLocaleDateString("en-CA",{timeZone:"Africa/Douala"})+"T12:00:00") - new Date(COHORT_START()+"T12:00:00"))/86400000) + 1;
 function seminarCard(){
-  const T_ = t(), cur = me.day, next = SEM_DAYS.find(([d]) => d >= cur && d - cur <= 6);
+  const T_ = t(), cur = calDay(), next = SEM_DAYS.find(([d]) => d >= cur && d - cur <= 6);
   if(!next || cur < 1) return "";
   const [d, n] = next, isToday = d === cur, time = me.seminar_time || "10:00";
-  const date = dayDate(me.start_date, d).toLocaleDateString(lang==="fr"?"fr-FR":"en-GB", {weekday:"long", day:"numeric", month:"long"});
+  const date = dayDate(COHORT_START(), d).toLocaleDateString(lang==="fr"?"fr-FR":"en-GB", {weekday:"long", day:"numeric", month:"long"});
   return `<section class="panel stack sem-card rail-able">
-    <div class="sem-h"><div class="sem-date"><b>${dayDate(me.start_date, d).getDate()}</b><span>${dayDate(me.start_date, d).toLocaleDateString(lang==="fr"?"fr-FR":"en-GB",{month:"short"})}</span></div>
+    <div class="sem-h"><div class="sem-date"><b>${dayDate(COHORT_START(), d).getDate()}</b><span>${dayDate(COHORT_START(), d).toLocaleDateString(lang==="fr"?"fr-FR":"en-GB",{month:"short"})}</span></div>
       <div><p class="hw-l">📅 ${isToday ? T_.semToday : esc(date)} · ${esc(lang==="fr"?time.replace(":","h"):time)}</p><h2>${T_.semTitle(n)}</h2><p class="muted small">${T_.semWith}</p></div></div>
     ${me.seminar_link || me.community_link ? `<a class="btn btn-tg" href="${esc(me.seminar_link || me.community_link)}" target="_blank" rel="noopener">${TG_ICON} ${T_.semJoin}</a>` : `<p class="small">${T_.semLinkSoon}</p>`}
     ${isToday ? "" : `<p class="muted small">${T_.semAdd}</p>`}
@@ -3089,10 +3091,11 @@ async function adminLoad(){
   catch(e){ adminLogin(e.message==="wrong_pin" ? "Wrong PIN." : e.message==="locked" ? "Locked for 15 minutes after too many tries." : "Could not load: " + e.message); }
 }
 function pStats(p){
-  const cur = Math.min(adm.day, 42);
+  const cur = Math.min(p.pday || adm.day, 42);
   const set = new Set(p.days); let s = 0, d = set.has(cur) ? cur : cur-1;
   while(d >= 1 && set.has(d)){ s++; d--; }
-  const slipping = adm.day >= 2 && (!p.last_day || p.last_day < adm.day - 1);
+  const pd = p.pday || adm.day;
+  const slipping = pd >= 2 && pd <= 42 && (!p.last_day || p.last_day < pd - 1);
   return {streak:s, total:p.days.length, slipping};
 }
 // Daily Fire activity for one person and one day: WhatsApp send, app open, audio, full teaching, 1% card.
@@ -3120,7 +3123,7 @@ function actTable(p, cur){
 }
 function adminRender(){
   const P = adm.participants, cur = adm.day;
-  const today = P.filter(p => p.days.includes(cur)).length;
+  const today = P.filter(p => p.days.includes(p.pday || cur)).length;
   const slip = P.filter(p => pStats(p).slipping).length;
   const triads = [...new Set(P.map(p=>p.triad).filter(Boolean))].sort();
   let list = P;
@@ -3138,24 +3141,25 @@ function adminRender(){
       ${(adm.pay.price_week>0||adm.pay.price_full>0) ? `<button data-f="unpaid" aria-pressed="${admFilter==="unpaid"}">Not paid (${P.filter(p=>p.status==="pending").length})</button><button data-f="waitlist" aria-pressed="${admFilter==="waitlist"}">Waiting list (${P.filter(p=>p.status==="waitlist").length})</button>` : ""}
       ${triads.map(x=>`<button data-f="t:${esc(x)}" aria-pressed="${admFilter==="t:"+x}">${esc(x)}</button>`).join("")}
     </div>
-    <div class="tablewrap"><table><thead><tr><th class="sticky-col">Name</th><th>WhatsApp</th><th>${cur>=1&&cur<=42?`Day ${cur} today`:"Today"}</th><th>Triad</th><th>Last 7 days</th><th>Streak</th><th>Score</th><th>Seat</th><th>Actions</th></tr></thead><tbody>
+    <div class="tablewrap"><table><thead><tr><th class="sticky-col">Name</th><th>WhatsApp</th><th>Today</th><th>Triad</th><th>Last 7 days</th><th>Streak</th><th>Score</th><th>Seat</th><th>Actions</th></tr></thead><tbody>
     ${list.map(p => { const s = pStats(p); const sc = p.scores[p.scores.length-1];
-      const last7 = Array.from({length:7},(_,i)=>cur-6+i).map(d=>`<i class="${d>=1 && p.days.includes(d)?"on":""}" title="Day ${d}"></i>`).join("");
+      const pc = p.pday || cur;
+      const last7 = Array.from({length:7},(_,i)=>pc-6+i).map(d=>`<i class="${d>=1 && p.days.includes(d)?"on":""}" title="Day ${d}"></i>`).join("");
       const first = p.name.split(" ")[0];
       const msg = p.lang==="fr" ? `Bonjour ${first}, c'est l'équipe Growth Day. Comment avancez-vous avec votre 1 % ?` : `Hi ${first}, it's the Growth Day team. How is your 1% going?`;
       return `<tr class="${s.slipping?"slip":""}">
         <td class="sticky-col"><button class="link" data-person="${p.id}" aria-expanded="${admOpen===p.id}"><b>${esc(p.name)}</b></button><br><span class="muted small" title="${esc(AREA_SHORT[p.area1-1])} · ${esc(AREA_SHORT[p.area2-1])}">${AREA_ICON[p.area1-1]||""}${AREA_ICON[p.area2-1]||""} ${p.lang.toUpperCase()} · plan ${["1","2"].reduce((n,k)=>n+Object.values((p.plan||{})[k]||{}).filter(v=>String(v).trim()!=="").length,0)}/12${((p.plan||{}).books||[]).length?` · 📚${p.plan.books.length}`:""}</span></td>
         <td><a href="https://wa.me/${esc(p.phone)}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">+${esc(p.phone)}</a>
           <br>${p.wa_ok === true ? `<span class="chip-s paid" title="WhatsApp accepted the welcome message">✓ Welcome sent</span>` : p.wa_ok === false ? `<span class="chip-s wait" title="${esc(p.wa_detail||"")}">✕ Not delivered</span>` : `<span class="chip-s" title="Signed up before delivery tracking started">Not checked</span>`}${p.wa_activated_at ? `<br><span class="chip-s paid" title="Tapped Activate on ${new Date(p.wa_activated_at).toLocaleString("en-GB")}">📲 Activated</span>` : `<br><span class="chip-s" title="Has not tapped Activate my WhatsApp messages yet">📲 Not activated</span>`}</td>
-        <td>${cur>=1&&cur<=42 ? actIcons(p, cur) : "—"}${p.last_seen?`<br><span class="muted small">Seen ${new Date(p.last_seen).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit",timeZone:"Africa/Douala"})}</span>`:""}</td>
+        <td>${(p.pday||cur)>=1&&(p.pday||cur)<=42 ? `<b class="small">Day ${p.pday||cur}</b><br>` + actIcons(p, p.pday||cur) : (p.pday>42?"Finished":"—")}${p.last_seen?`<br><span class="muted small">Seen ${new Date(p.last_seen).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit",timeZone:"Africa/Douala"})}</span>`:""}</td>
         <td><input value="${esc(p.triad||"")}" data-triad="${p.id}" placeholder="e.g. Triad 1" aria-label="Triad for ${esc(p.name)}"></td>
         <td><span class="mini">${last7}</span></td>
         <td>${s.streak} / ${s.total}</td>
         <td>${sc ? `W${sc.week}: ${sc.score1} · ${sc.score2}` : "—"}</td>
         <td>${p.plan_type==="full" ? `<span class="chip-s paid">Full · 6 wks</span>` : p.plan_type==="weekly" ? `<span class="chip-s paid">Weekly · ${p.paid_weeks}/6</span>` : p.status==="waitlist" ? `<span class="chip-s wait">Waiting list</span>` : `<span class="chip-s">Not paid</span>`}
           <br><select class="small" data-mpay="${p.id}" aria-label="Payment for ${esc(p.name)}"><option value="">Change…</option><option value="full">Mark 6 weeks paid</option><option value="week">Add one paid week</option><option value="none">Mark as not paid</option><option value="waitlist">Waiting list</option></select></td>
-        <td><div class="actbtns"><button class="iconbtn" data-reset="${p.id}" data-name="${esc(p.name)}" title="Reset PIN" aria-label="Reset PIN for ${esc(p.name)}">🔑</button><button class="iconbtn" data-editph="${p.id}" title="Change number" aria-label="Change number for ${esc(p.name)}">📞</button><button class="iconbtn" data-rewelcome="${p.id}" data-name="${esc(p.name)}" title="Resend welcome" aria-label="Resend welcome to ${esc(p.name)}">👋</button></div></td></tr>
-        ${admOpen===p.id ? `<tr class="detail"><td colspan="9">${actTable(p, cur)}<div class="grid2">${[[1,p.area1],[2,p.area2]].map(([k,a])=>{ const pl=(p.plan||{})[k]||{};
+        <td><div class="actbtns"><button class="iconbtn" data-reset="${p.id}" data-name="${esc(p.name)}" title="Reset PIN" aria-label="Reset PIN for ${esc(p.name)}">🔑</button><button class="iconbtn" data-editph="${p.id}" title="Change number" aria-label="Change number for ${esc(p.name)}">📞</button><button class="iconbtn" data-rewelcome="${p.id}" data-name="${esc(p.name)}" title="Resend welcome" aria-label="Resend welcome to ${esc(p.name)}">👋</button><button class="iconbtn" data-refire="${esc(p.phone)}" data-name="${esc(p.name)}" data-day="${p.pday||cur}" title="Resend today's Daily Fire (with audio)" aria-label="Resend today's Daily Fire to ${esc(p.name)}">📨</button></div></td></tr>
+        ${admOpen===p.id ? `<tr class="detail"><td colspan="9">${actTable(p, p.pday || cur)}<div class="grid2">${[[1,p.area1],[2,p.area2]].map(([k,a])=>{ const pl=(p.plan||{})[k]||{};
           return `<div class="stack"><h3>${AREA_ICON[a-1]} ${AREA_SHORT[a-1]}</h3>
             ${[["honest","Where I am"],["score","Starting score"],["target","6-week target"],["daily","Daily 1%"],["excuse","Usual excuse"],["answer","Answer"]].map(([f,lb])=>`<p class="small"><b>${lb}:</b> ${pl[f]!==undefined&&String(pl[f]).trim()!==""?esc(pl[f]):'<span class="muted">not yet</span>'}</p>`).join("")}</div>`; }).join("")}</div>
 ${(()=>{ const S=(p.plan||{}).survey||{}; if(!S.why && !(S.micro||[]).some(Boolean) && !S.time) return "";
@@ -3180,7 +3184,7 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
           ${(p.notes||[]).length ? `<h3 style="margin-top:14px">Latest card answers</h3>${p.notes.map(n=>`<p class="small"><b>Day ${n.day}:</b> ${n.note1?`${AREA_ICON[p.area1-1]} ${esc(n.note1)}`:""} ${n.note2?` · ${AREA_ICON[p.area2-1]} ${esc(n.note2)}`:""}</p>`).join("")}` : `<p class="muted small" style="margin-top:10px">No written card answers yet.</p>`}
         </td></tr>` : ""}`; }).join("") || `<tr><td colspan="9" class="muted">No one here yet.</td></tr>`}
     </tbody></table></div>
-    <p class="muted small">Actions: 🔑 Reset PIN · 📞 Change number · 👋 Resend welcome. Icons under “Day today”: 📩 WhatsApp sent · 👁 opened · 🎧 audio · 📖 full teaching · ✅ 1% Card. Triad names save when you leave the box. Red edge = no card yesterday or today. Tap a number to message them on WhatsApp. Tap a name to see their growth plan and latest answers.</p>
+    <p class="muted small">Actions: 🔑 Reset PIN · 📞 Change number · 👋 Resend welcome · 📨 Resend today's Daily Fire. Icons under “Day today”: 📩 WhatsApp sent · 👁 opened · 🎧 audio · 📖 full teaching · ✅ 1% Card. Triad names save when you leave the box. Red edge = no card yesterday or today. Tap a number to message them on WhatsApp. Tap a name to see their growth plan and latest answers.</p>
     <button class="btn btn-ghost" id="csv" style="max-width:260px">Download CSV</button>`;
 
   const l = adm.lessons.find(x=>x.day===admDay) || {};
@@ -3280,7 +3284,7 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
   root.innerHTML = `<div class="wrap stack-lg">
     <div class="top"><div class="brand"><img src="${LOGO}" alt="">Growth Day · Cohort admin</div><div class="top-actions"><button class="link" id="refresh">Refresh</button><button class="btn btn-ghost sm" id="adminOut">Sign out</button></div></div>
     <div class="stats">
-      <div class="stat"><b>${cur<1?`Starts in ${1-cur}d`:cur>42?"Finished":`Day ${cur}`}</b><span class="muted small">${cur>=1&&cur<=42?`Week ${Math.ceil(cur/7)}`:fmtDate(adm.start_date)}</span></div>
+      <div class="stat"><b>${P.filter(p=>(p.pday||0)>=1&&(p.pday||0)<=42).length}</b><span class="muted small">In the journey · rolling start</span></div>
       <div class="stat"><b>${(adm.pay.price_week>0||adm.pay.price_full>0) ? `${P.filter(p=>p.status==="paid").length} / ${adm.pay.seat_limit}` : P.length}</b><span class="muted small">${(adm.pay.price_week>0||adm.pay.price_full>0) ? "Paid seats" : "Participants"}</span></div>
       <div class="stat"><b>${cur>=1&&cur<=42?today:"—"}</b><span class="muted small">Cards filled today</span></div>
       <div class="stat"><b>${slip}</b><span class="muted small">Slipping</span></div>
@@ -3410,6 +3414,13 @@ ${(()=>{ const pl=p.plan||{}, bk=pl.books||[], cr=pl.courses||[]; if(!bk.length 
       b.disabled = false; b.textContent = "📞";
       alert(e.message === "phone_exists" ? `Another participant already uses +${digits}.` : e.message === "phone_invalid" ? "That number is not valid." : "Could not save: " + e.message);
     } });
+  document.querySelectorAll("[data-refire]").forEach(b => b.onclick = async () => {
+    if(!confirm(`Resend Day ${b.dataset.day} Daily Fire (message + audio) to ${b.dataset.name} on WhatsApp?`)) return;
+    b.disabled = true; b.textContent = "⏳";
+    try{ const d = await callFn({action:"admin_catchup", pin:admPin, phones:[b.dataset.refire]});
+      const g = (d.groups||[])[0]; b.textContent = "✓"; alert(g ? `✓ Day ${g.day} Daily Fire is being sent to ${b.dataset.name}. You can follow it in the WhatsApp tab → Sent messages.` : "Nothing to send (this person is outside their 42 days).");
+    }catch(e){ alert("Could not send: " + e.message); }
+    setTimeout(() => { b.disabled = false; b.textContent = "📨"; }, 1500); });
   document.querySelectorAll("[data-rewelcome]").forEach(b => b.onclick = async () => {
     if(!confirm(`Send the welcome message again to ${b.dataset.name} on WhatsApp?`)) return;
     b.disabled = true; b.textContent = "⏳";
