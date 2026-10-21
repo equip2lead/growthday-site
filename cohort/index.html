@@ -967,6 +967,121 @@ input[type=range]{background:none}
 .wkdots i{width:26px;height:26px;border-radius:8px;background:var(--fill);color:var(--muted);font:600 12px var(--body);font-style:normal;display:grid;place-items:center}
 .wkdots i.on{background:var(--ember);color:#1C2340}
 
+
+/* ---------- 1% Card v2 ---------- */
+.c2-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.c2-hdr h2{margin:0}
+.c2-sw{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:color-mix(in srgb,var(--muted) 14%,var(--bg));border-radius:16px;padding:4px}
+.c2-sw button{display:flex;align-items:center;gap:8px;justify-content:space-between;border:0;background:transparent;color:var(--muted);border-radius:12px;padding:10px 11px;font:600 14px/1.2 var(--body);cursor:pointer;text-align:left;min-height:44px}
+.c2-sw button.on{background:var(--surface);color:var(--text);box-shadow:0 2px 8px rgba(18,23,41,.10)}
+.c2-st{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid color-mix(in srgb,var(--muted) 45%,transparent);display:grid;place-items:center;font-size:12px;color:#fff}
+.c2-st.ok{background:var(--leaf);border-color:var(--leaf)}
+.c2-st.half{border-color:var(--ember);background:conic-gradient(var(--ember) 0 50%,transparent 0)}
+.c2-saved{display:flex;gap:8px;align-items:center;background:color-mix(in srgb,var(--leaf) 12%,var(--surface));border-radius:14px;padding:10px 12px;font-size:14px}
+.c2-saved b{color:var(--leaf)}
+.c2-card{gap:18px}
+.c2-mine{background:linear-gradient(135deg,#1C2340,#2A3466);color:#fff;border-radius:16px;padding:12px 14px}
+.c2-mine small{color:var(--glow);font-weight:800;font-size:11px;letter-spacing:.08em}
+.c2-mine p{margin:3px 0 0;font:600 15px/1.4 var(--body)}
+.c2-mine .link{color:var(--glow)}
+.c2-q{display:flex;align-items:center;gap:8px;font:700 15px/1.3 var(--body);margin:0 0 10px}
+.c2-n{flex:none;width:22px;height:22px;border-radius:50%;background:color-mix(in srgb,var(--muted) 16%,var(--bg));color:var(--muted);display:inline-grid;place-items:center;font-size:12px;font-weight:700}
+.c2-n.w{background:var(--surface);margin-right:6px;width:20px;height:20px}
+.c2-tri{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.c2-opt{border:1.5px solid var(--line);background:var(--surface);color:var(--muted);border-radius:14px;padding:10px 4px;font:600 13px/1.2 var(--body);cursor:pointer;min-height:64px}
+.c2-opt em{display:block;font-style:normal;font-size:21px;margin-bottom:4px}
+.c2-opt.o-done.on{border-color:var(--leaf);background:color-mix(in srgb,var(--leaf) 12%,var(--surface));color:var(--leaf)}
+.c2-opt.o-partly.on,.c2-opt.o-not.on{border-color:var(--ember);background:color-mix(in srgb,var(--ember) 12%,var(--surface));color:var(--ember-text)}
+.c2-sub{font-size:13.5px;color:var(--muted);margin:12px 0 8px;font-weight:600}
+.c2-chips{display:flex;flex-wrap:wrap;gap:6px}
+.c2-chip{border:1.5px solid var(--line);background:var(--surface);color:var(--muted);border-radius:99px;padding:8px 13px;font:600 13px/1 var(--body);cursor:pointer;min-height:36px}
+.c2-chip.on{border-color:var(--ember);background:color-mix(in srgb,var(--ember) 12%,var(--surface));color:var(--ember-text)}
+.c2-note{margin-top:10px;background:color-mix(in srgb,#3B5BDB 10%,var(--surface));border-radius:12px;padding:10px 12px;font-size:13.5px;line-height:1.45}
+.c2-task{background:color-mix(in srgb,var(--ember) 9%,var(--surface));border:1px solid color-mix(in srgb,var(--ember) 22%,transparent);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.c2-tl{margin:0;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ember-text);display:flex;align-items:center}
+.c2-task h3{margin:-6px 0 0;font:700 17px/1.3 var(--display)}
+.c2-f{display:flex;flex-direction:column;gap:6px}
+.c2-lab{font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.03em;margin:0;text-transform:uppercase}
+.c2-in{width:100%;background:var(--surface);color:var(--text);border:1.5px solid color-mix(in srgb,var(--ember) 25%,var(--line));border-radius:12px;padding:10px 12px;font:400 15px/1.4 var(--body);resize:vertical}
+.c2-in:focus{outline:none;border-color:var(--ember);box-shadow:0 0 0 3px color-mix(in srgb,var(--ember) 22%,transparent)}
+.c2-big{display:flex;align-items:baseline;justify-content:center;gap:6px}
+.c2-big b{font:800 40px/1 var(--display);color:var(--ember)}
+.c2-big span{color:var(--muted);font-weight:600}
+input[type=range].c2-range{-webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:9px;padding:0;background:linear-gradient(90deg,var(--ember) var(--p,50%),color-mix(in srgb,var(--muted) 22%,var(--bg)) var(--p,50%));margin:8px 0 2px}
+.c2-range::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:#fff;border:3px solid var(--ember);box-shadow:0 3px 8px rgba(0,0,0,.2);cursor:pointer}
+.c2-range::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:#fff;border:3px solid var(--ember);box-shadow:0 3px 8px rgba(0,0,0,.2);cursor:pointer}
+.c2-ticks{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-weight:600;padding:0 6px}
+.c2-pair{display:grid;grid-template-columns:1fr 18px 1fr;gap:6px;align-items:end;flex-direction:row}
+.c2-pair>div{display:flex;flex-direction:column;gap:6px}
+.c2-arrow{color:var(--ember);font-weight:800;text-align:center;padding-bottom:22px}
+@media (max-width:420px){.c2-pair{grid-template-columns:1fr}.c2-arrow{display:none}}
+.c2-check{display:flex;gap:10px;align-items:center;font-size:14.5px;cursor:pointer;min-height:36px}
+.c2-check input{position:absolute;opacity:0;width:1px;height:1px}
+.c2-check i{flex:none;width:24px;height:24px;border-radius:7px;border:2px solid color-mix(in srgb,var(--muted) 45%,transparent);display:grid;place-items:center;font-style:normal;font-size:13px;color:transparent;background:var(--surface)}
+.c2-check input:checked+i{background:var(--leaf);border-color:var(--leaf);color:#fff}
+.c2-check input:focus-visible+i{box-shadow:0 0 0 3px color-mix(in srgb,var(--ember) 30%,transparent)}
+.c2-person{display:flex;align-items:center;gap:8px}
+.c2-person>span{flex:none;width:34px;height:34px;border-radius:10px;background:var(--surface);display:grid;place-items:center;font-weight:700;color:var(--muted)}
+.c2-step{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.c2-step b{font:800 30px/1 var(--display);min-width:44px;text-align:center}
+.c2-pm{width:42px;height:42px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--text);font:700 20px/1 var(--body);cursor:pointer}
+.c2-unit{flex:1;min-width:150px}
+.c2-time{max-width:160px}
+.c2-feel{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.c2-feel button{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:8px 0 6px;font-size:22px;cursor:pointer;line-height:1.1}
+.c2-feel button small{display:block;font:600 10.5px/1.2 var(--body);color:var(--muted);margin-top:3px}
+.c2-feel button.on{border-color:#3B5BDB;background:color-mix(in srgb,#3B5BDB 12%,var(--surface))}
+.c2-save{display:flex;flex-direction:column;align-items:center;gap:2px}
+.c2-save small{font-weight:500;font-size:12px;opacity:.92}
+.c2-tag{font-size:12px;font-weight:700;border-radius:99px;padding:3px 9px;white-space:nowrap}
+.c2-tag.t-done{background:color-mix(in srgb,var(--leaf) 14%,var(--surface));color:var(--leaf)}
+.c2-tag.t-partly,.c2-tag.t-not{background:color-mix(in srgb,var(--ember) 14%,var(--surface));color:var(--ember-text)}
+.c2-sumrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.c2-sumrow:last-of-type{border-bottom:0}
+.c2-cel{background:linear-gradient(160deg,#121729,#2A3466);color:#fff;border-radius:24px;padding:24px 18px;text-align:center}
+.c2-cel h2{color:#fff;margin:4px 0 2px}
+.c2-cel p{color:#C9D1E8;margin:0;font-size:14px}
+.c2-ring{width:92px;height:92px;border-radius:50%;margin:0 auto 10px;background:conic-gradient(var(--glow) 0 100%,rgba(255,255,255,.15) 0);display:grid;place-items:center}
+.c2-ring div{width:74px;height:74px;border-radius:50%;background:#1E2650;display:grid;place-items:center;font-size:34px}
+.c2-cel.pop .c2-ring{animation:c2pop .7s cubic-bezier(.2,1.6,.4,1)}
+@keyframes c2pop{0%{transform:scale(.4);opacity:0}100%{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.c2-cel.pop .c2-ring{animation:none}}
+.c2-stats{display:flex;justify-content:center;gap:8px;margin-top:14px;flex-wrap:wrap}
+.c2-stats span{background:rgba(255,255,255,.1);border-radius:12px;padding:8px 12px;font-size:12px;color:#C9D1E8}
+.c2-stats b{display:block;font-size:18px;color:var(--glow)}
+.c2-chart{width:100%;height:auto}
+.c2-chart .g{stroke:var(--line)} .c2-chart .gl{fill:var(--muted);font-size:9px} .c2-chart .gt{fill:var(--ember-text);font-size:9.5px;font-weight:700}
+.c2-chart polyline{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.c2-chart .c1{stroke:var(--ember);fill:var(--ember)} .c2-chart polyline.c1{fill:none}
+.c2-chart .c2{stroke:#3B82C4;fill:#3B82C4} .c2-chart polyline.c2{fill:none}
+.c2-chart .gl2{stroke-width:2;stroke-dasharray:4 5;fill:none}
+/* Daily Fire day navigation */
+.dnav{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:8px;background:var(--surface);border-radius:18px;padding:6px;box-shadow:var(--shadow)}
+.dnav-b{width:44px;height:44px;border-radius:12px;border:0;background:color-mix(in srgb,var(--muted) 12%,var(--bg));color:var(--text);font:700 24px/1 var(--body);cursor:pointer}
+.dnav-b:disabled{opacity:.35;cursor:default}
+.dnav-t{text-align:center;min-width:0}
+.dnav-t b{display:block;font:700 16px/1.2 var(--display)}
+.dnav-t b span{color:var(--muted);font-weight:500;font-size:13px}
+.dnav-t b i{font-style:normal;font-size:11px;background:var(--ember);color:#fff;border-radius:99px;padding:2px 8px;vertical-align:2px;margin-left:4px}
+.dnav-t small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dnav-links{display:flex;justify-content:space-between;margin-top:-10px}
+/* Journey: the 42 days */
+.dl-week{background:var(--surface);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.dl-week summary{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px;cursor:pointer;list-style:none}
+.dl-week summary::-webkit-details-marker{display:none}
+.dl-week summary b{font:700 15px/1.3 var(--display)}
+.dl-days{display:flex;flex-direction:column;padding:0 8px 8px}
+.dl-day{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;text-align:left;border:0;background:transparent;color:var(--text);padding:10px 8px;border-radius:12px;cursor:pointer;font:inherit;border-top:1px solid var(--line)}
+.dl-day:first-child{border-top:0}
+.dl-day:not(.locked):hover{background:color-mix(in srgb,var(--ember) 7%,var(--surface))}
+.dl-day.is-today{background:color-mix(in srgb,var(--ember) 10%,var(--surface))}
+.dl-day.locked{cursor:default;color:var(--muted)}
+.dl-n{font:800 16px/1 var(--display);text-align:center;color:var(--muted)}
+.dl-day.is-today .dl-n{color:var(--ember)}
+.dl-t b{display:block;font-size:14.5px;font-weight:600}
+.dl-t small{color:var(--muted);font-size:12px}
+.dl-lock{font-size:12px;color:var(--muted);white-space:nowrap}
+.dl-day .fl{width:24px;height:24px}
 </style>
 </head>
 <body>
@@ -1650,6 +1765,7 @@ function joinForm(){
     try{
       const tok = await rpc("gd_register", {p_name:draft.name, p_phone:fullPhone(draft.code, draft.phone), p_lang:lang, p_area1:picked[0], p_area2:picked[1], p_pin:draft.pin});
       store.set("gd_token", tok); const nm = firstName(draft.name);
+      try{ await rpc("gd_set_tz", {p_token: tok, p_tz: myTZ()}); }catch(e){}
       callApp({action:"welcome", token:tok}).catch(()=>{});
       draft = {name:"", phone:"", code:"237", areas:[], step:1, pin:""};
       try{ me = await rpc("gd_me", {p_token: tok}); me.methods = await rpc("gd_methods", {}); }catch(e){ if(!me) me = null; }
@@ -2121,6 +2237,7 @@ async function boot(){
   root.innerHTML = `<div class="wrap stack-lg" aria-busy="true" aria-label="${t().loading}"><div class="sk-row"><div><i class="sk" style="width:90px;height:12px"></i><i class="sk" style="width:140px;height:24px;margin-top:8px"></i></div><i class="sk" style="width:42px;height:42px;border-radius:50%"></i></div><i class="sk" style="height:190px;border-radius:24px"></i><i class="sk" style="height:120px;border-radius:22px"></i><i class="sk" style="height:220px;border-radius:22px"></i></div>`;
   try{
     me = await rpc("gd_me", {p_token: tok});
+    if(await syncTZ(tok)){ try{ const tzv = me.tz; me = await rpc("gd_me", {p_token: tok}); me.tz = me.tz || tzv; }catch(e){} }
     try{ me.methods = await rpc("gd_methods", {}); }catch(e){}
     try{ me.extra = await rpc("gd_me_extra", {p_token: tok}); }catch(e){ me.extra = {}; }
     if(me.day < 1){ try{ WEEK1 = await rpc("gd_week_preview", {p_week: 1}); }catch(e){ WEEK1 = null; } }
@@ -2207,7 +2324,7 @@ function renderApp(){
     <nav class="tabs" aria-label="Main"><div>${["today","card","plan","journey","me"].map(k=>`<button data-tab="${k}" ${tab===k?'aria-current="page"':""}>${k==="today"?TAB_ICON.fire:icon[k]}${tabLabel(k)}</button>`).join("")}</div></nav>`;
   if(DESK.matches){ const rail = $("#rail"); document.querySelectorAll(".col-main .rail-able").forEach(el => rail.appendChild(el)); }
   bindLang(renderApp);
-  document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; cardDay = null; renderApp(); window.scrollTo(0,0); });
+  document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; cardDay = null; viewDay = null; cardEdit = false; cardArea = null; renderApp(); window.scrollTo(0,0); });
   const av = $("#toMe"), am = $("#acctMenu");
   if(av && am){ av.onclick = e => { e.stopPropagation(); const open = am.hidden; am.hidden = !open; av.setAttribute("aria-expanded", open); };
     document.addEventListener("click", () => { am.hidden = true; av.setAttribute("aria-expanded", "false"); }, {once:true}); }
@@ -2548,21 +2665,6 @@ function planStrip(){
       <button class="btn btn-dark" data-svgo="${(sv().step)||0}">${T_.openPlan}</button></section>`;
 }
 
-function cardBlock(d){
-  const c = ck(d) || {}, T_ = t(), les = me.lessons.find(l=>l.day===d), act = L(les,"action");
-  return `<section class="panel stack" id="card" data-d="${d}">
-    <div><h2>${T_.card}</h2><p class="muted small">${T_.cardFor(d)} · ${ck(d)?T_.cardDone:T_.tapHint}</p></div>
-    ${act ? `<div class="hw"><p class="hw-l">${T_.hwTitle}</p><p>${esc(act)}</p></div>` : ""}
-    <div class="tiles2">${[[1,me.area1],[2,me.area2]].map(([k,a])=>`<button class="ctile" data-tile="${k}" aria-pressed="${!!c["done"+k]}">
-      <span class="ai">${AREA_ICON[a-1]}</span><b>${esc(areaName(a))}</b><span class="tick" aria-hidden="true">✓</span></button>`).join("")}</div>
-    <div class="stack">${[[1,me.area1],[2,me.area2]].map(([k,a])=>`<div><label for="note${k}" class="small">${AREA_ICON[a-1]} ${T_.answerFor(esc(areaName(a)))}</label><p class="aq">${T_.goDeeper}: ${esc(areaQ(a, d))}</p><textarea id="note${k}" rows="2" placeholder="${esc(T_.answerPh)}" maxlength="500">${esc(c["note"+k]||"")}</textarea></div>`).join("")}</div>
-    ${d<=5 ? `<button class="link small" data-goplan>${T_.addToPlan}</button>` : ""}
-    <p id="cardMsg" role="status"></p>
-    <button class="btn btn-primary" id="saveCard">${T_.save}</button>
-    ${d % 7 !== 0 ? `<p class="muted small">📊 ${T_.scoreNext(Math.ceil(d/7)*7)}</p>` : ""}
-  </section>`;
-}
-
 function scoreBlock(week){
   const T_ = t(), prev = (me.scores||[]).filter(x=>x.week<week).slice(-1)[0] || {};
   const start = k => (me.plan && me.plan[k] && me.plan[k].score) || null;
@@ -2614,11 +2716,350 @@ function groupCard(){
     <a class="btn btn-tg" href="${esc(me.community_link)}" target="_blank" rel="noopener">${TG_ICON} ${T_.grpBtn}</a></section>`;
 }
 
+/* ---------- 1% Card v2: one area at a time, a real task every day ---------- */
+const C2T = {
+  en: { card:"1% Card", my:"MY DAILY 1%", q1:"Did you take your 1% today?", st:{done:"Done", partly:"Partly", not:"Not today"},
+    why:"What got in the way?", whyOpts:["Tired","No time","Forgot","My usual excuse","Something else"], own:"Your own answer:",
+    task:d=>`TODAY'S TASK · DAY ${d}`, q3:"How did it feel?", feels:["Hard","OK","Good","Easy","Alive"],
+    save:a=>`Save ${a}`, next:a=>`Next: ${a} →`, finish:"Finish today's card", pick:"Choose Done, Partly or Not today first.",
+    saved:a=>`${a} saved`, complete:d=>`Day ${d} complete!`, completeS:"Both areas are done. You're 1% better than yesterday.", completeP:"Your card is filled. Honest cards build real growth. Tomorrow is a new 1%.",
+    streak:"day streak", days:"days", week:"this week", today:"Today", scores:"My scores, step by step", goal:"goal", start:"Start",
+    tomorrow:(d,ti)=>`Tomorrow · Day ${d}${ti?" · "+ti:""}`, arrives:"Your Daily Fire arrives at 6:00 on WhatsApp.", share:"Share my progress",
+    edit:"Edit my card", noDaily:"Write your daily 1% in My plan →", shareTxt:(d,s)=>`Day ${d} of my 42-day Growth Day journey is done 🔥${s>1?` ${s} days in a row.`:""} growthday.cc`,
+    readOnly:"This card is closed. You can fill today's and yesterday's cards.", yourCard:"Your card", notFilled:"Not filled",
+    yesterday:"Yesterday", nav:d=>`Day ${d}`, allDays:"All 42 days", backToday:"Back to today", of42:"of 42",
+    days42:"My 42 days", days42S:"Open any day you've reached. New days open each morning.", opens:d=>`Opens ${d}`, payOpen:w=>`Pay week ${w} to open`,
+    todayTag:"Today", wk:(w,th)=>`Week ${w}${th?" · "+th:""}`, wasDay:"Saved", ratingWord:"/10", queued:"Saved on your phone. It will sync when you're back online." },
+  fr: { card:"Carte 1 %", my:"MON 1 % QUOTIDIEN", q1:"Avez-vous fait votre 1 % aujourd'hui ?", st:{done:"Fait", partly:"En partie", not:"Pas aujourd'hui"},
+    why:"Qu'est-ce qui vous a freiné ?", whyOpts:["Fatigue","Pas le temps","Oublié","Mon excuse habituelle","Autre chose"], own:"Votre propre réponse :",
+    task:d=>`LA TÂCHE DU JOUR · JOUR ${d}`, q3:"Comment l'avez-vous vécu ?", feels:["Dur","Correct","Bien","Facile","Vivant"],
+    save:a=>`Enregistrer ${a}`, next:a=>`Ensuite : ${a} →`, finish:"Terminer la carte du jour", pick:"Choisissez d'abord Fait, En partie ou Pas aujourd'hui.",
+    saved:a=>`${a} enregistré`, complete:d=>`Jour ${d} terminé !`, completeS:"Vos deux domaines sont faits. Vous êtes 1 % meilleur qu'hier.", completeP:"Votre carte est remplie. Les cartes honnêtes font la vraie croissance. Demain, un nouveau 1 %.",
+    streak:"jours de suite", days:"jours", week:"cette semaine", today:"Aujourd'hui", scores:"Mes scores, étape par étape", goal:"objectif", start:"Départ",
+    tomorrow:(d,ti)=>`Demain · Jour ${d}${ti?" · "+ti:""}`, arrives:"Votre Daily Fire arrive à 6h00 sur WhatsApp.", share:"Partager mes progrès",
+    edit:"Modifier ma carte", noDaily:"Écrivez votre 1 % quotidien dans Mon plan →", shareTxt:(d,s)=>`Jour ${d} de mon parcours Growth Day de 42 jours terminé 🔥${s>1?` ${s} jours de suite.`:""} growthday.cc`,
+    readOnly:"Cette carte est fermée. Vous pouvez remplir la carte d'aujourd'hui et celle d'hier.", yourCard:"Votre carte", notFilled:"Non remplie",
+    yesterday:"Hier", nav:d=>`Jour ${d}`, allDays:"Les 42 jours", backToday:"Revenir à aujourd'hui", of42:"sur 42",
+    days42:"Mes 42 jours", days42S:"Ouvrez n'importe quel jour déjà atteint. Un nouveau jour s'ouvre chaque matin.", opens:d=>`S'ouvre ${d}`, payOpen:w=>`Payez la semaine ${w} pour l'ouvrir`,
+    todayTag:"Aujourd'hui", wk:(w,th)=>`Semaine ${w}${th?" · "+th:""}`, wasDay:"Enregistré", ratingWord:"/10", queued:"Enregistré sur votre téléphone. La synchronisation se fera dès votre retour en ligne." },
+};
+const c2 = () => C2T[lang] || C2T.en;
+const tx = o => (o && (o[lang] || o.en)) || "";
+
+// Field builders
+const F2 = {
+  rate:  (id, en, fr, o={}) => ({k:"rate", id, l:{en,fr}, ...o}),
+  text:  (id, en, fr, o={}) => ({k:"text", id, l:{en,fr}, ...o}),
+  pair:  (id, en1, fr1, en2, fr2, o={}) => ({k:"pair", id, l:{en:en1,fr:fr1}, l2:{en:en2,fr:fr2}, ...o}),
+  check: (id, en, fr) => ({k:"check", id, l:{en,fr}}),
+  person:(id, en, fr) => ({k:"person", id, l:{en,fr}}),
+  num:   (id, en, fr, o={}) => ({k:"num", id, l:{en,fr}, ...o}),
+  time:  (id, en, fr) => ({k:"time", id, l:{en,fr}}),
+  choice:(id, en, fr, opts) => ({k:"choice", id, l:{en,fr}, opts}),
+  list3: (id, en, fr) => ({k:"list3", id, l:{en,fr}}),
+  count: (id, en, fr) => ({k:"count", id, l:{en,fr}}),
+};
+const H2 = (en, fr) => ({en, fr});
+// One task per lesson day (Sundays share the weekly reflection; the weekly Growth Score stays on its own panel)
+const TASKS = {
+  1:  {h:H2("Where am I really?","Où en suis-je vraiment ?"), f:[F2.text("t","One honest sentence about this area today","Une phrase honnête sur ce domaine aujourd'hui",{pre:"honest"})]},
+  2:  {h:H2("Rate yourself honestly, 1 to 10","Notez-vous honnêtement, de 1 à 10"), f:[F2.rate("r","My score today","Mon score aujourd'hui",{pre:"score"}), F2.text("t","One reason for this score","Une raison pour ce score")]},
+  3:  {h:H2("Name the gap","Nommez l'écart"), f:[F2.rate("now","Now","Maintenant",{pre:"score"}), F2.rate("fut","In six weeks","Dans six semaines"), F2.text("t","In six weeks, “better” looks like…","Dans six semaines, « mieux » ressemble à…",{pre:"target"})]},
+  4:  {h:H2("The smallest daily action","La plus petite action quotidienne"), f:[F2.text("t","What I can do even on my worst day","Ce que je peux faire même dans mes pires jours",{pre:"daily"})]},
+  5:  {h:H2("The excuse audit","L'audit des excuses"), f:[F2.pair("p","My usual excuse","Mon excuse habituelle","My answer to it","Ma réponse",{pre:"excuse",pre2:"answer"})]},
+  6:  {h:H2("Lock it in","Verrouillez-le"), f:[F2.check("c1","I wrote my two areas and my daily 1% on paper","J'ai écrit mes deux domaines et mon 1 % sur papier"), F2.check("c2","I put it where I'll see it every morning","Je l'ai placé là où je le verrai chaque matin"), F2.text("t","Where did you put it?","Où l'avez-vous placé ?",{rows:1})]},
+  8:  {h:H2("Grow on purpose","Grandir avec intention"), f:[F2.text("t","In these six weeks I am growing in this area because…","Pendant ces six semaines, je grandis dans ce domaine parce que…")]},
+  9:  {h:H2("Say it out loud","Dites-le à voix haute"), f:[F2.person("who","Who did you tell?","À qui l'avez-vous dit ?"), F2.check("c1","I asked them to check on me on Sunday","Je lui ai demandé de me relancer dimanche")]},
+  10: {h:H2("What gets scheduled gets done","Ce qui est planifié est fait"), f:[F2.time("tm","My daily 1% alarm","L'alarme de mon 1 %"), F2.check("c1","I blocked 30 minutes on Sunday to review my week","J'ai bloqué 30 minutes le dimanche pour faire le point")]},
+  11: {h:H2("My growing environment","Mon environnement de croissance"), f:[F2.pair("p","What feeds me","Ce qui me nourrit","What drains me","Ce qui m'épuise"), F2.check("c1","I reduced one drain this week","J'ai réduit une source d'épuisement cette semaine")]},
+  12: {h:H2("Learn from those ahead","Apprendre de ceux qui sont devant"), f:[F2.person("who","Someone ahead of me in this area","Quelqu'un en avance sur moi dans ce domaine"), F2.text("t","My question for them","Ma question pour cette personne",{rows:1}), F2.check("c1","I sent the question","J'ai envoyé la question")]},
+  13: {h:H2("Measure what matters","Mesurer ce qui compte"), f:[F2.num("n","My number today","Mon chiffre aujourd'hui",{unit:H2("minutes of prayer, pages, francs…","minutes de prière, pages, francs…")})]},
+  15: {h:H2("Discipline keeps you growing","La discipline fait grandir"), f:[F2.check("c1","I did my 1% before noon","J'ai fait mon 1 % avant midi"), F2.time("tm","What time?","À quelle heure ?")]},
+  16: {h:H2("Rhythm before crisis","Le rythme avant la crise"), f:[F2.text("t","I attach my 1% to… (after my coffee, after work, before bed)","J'attache mon 1 % à… (après mon café, après le travail, avant de dormir)",{rows:1})]},
+  17: {h:H2("Never miss twice","Ne jamais manquer deux fois"), f:[F2.check("c1","I'm on track today","Je suis sur la bonne voie aujourd'hui"), F2.text("t","My 2-minute version for hard days","Ma version de 2 minutes pour les jours difficiles",{rows:1})]},
+  18: {h:H2("Faithful in little","Fidèle dans les petites choses"), f:[F2.list3("w","Three small wins from these two weeks","Trois petites victoires de ces deux semaines")]},
+  19: {h:H2("The hidden hours","Les heures cachées"), f:[F2.check("c1","I did one extra 1% that no one will know about","J'ai fait un 1 % de plus que personne ne verra"), F2.text("t","What did you do? (only you will see it)","Qu'avez-vous fait ? (vous seul le verrez)",{rows:1})]},
+  20: {h:H2("Consistency compounds","La constance s'additionne"), f:[F2.count("cnt","Days with a card so far","Jours avec une carte jusqu'ici"), F2.num("n","My target for the next 7 days","Mon objectif pour les 7 prochains jours",{max:7})]},
+  22: {h:H2("Get out of the boat","Sortez de la barque"), f:[F2.text("t","The one scary action I've been avoiding","L'action qui me fait peur et que j'évite")]},
+  23: {h:H2("Enlarge your tent","Élargissez votre tente"), f:[F2.pair("p","My 1% until now","Mon 1 % jusqu'ici","My 1% from today (a little more)","Mon 1 % dès aujourd'hui (un peu plus)",{pre:"daily"})]},
+  24: {h:H2("Bring another vessel","Apportez un autre vase"), f:[F2.choice("ch","What I'm adding","Ce que j'ajoute",[["A skill","Une compétence"],["A tool","Un outil"],["A relationship","Une relation"]]), F2.text("t","Which one?","Lequel ?",{rows:1})]},
+  25: {h:H2("The courageous conversation","La conversation courageuse"), f:[F2.person("who","With whom?","Avec qui ?"), F2.choice("ch","Where am I?","Où en suis-je ?",[["Done","Faite"],["Scheduled","Prévue"],["Not yet","Pas encore"]])]},
+  26: {h:H2("Failure is a teacher","L'échec est un professeur"), f:[F2.pair("p","My biggest setback so far","Mon plus grand revers jusqu'ici","The lesson it taught me","La leçon qu'il m'a apprise")]},
+  27: {h:H2("Do the stretch","Passez à l'action"), f:[F2.check("c1","I did my scary action, or its very first step","J'ai fait mon action audacieuse, ou sa toute première étape"), F2.text("t","What happened?","Que s'est-il passé ?")]},
+  29: {h:H2("Bigger on the inside","Plus grand à l'intérieur"), f:[F2.text("t","The quality of character this area needs from me","La qualité de caractère que ce domaine attend de moi",{rows:1})]},
+  30: {h:H2("Identity before activity","L'identité avant l'activité"), f:[F2.text("t","I am…","Je suis…",{rows:1})]},
+  31: {h:H2("Attitude determines altitude","L'attitude détermine l'altitude"), f:[F2.pair("p","A negative thought I caught","Une pensée négative repérée","Rewritten as true and hopeful","Réécrite, vraie et pleine d'espoir")]},
+  32: {h:H2("Guard your heart","Gardez votre cœur"), f:[F2.text("t","The input I removed or reduced","Ce que j'ai supprimé ou réduit",{rows:1}), F2.check("c1","Done for this week","Fait pour cette semaine")]},
+  33: {h:H2("Grow in grace","Grandir dans la grâce"), f:[F2.rate("r","How much have I changed in five weeks?","À quel point ai-je changé en cinq semaines ?"), F2.text("t","What I notice","Ce que je remarque")]},
+  34: {h:H2("Gratitude","Gratitude"), f:[F2.person("who","Who did I thank?","Qui ai-je remercié ?"), F2.check("c1","I sent my thanks","J'ai envoyé mes remerciements")]},
+  36: {h:H2("Add or multiply","Additionner ou multiplier"), f:[F2.person("who","Who I'll share my biggest lesson with","Avec qui je partagerai ma plus grande leçon"), F2.text("t","My biggest lesson","Ma plus grande leçon",{rows:1})]},
+  37: {h:H2("Your story is someone's map","Votre histoire est la carte de quelqu'un"), f:[F2.text("t","My growth story in five sentences: where I was, what changed, where I am now","Mon histoire en cinq phrases : où j'étais, ce qui a changé, où j'en suis",{rows:5})]},
+  38: {h:H2("Equip someone","Équipez quelqu'un"), f:[F2.person("who","Who did I teach?","À qui ai-je transmis ?"), F2.text("t","The 1% they chose","Le 1 % qu'il ou elle a choisi",{rows:1})]},
+  39: {h:H2("Generous growth","Une croissance généreuse"), f:[F2.choice("ch","What I gave","Ce que j'ai donné",[["Time","Du temps"],["A book","Un livre"],["Encouragement","Un encouragement"],["A gift","Un cadeau"]]), F2.person("who","To whom?","À qui ?")]},
+  40: {h:H2("Your next 42 days","Vos 42 prochains jours"), f:[F2.text("t","My daily 1% for the next six weeks","Mon 1 % quotidien pour les six prochaines semaines",{rows:1,pre:"daily"}), F2.person("who","Who will walk with me","Qui marchera avec moi")]},
+  41: {h:H2("Graduate, then keep growing","Diplômé, et toujours en croissance"), f:[F2.text("t","My one sentence for graduation","Ma phrase pour la remise des diplômes",{rows:2})]},
+  sunday: {h:H2("This week in one sentence","Cette semaine en une phrase"), f:[F2.rate("r","How strong was I this week?","À quel point ai-je été solide cette semaine ?"), F2.text("t","One thing I learned this week","Une chose apprise cette semaine")]},
+};
+const taskOf = d => TASKS[d] || (d % 7 === 0 ? TASKS.sunday : TASKS[Math.min(41, d)] || TASKS.sunday);
+
+const STATUS_IC = {done:"✅", partly:"🌓", not:"⏭"};
+const FEEL_IC = ["😣","😐","🙂","😃","🔥"];
+let cardArea = null, viewDay = null, cardEdit = false;
+const C2D = {}; // drafts: C2D[day][area] = {status, why:[], task:{}, feel}
+
+function extraOf(d, k){ const c = ck(d); return c && c.extra && c.extra[k] ? c.extra[k] : null; }
+function areaStatus(d, k){
+  const x = extraOf(d, k); if(x && x.status) return x.status;
+  const c = ck(d); if(!c) return null;
+  if(c.extra && Object.keys(c.extra).length) return null;      // new card, other area not filled yet
+  return c["done"+k] ? "done" : "not";                          // card saved with the old version
+}
+const cardComplete = d => !!(areaStatus(d,1) && areaStatus(d,2));
+function draftOf(d, k){
+  C2D[d] = C2D[d] || {};
+  if(!C2D[d][k]){
+    const x = extraOf(d, k), c = ck(d) || {};
+    C2D[d][k] = x ? {status:x.status||null, why:x.why||[], task:Object.assign({}, x.task||{}), feel:x.feel||null}
+                  : {status:areaStatus(d,k), why:[], task:{}, feel:null, legacyNote:c["note"+k]||""};
+  }
+  return C2D[d][k];
+}
+function preVal(f, k, which){
+  const key = which === 2 ? f.pre2 : f.pre; if(!key) return "";
+  const v = planOf(String(k))[key]; return v === undefined || v === null ? "" : String(v);
+}
+function fieldHtml(f, k, dr, d){
+  const id = `f_${f.id}`, v = dr.task[f.id], lbl = esc(tx(f.l));
+  const val = x => esc(x === undefined || x === null ? "" : String(x));
+  switch(f.k){
+    case "rate": { const n = +(v ?? preVal(f,k) ?? 0) || 5, has = v !== undefined;
+      return `<div class="c2-f"><p class="c2-lab">${lbl}</p><div class="c2-big"><b data-out="${f.id}">${has||preVal(f,k)?n:"–"}</b><span>/ 10</span></div>
+        <input type="range" class="c2-range" min="1" max="10" step="1" value="${n}" data-f="${f.id}" data-kind="rate" ${!has && preVal(f,k) ? 'data-pre="1"' : ""} aria-label="${lbl}" style="--p:${(n-1)/9*100}%">
+        <div class="c2-ticks">${Array.from({length:10},(_,i)=>`<span>${i+1}</span>`).join("")}</div></div>`; }
+    case "text": { const pv = v ?? (dr.legacyNote && f.id==="t" ? dr.legacyNote : preVal(f,k));
+      return `<div class="c2-f"><label class="c2-lab" for="${id}">${lbl}</label><textarea id="${id}" class="c2-in" rows="${f.rows||2}" maxlength="500" data-f="${f.id}">${val(pv)}</textarea></div>`; }
+    case "pair": { const a = (v && v.a) ?? preVal(f,k,1), b = (v && v.b) ?? preVal(f,k,2);
+      return `<div class="c2-f c2-pair"><div><label class="c2-lab" for="${id}a">${lbl}</label><textarea id="${id}a" class="c2-in" rows="2" maxlength="300" data-f="${f.id}" data-sub="a">${val(a)}</textarea></div>
+        <span class="c2-arrow" aria-hidden="true">→</span><div><label class="c2-lab" for="${id}b">${esc(tx(f.l2))}</label><textarea id="${id}b" class="c2-in" rows="2" maxlength="300" data-f="${f.id}" data-sub="b">${val(b)}</textarea></div></div>`; }
+    case "check":
+      return `<label class="c2-check"><input type="checkbox" data-f="${f.id}" data-kind="check" ${v?"checked":""}><i aria-hidden="true">✓</i><span>${lbl}</span></label>`;
+    case "person":
+      return `<div class="c2-f"><label class="c2-lab" for="${id}">${lbl}</label><div class="c2-person"><span aria-hidden="true">👤</span><input id="${id}" class="c2-in" maxlength="80" data-f="${f.id}" value="${val(v)}"></div></div>`;
+    case "num": { const n = +(v && v.n) || 0, max = f.max || 9999;
+      return `<div class="c2-f"><p class="c2-lab">${lbl}</p><div class="c2-step"><button type="button" class="c2-pm" data-step="${f.id}" data-dir="-1" aria-label="−">−</button>
+        <b data-out="${f.id}">${n}</b><button type="button" class="c2-pm" data-step="${f.id}" data-dir="1" data-max="${max}" aria-label="+">+</button>
+        ${f.unit ? `<input class="c2-in c2-unit" maxlength="40" placeholder="${esc(tx(f.unit))}" data-f="${f.id}" data-sub="u" value="${val(v && v.u)}">` : ""}</div></div>`; }
+    case "time":
+      return `<div class="c2-f"><label class="c2-lab" for="${id}">${lbl}</label><input type="time" id="${id}" class="c2-in c2-time" data-f="${f.id}" value="${val(v)}"></div>`;
+    case "choice":
+      return `<div class="c2-f"><p class="c2-lab">${lbl}</p><div class="c2-chips" role="radiogroup" aria-label="${lbl}">${f.opts.map((o,i)=>`<button type="button" role="radio" aria-checked="${v===i}" class="c2-chip ${v===i?"on":""}" data-choice="${f.id}" data-i="${i}">${esc(lang==="fr"?o[1]:o[0])}</button>`).join("")}</div></div>`;
+    case "list3": { const arr = Array.isArray(v) ? v : ["","",""];
+      return `<div class="c2-f"><p class="c2-lab">${lbl}</p>${[0,1,2].map(i=>`<div class="c2-person"><span aria-hidden="true">${i+1}</span><input class="c2-in" maxlength="120" data-f="${f.id}" data-sub="${i}" value="${val(arr[i])}" aria-label="${lbl} ${i+1}"></div>`).join("")}</div>`; }
+    case "count": { const n = me.checkins.filter(c=>c.done1||c.done2).length;
+      return `<div class="c2-f"><p class="c2-lab">${lbl}</p><div class="c2-big"><b>${n}</b><span>/ ${Math.min(42, me.day)}</span></div></div>`; }
+  }
+  return "";
+}
+function c2Mini(d){
+  const T2 = c2();
+  return [1,2].map(k => { const a = k===1?me.area1:me.area2, s = areaStatus(d,k), x = extraOf(d,k), r = x && x.task && (x.task.r ?? x.task.now);
+    return `<div class="c2-sumrow"><span>${AREA_ICON[a-1]} ${esc(areaName(a))}</span><span>${r?`<b>${r}/10</b> · `:""}${s?`<span class="c2-tag t-${s}">${STATUS_IC[s]} ${T2.st[s]}</span>`:`<span class="muted small">${T2.notFilled}</span>`}${x && x.feel ? ` ${FEEL_IC[x.feel-1]}`:""}</span></div>`; }).join("");
+}
+// Scores over time for the chart: plan start, daily ratings, weekly scores; goal from Day 3
+function c2Series(k){
+  const pts = [], p0 = +planOf(String(k)).score; if(p0) pts.push([0, p0]);
+  me.checkins.slice().sort((a,b)=>a.day-b.day).forEach(c => { const x = c.extra && c.extra[k] && c.extra[k].task; const r = x && (x.r ?? x.now); if(r) pts.push([c.day, +r]); });
+  (me.scores||[]).forEach(s => { const v = s["score"+k]; if(v) pts.push([s.week*7, +v]); });
+  const m = new Map(); pts.forEach(p => m.set(p[0], p[1]));
+  const g = me.checkins.map(c => c.extra && c.extra[k] && c.extra[k].task && c.extra[k].task.fut).filter(Boolean).slice(-1)[0];
+  return {pts:[...m.entries()].sort((a,b)=>a[0]-b[0]), goal: g ? +g : null};
+}
+function c2Chart(){
+  const W=320, H=120, pl=22, pr=10, pt=10, pb=18, x = d => pl + (d/42)*(W-pl-pr), y = v => pt + (1-(v-1)/9)*(H-pt-pb);
+  const s1 = c2Series(1), s2 = c2Series(2);
+  if(s1.pts.length + s2.pts.length < 1) return "";
+  const line = (s, cls) => s.pts.length ? `<polyline class="${cls}" points="${s.pts.map(p=>`${x(p[0]).toFixed(1)},${y(p[1]).toFixed(1)}`).join(" ")}"/>${s.pts.map(p=>`<circle class="${cls}" cx="${x(p[0]).toFixed(1)}" cy="${y(p[1]).toFixed(1)}" r="3.5"/>`).join("")}` : "";
+  const goal = (s, cls) => s.goal && s.pts.length ? `<line class="${cls} gl2" x1="${x(s.pts[s.pts.length-1][0])}" y1="${y(s.pts[s.pts.length-1][1])}" x2="${x(42)}" y2="${y(s.goal)}"/><text class="gt" x="${x(42)-2}" y="${y(s.goal)-5}" text-anchor="end">${c2().goal} ${s.goal}</text>` : "";
+  const grid = [1,5,10].map(v=>`<line class="g" x1="${pl}" x2="${W-pr}" y1="${y(v)}" y2="${y(v)}"/><text class="gl" x="${pl-5}" y="${y(v)+3}" text-anchor="end">${v}</text>`).join("");
+  const xs = [0,7,14,21,28,35,42].map(d=>`<text class="gl" x="${x(d)}" y="${H-4}" text-anchor="middle">${d===0?c2().start:d}</text>`).join("");
+  return `<svg class="c2-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(c2().scores)}">${grid}${xs}${goal(s1,"c1")}${goal(s2,"c2")}${line(s1,"c1")}${line(s2,"c2")}</svg>
+    <div class="legend"><span><i class="k1"></i>${AREA_ICON[me.area1-1]} ${esc(areaName(me.area1))}</span><span><i class="k2"></i>${AREA_ICON[me.area2-1]} ${esc(areaName(me.area2))}</span></div>`;
+}
+function weekPct(d){ const w = Math.ceil(d/7), first = (w-1)*7+1, last = Math.min(d, w*7); let n = 0; for(let i=first;i<=last;i++) if(state(i)!=="miss") n++; return Math.round(n/(last-first+1)*100); }
+function c2Celebrate(d){
+  const T2 = c2(), st = streak(), done = me.checkins.filter(c=>c.done1||c.done2).length;
+  const nx = (me.map||[]).find(m=>m.day===d+1), chart = c2Chart();
+  return `<section class="c2-cel ${lastSaved===d?"pop":""}"><div class="c2-ring"><div>🔥</div></div><h2>${T2.complete(d)}</h2><p>${areaStatus(d,1)==="done" && areaStatus(d,2)==="done" ? T2.completeS : T2.completeP}</p>
+      <div class="c2-stats"><span><b>${st}</b>${T2.streak}</span><span><b>${done}/42</b>${T2.days}</span><span><b>${weekPct(d)}%</b>${T2.week}</span></div></section>
+    <section class="panel stack"><h3>${d===me.day?T2.today:T2.nav(d)}</h3>${c2Mini(d)}
+      ${d >= me.day-1 ? `<button class="link" data-c2edit>${T2.edit}</button>` : ""}</section>
+    ${chart ? `<section class="panel stack"><h3>${T2.scores}</h3>${chart}</section>` : ""}
+    ${d === me.day && d < 42 ? `<section class="panel stack"><h3>${esc(T2.tomorrow(d+1, nx ? L(nx,"title") : ""))}</h3><p class="muted small">${T2.arrives}</p>
+      <button class="btn btn-ghost" data-c2share>📤 ${T2.share}</button></section>` : ""}`;
+}
+function cardBlock(d){
+  const T2 = c2(), T_ = t();
+  const editable = d >= me.day-1 && d <= Math.min(me.day, 42);
+  if(!editable) return `<section class="panel stack"><h3>${T2.yourCard} · ${T2.nav(d)}</h3>${c2Mini(d)}<p class="muted small">${T2.readOnly}</p></section>`;
+  if(cardComplete(d) && !cardEdit) return `<div class="stack-lg" id="card" data-d="${d}" data-done="1">${c2Celebrate(d)}</div>`;
+  if(!cardArea) cardArea = (areaStatus(d,1) && !cardEdit) ? 2 : 1;
+  const k = cardArea, a = k===1 ? me.area1 : me.area2, other = k===1 ? 2 : 1, oa = other===1 ? me.area1 : me.area2;
+  const dr = draftOf(d, k), task = taskOf(d), daily = planOf(String(k)).daily, ans = planOf(String(k)).answer;
+  const ttl = (me.map||[]).find(m=>m.day===d), st = streak();
+  const ring = s => s ? `<span class="c2-st ${s==="done"?"ok":"half"}" aria-hidden="true">${s==="done"?"✓":""}</span>` : `<span class="c2-st" aria-hidden="true"></span>`;
+  const sOther = areaStatus(d, other);
+  return `<section class="stack" id="card" data-d="${d}">
+    <div class="c2-hdr"><div><h2>${T2.card}</h2><p class="muted small">${T2.nav(d)}${ttl?` · ${esc(L(ttl,"title"))}`:""}${d===me.day-1?` · ${T2.yesterday}`:""}</p></div>${st?`<span class="streak">🔥 ${st}</span>`:""}</div>
+    <div class="c2-sw" role="tablist">${[1,2].map(n=>{ const an = n===1?me.area1:me.area2;
+      return `<button role="tab" aria-selected="${n===k}" class="${n===k?"on":""}" data-c2area="${n}"><span>${AREA_ICON[an-1]} ${esc(areaName(an))}</span>${ring(areaStatus(d,n))}</button>`; }).join("")}</div>
+    ${sOther ? `<div class="c2-saved">✅ <span><b>${T2.saved(esc(areaName(oa)))}</b> · ${T2.st[sOther]}</span></div>` : ""}
+    <div class="panel stack c2-card">
+      <div class="c2-mine"><small>${T2.my} · ${esc(areaName(a).toUpperCase())}</small>${daily ? `<p>${esc(daily)}</p>` : `<button class="link" data-goplan>${T2.noDaily}</button>`}</div>
+      <div><p class="c2-q"><span class="c2-n">1</span>${T2.q1}</p>
+        <div class="c2-tri" role="radiogroup" aria-label="${esc(T2.q1)}">${["done","partly","not"].map(s=>`<button type="button" role="radio" aria-checked="${dr.status===s}" class="c2-opt o-${s} ${dr.status===s?"on":""}" data-c2st="${s}"><em>${STATUS_IC[s]}</em>${T2.st[s]}</button>`).join("")}</div>
+        ${dr.status === "partly" || dr.status === "not" ? `<p class="c2-sub">${T2.why}</p><div class="c2-chips">${T2.whyOpts.map((w,i)=>`<button type="button" class="c2-chip ${dr.why.includes(i)?"on":""}" aria-pressed="${dr.why.includes(i)}" data-c2why="${i}">${w}</button>`).join("")}</div>
+          ${ans ? `<div class="c2-note">💡 <b>${T2.own}</b> “${esc(ans)}”</div>` : ""}` : ""}</div>
+      <div class="c2-task"><p class="c2-tl"><span class="c2-n w">2</span>${T2.task(d)}</p><h3>${esc(tx(task.h))}</h3>
+        ${task.f.map(f => fieldHtml(f, k, dr, d)).join("")}</div>
+      <div><p class="c2-q"><span class="c2-n">3</span>${T2.q3}</p>
+        <div class="c2-feel">${FEEL_IC.map((e,i)=>`<button type="button" class="${dr.feel===i+1?"on":""}" aria-pressed="${dr.feel===i+1}" data-c2feel="${i+1}">${e}<small>${T2.feels[i]}</small></button>`).join("")}</div></div>
+      <p id="cardMsg" role="status"></p>
+      <button class="btn btn-primary c2-save" id="saveCard">${T2.save(esc(areaName(a)))}<small>${areaStatus(d, other) ? T2.finish : T2.next(esc(areaName(oa)))}</small></button>
+    </div>
+    ${d % 7 !== 0 ? `<p class="muted small">📊 ${T_.scoreNext(Math.ceil(d/7)*7)}</p>` : ""}
+  </section>`;
+}
+// read the visible inputs into the draft
+function c2Collect(d, k){
+  const dr = draftOf(d, k), card = $("#card"); if(!card) return dr;
+  card.querySelectorAll("[data-f]").forEach(el => {
+    const id = el.dataset.f, sub = el.dataset.sub;
+    if(el.dataset.kind === "check"){ dr.task[id] = el.checked; return; }
+    if(el.dataset.kind === "rate"){ if(el.dataset.touched === "1" || dr.task[id] !== undefined || el.dataset.pre === "1") dr.task[id] = +el.value; return; }
+    if(sub === undefined){ dr.task[id] = el.value; return; }
+    if(/^\d$/.test(sub)){ const arr = Array.isArray(dr.task[id]) ? dr.task[id] : ["","",""]; arr[+sub] = el.value; dr.task[id] = arr; return; }
+    dr.task[id] = Object.assign({}, typeof dr.task[id] === "object" && dr.task[id] ? dr.task[id] : {}, {[sub]: el.value});
+  });
+  return dr;
+}
+function c2Note(dr, d){
+  const t0 = dr.task; const parts = [];
+  if(typeof t0.t === "string" && t0.t.trim()) parts.push(t0.t.trim());
+  if(t0.p && (t0.p.a || t0.p.b)) parts.push([t0.p.a, t0.p.b].filter(Boolean).join(" → "));
+  if(t0.who) parts.push(t0.who);
+  if(Array.isArray(t0.w)) parts.push(t0.w.filter(Boolean).join(" · "));
+  if(t0.r) parts.unshift(`${t0.r}/10`);
+  return parts.join(" · ").slice(0, 500);
+}
+function bindCard2(){
+  const card = $("#card"); if(!card) return;
+  const d = +card.dataset.d, tok = store.get("gd_token");
+  card.querySelectorAll("[data-c2edit]").forEach(b => b.onclick = () => { cardEdit = true; cardArea = 1; renderApp(); const c = $("#card"); if(c) c.scrollIntoView({behavior:"smooth", block:"start"}); });
+  card.querySelectorAll("[data-c2share]").forEach(b => b.onclick = async () => { const txt = c2().shareTxt(d, streak());
+    if(navigator.share){ try{ await navigator.share({text: txt}); return; }catch(e){} }
+    try{ await navigator.clipboard.writeText(txt); b.textContent = "✓"; }catch(e){ prompt("", txt); } });
+  if(card.dataset.done) return;
+  const k = cardArea, dr = draftOf(d, k);
+  const rerender = () => { c2Collect(d, k); const y = window.scrollY; renderApp(); window.scrollTo(0, y); };
+  card.querySelectorAll("[data-c2area]").forEach(b => b.onclick = () => { c2Collect(d, k); cardArea = +b.dataset.c2area; renderApp(); const c = $("#card"); if(c) c.scrollIntoView({block:"start"}); });
+  card.querySelectorAll("[data-c2st]").forEach(b => b.onclick = () => { dr.status = b.dataset.c2st; if(dr.status === "done") dr.why = []; rerender(); });
+  card.querySelectorAll("[data-c2why]").forEach(b => b.onclick = () => { const i = +b.dataset.c2why; dr.why = dr.why.includes(i) ? dr.why.filter(x=>x!==i) : dr.why.concat(i);
+    b.classList.toggle("on"); b.setAttribute("aria-pressed", dr.why.includes(i)); });
+  card.querySelectorAll("[data-c2feel]").forEach(b => b.onclick = () => { dr.feel = +b.dataset.c2feel;
+    card.querySelectorAll("[data-c2feel]").forEach(x => { const on = +x.dataset.c2feel === dr.feel; x.classList.toggle("on", on); x.setAttribute("aria-pressed", on); }); });
+  card.querySelectorAll(".c2-range").forEach(r => r.oninput = () => { r.dataset.touched = "1"; const o = card.querySelector(`[data-out="${r.dataset.f}"]`); if(o) o.textContent = r.value; r.style.setProperty("--p", ((r.value-1)/9*100)+"%"); });
+  card.querySelectorAll("[data-step]").forEach(b => b.onclick = () => { const id = b.dataset.step, o = card.querySelector(`[data-out="${id}"]`);
+    const cur = Object.assign({n:0}, typeof dr.task[id] === "object" && dr.task[id] ? dr.task[id] : {}); const max = +(card.querySelector(`[data-step="${id}"][data-dir="1"]`).dataset.max || 9999);
+    cur.n = Math.max(0, Math.min(max, (+cur.n||0) + (+b.dataset.dir))); const u = card.querySelector(`[data-f="${id}"][data-sub="u"]`); if(u) cur.u = u.value;
+    dr.task[id] = cur; o.textContent = cur.n; });
+  card.querySelectorAll("[data-choice]").forEach(b => b.onclick = () => { const id = b.dataset.choice; dr.task[id] = +b.dataset.i;
+    card.querySelectorAll(`[data-choice="${id}"]`).forEach(x => { const on = x === b; x.classList.toggle("on", on); x.setAttribute("aria-checked", on); }); });
+  const sv = $("#saveCard");
+  if(sv) sv.onclick = async () => {
+    c2Collect(d, k);
+    const m = $("#cardMsg");
+    if(!dr.status){ m.className = "err"; m.textContent = c2().pick; return; }
+    sv.disabled = true;
+    const extra = {task: dr.task, feel: dr.feel, why: dr.why};
+    const args = {p_token: tok, p_day: d, p_area: k, p_status: dr.status, p_note: c2Note(dr, d), p_extra: extra};
+    const apply = row => {
+      const old = ck(d) || {day:d, done1:false, done2:false, note1:"", note2:"", extra:{}};
+      const nr = row || Object.assign({}, old, {["done"+k]: dr.status !== "not", ["note"+k]: args.p_note, extra: Object.assign({}, old.extra||{}, {[k]: Object.assign({}, extra, {status: dr.status})})});
+      me.checkins = me.checkins.filter(x=>x.day!==d).concat(nr);
+      delete C2D[d][k];
+      const otherK = k===1?2:1;
+      if(cardComplete(d)){ cardEdit = false; lastSaved = d; cardArea = null; }
+      else cardArea = otherK;
+    };
+    try{
+      const row = await rpc("gd_checkin_area", args);
+      apply(row); renderApp();
+      const c = $("#card"); if(c) c.scrollIntoView({behavior:"smooth", block:"start"});
+    }catch(e){
+      if(e.message === "network"){
+        store.set("gd_pending", JSON.stringify(pending().filter(x=>!(x.fn==="gd_checkin_area" && x.args.p_day===d && x.args.p_area===k)).concat({fn:"gd_checkin_area", args})));
+        apply(null); try{ store.set("gd_me_cache", JSON.stringify(me)); }catch(x){}
+        renderApp(); const mm = $("#cardMsg"); if(mm){ mm.className = "ok"; mm.textContent = c2().queued; } return;
+      }
+      sv.disabled = false; m.className = "err"; m.textContent = errMsg(e);
+    }
+  };
+}
+
+/* ---------- Daily Fire: move between days ---------- */
+function dShort(d){ const x = new Date(new Date(me.start_date + "T12:00:00").getTime() + (d-1)*86400000);
+  return x.toLocaleDateString(lang==="fr"?"fr-FR":"en-GB", {weekday:"short", day:"numeric", month:"short"}); }
+function dayNav(ld){
+  const T2 = c2(), cur = Math.min(me.day, 42), m = (me.map||[]).find(x=>x.day===ld);
+  return `<nav class="dnav" aria-label="${esc(T2.allDays)}">
+    <button class="dnav-b" data-dnav="${ld-1}" ${ld<=1?"disabled":""} aria-label="${esc(T2.nav(ld-1))}">‹</button>
+    <div class="dnav-t"><b>${T2.nav(ld)} <span>${T2.of42}</span>${ld===me.day?` <i>${T2.todayTag}</i>`:""}</b><small>${dShort(ld)}${m?` · ${esc(L(m,"title"))}`:""}</small></div>
+    <button class="dnav-b" data-dnav="${ld+1}" ${ld>=cur?"disabled":""} aria-label="${esc(T2.nav(ld+1))}">›</button></nav>
+    <div class="dnav-links">${ld !== me.day ? `<button class="link" data-dnav="${me.day}">↩ ${T2.backToday}</button>` : "<span></span>"}<button class="link" data-goj>📅 ${T2.allDays}</button></div>`;
+}
+function bindDayNav(){
+  document.querySelectorAll("[data-dnav]").forEach(b => b.onclick = () => { const d = +b.dataset.dnav;
+    viewDay = d === me.day ? null : d; cardDay = null; cardEdit = false; cardArea = null; tab = "today"; renderApp(); window.scrollTo(0,0); });
+}
+/* ---------- Journey: the 42 days ---------- */
+function daysList(){
+  const T2 = c2(), cur = me.day, cw = Math.ceil(Math.max(1, Math.min(cur,42))/7);
+  let h = `<section class="stack"><h1>${T2.days42}</h1><p class="muted small">${T2.days42S}</p>`;
+  for(let w=1; w<=6; w++){
+    const th = (me.map||[]).find(x=>x.day===(w-1)*7+1);
+    h += `<details class="dl-week" ${w===cw?"open":""}><summary><b>${esc(T2.wk(w, th ? L(th,"theme") : ""))}</b><span class="muted small">${dShort((w-1)*7+1)} – ${dShort(w*7)}</span></summary><div class="dl-days">`;
+    for(let i=1;i<=7;i++){
+      const d = (w-1)*7+i, m = (me.map||[]).find(x=>x.day===d), open = d <= cur, has = me.lessons.some(l=>l.day===d);
+      const s = d <= cur ? state(d) : "future";
+      const right = !open ? `<span class="dl-lock">🔒 ${esc(T2.opens(dShort(d)))}</span>` : !has ? `<span class="dl-lock">🔒 ${esc(T2.payOpen(w))}</span>` : `<span class="fl f-${d===cur && s==="miss" ? "open" : s}">${FLAME}</span>`;
+      h += `<button class="dl-day ${d===cur?"is-today":""} ${open&&has?"":"locked"}" ${open ? (has ? `data-openday="${d}"` : "data-paywall") : "disabled"}>
+        <span class="dl-n">${d}</span><span class="dl-t"><b>${esc(m ? L(m,"title") : T2.nav(d))}</b><small>${dShort(d)}${d===cur?` · ${T2.todayTag}`:""}</small></span>${right}</button>`;
+    }
+    h += `</div></details>`;
+  }
+  return h + `</section>`;
+}
+function bindDaysList(){
+  document.querySelectorAll("[data-openday]").forEach(b => b.onclick = () => { const d = +b.dataset.openday;
+    viewDay = d === me.day ? null : d; cardDay = null; cardEdit = false; cardArea = null; tab = "today"; renderApp(); window.scrollTo(0,0); });
+}
+/* ---------- time zone: Daily Fire at 6:00 where the person is today ---------- */
+const myTZ = () => { try{ return Intl.DateTimeFormat().resolvedOptions().timeZone || ""; }catch(e){ return ""; } };
+async function syncTZ(tok){
+  const z = myTZ(); if(!z || !me || me.tz === z) return false;
+  try{ const r = await rpc("gd_set_tz", {p_token: tok, p_tz: z}); if(r && r.ok){ me.tz = z; return true; } }catch(e){}
+  return false;
+}
+
 function viewToday(){
   const cur = me.day, week = Math.ceil(cur/7), T_ = t();
-  const d = cardDay || cur;
-  const lesson = me.lessons.find(l=>l.day===cur);
+  const ld = viewDay && viewDay < cur ? viewDay : null;   // looking back at a past day
+  const d = cardDay || ld || cur;
+  const lesson = me.lessons.find(l=>l.day===(ld || cur));
   const st = streak();
+  if(ld) return `${dayNav(ld)}
+    ${lesson ? lessonBlock(lesson) : `<button class="panel lock-card" data-paywall><span class="lk-ic">🔒</span><span class="lk-t"><b>${esc(c2().payOpen(Math.ceil(ld/7)))}</b></span></button>`}
+    ${cardBlock(ld)}`;
   const missedYesterday = cur > 1 && !ck(cur-1) && !cardDay;
   return `<section class="hero2 hero2-col rail-able">
       <div class="hero2-row">${ring(cur/42, cur, T_.of42)}
@@ -2629,7 +3070,7 @@ function viewToday(){
     ${cardDay ? "" : planStrip()}
     ${cardDay || me.day > 3 ? "" : groupCard()}
     ${cardDay || me.day > 3 ? "" : howEntry()}
-    ${cardDay ? `<button class="link" id="toToday">${T_.backToday}</button>` : lessonBlock(lesson)}
+    ${cardDay ? `<button class="link" id="toToday">${T_.backToday}</button>` : dayNav(cur) + lessonBlock(lesson)}
     ${missedYesterday ? `<div class="panel stack"><p>${T_.catchUp}</p><button class="btn btn-ghost" id="catch">${T_.catchBtn}</button></div>` : ""}
     ${cardBlock(d)}
     ${(cur % 7 === 0 && !cardDay) ? scoreBlock(week) : ""}`;
@@ -2674,7 +3115,7 @@ function viewJourney(){
       ${me.scores.map(s=>`<tr><td>${s.week}</td><td>${s.score1}/10</td><td>${s.score2}/10</td></tr>`).join("")}</tbody></table></div>`
     : `<p class="muted">${t().noScores}</p>`;
   const report = me.day >= 36 ? reportBlock() : "";
-  return `${report}<button class="panel score-entry" data-tabgo="score"><span class="se-ic">${TAB_ICON.score}</span><span><b>${t().tab_score}</b><small>${t().scSub}</small></span><span class="pg-arrow">→</span></button>
+  return `${report}${me.day >= 1 ? daysList() : ""}<button class="panel score-entry" data-tabgo="score"><span class="se-ic">${TAB_ICON.score}</span><span><b>${t().tab_score}</b><small>${t().scSub}</small></span><span class="pg-arrow">→</span></button>
     <section class="stack"><h1>${t().journey}</h1>
     <div class="panel">${me.day >= 1 ? flameGrid() : `<p class="muted">${t().starts(fmtDate(me.start_date))}</p>`}
       <div class="legend">
@@ -3009,34 +3450,8 @@ function bindView(){
   });
   const tt = $("#toToday"); if(tt) tt.onclick = () => { cardDay = null; renderApp(); };
   const cu = $("#catch"); if(cu) cu.onclick = () => { cardDay = me.day-1; renderApp(); window.scrollTo(0,0); };
-  // card
-  const card = $("#card");
-  if(card){
-    const d = +card.dataset.d; const c = ck(d) || {};
-    const val = {1: c.done1 ?? null, 2: c.done2 ?? null};
-    card.querySelectorAll("[data-tile]").forEach(b => b.onclick = () => {
-      const k = b.dataset.tile; val[k] = !val[k]; b.setAttribute("aria-pressed", !!val[k]);
-    });
-    $("#saveCard").onclick = async () => {
-      const btn = $("#saveCard"); btn.disabled = true;
-      try{
-        const args = {p_token:tok, p_day:d, p_done1:!!val[1], p_done2:!!val[2], p_note1:$("#note1").value, p_note2:$("#note2").value};
-        await rpc("gd_checkin", args);
-        const row = {day:d, done1:args.p_done1, done2:args.p_done2, note1:args.p_note1, note2:args.p_note2};
-        me.checkins = me.checkins.filter(x=>x.day!==d).concat(row);
-        lastSaved = d; cardDay = null; renderApp();
-        const m = $("#cardMsg"); if(m){ m.className="ok"; m.textContent = t().saved; }
-      }catch(e){
-        if(e.message === "network"){
-          const args = {p_token:tok, p_day:d, p_done1:!!val[1], p_done2:!!val[2], p_note1:$("#note1").value, p_note2:$("#note2").value};
-          store.set("gd_pending", JSON.stringify(pending().filter(x=>x.p_day!==d).concat(args)));
-          me.checkins = me.checkins.filter(x=>x.day!==d).concat({day:d, done1:args.p_done1, done2:args.p_done2, note1:args.p_note1, note2:args.p_note2});
-          try{ store.set("gd_me_cache", JSON.stringify(me)); }catch(x){}
-          lastSaved = d; cardDay = null; renderApp(); const m = $("#cardMsg"); if(m){ m.className="ok"; m.textContent = t().cardQueued; } return;
-        }
-        btn.disabled = false; const m=$("#cardMsg"); m.className="err"; m.textContent = errMsg(e); }
-    };
-  }
+  // card, day navigation, 42-day list
+  bindCard2(); bindDayNav(); bindDaysList();
   // score
   const sc = $("#score");
   if(sc){
@@ -3853,7 +4268,8 @@ const pending = () => { try{ return JSON.parse(store.get("gd_pending") || "[]");
 async function flushPending(){
   const q = pending(); if(!q.length || !navigator.onLine) return;
   const left = [];
-  for(const args of q){ try{ await rpc("gd_checkin", args); }catch(e){ if(e.message === "network") left.push(args); } }
+  for(const it of q){ const fn = it && it.fn ? it.fn : "gd_checkin", args = it && it.fn ? it.args : it;
+    try{ await rpc(fn, args); }catch(e){ if(e.message === "network") left.push(it); } }
   store.set("gd_pending", JSON.stringify(left));
   if(!left.length && q.length && $("#cardMsg") === null){ const b = document.createElement("div"); b.className = "toast"; b.textContent = t().synced; document.body.appendChild(b); setTimeout(()=>b.remove(), 3000); }
 }
